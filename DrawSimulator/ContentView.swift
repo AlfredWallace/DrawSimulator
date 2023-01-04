@@ -8,14 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(sortDescriptors: []) var teams: FetchedResults<Team>
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            List(teams) {
+                Text($0.nonoptName)
+            }
+            
+            Spacer()
+            
+            Button {
+                resetTeams()
+            } label: {
+                Text("Reset Teams")
+                    .padding()
+                    .background(.red)
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            }
         }
-        .padding()
+    }
+    
+    func resetTeams() {
+        for team in teams {
+            moc.delete(team)
+        }
+        
+        let team = Team(context: moc)
+        team.name = "Paris Saint-Germain"
+        team.abbreviation = "PSG"
+        team.enumPool = .A
+        team.seeded = false
+        
+        try? moc.save()
     }
 }
 
