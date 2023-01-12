@@ -1,5 +1,5 @@
 //
-//  Team+CoreDataProperties.swift
+//  Season+CoreDataProperties.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 12/01/2023.
@@ -10,23 +10,23 @@ import Foundation
 import CoreData
 
 
-extension Team {
+extension Season {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Team> {
-        return NSFetchRequest<Team>(entityName: "Team")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Season> {
+        return NSFetchRequest<Season>(entityName: "Season")
     }
 
-    @NSManaged public var shortName: String?
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
-    @NSManaged public var logoPath: String?
-    @NSManaged public var country: Country?
+    @NSManaged public var endYear: Int16
+    @NSManaged public var backgroundPath: String?
+    @NSManaged public var editable: Bool
     @NSManaged public var seasonTeams: NSSet?
 
-}
+}   
 
 // MARK: Generated accessors for seasonTeams
-extension Team {
+extension Season {
 
     @objc(addSeasonTeamsObject:)
     @NSManaged public func addToSeasonTeams(_ value: SeasonTeam)
@@ -42,6 +42,6 @@ extension Team {
 
 }
 
-extension Team : Identifiable {
+extension Season : Identifiable {
 
 }

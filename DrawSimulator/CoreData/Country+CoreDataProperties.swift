@@ -1,8 +1,8 @@
 //
-//  Association+CoreDataProperties.swift
+//  Country+CoreDataProperties.swift
 //  DrawSimulator
 //
-//  Created by Arthur Falque Pierrotin on 03/01/2023.
+//  Created by Arthur Falque Pierrotin on 12/01/2023.
 //
 //
 
@@ -10,30 +10,22 @@ import Foundation
 import CoreData
 
 
-extension Association {
+extension Country {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Association> {
-        return NSFetchRequest<Association>(entityName: "Association")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Country> {
+        return NSFetchRequest<Country>(entityName: "Country")
     }
 
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
+    @NSManaged public var shortName: String?
+    @NSManaged public var flagPath: String?
     @NSManaged public var teams: NSSet?
 
-    var nonoptName: String {
-        name ?? ""
-    }
-    
-    var teamsArray: [Team] {
-        let set = teams as? Set<Team> ?? []
-        return set.sorted {
-            $0.nonoptName < $1.nonoptName
-        }
-    }
 }
 
 // MARK: Generated accessors for teams
-extension Association {
+extension Country {
 
     @objc(addTeamsObject:)
     @NSManaged public func addToTeams(_ value: Team)
@@ -49,6 +41,6 @@ extension Association {
 
 }
 
-extension Association : Identifiable {
+extension Country : Identifiable {
 
 }
