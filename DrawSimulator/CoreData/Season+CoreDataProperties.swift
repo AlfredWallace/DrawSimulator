@@ -23,8 +23,7 @@ extension Season {
     @NSManaged public var editable: Bool
     @NSManaged public var seasonTeams: NSSet?
 
-}   
-
+}
 // MARK: Generated accessors for seasonTeams
 extension Season {
 

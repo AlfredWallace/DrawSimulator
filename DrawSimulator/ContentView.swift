@@ -10,40 +10,29 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     
-    @FetchRequest(sortDescriptors: []) var teams: FetchedResults<Team>
+    @FetchRequest(sortDescriptors: []) var countries: FetchedResults<Country>
     
     var body: some View {
         VStack {
-            List(teams) {
-                Text($0.nonoptName)
-            }
-            
-            Spacer()
-            
-            Button {
-                resetTeams()
-            } label: {
-                Text("Reset Teams")
-                    .padding()
-                    .background(.red)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            List(countries) {
+                Text($0.name ?? "unknown name")
             }
         }
+            .onAppear(perform: initializeCoreData)
     }
     
-    func resetTeams() {
-        for team in teams {
-            moc.delete(team)
+    func initializeCoreData() {
+        let france = Country(context: moc)
+        france.name = "France"
+        france.shortName = "FRA"
+        
+        if moc.hasChanges {
+            do {
+                try moc.save()
+            } catch {
+                print("Could not save initialization: \(error.localizedDescription)")
+            }
         }
-        
-        let team = Team(context: moc)
-        team.name = "Paris Saint-Germain"
-        team.abbreviation = "PSG"
-        team.enumPool = .A
-        team.seeded = false
-        
-        try? moc.save()
     }
 }
 
