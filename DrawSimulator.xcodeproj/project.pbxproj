@@ -7,39 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA1A04912970AA7400B587D3 /* Season+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A04892970AA7400B587D3 /* Season+CoreDataClass.swift */; };
-		BA1A04922970AA7400B587D3 /* Season+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A048A2970AA7400B587D3 /* Season+CoreDataProperties.swift */; };
-		BA1A04932970AA7400B587D3 /* SeasonTeam+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A048B2970AA7400B587D3 /* SeasonTeam+CoreDataClass.swift */; };
-		BA1A04942970AA7400B587D3 /* SeasonTeam+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A048C2970AA7400B587D3 /* SeasonTeam+CoreDataProperties.swift */; };
-		BA1A04952970AA7400B587D3 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A048D2970AA7400B587D3 /* Team+CoreDataClass.swift */; };
-		BA1A04962970AA7400B587D3 /* Team+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A048E2970AA7400B587D3 /* Team+CoreDataProperties.swift */; };
-		BA1A04972970AA7400B587D3 /* Country+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A048F2970AA7400B587D3 /* Country+CoreDataClass.swift */; };
-		BA1A04982970AA7400B587D3 /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A04902970AA7400B587D3 /* Country+CoreDataProperties.swift */; };
-		BA4844622964C72F00EDA6E8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4844612964C72E00EDA6E8 /* DataController.swift */; };
 		BA9979F12963B42C00AF04B8 /* DrawSimulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */; };
 		BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9979F22963B42C00AF04B8 /* ContentView.swift */; };
 		BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F42963B42D00AF04B8 /* Assets.xcassets */; };
 		BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */; };
-		BAF9AE992964C3E1006C2437 /* DrawSimulatorDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAF9AE972964C3E1006C2437 /* DrawSimulatorDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA016390297ADB830030264F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BA1A04892970AA7400B587D3 /* Season+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Season+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BA1A048A2970AA7400B587D3 /* Season+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Season+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BA1A048B2970AA7400B587D3 /* SeasonTeam+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeasonTeam+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BA1A048C2970AA7400B587D3 /* SeasonTeam+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeasonTeam+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BA1A048D2970AA7400B587D3 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BA1A048E2970AA7400B587D3 /* Team+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BA1A048F2970AA7400B587D3 /* Country+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataClass.swift"; sourceTree = "<group>"; };
-		BA1A04902970AA7400B587D3 /* Country+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BA4844612964C72E00EDA6E8 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		BA9979ED2963B42C00AF04B8 /* DrawSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSimulatorApp.swift; sourceTree = "<group>"; };
 		BA9979F22963B42C00AF04B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA9979F42963B42D00AF04B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BAF9AE982964C3E1006C2437 /* DrawSimulatorDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrawSimulatorDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,23 +33,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA48446B2964C9A700EDA6E8 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				BA4844612964C72E00EDA6E8 /* DataController.swift */,
-				BAF9AE972964C3E1006C2437 /* DrawSimulatorDataModel.xcdatamodeld */,
-				BA1A04892970AA7400B587D3 /* Season+CoreDataClass.swift */,
-				BA1A048B2970AA7400B587D3 /* SeasonTeam+CoreDataClass.swift */,
-				BA1A048D2970AA7400B587D3 /* Team+CoreDataClass.swift */,
-				BA1A048F2970AA7400B587D3 /* Country+CoreDataClass.swift */,
-				BA1A048A2970AA7400B587D3 /* Season+CoreDataProperties.swift */,
-				BA1A048C2970AA7400B587D3 /* SeasonTeam+CoreDataProperties.swift */,
-				BA1A048E2970AA7400B587D3 /* Team+CoreDataProperties.swift */,
-				BA1A04902970AA7400B587D3 /* Country+CoreDataProperties.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 		BA9979E42963B42C00AF04B8 = {
 			isa = PBXGroup;
 			children = (
@@ -90,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				BA016390297ADB830030264F /* Info.plist */,
-				BA48446B2964C9A700EDA6E8 /* CoreData */,
 				BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */,
 				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
 				BA9979F42963B42D00AF04B8 /* Assets.xcassets */,
@@ -177,18 +139,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA1A04952970AA7400B587D3 /* Team+CoreDataClass.swift in Sources */,
-				BA4844622964C72F00EDA6E8 /* DataController.swift in Sources */,
-				BA1A04942970AA7400B587D3 /* SeasonTeam+CoreDataProperties.swift in Sources */,
-				BA1A04912970AA7400B587D3 /* Season+CoreDataClass.swift in Sources */,
-				BA1A04972970AA7400B587D3 /* Country+CoreDataClass.swift in Sources */,
-				BA1A04962970AA7400B587D3 /* Team+CoreDataProperties.swift in Sources */,
-				BAF9AE992964C3E1006C2437 /* DrawSimulatorDataModel.xcdatamodeld in Sources */,
 				BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */,
-				BA1A04982970AA7400B587D3 /* Country+CoreDataProperties.swift in Sources */,
-				BA1A04922970AA7400B587D3 /* Season+CoreDataProperties.swift in Sources */,
 				BA9979F12963B42C00AF04B8 /* DrawSimulatorApp.swift in Sources */,
-				BA1A04932970AA7400B587D3 /* SeasonTeam+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,19 +341,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		BAF9AE972964C3E1006C2437 /* DrawSimulatorDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BAF9AE982964C3E1006C2437 /* DrawSimulatorDataModel.xcdatamodel */,
-			);
-			currentVersion = BAF9AE982964C3E1006C2437 /* DrawSimulatorDataModel.xcdatamodel */;
-			path = DrawSimulatorDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = BA9979E52963B42C00AF04B8 /* Project object */;
 }
