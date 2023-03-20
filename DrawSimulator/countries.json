@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Italy",
+        "shortName": "ITA"
+    },
+    {
+        "id": 2,
+        "name": "England",
+        "shortName": "ENG"
+    },
+    {
+        "id": 3,
+        "name": "Portugal",
+        "shortName": "POR"
+    },
+    {
+        "id": 4,
+        "name": "Belgium",
+        "shortName": "BEL"
+    },
+    {
+        "id": 5,
+        "name": "Germany",
+        "shortName": "GER"
+    },
+    {
+        "id": 6,
+        "name": "Spain",
+        "shortName": "SPA"
+    },
+    {
+        "id": 7,
+        "name": "France",
+        "shortName": "FRA"
+    }
+]
