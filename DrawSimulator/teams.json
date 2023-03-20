@@ -2,81 +2,97 @@
     {
         "id": 1,
         "name": "Napoli",
-        "shortName": "NAP"
+        "shortName": "NAP",
+        "seeded": true
     },
     {
         "id": 2,
         "name": "Liverpool",
-        "shortName": "LIV"
+        "shortName": "LIV",
+        "seeded": false
     },
     {
         "id": 3,
         "name": "Porto",
-        "shortName": "POR"
+        "shortName": "POR",
+        "seeded": true
     },
     {
         "id": 4,
         "name": "Club Brugge",
-        "shortName": "BRU"
+        "shortName": "BRU",
+        "seeded": false
     },
     {
         "id": 5,
         "name": "Bayern München",
-        "shortName": "BAY"
+        "shortName": "BAY",
+        "seeded": true
     },
     {
         "id": 6,
         "name": "Internazionale",
-        "shortName": "INT"
+        "shortName": "INT",
+        "seeded": false
     },
     {
         "id": 7,
         "name": "Tottenham Hotspur",
-        "shortName": "TOT"
+        "shortName": "TOT",
+        "seeded": true
     },
     {
         "id": 8,
         "name": "Eintracht Frankfurt",
-        "shortName": "FRK"
+        "shortName": "FRK",
+        "seeded": false
     },
     {
         "id": 9,
         "name": "Chelsea",
-        "shortName": "CHE"
+        "shortName": "CHE",
+        "seeded": true
     },
     {
         "id": 10,
         "name": "A.C. Milan",
-        "shortName": "ACM"
+        "shortName": "ACM",
+        "seeded": false
     },
     {
         "id": 11,
         "name": "Real",
-        "shortName": "RMA"
+        "shortName": "RMA",
+        "seeded": true
     },
     {
         "id": 12,
         "name": "RB Leipzig",
-        "shortName": "RBL"
+        "shortName": "RBL",
+        "seeded": false
     },
     {
         "id": 13,
         "name": "Manchester City",
-        "shortName": "MCI"
+        "shortName": "MCI",
+        "seeded": true
     },
     {
         "id": 14,
         "name": "Borussia Dortmund",
-        "shortName": "BVB"
+        "shortName": "BVB",
+        "seeded": false
     },
     {
         "id": 15,
         "name": "Benfica",
-        "shortName": "BEN"
+        "shortName": "BEN",
+        "seeded": true
     },
     {
         "id": 16,
         "name": "Paris Saint-Germain",
-        "shortName": "PSG"
+        "shortName": "PSG",
+        "seeded": false
     }
 ]

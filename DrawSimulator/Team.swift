@@ -11,4 +11,5 @@ struct Team: Codable {
     let id: Int
     let name: String
     let shortName: String
+    let seeded: Bool
 }
