@@ -12,8 +12,27 @@ struct ContentView: View {
     let teams: [Team] = Bundle.main.jsonDecode("teams.json")
     
     var body: some View {
-        List(teams) { team in
-            Text(team.name)
+        NavigationView {
+            GeometryReader { geo in
+                List(teams) { team in
+                    NavigationLink {
+                        Text(team.name)
+                    } label: {
+                        HStack {
+                            Image("Napoli")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: geo.size.width * 0.15)
+                            
+                            Text(team.name)
+                                .font(.title)
+                                .bold()
+                                .padding(.leading)
+                        }
+                    }
+                    
+                }
+            }
         }
     }
 }

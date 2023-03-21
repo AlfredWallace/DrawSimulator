@@ -29,28 +29,28 @@
     },
     {
         "id": 5,
-        "name": "Bayern München",
+        "name": "Bayern",
         "shortName": "BAY",
         "seeded": true,
         "countryId": 5
     },
     {
         "id": 6,
-        "name": "Internazionale",
+        "name": "Inter",
         "shortName": "INT",
         "seeded": false,
         "countryId": 1
     },
     {
         "id": 7,
-        "name": "Tottenham Hotspur",
+        "name": "Tottenham",
         "shortName": "TOT",
         "seeded": true,
         "countryId": 2
     },
     {
         "id": 8,
-        "name": "Eintracht Frankfurt",
+        "name": "Frankfurt",
         "shortName": "FRK",
         "seeded": false,
         "countryId": 5
@@ -64,35 +64,35 @@
     },
     {
         "id": 10,
-        "name": "A.C. Milan",
+        "name": "Milan",
         "shortName": "ACM",
         "seeded": false,
         "countryId": 1
     },
     {
         "id": 11,
-        "name": "Real",
+        "name": "Real Madrid",
         "shortName": "RMA",
         "seeded": true,
         "countryId": 6
     },
     {
         "id": 12,
-        "name": "RB Leipzig",
+        "name": "Leipzig",
         "shortName": "RBL",
         "seeded": false,
         "countryId": 5
     },
     {
         "id": 13,
-        "name": "Manchester City",
+        "name": "Man City",
         "shortName": "MCI",
         "seeded": true,
         "countryId": 2
     },
     {
         "id": 14,
-        "name": "Borussia Dortmund",
+        "name": "Dortmund",
         "shortName": "BVB",
         "seeded": false,
         "countryId": 5
@@ -106,7 +106,7 @@
     },
     {
         "id": 16,
-        "name": "Paris Saint-Germain",
+        "name": "Paris",
         "shortName": "PSG",
         "seeded": false,
         "countryId": 6
