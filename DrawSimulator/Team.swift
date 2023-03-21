@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Team: Codable {
+struct Team: Codable, Identifiable {
     let id: Int
     let name: String
     let shortName: String
     let seeded: Bool
+    let countryId: Int
 }

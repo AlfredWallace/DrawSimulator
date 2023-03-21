@@ -9,8 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     
+    let teams: [Team] = Bundle.main.jsonDecode("teams.json")
+    
     var body: some View {
-        Text("Hey")
+        List(teams) { team in
+            Text(team.name)
+        }
     }
 }
 
