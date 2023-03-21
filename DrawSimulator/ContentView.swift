@@ -19,14 +19,13 @@ struct ContentView: View {
                         Text(team.name)
                     } label: {
                         HStack {
-                            Image("Napoli")
+                            Image(team.name)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: geo.size.width * 0.15)
+                                .frame(width: geo.size.width * 0.12)
                             
                             Text(team.name)
-                                .font(.title)
-                                .bold()
+                                .font(.largeTitle)
                                 .padding(.leading)
                         }
                     }
