@@ -14,6 +14,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             GeometryReader { geo in
+                
+                let imgMaxWidth = geo.size.width * 0.12
+                let imgMaxHeight = geo.size.height / CGFloat(teams.count)
+                
                 List(teams) { team in
                     NavigationLink {
                         Text(team.name)
@@ -22,7 +26,7 @@ struct ContentView: View {
                             Image(team.name)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: geo.size.width * 0.12)
+                                .frame(maxWidth: imgMaxWidth, maxHeight: imgMaxHeight)
                             
                             Text(team.name)
                                 .font(.largeTitle)
