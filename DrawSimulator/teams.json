@@ -4,111 +4,127 @@
         "name": "Napoli",
         "shortName": "NAP",
         "seeded": true,
-        "countryId": 1
+        "countryId": 1,
+        "pool": "A"
     },
     {
         "id": 2,
         "name": "Liverpool",
         "shortName": "LIV",
         "seeded": false,
-        "countryId": 2
+        "countryId": 2,
+        "pool": "A"
     },
     {
         "id": 3,
         "name": "Porto",
         "shortName": "POR",
         "seeded": true,
-        "countryId": 3
+        "countryId": 3,
+        "pool": "B"
     },
     {
         "id": 4,
         "name": "Club Brugge",
         "shortName": "BRU",
         "seeded": false,
-        "countryId": 4
+        "countryId": 4,
+        "pool": "B"
     },
     {
         "id": 5,
         "name": "Bayern",
         "shortName": "BAY",
         "seeded": true,
-        "countryId": 5
+        "countryId": 5,
+        "pool": "C"
     },
     {
         "id": 6,
         "name": "Inter",
         "shortName": "INT",
         "seeded": false,
-        "countryId": 1
+        "countryId": 1,
+        "pool": "C"
     },
     {
         "id": 7,
         "name": "Tottenham",
         "shortName": "TOT",
         "seeded": true,
-        "countryId": 2
+        "countryId": 2,
+        "pool": "D"
     },
     {
         "id": 8,
         "name": "Frankfurt",
         "shortName": "FRK",
         "seeded": false,
-        "countryId": 5
+        "countryId": 5,
+        "pool": "D"
     },
     {
         "id": 9,
         "name": "Chelsea",
         "shortName": "CHE",
         "seeded": true,
-        "countryId": 2
+        "countryId": 2,
+        "pool": "E"
     },
     {
         "id": 10,
         "name": "Milan",
         "shortName": "ACM",
         "seeded": false,
-        "countryId": 1
+        "countryId": 1,
+        "pool": "E"
     },
     {
         "id": 11,
         "name": "Real Madrid",
         "shortName": "RMA",
         "seeded": true,
-        "countryId": 6
+        "countryId": 6,
+        "pool": "F"
     },
     {
         "id": 12,
         "name": "Leipzig",
         "shortName": "RBL",
         "seeded": false,
-        "countryId": 5
+        "countryId": 5,
+        "pool": "F"
     },
     {
         "id": 13,
         "name": "Man City",
         "shortName": "MCI",
         "seeded": true,
-        "countryId": 2
+        "countryId": 2,
+        "pool": "G"
     },
     {
         "id": 14,
         "name": "Dortmund",
         "shortName": "BVB",
         "seeded": false,
-        "countryId": 5
+        "countryId": 5,
+        "pool": "G"
     },
     {
         "id": 15,
         "name": "Benfica",
         "shortName": "BEN",
         "seeded": true,
-        "countryId": 3
+        "countryId": 3,
+        "pool": "H"
     },
     {
         "id": 16,
         "name": "Paris",
         "shortName": "PSG",
         "seeded": false,
-        "countryId": 6
+        "countryId": 6,
+        "pool": "H"
     }
 ]

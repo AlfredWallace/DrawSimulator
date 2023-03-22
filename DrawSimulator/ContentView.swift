@@ -11,31 +11,45 @@ struct ContentView: View {
     
     let teams: [Team] = Bundle.main.jsonDecode("teams.json")
     
+    var teamsByPool: [[Team]] {
+        Array(Dictionary(grouping: teams, by: { $0.pool }).values).sorted {
+            $0[0].pool < $1[0].pool
+        }
+    }
+    
     var body: some View {
         NavigationView {
             GeometryReader { geo in
                 
-                let imgMaxWidth = geo.size.width * 0.12
-                let imgMaxHeight = geo.size.height / CGFloat(teams.count)
+                let imgWidth = geo.size.width * 0.12
+                let imgHeight = geo.size.height / CGFloat(teams.count)
                 
-                List(teams) { team in
-                    NavigationLink {
-                        Text(team.name)
-                    } label: {
-                        HStack {
-                            Image(team.name)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: imgMaxWidth, maxHeight: imgMaxHeight)
+                List(teamsByPool, id:\.self) { teams in
+                    
+                    Section(teams.first!.pool) {
+                        
+                        ForEach(teams) { team in
                             
-                            Text(team.name)
-                                .font(.largeTitle)
-                                .padding(.leading)
+                            NavigationLink {
+                                Text(team.name)
+                            } label: {
+                                HStack {
+                                    Image(team.name)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: imgWidth, height: imgHeight)
+                                    
+                                    Text(team.name)
+                                        .font(.title)
+                                        .padding(.leading)
+                                }
+                            }
                         }
                     }
-                    
                 }
+                .listStyle(GroupedListStyle())
             }
+            .navigationTitle("UEFA CL Draw")
         }
     }
 }
