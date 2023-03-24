@@ -21,8 +21,7 @@ struct ContentView: View {
         NavigationView {
             GeometryReader { geo in
                 
-                let imgWidth = geo.size.width * 0.12
-                let imgHeight = geo.size.height / CGFloat(teams.count)
+                let imgSize = geo.size.width * 0.12
                 
                 List(teamsByPool, id:\.self) { teams in
                     
@@ -37,9 +36,9 @@ struct ContentView: View {
                                     Image(team.name)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: imgWidth, height: imgHeight)
+                                        .frame(width: imgSize, height: imgSize)
                                     
-                                    Text(team.name)
+                                    Text(team.name)
                                         .font(.title)
                                         .padding(.leading)
                                 }
