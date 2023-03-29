@@ -100,7 +100,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        configuration.grouping = configuration.grouping == .country ? .pool : .country
+                        configuration.setGrouping(configuration.grouping == .country ? .pool : .country)
                     } label: {
                         Label("Grouping", systemImage: groupingIconName)
                             .font(.title2)

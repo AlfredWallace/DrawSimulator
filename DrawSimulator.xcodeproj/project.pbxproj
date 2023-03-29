@@ -17,6 +17,7 @@
 		BAD652D429C74C150043865B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD652D329C74C150043865B /* Team.swift */; };
 		BAD652D629C74CAB0043865B /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = BAD652D529C74CAA0043865B /* teams.json */; };
 		BAE5C29729D466370094A6D8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* Configuration.swift */; };
+		BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		BAD652D329C74C150043865B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		BAD652D529C74CAA0043865B /* teams.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				BA3478B229C89836004F2C5A /* Country.swift */,
 				BAD652D329C74C150043865B /* Team.swift */,
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
+				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
 				BAD652D529C74CAA0043865B /* teams.json */,
 				BA3478B429C8989B004F2C5A /* countries.json */,
 				BA9979F42963B42D00AF04B8 /* Assets.xcassets */,
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAE5C29729D466370094A6D8 /* Configuration.swift in Sources */,
+				BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */,
 				BA3478B329C89836004F2C5A /* Country.swift in Sources */,
 				BAD652D429C74C150043865B /* Team.swift in Sources */,
 				BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */,
