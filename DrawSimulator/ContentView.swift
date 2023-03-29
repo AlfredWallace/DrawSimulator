@@ -22,14 +22,10 @@ struct ContentView: View {
         return result
     }
     
-    enum Grouping {
-        case pool, country
-    }
-    
-    @State private var grouping = Grouping.pool
+    @StateObject var configuration = Configuration()
     
     private var groupingIconName: String {
-        switch grouping {
+        switch configuration.grouping {
             case .country:
                 return "flag.square"
             default:
@@ -39,7 +35,7 @@ struct ContentView: View {
     
     private var groupedTeams: [[Team]] {
         
-        if grouping == .pool {
+        if configuration.grouping == .pool {
             return Array(Dictionary(grouping: teams, by: { $0.pool }).values).sorted {
                 $0[0].pool < $1[0].pool
             }
@@ -55,6 +51,10 @@ struct ContentView: View {
         }
     }
     
+    private func getSectionTitle(_ team: Team) -> String {
+        configuration.grouping == .pool ? team.pool :countriesDict[team.countryId]!.name
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -64,7 +64,7 @@ struct ContentView: View {
                     
                     List(groupedTeams, id:\.self) { teams in
                         
-                        Section(grouping == .pool ? teams.first!.pool : countriesDict[teams.first!.countryId]!.name) {
+                        Section(getSectionTitle(teams.first!)) {
                             
                             ForEach(teams) { team in
                                 
@@ -100,7 +100,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        grouping = grouping == .country ? .pool : .country
+                        configuration.grouping = configuration.grouping == .country ? .pool : .country
                     } label: {
                         Label("Grouping", systemImage: groupingIconName)
                             .font(.title2)
