@@ -60,7 +60,8 @@ struct ContentView: View {
             VStack {
                 GeometryReader { geo in
                     
-                    let imgSize = geo.size.width * 0.12
+                    let logoSize = geo.size.width * 0.12
+                    let flagSize = geo.size.width * 0.07
                     
                     List(groupedTeams, id:\.self) { teams in
                         
@@ -76,7 +77,7 @@ struct ContentView: View {
                                         Image(team.name)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: imgSize, height: imgSize)
+                                            .frame(width: logoSize, height: logoSize)
                                         
                                         Text(team.name)
                                             .font(.title)
@@ -84,10 +85,21 @@ struct ContentView: View {
                                         
                                         Spacer()
                                         
-                                        // todo: use this in the "by country" view later
-                                        //                                    Image(systemName: "\(team.seeded ? "1" : "2").circle")
-                                        //                                        .font(.title3)
-                                        //                                        .foregroundColor(.gray)
+                                        if configuration.grouping == .pool {
+                                            Image(countriesDict[team.countryId]!.name)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: flagSize, height: flagSize)
+                                                .padding(.trailing)
+                                        } else {
+                                            HStack {
+                                                Image(systemName: "\(team.pool.lowercased()).circle")
+                                                Image(systemName: "\(team.seeded ? "1" : "2").circle")
+                                            }
+                                            .font(.title3)
+                                            .foregroundColor(.gray)
+                                        }
+                                        
                                     }
                                 }
                             }
