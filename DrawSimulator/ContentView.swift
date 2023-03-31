@@ -94,10 +94,17 @@ struct ContentView: View {
                                         } else {
                                             HStack {
                                                 Image(systemName: "\(team.pool.lowercased()).circle")
+                                                    .foregroundColor(
+                                                        Color(red: 0.54, green: 0.69, blue: 0.8)
+                                                    )
                                                 Image(systemName: "\(team.seeded ? "1" : "2").circle")
+                                                    .foregroundColor(
+                                                        team.seeded
+                                                        ? Color(red: 0.0, green: 0.68, blue: 0.05)
+                                                        : Color(red: 0.8, green: 0.4, blue: 0.1)
+                                                    )
                                             }
                                             .font(.title3)
-                                            .foregroundColor(.gray)
                                         }
                                         
                                     }
