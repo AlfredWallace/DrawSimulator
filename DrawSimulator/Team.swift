@@ -14,4 +14,6 @@ struct Team: Codable, Identifiable, Hashable {
     let seeded: Bool
     let countryId: Int
     let pool: String
+    
+    static let example = Team(id: 1, name: "Paris", shortName: "PSG", seeded: false, countryId: 1, pool: "A")
 }

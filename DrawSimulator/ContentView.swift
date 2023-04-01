@@ -22,7 +22,7 @@ struct ContentView: View {
         return result
     }
     
-    @StateObject var configuration = Configuration()
+    @StateObject private var configuration = Configuration()
     
     private var groupingIconName: String {
         switch configuration.grouping {
@@ -56,67 +56,38 @@ struct ContentView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 GeometryReader { geo in
                     
-                    let logoSize = geo.size.width * 0.12
-                    let flagSize = geo.size.width * 0.07
-                    
-                    List(groupedTeams, id:\.self) { teams in
+                    List(groupedTeams, id: \.self) { teams in
                         
                         Section(getSectionTitle(teams.first!)) {
                             
                             ForEach(teams) { team in
                                 
-                                NavigationLink {
-                                    Text(team.name)
-                                } label: {
-                                    HStack {
-                                        
-                                        Image(team.name)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: logoSize, height: logoSize)
-                                        
-                                        Text(team.name)
-                                            .font(.title)
-                                            .padding(.leading)
-                                        
-                                        Spacer()
-                                        
-                                        if configuration.grouping == .pool {
-                                            Image(countriesDict[team.countryId]!.name)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: flagSize, height: flagSize)
-                                                .padding(.trailing)
-                                        } else {
-                                            HStack {
-                                                Image(systemName: "\(team.pool.lowercased()).circle")
-                                                    .foregroundColor(
-                                                        Color(red: 0.54, green: 0.69, blue: 0.8)
-                                                    )
-                                                Image(systemName: "\(team.seeded ? "1" : "2").circle")
-                                                    .foregroundColor(
-                                                        team.seeded
-                                                        ? Color(red: 0.0, green: 0.68, blue: 0.05)
-                                                        : Color(red: 0.8, green: 0.4, blue: 0.1)
-                                                    )
-                                            }
-                                            .font(.title3)
-                                        }
-                                        
-                                    }
+                                NavigationLink(value: team) {
+                                    TeamLinkView(team: team, countriesDict: countriesDict, geo: geo)
                                 }
                             }
                         }
+                        //                    .listRowBackground(Color(red: 0.003, green: 0.035, blue: 0.506))
+//                        .listRowBackground(Color(red: 0.014, green: 0.087, blue: 0.795))
+//                        .foregroundColor(.white)
                     }
-                    .listStyle(GroupedListStyle())
+                    .listStyle(PlainListStyle())
                 }
             }
-            .navigationTitle("UEFA CL Draw")
+            .navigationDestination(for: Team.self) { team in
+                TeamDetailView(team: team)
+            }
+//            .background(Color(red: 0.014, green: 0.087, blue: 0.795))
+            .preferredColorScheme(.light)
             .toolbar {
+                ToolbarItem {
+                    Text("UEFA CL Draw")
+                }
+                
                 ToolbarItem {
                     Button {
                         configuration.setGrouping(configuration.grouping == .country ? .pool : .country)
@@ -127,6 +98,7 @@ struct ContentView: View {
                 }
             }
         }
+        .environmentObject(configuration)
     }
 }
 
