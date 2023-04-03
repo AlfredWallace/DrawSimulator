@@ -80,11 +80,8 @@ struct ContentView: View {
                 TeamDetailView(team: team)
             }
             .preferredColorScheme(.light)
+            .navigationTitle("UEFA CL Draw")
             .toolbar {
-                ToolbarItem {
-                    Text("UEFA CL Draw")
-                }
-                
                 ToolbarItem {
                     Button {
                         configuration.setGrouping(configuration.grouping == .country ? .pool : .country)
