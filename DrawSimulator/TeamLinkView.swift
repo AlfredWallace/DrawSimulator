@@ -62,12 +62,15 @@ struct TeamLinkView_Previews: PreviewProvider {
         NavigationStack {
             GeometryReader { geo in
                 List {
-                    NavigationLink(value: Team.example) {
-                        TeamLinkView(team: Team.example, countriesDict: [1: Country.example], geo: geo)
-                            .environmentObject(Configuration())
+                    Section {
+                        NavigationLink(value: Team.example) {
+                            TeamLinkView(team: Team.example, countriesDict: [1: Country.example], geo: geo)
+                                .environmentObject(Configuration())
+                        }
                     }
+                    .listRowBackground(Color.accentColor)
+                    .foregroundColor(.white)
                 }
-                .listStyle(PlainListStyle())
             }
         }
     }

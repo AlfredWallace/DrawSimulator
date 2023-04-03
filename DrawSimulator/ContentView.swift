@@ -72,7 +72,7 @@ struct ContentView: View {
                             }
                         }
                     }
-                    .listRowBackground(Color(red: 0.043, green: 0.534, blue: 0.004))
+                    .listRowBackground(Color.accentColor)
                     .foregroundColor(.white)
                 }
             }
