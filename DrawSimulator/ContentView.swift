@@ -57,31 +57,28 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                GeometryReader { geo in
-                    
-                    List(groupedTeams, id: \.self) { teams in
+            GeometryReader { geo in
+                
+                List(groupedTeams, id: \.self) { teams in
+                    Section {
+                        Text(getSectionTitle(teams.first!))
+                            .font(.title2.bold())
+                            .padding(.leading)
                         
-                        Section(getSectionTitle(teams.first!)) {
+                        ForEach(teams) { team in
                             
-                            ForEach(teams) { team in
-                                
-                                NavigationLink(value: team) {
-                                    TeamLinkView(team: team, countriesDict: countriesDict, geo: geo)
-                                }
+                            NavigationLink(value: team) {
+                                TeamLinkView(team: team, countriesDict: countriesDict, geo: geo)
                             }
                         }
-                        //                    .listRowBackground(Color(red: 0.003, green: 0.035, blue: 0.506))
-//                        .listRowBackground(Color(red: 0.014, green: 0.087, blue: 0.795))
-//                        .foregroundColor(.white)
                     }
-                    .listStyle(PlainListStyle())
+                    .listRowBackground(Color(red: 0.043, green: 0.534, blue: 0.004))
+                    .foregroundColor(.white)
                 }
             }
             .navigationDestination(for: Team.self) { team in
                 TeamDetailView(team: team)
             }
-//            .background(Color(red: 0.014, green: 0.087, blue: 0.795))
             .preferredColorScheme(.light)
             .toolbar {
                 ToolbarItem {
