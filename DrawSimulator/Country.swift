@@ -12,5 +12,8 @@ struct Country: Codable {
     let name: String
     let shortName: String
     
-    static let example = Country(id: 1, name: "France", shortName: "FRA")
+    static let examples = [
+        1: Country(id: 1, name: "France", shortName: "FRA"),
+        2: Country(id: 2, name: "England", shortName: "ENG"),
+    ]
 }

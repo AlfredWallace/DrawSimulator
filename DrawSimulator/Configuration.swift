@@ -23,6 +23,10 @@ class Configuration: ObservableObject, Codable {
         save()
     }
     
+    init(forcedGrouping: Grouping) {
+        grouping = forcedGrouping
+    }
+    
     init() {
         do {
             let contents = try Data(contentsOf: Self.savePath)
