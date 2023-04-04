@@ -49,17 +49,11 @@ struct TeamLinkView: View {
                 
             } else {
                 HStack {
-                    Image(systemName: "\(team.pool.lowercased()).circle")
-                        .foregroundColor(.blue)
-                    Image(systemName: "\(team.seeded ? "1" : "2").circle")
-                        .foregroundColor(
-                            team.seeded
-                            ? .accentColor
-                            : .red
-                        )
+                    team.poolImage
+                    team.seededImage
                 }
                 .font(.title3)
-                .padding(7)
+                .padding(4)
                 .background(.white)
                 .clipShape(Capsule())
                 
@@ -81,6 +75,6 @@ struct TeamLinkView_Previews: PreviewProvider {
                 }
             }
         }
-        .environmentObject(Configuration(forcedGrouping: .pool))
+        .environmentObject(Configuration(forcedGrouping: .country))
     }
 }

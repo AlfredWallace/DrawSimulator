@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Team: Codable, Identifiable, Hashable {
     let id: Int
@@ -14,6 +15,16 @@ struct Team: Codable, Identifiable, Hashable {
     let seeded: Bool
     let countryId: Int
     let pool: String
+    
+    var poolImage: some View {
+        Image(systemName: "\(pool.lowercased()).circle")
+            .foregroundColor(.blue)
+    }
+    
+    var seededImage: some View {
+        Image(systemName: "\(seeded ? "1" : "2").circle")
+            .foregroundColor(seeded ? .accentColor : .red)
+    }
     
     static let examples = [
         Team(id: 1, name: "Paris", shortName: "PSG", seeded: false, countryId: 1, pool: "A"),

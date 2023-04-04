@@ -51,19 +51,13 @@ struct ContentView: View {
         }
     }
     
-    private func getSectionTitle(_ team: Team) -> String {
-        configuration.grouping == .pool ? team.pool :countriesDict[team.countryId]!.name
-    }
-    
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
                 
                 List(groupedTeams, id: \.self) { teams in
                     Section {
-                        Text(getSectionTitle(teams.first!))
-                            .font(.title2.bold())
-                            .padding(.leading)
+                        SectionTitleView(team: teams.first!, countriesDict: countriesDict)
                         
                         ForEach(teams) { team in
                             NavigationLink(value: team) {
