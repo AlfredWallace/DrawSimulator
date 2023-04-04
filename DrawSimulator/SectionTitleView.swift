@@ -20,7 +20,7 @@ struct SectionTitleView: View {
                     team.poolImage
                         .padding(2)
                         .background(.white)
-                        .clipShape(Circle())
+                        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
                 }
             } else {
                 Text(countriesDict[team.countryId]!.name)

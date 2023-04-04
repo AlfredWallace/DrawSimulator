@@ -25,11 +25,10 @@ struct TeamLinkView: View {
             Image(team.name)
                 .resizable()
                 .scaledToFit()
-                .padding(8)
+                .padding(6)
                 .frame(width: logoSize, height: logoSize)
                 .background(.white)
-                .clipShape(Circle())
-                .shadow(radius: 5)
+                .clipShape(RoundedRectangle(cornerRadius: 17, style: .continuous))
             
             Text(team.name)
                 .font(.title)
@@ -38,14 +37,19 @@ struct TeamLinkView: View {
             Spacer()
             
             if configuration.grouping == .pool {
-                Image(countriesDict[team.countryId]!.name)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: flagSize * 4 / 3, height: flagSize)
-                    .clipped()
-                    .border(.white, width: 3)
-                    .clipShape(RoundedRectangle(cornerRadius: 3))
-                    .padding(.trailing)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .fill(.white)
+                        .frame(width: flagSize * 4 / 3 * 1.2, height: flagSize * 1.2)
+                    
+                    Image(countriesDict[team.countryId]!.name)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: flagSize * 4 / 3, height: flagSize)
+                        .clipped()
+                        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+                }
+                .padding(.trailing)
                 
             } else {
                 HStack {
@@ -55,7 +59,7 @@ struct TeamLinkView: View {
                 .font(.title3)
                 .padding(4)
                 .background(.white)
-                .clipShape(Capsule())
+                .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
                 
             }
         }
