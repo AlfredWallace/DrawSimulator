@@ -14,17 +14,21 @@ struct TeamLinkView: View {
     let geo: GeometryProxy
     
     var logoSize: CGFloat { geo.size.width * 0.12 }
-    var flagSize: CGFloat { geo.size.width * 0.07 }
+    var flagSize: CGFloat { geo.size.width * 0.08 }
     
     @EnvironmentObject var configuration: Configuration
     
     var body: some View {
         
         HStack {
+        
             Image(team.name)
                 .resizable()
                 .scaledToFit()
-                .frame(width: logoSize, height: logoSize)
+                .padding(4)
+                .frame(maxWidth: logoSize, maxHeight: logoSize)
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
             
             Text(team.name)
                 .font(.title)
@@ -35,9 +39,13 @@ struct TeamLinkView: View {
             if configuration.grouping == .pool {
                 Image(countriesDict[team.countryId]!.name)
                     .resizable()
-                    .scaledToFit()
-                    .frame(width: flagSize, height: flagSize)
+                    .scaledToFill()
+                    .frame(width: flagSize * 4 / 3, height: flagSize)
+                    .clipped()
+                    .border(.white, width: 3)
+                    .clipShape(RoundedRectangle(cornerRadius: 3))
                     .padding(.trailing)
+                
             } else {
                 HStack {
                     Image(systemName: "\(team.pool.lowercased()).circle")
@@ -70,6 +78,6 @@ struct TeamLinkView_Previews: PreviewProvider {
                 }
             }
         }
-        .environmentObject(Configuration(forcedGrouping: .country))
+        .environmentObject(Configuration(forcedGrouping: .pool))
     }
 }

@@ -66,7 +66,6 @@ struct ContentView: View {
                             .padding(.leading)
                         
                         ForEach(teams) { team in
-                            
                             NavigationLink(value: team) {
                                 TeamLinkView(team: team, countriesDict: countriesDict, geo: geo)
                             }

@@ -18,5 +18,7 @@ struct Team: Codable, Identifiable, Hashable {
     static let examples = [
         Team(id: 1, name: "Paris", shortName: "PSG", seeded: false, countryId: 1, pool: "A"),
         Team(id: 2, name: "Tottenham", shortName: "TOT", seeded: true, countryId: 2, pool: "A"),
+        Team(id: 3, name: "Benfica", shortName: "BEN", seeded: true, countryId: 3, pool: "B"),
+        Team(id: 4, name: "Club Brugge", shortName: "CBU", seeded: false, countryId: 4, pool: "B"),
     ]
 }
