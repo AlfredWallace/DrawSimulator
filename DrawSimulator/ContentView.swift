@@ -12,6 +12,8 @@ struct ContentView: View {
     let teams: [Team] = Bundle.main.jsonDecode("teams.json")
     let countries: [Country] = Bundle.main.jsonDecode("countries.json")
     
+    @StateObject private var configuration = Configuration()
+    
     private var countriesDict: [Int: Country] {
         var result = [Int: Country]()
         
@@ -21,8 +23,6 @@ struct ContentView: View {
         
         return result
     }
-    
-    @StateObject private var configuration = Configuration()
     
     private var groupingIconName: String {
         switch configuration.grouping {
