@@ -25,10 +25,11 @@ struct TeamLinkView: View {
             Image(team.name)
                 .resizable()
                 .scaledToFit()
-                .padding(4)
+                .padding(8)
                 .frame(width: logoSize, height: logoSize)
                 .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .clipShape(Circle())
+                .shadow(radius: 5)
             
             Text(team.name)
                 .font(.title)
@@ -49,17 +50,19 @@ struct TeamLinkView: View {
             } else {
                 HStack {
                     Image(systemName: "\(team.pool.lowercased()).circle")
-                        .foregroundColor(
-                            Color(red: 0.54, green: 0.69, blue: 0.8)
-                        )
+                        .foregroundColor(.blue)
                     Image(systemName: "\(team.seeded ? "1" : "2").circle")
                         .foregroundColor(
                             team.seeded
-                            ? Color(red: 0.0, green: 0.68, blue: 0.05)
-                            : Color(red: 0.8, green: 0.4, blue: 0.1)
+                            ? .accentColor
+                            : .red
                         )
                 }
                 .font(.title3)
+                .padding(7)
+                .background(.white)
+                .clipShape(Capsule())
+                
             }
         }
     }
