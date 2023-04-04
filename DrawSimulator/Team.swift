@@ -20,5 +20,6 @@ struct Team: Codable, Identifiable, Hashable {
         Team(id: 2, name: "Tottenham", shortName: "TOT", seeded: true, countryId: 2, pool: "A"),
         Team(id: 3, name: "Benfica", shortName: "BEN", seeded: true, countryId: 3, pool: "B"),
         Team(id: 4, name: "Club Brugge", shortName: "CBU", seeded: false, countryId: 4, pool: "B"),
+        Team(id: 5, name: "Leipzig", shortName: "LEI", seeded: false, countryId: 5, pool: "C"),
     ]
 }

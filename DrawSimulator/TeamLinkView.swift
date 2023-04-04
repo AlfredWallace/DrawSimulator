@@ -26,7 +26,7 @@ struct TeamLinkView: View {
                 .resizable()
                 .scaledToFit()
                 .padding(4)
-                .frame(maxWidth: logoSize, maxHeight: logoSize)
+                .frame(width: logoSize, height: logoSize)
                 .background(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             
