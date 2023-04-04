@@ -17,10 +17,10 @@ struct SectionTitleView: View {
             if configuration.grouping == .pool {
                 HStack {
                     Text("Pool")
+                        .foregroundColor(.lightGray)
                     team.poolImage
-                        .padding(2)
                         .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+                        .clipShape(Circle())
                 }
             } else {
                 Text(countriesDict[team.countryId]!.name)

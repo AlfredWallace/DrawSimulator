@@ -18,7 +18,7 @@ struct Team: Codable, Identifiable, Hashable {
     
     var poolImage: some View {
         Image(systemName: "\(pool.lowercased()).circle")
-            .foregroundColor(.blue)
+            .foregroundColor(.darkGray)
     }
     
     var seededImage: some View {
