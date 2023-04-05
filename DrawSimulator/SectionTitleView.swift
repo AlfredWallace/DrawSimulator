@@ -18,15 +18,17 @@ struct SectionTitleView: View {
                 HStack {
                     Text("Pool")
                         .foregroundColor(.lightGray)
+                        .font(.title2)
                     team.poolImage
                         .background(.white)
                         .clipShape(Circle())
+                        .font(.title3)
                 }
             } else {
                 Text(countriesDict[team.countryId]!.name)
+                    .font(.title2)
             }
         }
-        .font(.title2)
     }
 }
 

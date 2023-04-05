@@ -12,9 +12,10 @@ struct TeamLinkView: View {
     let team: Team
     let countriesDict: [Int: Country]
     let geo: GeometryProxy
-    
+    let flagBorderMultiplier = 1.13
     var logoSize: CGFloat { geo.size.width * 0.12 }
-    var flagSize: CGFloat { geo.size.width * 0.08 }
+    var flagHeight: CGFloat { geo.size.width * 0.08 }
+    var flagWidth: CGFloat { flagHeight * 4 / 3 }
     
     @EnvironmentObject var configuration: Configuration
     
@@ -38,16 +39,15 @@ struct TeamLinkView: View {
             
             if configuration.grouping == .pool {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    RoundedRectangle(cornerRadius: 5)
                         .fill(.white)
-                        .frame(width: flagSize * 4 / 3 * 1.2, height: flagSize * 1.2)
+                        .frame(width: flagWidth * flagBorderMultiplier, height: flagHeight * flagBorderMultiplier)
                     
                     Image(countriesDict[team.countryId]!.name)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: flagSize * 4 / 3, height: flagSize)
-                        .clipped()
-                        .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+                        .frame(width: flagWidth, height: flagHeight)
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
                 .padding(.trailing)
                 
@@ -57,28 +57,28 @@ struct TeamLinkView: View {
                     team.seededImage
                 }
                 .font(.title3)
-                .padding(4)
+                .padding(1)
                 .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 11, style: .continuous))
+                .clipShape(Capsule())
                 
             }
         }
     }
 }
 
-struct TeamLinkView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            GeometryReader { geo in
-                List(Team.examples, id: \.self) { team in
-                    NavigationLink(value: team) {
-                        TeamLinkView(team: team, countriesDict: Country.examples, geo: geo)
-                    }
-                    .listRowBackground(Color.accentColor)
-                    .foregroundColor(.white)
-                }
-            }
-        }
-        .environmentObject(Configuration(forcedGrouping: .country))
-    }
-}
+//struct TeamLinkView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack {
+//            GeometryReader { geo in
+//                List(Team.examples, id: \.self) { team in
+//                    NavigationLink(value: team) {
+//                        TeamLinkView(team: team, countriesDict: Country.examples, geo: geo)
+//                    }
+//                    .listRowBackground(Color.accentColor)
+//                    .foregroundColor(.white)
+//                }
+//            }
+//        }
+//        .environmentObject(Configuration(forcedGrouping: .country))
+//    }
+//}
