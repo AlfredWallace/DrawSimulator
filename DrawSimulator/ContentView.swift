@@ -33,21 +33,36 @@ struct ContentView: View {
         }
     }
     
-    private var groupedTeams: [[Team]] {
+    private var teamsGroupedByPool: [[Team]] {
+        Array(Dictionary(grouping: teams, by: { $0.pool }).values).sorted {
+            $0[0].pool < $1[0].pool
+        }
+    }
+    
+    private var teamsGroupedByCountry: [[Team]] {
         
-        if configuration.grouping == .pool {
-            return Array(Dictionary(grouping: teams, by: { $0.pool }).values).sorted {
-                $0[0].pool < $1[0].pool
-            }
+        // first we sort teams by name so that they appear sorted by name in each subarrays after the grouping
+        let teamsByName = teams.sorted {
+            $0.name < $1.name
         }
         
-        return Array(Dictionary(grouping: teams, by: { $0.countryId }).values).sorted {
-            if $0.count == $1.count {
-                return countriesDict[$0[0].countryId]!.name < countriesDict[$1[0].countryId]!.name
+        // then we group teams by contry, and sort the groups by number of teams then country name
+        return Array(Dictionary(grouping: teamsByName, by: { $0.countryId }).values).sorted { lhs, rhs in
+            if lhs.count == rhs.count {
+                return countriesDict[lhs[0].countryId]!.name < countriesDict[rhs[0].countryId]!.name
             }
             
-            return $0.count > $1.count
+            return lhs.count > rhs.count
             
+        }
+    }
+    
+    private var groupedTeams: [[Team]] {
+        switch configuration.grouping {
+            case .pool:
+                return teamsGroupedByPool
+            default:
+                return teamsGroupedByCountry
         }
     }
     
