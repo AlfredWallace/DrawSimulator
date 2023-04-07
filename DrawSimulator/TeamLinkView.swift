@@ -17,7 +17,7 @@ struct TeamLinkView: View {
     var flagHeight: CGFloat { geo.size.width * 0.08 }
     var flagWidth: CGFloat { flagHeight * 4 / 3 }
     
-    @EnvironmentObject var configuration: Configuration
+    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
         
@@ -37,7 +37,7 @@ struct TeamLinkView: View {
             
             Spacer()
             
-            if configuration.grouping == .pool {
+            if userSettings.grouping == .pool {
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
                         .fill(.white)
@@ -79,6 +79,6 @@ struct TeamLinkView: View {
 //                }
 //            }
 //        }
-//        .environmentObject(Configuration(forcedGrouping: .country))
+//        .environmentObject(UserSettings(forcedGrouping: .country))
 //    }
 //}

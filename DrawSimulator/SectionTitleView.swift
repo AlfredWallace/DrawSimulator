@@ -10,11 +10,11 @@ import SwiftUI
 struct SectionTitleView: View {
     let team: Team
     let countriesDict: [Int: Country]
-    @EnvironmentObject var configuration: Configuration
+    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
         Group {
-            if configuration.grouping == .pool {
+            if userSettings.grouping == .pool {
                 HStack {
                     Text("Pool")
                         .foregroundColor(.lightGray)

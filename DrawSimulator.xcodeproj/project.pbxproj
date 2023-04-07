@@ -20,7 +20,7 @@
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
 		BAD652D429C74C150043865B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD652D329C74C150043865B /* Team.swift */; };
 		BAD652D629C74CAB0043865B /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = BAD652D529C74CAA0043865B /* teams.json */; };
-		BAE5C29729D466370094A6D8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* Configuration.swift */; };
+		BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* UserSettings.swift */; };
 		BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +40,7 @@
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
 		BAD652D329C74C150043865B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		BAD652D529C74CAA0043865B /* teams.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
-		BAE5C29629D466370094A6D8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +80,7 @@
 				BACA167329DC6B3100E5C9CA /* SectionTitleView.swift */,
 				BA208BF129D8667000D1EB9A /* TeamLinkView.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
-				BAE5C29629D466370094A6D8 /* Configuration.swift */,
+				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
 				BA3478B229C89836004F2C5A /* Country.swift */,
 				BAD652D329C74C150043865B /* Team.swift */,
 				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
@@ -174,7 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAE5C29729D466370094A6D8 /* Configuration.swift in Sources */,
+				BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */,
 				BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */,
 				BA3478B329C89836004F2C5A /* Country.swift in Sources */,
 				BACA167429DC6B3100E5C9CA /* SectionTitleView.swift in Sources */,

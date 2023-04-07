@@ -1,5 +1,5 @@
 //
-//  Configuration.swift
+//  UserSettings.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 29/03/2023.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Configuration: ObservableObject, Codable {
+class UserSettings: ObservableObject, Codable {
     
-    private static let savePath = FileManager.documentsDirectory.appendingPathComponent("configuration.json")
+    private static let savePath = FileManager.documentsDirectory.appendingPathComponent("userSettings.json")
     
     enum Grouping: String, Codable {
         case pool, country
@@ -30,7 +30,7 @@ class Configuration: ObservableObject, Codable {
     init() {
         do {
             let contents = try Data(contentsOf: Self.savePath)
-            let decoded = try JSONDecoder().decode(Configuration.self, from: contents)
+            let decoded = try JSONDecoder().decode(UserSettings.self, from: contents)
             grouping = decoded.grouping
         } catch {
             grouping = Grouping.pool
@@ -42,7 +42,7 @@ class Configuration: ObservableObject, Codable {
             let encoded = try JSONEncoder().encode(self)
             try encoded.write(to: Self.savePath, options: [.atomicWrite, .completeFileProtection])
         } catch {
-            print("Unable to save configuration: \(error.localizedDescription)")
+            print("Unable to save user settings: \(error.localizedDescription)")
         }
     }
 }

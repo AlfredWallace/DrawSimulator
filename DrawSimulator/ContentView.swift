@@ -12,7 +12,7 @@ struct ContentView: View {
     let teams: [Team] = Bundle.main.jsonDecode("teams.json")
     let countries: [Country] = Bundle.main.jsonDecode("countries.json")
     
-    @StateObject private var configuration = Configuration()
+    @StateObject private var userSettings = UserSettings()
     
     private var countriesDict: [Int: Country] {
         var result = [Int: Country]()
@@ -25,7 +25,7 @@ struct ContentView: View {
     }
     
     private var groupingIconName: String {
-        switch configuration.grouping {
+        switch userSettings.grouping {
             case .country:
                 return "flag.square"
             default:
@@ -58,7 +58,7 @@ struct ContentView: View {
     }
     
     private var groupedTeams: [[Team]] {
-        switch configuration.grouping {
+        switch userSettings.grouping {
             case .pool:
                 return teamsGroupedByPool
             default:
@@ -92,7 +92,7 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem {
                     Button {
-                        configuration.setGrouping(configuration.grouping == .country ? .pool : .country)
+                        userSettings.setGrouping(userSettings.grouping == .country ? .pool : .country)
                     } label: {
                         Label("Grouping", systemImage: groupingIconName)
                             .font(.title2)
@@ -100,7 +100,7 @@ struct ContentView: View {
                 }
             }
         }
-        .environmentObject(configuration)
+        .environmentObject(userSettings)
     }
 }
 
