@@ -21,46 +21,47 @@ struct TeamLinkView: View {
     
     var body: some View {
         
-        HStack {
-        
-            Image(team.name)
-                .resizable()
-                .scaledToFit()
-                .padding(6)
-                .frame(width: logoSize, height: logoSize)
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 17, style: .continuous))
-            
-            Text(team.name)
-                .font(.title)
-                .padding(.leading)
-            
-            Spacer()
-            
-            if userSettings.grouping == .pool {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(.white)
-                        .frame(width: flagWidth * flagBorderMultiplier, height: flagHeight * flagBorderMultiplier)
-                    
-                    Image(countriesDict[team.countryId]!.name)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: flagWidth, height: flagHeight)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                }
-                .padding(.trailing)
+        NavigationLink(value: team) {
+            HStack {
+                Image(team.name)
+                    .resizable()
+                    .scaledToFit()
+                    .padding(6)
+                    .frame(width: logoSize, height: logoSize)
+                    .background(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 17, style: .continuous))
                 
-            } else {
-                HStack {
-                    team.poolImage
-                    team.seededImage
-                }
-                .font(.title3)
-                .padding(1)
-                .background(.white)
-                .clipShape(Capsule())
+                Text(team.name)
+                    .font(.title)
+                    .padding(.leading)
                 
+                Spacer()
+                
+                switch userSettings.grouping {
+                    case .pool:
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(.white)
+                                .frame(width: flagWidth * flagBorderMultiplier, height: flagHeight * flagBorderMultiplier)
+                            
+                            Image(countriesDict[team.countryId]!.name)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: flagWidth, height: flagHeight)
+                                .clipShape(RoundedRectangle(cornerRadius: 4))
+                        }
+                        .padding(.trailing)
+                        
+                    default:
+                        HStack {
+                            team.poolImage
+                            team.seededImage
+                        }
+                        .font(.title3)
+                        .padding(1)
+                        .background(.white)
+                        .clipShape(Capsule())
+                }
             }
         }
     }
