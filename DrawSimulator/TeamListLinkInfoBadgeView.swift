@@ -1,5 +1,5 @@
 //
-//  TeamInfoBadgeView.swift
+//  TeamListLinkInfoBadgeView.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 08/04/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TeamInfoBadgeView: View {
+struct TeamListLinkInfoBadgeView: View {
     
     let team: Team
     let geo: GeometryProxy

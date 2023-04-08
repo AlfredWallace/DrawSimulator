@@ -59,10 +59,10 @@ struct TeamListView: View {
             
             List(groupedTeams, id: \.self) { teams in
                 Section {
-                    SectionTitleView(team: teams.first!)
+                    TeamListSectionTitleView(team: teams.first!)
                     
                     ForEach(teams) { team in
-                        TeamLinkView(team: team, geo: geo)
+                        TeamListLinkView(team: team, geo: geo)
                     }
                 }
                 .listRowBackground(Color.accentColor)
