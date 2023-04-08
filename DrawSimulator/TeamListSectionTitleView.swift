@@ -12,8 +12,9 @@ struct TeamListSectionTitleView: View {
     @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
-        Group {
-            if userSettings.grouping == .pool {
+        
+        switch userSettings.grouping {
+            case .pool:
                 HStack {
                     Text("Pool")
                         .foregroundColor(.lightGray)
@@ -25,10 +26,12 @@ struct TeamListSectionTitleView: View {
                         .clipShape(Circle())
                         .font(.title3)
                 }
-            } else {
+            case .seeding:
+                Text(team.seeded ? "Seeded teams" : "Unseeded teams")
+            default:
                 Text(SharedConstants.countries[team.countryId]!.name)
                     .font(.title2)
-            }
+                
         }
     }
 }

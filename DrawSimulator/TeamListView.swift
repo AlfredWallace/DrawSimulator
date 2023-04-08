@@ -9,12 +9,16 @@ import SwiftUI
 
 struct TeamListView: View {
     
+    @State private var showingGroupingDialog = false
+    
     @EnvironmentObject private var userSettings: UserSettings
     
     private var groupingLabelStrings: (title: String, icon: String) {
         switch userSettings.grouping {
             case .country:
                 return ("country", "flag.square")
+            case .seeding:
+                return ("seeding", "s.circle")
             default:
                 return ("pool", "list.dash")
         }
@@ -51,7 +55,8 @@ struct TeamListView: View {
             $0.name < $1.name
         }
         
-        return Array(Dictionary(grouping: teamsByName, by: { $0.seeded }).values)
+        // then we group teams by seeding, and sort the groups by putting the seeding teams first
+        return Array(Dictionary(grouping: teamsByName, by: { $0.seeded }).values).sorted { lhs, _ in lhs.first!.seeded }
     }
     
     private var groupedTeams: [[Team]] {
@@ -89,13 +94,18 @@ struct TeamListView: View {
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
                 Button {
-                    userSettings.setGrouping(userSettings.grouping == .country ? .pool : .country)
+                    showingGroupingDialog = true
                 } label: {
                     Label("Grouped by \(groupingLabelStrings.title)", systemImage: groupingLabelStrings.icon)
                         .labelStyle(.titleAndIcon)
                         .font(.title2)
                 }
             }
+        }
+        .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
+            Button("Group by pool") { userSettings.setGrouping(.pool) }
+            Button("Group by country") { userSettings.setGrouping(.country) }
+            Button("Group by seeding") { userSettings.setGrouping(.seeding) }
         }
     }
 }

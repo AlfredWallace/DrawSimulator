@@ -32,6 +32,14 @@ struct TeamListLinkInfoBadgeView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                 }
                 
+            case .seeding:
+                Image(systemName: team.poolImageName)
+                    .foregroundColor(.darkGray)
+                    .font(.title3)
+                    .padding(1)
+                    .background(.white)
+                    .clipShape(Circle())
+                
             default:
                 HStack {
                     if team.seeded {
