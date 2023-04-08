@@ -16,14 +16,12 @@ struct Team: Codable, Identifiable, Hashable {
     let countryId: Int
     let pool: String
     
-    var poolImage: some View {
-        Image(systemName: "\(pool.lowercased()).circle")
-            .foregroundColor(.darkGray)
+    var poolImageName: String {
+        "\(pool.lowercased()).circle"
     }
-
-    var seededImage: some View {
-        Image(systemName: "\(seeded ? "1" : "2").circle")
-            .foregroundColor(seeded ? .accentColor : .red)
+    
+    var seededImageName: String {
+        "s.circle"
     }
 
     static let examples = [

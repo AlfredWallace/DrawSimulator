@@ -34,9 +34,13 @@ struct TeamListLinkInfoBadgeView: View {
                 
             default:
                 HStack {
-                    team.poolImage
-                    team.seededImage
+                    if team.seeded {
+                        Image(systemName: team.seededImageName)
+                    }
+                    
+                    Image(systemName: team.poolImageName)
                 }
+                .foregroundColor(.darkGray)
                 .font(.title3)
                 .padding(1)
                 .background(.white)

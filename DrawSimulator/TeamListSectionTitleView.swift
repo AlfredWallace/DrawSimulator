@@ -18,7 +18,9 @@ struct TeamListSectionTitleView: View {
                     Text("Pool")
                         .foregroundColor(.lightGray)
                         .font(.title2)
-                    team.poolImage
+                    
+                    Image(systemName: team.poolImageName)
+                        .foregroundColor(.darkGray)
                         .background(.white)
                         .clipShape(Circle())
                         .font(.title3)
