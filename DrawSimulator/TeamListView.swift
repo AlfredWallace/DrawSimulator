@@ -24,12 +24,12 @@ struct TeamListView: View {
         return result
     }
     
-    private var groupingIconName: String {
+    private var groupingLabelStrings: (title: String, icon: String) {
         switch userSettings.grouping {
             case .country:
-                return "flag.square"
+                return ("country", "flag.square")
             default:
-                return "list.dash"
+                return ("pool", "list.dash")
         }
     }
     
@@ -88,11 +88,12 @@ struct TeamListView: View {
         .preferredColorScheme(.light)
         .navigationTitle("Teams")
         .toolbar {
-            ToolbarItem {
+            ToolbarItemGroup(placement: .bottomBar) {
                 Button {
                     userSettings.setGrouping(userSettings.grouping == .country ? .pool : .country)
                 } label: {
-                    Label("Grouping", systemImage: groupingIconName)
+                    Label("Grouped by \(groupingLabelStrings.title)", systemImage: groupingLabelStrings.icon)
+                        .labelStyle(.titleAndIcon)
                         .font(.title2)
                 }
             }
