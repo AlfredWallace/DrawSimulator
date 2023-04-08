@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SectionTitleView: View {
     let team: Team
-    let countriesDict: [Int: Country]
     @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
@@ -25,15 +24,9 @@ struct SectionTitleView: View {
                         .font(.title3)
                 }
             } else {
-                Text(countriesDict[team.countryId]!.name)
+                Text(SharedConstants.countries[team.countryId]!.name)
                     .font(.title2)
             }
         }
     }
 }
-
-//struct SectionTitleView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SectionTitleView()
-//    }
-//}

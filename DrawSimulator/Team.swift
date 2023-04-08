@@ -20,12 +20,12 @@ struct Team: Codable, Identifiable, Hashable {
         Image(systemName: "\(pool.lowercased()).circle")
             .foregroundColor(.darkGray)
     }
-    
+
     var seededImage: some View {
         Image(systemName: "\(seeded ? "1" : "2").circle")
             .foregroundColor(seeded ? .accentColor : .red)
     }
-    
+
     static let examples = [
         Team(id: 1, name: "Paris", shortName: "PSG", seeded: false, countryId: 1, pool: "A"),
         Team(id: 2, name: "Tottenham", shortName: "TOT", seeded: true, countryId: 2, pool: "A"),

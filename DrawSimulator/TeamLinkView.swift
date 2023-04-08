@@ -10,12 +10,8 @@ import SwiftUI
 struct TeamLinkView: View {
     
     let team: Team
-    let countriesDict: [Int: Country]
     let geo: GeometryProxy
-    let flagBorderMultiplier = 1.13
     var logoSize: CGFloat { geo.size.width * 0.12 }
-    var flagHeight: CGFloat { geo.size.width * 0.08 }
-    var flagWidth: CGFloat { flagHeight * 4 / 3 }
     
     @EnvironmentObject var userSettings: UserSettings
     
@@ -37,49 +33,8 @@ struct TeamLinkView: View {
                 
                 Spacer()
                 
-                switch userSettings.grouping {
-                    case .pool:
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(.white)
-                                .frame(width: flagWidth * flagBorderMultiplier, height: flagHeight * flagBorderMultiplier)
-                            
-                            Image(countriesDict[team.countryId]!.name)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: flagWidth, height: flagHeight)
-                                .clipShape(RoundedRectangle(cornerRadius: 4))
-                        }
-                        .padding(.trailing)
-                        
-                    default:
-                        HStack {
-                            team.poolImage
-                            team.seededImage
-                        }
-                        .font(.title3)
-                        .padding(1)
-                        .background(.white)
-                        .clipShape(Capsule())
-                }
+                TeamInfoBadgeView(team: team, geo: geo)
             }
         }
     }
 }
-
-//struct TeamLinkView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack {
-//            GeometryReader { geo in
-//                List(Team.examples, id: \.self) { team in
-//                    NavigationLink(value: team) {
-//                        TeamLinkView(team: team, countriesDict: Country.examples, geo: geo)
-//                    }
-//                    .listRowBackground(Color.accentColor)
-//                    .foregroundColor(.white)
-//                }
-//            }
-//        }
-//        .environmentObject(UserSettings(forcedGrouping: .country))
-//    }
-//}
