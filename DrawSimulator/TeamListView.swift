@@ -44,10 +44,22 @@ struct TeamListView: View {
         }
     }
     
+    private var teamsGroupedBySeeding: [[Team]] {
+        
+        // first we sort teams by name so that they appear sorted by name in each subarrays after the grouping
+        let teamsByName = SharedConstants.teams.sorted {
+            $0.name < $1.name
+        }
+        
+        return Array(Dictionary(grouping: teamsByName, by: { $0.seeded }).values)
+    }
+    
     private var groupedTeams: [[Team]] {
         switch userSettings.grouping {
             case .pool:
                 return teamsGroupedByPool
+            case .seeding:
+                return teamsGroupedBySeeding
             default:
                 return teamsGroupedByCountry
         }

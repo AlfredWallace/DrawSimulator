@@ -12,7 +12,7 @@ class UserSettings: ObservableObject, Codable {
     private static let savePath = FileManager.documentsDirectory.appendingPathComponent("userSettings.json")
     
     enum Grouping: String, Codable {
-        case pool, country
+        case pool, country, seeding
     }
     
     private(set) var grouping: Grouping
