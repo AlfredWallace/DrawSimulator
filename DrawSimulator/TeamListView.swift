@@ -103,9 +103,17 @@ struct TeamListView: View {
             }
         }
         .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
-            Button("Group by pool") { userSettings.setGrouping(.pool) }
-            Button("Group by country") { userSettings.setGrouping(.country) }
-            Button("Group by seeding") { userSettings.setGrouping(.seeding) }
+            if userSettings.grouping != .pool {
+                Button("Group by pool") { userSettings.setGrouping(.pool) }
+            }
+            
+            if userSettings.grouping != .country {
+                Button("Group by country") { userSettings.setGrouping(.country) }
+            }
+            
+            if userSettings.grouping != .seeding {
+                Button("Group by seeding") { userSettings.setGrouping(.seeding) }
+            }
         }
     }
 }
