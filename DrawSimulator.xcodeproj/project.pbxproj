@@ -23,6 +23,9 @@
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
 		BAD652D429C74C150043865B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD652D329C74C150043865B /* Team.swift */; };
 		BAD652D629C74CAB0043865B /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = BAD652D529C74CAA0043865B /* teams.json */; };
+		BADB61F329E2985F00BD79D5 /* Staubach.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BADB61F229E2985F00BD79D5 /* Staubach.ttf */; };
+		BADB61F529E2986800BD79D5 /* SportropRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BADB61F429E2986800BD79D5 /* SportropRegular.ttf */; };
+		BADB61F729E2987100BD79D5 /* AstroSpace.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BADB61F629E2987100BD79D5 /* AstroSpace.ttf */; };
 		BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* UserSettings.swift */; };
 		BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +49,9 @@
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
 		BAD652D329C74C150043865B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		BAD652D529C74CAA0043865B /* teams.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
+		BADB61F229E2985F00BD79D5 /* Staubach.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Staubach.ttf; sourceTree = "<group>"; };
+		BADB61F429E2986800BD79D5 /* SportropRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SportropRegular.ttf; sourceTree = "<group>"; };
+		BADB61F629E2987100BD79D5 /* AstroSpace.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AstroSpace.ttf; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +113,9 @@
 			children = (
 				BA9979F42963B42D00AF04B8 /* Assets.xcassets */,
 				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
+				BADB61F229E2985F00BD79D5 /* Staubach.ttf */,
+				BADB61F429E2986800BD79D5 /* SportropRegular.ttf */,
+				BADB61F629E2987100BD79D5 /* AstroSpace.ttf */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -193,8 +202,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BADB61F329E2985F00BD79D5 /* Staubach.ttf in Resources */,
 				BAD652D629C74CAB0043865B /* teams.json in Resources */,
 				BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */,
+				BADB61F529E2986800BD79D5 /* SportropRegular.ttf in Resources */,
+				BADB61F729E2987100BD79D5 /* AstroSpace.ttf in Resources */,
 				BA3478B529C8989B004F2C5A /* countries.json in Resources */,
 				BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */,
 			);
