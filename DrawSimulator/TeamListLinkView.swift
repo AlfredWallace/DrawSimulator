@@ -24,12 +24,10 @@ struct TeamListLinkView: View {
                 Image(team.name)
                     .resizable()
                     .scaledToFit()
-                    .padding(4)
+                    .padding(5)
                     .frame(width: logoSize, height: logoSize)
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-//                    .clipShape(Circle())
-//                    .teamListLinkInfoBackgroundViewModifier(geo)
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text(team.name)
@@ -43,34 +41,23 @@ struct TeamListLinkView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: flagSize * 4/3, height: flagSize)
-                                .clipShape(RoundedRectangle(cornerRadius: 4))
+                                .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
                         }
                         .labelStyle(.titleAndIcon)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 2)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                        .tagStyled()
                         
                         Text(team.pool)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
+                            .tagStyled()
                         
                         if team.seeded {
                             Text("Seed")
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 2)
-                                .background(.white)
-                                .clipShape(RoundedRectangle(cornerRadius: 4))
+                                .tagStyled()
                         }
                     }
                     .foregroundColor(.darkGray)
-                    .fontWeight(.bold)
                 }
+                .fontWeight(.bold)
                 .padding(.leading)
-                
-                //                TeamListLinkInfoBadgeView(team: team, geo: geo)
             }
         }
     }
