@@ -97,6 +97,7 @@ struct TeamListView: View {
                     }
                 }
                 .listRowBackground(Color.accentColor)
+                .listRowSeparatorTint(.lightGray)
                 .foregroundColor(.white)
             }
         }

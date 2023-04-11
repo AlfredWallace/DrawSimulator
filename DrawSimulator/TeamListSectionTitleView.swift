@@ -27,6 +27,5 @@ struct TeamListSectionTitleView: View {
             }
         }
         .font(.title2.bold())
-        .foregroundColor(.lightGray)
     }
 }
