@@ -20,9 +20,7 @@ struct TeamListLinkInfoBadgeView: View {
     
     var body: some View {
         ZStack {
-            Color.white
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-            
+
             switch userSettings.grouping {
                 case .country:
                     Image(systemName: "\(team.pool.lowercased()).square")
@@ -106,5 +104,7 @@ struct TeamListLinkInfoBadgeView: View {
             }
         }
         .frame(width: logoSize, height: logoSize)
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
     }
 }
