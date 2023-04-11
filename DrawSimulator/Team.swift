@@ -15,14 +15,6 @@ struct Team: Codable, Identifiable, Hashable {
     let seeded: Bool
     let countryId: Int
     let pool: String
-    
-    var poolImageName: String {
-        "\(pool.lowercased()).square"
-    }
-    
-    var seededImageName: String {
-        "s.circle"
-    }
 
     static let examples = [
         Team(id: 1, name: "Paris", shortName: "PSG", seeded: false, countryId: 1, pool: "A"),

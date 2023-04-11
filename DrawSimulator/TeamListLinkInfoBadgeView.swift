@@ -25,7 +25,7 @@ struct TeamListLinkInfoBadgeView: View {
             
             switch userSettings.grouping {
                 case .country:
-                    Image(systemName: team.poolImageName)
+                    Image(systemName: "\(team.pool.lowercased()).square")
                         .foregroundColor(.darkGray)
                         .font(.largeTitle)
                     
