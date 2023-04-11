@@ -19,6 +19,20 @@ struct TeamListLinkInfoBadgeView: View {
     
     var body: some View {
         switch userSettings.grouping {
+            case .country:
+                HStack {
+                    if team.seeded {
+                        Image(systemName: team.seededImageName)
+                    }
+                    
+                    Image(systemName: team.poolImageName)
+                }
+                .foregroundColor(.darkGray)
+                .font(.title3)
+                .padding(1)
+                .background(.white)
+                .clipShape(Capsule())
+                
             case .pool:
                 ZStack {
                     RoundedRectangle(cornerRadius: 5)
@@ -41,18 +55,7 @@ struct TeamListLinkInfoBadgeView: View {
                     .clipShape(Circle())
                 
             default:
-                HStack {
-                    if team.seeded {
-                        Image(systemName: team.seededImageName)
-                    }
-                    
-                    Image(systemName: team.poolImageName)
-                }
-                .foregroundColor(.darkGray)
-                .font(.title3)
-                .padding(1)
-                .background(.white)
-                .clipShape(Capsule())
+                Text("TBD")
         }
     }
 }

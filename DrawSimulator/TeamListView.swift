@@ -17,10 +17,10 @@ struct TeamListView: View {
         switch userSettings.grouping {
             case .country:
                 return ("Grouped by country", "flag")
-            case .seeding:
-                return ("Grouped by seeding", "checklist")
             case .pool:
                 return ("Grouped by pool", "list.bullet.below.rectangle")
+            case .seeding:
+                return ("Grouped by seeding", "checklist")
             default:
                 return ("Ungrouped", "list.dash")
         }
@@ -73,12 +73,12 @@ struct TeamListView: View {
     
     private var groupedTeams: [[Team]] {
         switch userSettings.grouping {
+            case .country:
+                return teamsGroupedByCountry
             case .pool:
                 return teamsGroupedByPool
             case .seeding:
                 return teamsGroupedBySeeding
-            case .country:
-                return teamsGroupedByCountry
             default:
                 return teamsUngrouped
         }
