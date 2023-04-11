@@ -20,88 +20,58 @@ struct TeamListLinkInfoBadgeView: View {
     
     var body: some View {
         ZStack {
-
-            switch userSettings.grouping {
-                case .country:
-                    Image(systemName: "\(team.pool.lowercased()).square")
-                        .foregroundColor(.darkGray)
-                        .font(.largeTitle)
-                    
-                    if team.seeded {
-                        VStack {
-                            Spacer()
-                            HStack {
-                                Image(systemName: "s.circle.fill")
-                                    .foregroundColor(.darkGray)
-                                    .font(.body)
-                                    .background(.white)
-                                    .clipShape(Circle())
-                                Spacer()
-                            }
-                        }
-                        .padding(2)
-                    }
-                    
-                case .pool:
-                    Image(SharedConstants.countries[team.countryId]!.name)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: logoSize * 0.5 * 4/3, height: logoSize * 0.5)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                    
-                case .seeding:
-                    Image(SharedConstants.countries[team.countryId]!.name)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: logoSize * 0.5 * 4/3, height: logoSize * 0.5)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                    
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "\(team.pool.lowercased()).circle.fill")
-                                .foregroundColor(.darkGray)
-                                .font(.callout)
-                                .background(.white)
-                                .clipShape(Circle())
-                        }
-                        Spacer()
-                    }
-                    .padding(2)
-                    
-                default:
-                    Image(SharedConstants.countries[team.countryId]!.name)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: logoSize * 0.5 * 4/3, height: logoSize * 0.5)
-                        .clipShape(RoundedRectangle(cornerRadius: 4))
-                    
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Image(systemName: "\(team.pool.lowercased()).circle.fill")
-                                .foregroundColor(.darkGray)
-                                .font(.callout)
-                                .background(.white)
-                                .clipShape(Circle())
-                        }
-                        
-                        Spacer()
-                        
-                        HStack {
-                            if team.seeded {
-                                Image(systemName: "s.circle.fill")
-                                    .foregroundColor(.darkGray)
-                                    .font(.callout)
-                                    .background(.white)
-                                    .clipShape(Circle())
-                            }
-                            
-                            Spacer()
-                        }
-                    }
-                    .padding(2)
+            
+            // The central element is:
+            // - the pool when the grouping is "country"
+            // - the flag in all other cases
+            if userSettings.grouping == .country {
+                Image(systemName: "\(team.pool.lowercased()).square")
+                    .foregroundColor(.darkGray)
+                    .font(.largeTitle)
+            } else {
+                
+                Image(SharedConstants.countries[team.countryId]!.name)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: logoSize * 0.5 * 4/3, height: logoSize * 0.5)
+                    .clipShape(RoundedRectangle(cornerRadius: 4))
             }
+            
+            
+            // Layout to display 2 badges at top right and bottom left corner
+            
+            VStack {
+                // This HStack is pushed to the top
+                HStack {
+                    Spacer()
+                    // The top right badge is shown when the grouping is seeding or none
+                    if userSettings.grouping == .seeding || userSettings.grouping == .none {
+                        Image(systemName: "\(team.pool.lowercased()).circle.fill")
+                            .foregroundColor(.darkGray)
+                            .font(.callout)
+                            .background(.white)
+                            .clipShape(Circle())
+                    }
+                }
+                
+                Spacer()
+                
+                // This HStack is pushed to the bottom
+                HStack {
+                    // The bottom left badge is displayed:
+                    // - if the team is seeded
+                    // - and if we're not grouping by seeding
+                    if team.seeded && userSettings.grouping != .seeding {
+                        Image(systemName: "s.circle.fill")
+                            .foregroundColor(.darkGray)
+                            .font(.body)
+                            .background(.white)
+                            .clipShape(Circle())
+                    }
+                    Spacer()
+                }
+            }
+            .padding(2)
         }
         .frame(width: logoSize, height: logoSize)
         .background(.white)
