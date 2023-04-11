@@ -16,11 +16,13 @@ struct TeamListView: View {
     private var groupingLabelStrings: (title: String, icon: String) {
         switch userSettings.grouping {
             case .country:
-                return ("country", "flag.square")
+                return ("Grouped by country", "flag")
             case .seeding:
-                return ("seeding", "s.circle")
+                return ("Grouped by seeding", "checklist")
+            case .pool:
+                return ("Grouped by pool", "list.bullet.below.rectangle")
             default:
-                return ("pool", "list.dash")
+                return ("Ungrouped", "list.dash")
         }
     }
     
@@ -59,14 +61,26 @@ struct TeamListView: View {
         return Array(Dictionary(grouping: teamsByName, by: { $0.seeded }).values).sorted { lhs, _ in lhs.first!.seeded }
     }
     
+    private var teamsUngrouped: [[Team]] {
+        var result = [[Team]]()
+        
+        result.append(SharedConstants.teams.sorted {
+            $0.name < $1.name
+        })
+        
+        return result
+    }
+    
     private var groupedTeams: [[Team]] {
         switch userSettings.grouping {
             case .pool:
                 return teamsGroupedByPool
             case .seeding:
                 return teamsGroupedBySeeding
-            default:
+            case .country:
                 return teamsGroupedByCountry
+            default:
+                return teamsUngrouped
         }
     }
     
@@ -96,7 +110,7 @@ struct TeamListView: View {
                 Button {
                     showingGroupingDialog = true
                 } label: {
-                    Label("Grouped by \(groupingLabelStrings.title)", systemImage: groupingLabelStrings.icon)
+                    Label(groupingLabelStrings.title, systemImage: groupingLabelStrings.icon)
                         .labelStyle(.titleAndIcon)
                         .font(.title2)
                 }
@@ -113,6 +127,10 @@ struct TeamListView: View {
             
             if userSettings.grouping != .seeding {
                 Button("Group by seeding") { userSettings.setGrouping(.seeding) }
+            }
+            
+            if userSettings.grouping != .none {
+                Button("Ungrouped") { userSettings.setGrouping(.none) }
             }
         }
     }

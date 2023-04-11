@@ -28,9 +28,11 @@ struct TeamListSectionTitleView: View {
                 }
             case .seeding:
                 Text(team.seeded ? "Seeded teams" : "Unseeded teams")
-            default:
+            case .country:
                 Text(SharedConstants.countries[team.countryId]!.name)
                     .font(.title2)
+            default:
+                Text("Alphabetical order")
                 
         }
     }
