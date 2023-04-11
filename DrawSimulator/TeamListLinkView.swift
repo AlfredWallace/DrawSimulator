@@ -11,8 +11,6 @@ struct TeamListLinkView: View {
     
     let team: Team
     let geo: GeometryProxy
-    
-    var flagSize: CGFloat { geo.size.width * 0.04 }
     var logoSize: CGFloat { geo.size.width * 0.16 }
     
     @EnvironmentObject var userSettings: UserSettings
@@ -33,28 +31,7 @@ struct TeamListLinkView: View {
                     Text(team.name)
                         .font(.largeTitle)
                     
-                    HStack {
-                        Label {
-                            Text(SharedConstants.countries[team.countryId]!.shortName)
-                        } icon: {
-                            Image(SharedConstants.countries[team.countryId]!.name)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: flagSize * 4/3, height: flagSize)
-                                .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
-                        }
-                        .labelStyle(.titleAndIcon)
-                        .tagStyled()
-                        
-                        Text(team.pool)
-                            .tagStyled()
-                        
-                        if team.seeded {
-                            Text("Seed")
-                                .tagStyled()
-                        }
-                    }
-                    .foregroundColor(.darkGray)
+                    TeamListLinkTagsView(team: team, geo: geo)
                 }
                 .fontWeight(.bold)
                 .padding(.leading)
