@@ -11,7 +11,6 @@ struct TeamListLinkView: View {
     
     let team: Team
     let geo: GeometryProxy
-    var logoSize: CGFloat { geo.size.width * 0.12 }
     
     @EnvironmentObject var userSettings: UserSettings
     
@@ -23,9 +22,7 @@ struct TeamListLinkView: View {
                     .resizable()
                     .scaledToFit()
                     .padding(6)
-                    .frame(width: logoSize, height: logoSize)
-                    .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .teamListLinkInfoBackgroundViewModifier(geo)
                 
                 Text(team.name)
                     .font(.largeTitle)
@@ -33,7 +30,7 @@ struct TeamListLinkView: View {
                 
                 Spacer()
                 
-                TeamListLinkInfoBadgeView(team: team, geo: geo, size: logoSize)
+                TeamListLinkInfoBadgeView(team: team, geo: geo)
             }
         }
     }

@@ -11,7 +11,8 @@ struct TeamListLinkInfoBadgeView: View {
     
     let team: Team
     let geo: GeometryProxy
-    let size: CGFloat
+    
+    var flagSize: CGFloat { geo.size.width * 0.06 }
     
     @EnvironmentObject var userSettings: UserSettings
     
@@ -30,7 +31,7 @@ struct TeamListLinkInfoBadgeView: View {
                 Image(SharedConstants.countries[team.countryId]!.name)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: size * 0.5 * 4/3, height: size * 0.5)
+                    .frame(width: flagSize * 4/3, height: flagSize)
                     .clipShape(RoundedRectangle(cornerRadius: 4))
             }
             
@@ -61,7 +62,7 @@ struct TeamListLinkInfoBadgeView: View {
                     if team.seeded && userSettings.grouping != .seeding {
                         Image(systemName: "s.circle.fill")
                             .foregroundColor(.darkGray)
-                            .font(.body)
+                            .font(.callout)
                             .background(.white)
                             .clipShape(Circle())
                     }
@@ -70,8 +71,6 @@ struct TeamListLinkInfoBadgeView: View {
             }
             .padding(2)
         }
-        .frame(width: size, height: size)
-        .background(.white)
-        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+        .teamListLinkInfoBackgroundViewModifier(geo)
     }
 }
