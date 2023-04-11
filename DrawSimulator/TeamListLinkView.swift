@@ -33,7 +33,7 @@ struct TeamListLinkView: View {
                 
                 Spacer()
                 
-                TeamListLinkInfoBadgeView(team: team, geo: geo)
+                TeamListLinkInfoBadgeView(team: team, geo: geo, size: logoSize)
             }
         }
     }
