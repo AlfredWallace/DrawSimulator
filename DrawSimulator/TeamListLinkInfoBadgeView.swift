@@ -45,10 +45,7 @@ struct TeamListLinkInfoBadgeView: View {
                     // The top right badge is shown when the grouping is seeding or none
                     if userSettings.grouping == .seeding || userSettings.grouping == .none {
                         Image(systemName: "\(team.pool.lowercased()).circle.fill")
-                            .foregroundColor(.darkGray)
-                            .font(.callout)
-                            .background(.white)
-                            .clipShape(Circle())
+                            .teamListLinkInfoBadgeViewModifier()
                     }
                 }
                 
@@ -61,10 +58,7 @@ struct TeamListLinkInfoBadgeView: View {
                     // - and if we're not grouping by seeding
                     if team.seeded && userSettings.grouping != .seeding {
                         Image(systemName: "s.circle.fill")
-                            .foregroundColor(.darkGray)
-                            .font(.callout)
-                            .background(.white)
-                            .clipShape(Circle())
+                            .teamListLinkInfoBadgeViewModifier()
                     }
                     Spacer()
                 }

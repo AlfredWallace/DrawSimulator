@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA208BF229D8667000D1EB9A /* TeamListLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BF129D8667000D1EB9A /* TeamListLinkView.swift */; };
+		BA2E93C729E5B3D80018529C /* TeamListLinkInfoBadgeViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2E93C629E5B3D80018529C /* TeamListLinkInfoBadgeViewModifier.swift */; };
 		BA3478B329C89836004F2C5A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3478B229C89836004F2C5A /* Country.swift */; };
 		BA3478B529C8989B004F2C5A /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3478B429C8989B004F2C5A /* countries.json */; };
 		BA4870B229E5AE870076B85C /* TeamListLinkInfoBackgroundViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4870B129E5AE870076B85C /* TeamListLinkInfoBackgroundViewModifier.swift */; };
@@ -32,6 +33,7 @@
 		BA016390297ADB830030264F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA208BF129D8667000D1EB9A /* TeamListLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListLinkView.swift; sourceTree = "<group>"; };
+		BA2E93C629E5B3D80018529C /* TeamListLinkInfoBadgeViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListLinkInfoBadgeViewModifier.swift; sourceTree = "<group>"; };
 		BA3478B229C89836004F2C5A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		BA3478B429C8989B004F2C5A /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		BA4870B129E5AE870076B85C /* TeamListLinkInfoBackgroundViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListLinkInfoBackgroundViewModifier.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */,
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
 				BA4870B129E5AE870076B85C /* TeamListLinkInfoBackgroundViewModifier.swift */,
+				BA2E93C629E5B3D80018529C /* TeamListLinkInfoBadgeViewModifier.swift */,
 				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
 				BADB61F129E297D400BD79D5 /* Views */,
 				BADB61EE29E2973900BD79D5 /* Data */,
@@ -222,6 +225,7 @@
 				BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */,
 				BA73B68929E0C63500807496 /* TeamListView.swift in Sources */,
 				BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */,
+				BA2E93C729E5B3D80018529C /* TeamListLinkInfoBadgeViewModifier.swift in Sources */,
 				BA9979F12963B42C00AF04B8 /* DrawSimulatorApp.swift in Sources */,
 				BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */,
 				BA208BF229D8667000D1EB9A /* TeamListLinkView.swift in Sources */,
