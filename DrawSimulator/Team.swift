@@ -17,7 +17,7 @@ struct Team: Codable, Identifiable, Hashable {
     let pool: String
     
     var poolImageName: String {
-        "\(pool.lowercased()).circle"
+        "\(pool.lowercased()).square"
     }
     
     var seededImageName: String {

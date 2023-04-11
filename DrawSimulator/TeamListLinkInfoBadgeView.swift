@@ -14,48 +14,97 @@ struct TeamListLinkInfoBadgeView: View {
     let flagBorderMultiplier = 1.13
     var flagHeight: CGFloat { geo.size.width * 0.08 }
     var flagWidth: CGFloat { flagHeight * 4 / 3 }
+    var logoSize: CGFloat { geo.size.width * 0.12 }
     
     @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
-        switch userSettings.grouping {
-            case .country:
-                HStack {
+        ZStack {
+            Color.white
+                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            
+            switch userSettings.grouping {
+                case .country:
+                    Image(systemName: team.poolImageName)
+                        .foregroundColor(.darkGray)
+                        .font(.largeTitle)
+                    
                     if team.seeded {
-                        Image(systemName: team.seededImageName)
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Image(systemName: "s.circle.fill")
+                                    .foregroundColor(.darkGray)
+                                    .font(.body)
+                                    .background(.white)
+                                    .clipShape(Circle())
+                                Spacer()
+                            }
+                        }
+                        .padding(2)
                     }
                     
-                    Image(systemName: team.poolImageName)
-                }
-                .foregroundColor(.darkGray)
-                .font(.title3)
-                .padding(1)
-                .background(.white)
-                .clipShape(Capsule())
-                
-            case .pool:
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(.white)
-                        .frame(width: flagWidth * flagBorderMultiplier, height: flagHeight * flagBorderMultiplier)
-                    
+                case .pool:
                     Image(SharedConstants.countries[team.countryId]!.name)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: flagWidth, height: flagHeight)
+                        .frame(width: logoSize * 0.5 * 4/3, height: logoSize * 0.5)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
-                }
-                
-            case .seeding:
-                Image(systemName: team.poolImageName)
-                    .foregroundColor(.darkGray)
-                    .font(.title3)
-                    .padding(1)
-                    .background(.white)
-                    .clipShape(Circle())
-                
-            default:
-                Text("TBD")
+                    
+                case .seeding:
+                    Image(SharedConstants.countries[team.countryId]!.name)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: logoSize * 0.5 * 4/3, height: logoSize * 0.5)
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                    
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "\(team.pool.lowercased()).circle.fill")
+                                .foregroundColor(.darkGray)
+                                .font(.callout)
+                                .background(.white)
+                                .clipShape(Circle())
+                        }
+                        Spacer()
+                    }
+                    .padding(2)
+                    
+                default:
+                    Image(SharedConstants.countries[team.countryId]!.name)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: logoSize * 0.5 * 4/3, height: logoSize * 0.5)
+                        .clipShape(RoundedRectangle(cornerRadius: 4))
+                    
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Image(systemName: "\(team.pool.lowercased()).circle.fill")
+                                .foregroundColor(.darkGray)
+                                .font(.callout)
+                                .background(.white)
+                                .clipShape(Circle())
+                        }
+                        
+                        Spacer()
+                        
+                        HStack {
+                            if team.seeded {
+                                Image(systemName: "s.circle.fill")
+                                    .foregroundColor(.darkGray)
+                                    .font(.callout)
+                                    .background(.white)
+                                    .clipShape(Circle())
+                            }
+                            
+                            Spacer()
+                        }
+                    }
+                    .padding(2)
+            }
         }
+        .frame(width: logoSize, height: logoSize)
     }
 }

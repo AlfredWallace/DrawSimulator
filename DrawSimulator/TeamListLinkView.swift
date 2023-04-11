@@ -25,10 +25,10 @@ struct TeamListLinkView: View {
                     .padding(6)
                     .frame(width: logoSize, height: logoSize)
                     .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 17, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
                 
                 Text(team.name)
-                    .font(.title)
+                    .font(.largeTitle)
                     .padding(.leading)
                 
                 Spacer()

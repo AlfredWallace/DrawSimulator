@@ -13,27 +13,20 @@ struct TeamListSectionTitleView: View {
     
     var body: some View {
         
-        switch userSettings.grouping {
-            case .country:
-                Text(SharedConstants.countries[team.countryId]!.name)
-                    .font(.title2)
-            case .pool:
-                HStack {
-                    Text("Pool")
-                        .foregroundColor(.lightGray)
-                        .font(.title2)
+        Group {
+            switch userSettings.grouping {
+                case .country:
+                    Text(SharedConstants.countries[team.countryId]!.name)
+                case .pool:
+                    Text("Pool \(team.pool)")
+                case .seeding:
+                    Text(team.seeded ? "Seeded teams" : "Unseeded teams")
+                default:
+                    Text("Alphabetical order")
                     
-                    Image(systemName: team.poolImageName)
-                        .foregroundColor(.darkGray)
-                        .background(.white)
-                        .clipShape(Circle())
-                        .font(.title3)
-                }
-            case .seeding:
-                Text(team.seeded ? "Seeded teams" : "Unseeded teams")
-            default:
-                Text("Alphabetical order")
-                
+            }
         }
+        .font(.title2.bold())
+        .foregroundColor(.lightGray)
     }
 }
