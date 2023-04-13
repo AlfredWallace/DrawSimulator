@@ -48,16 +48,13 @@ class UserSettings: ObservableObject, Codable {
         return "iphone"
     }
     
-    func getColorScheme() -> ColorScheme {
+    func getColorScheme() -> ColorScheme? {
+        
         if displayMode == .light { return .light }
         
         if displayMode == .dark { return .dark }
         
-        let userInterfaceStyle = UITraitCollection.current.userInterfaceStyle
-        
-        if userInterfaceStyle == .dark { return .dark }
-        
-        return .light
+        return nil
     }
     
     init() {
