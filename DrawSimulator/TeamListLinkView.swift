@@ -23,8 +23,8 @@ struct TeamListLinkView: View {
                     .frame(width: 50, height: 50)
                 
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(team.name)
-                        .font(.largeTitle)
+                    Text(team.name.uppercased())
+                        .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
                     
 //                    TeamListLinkTagsView(team: team, geo: geo) todo : rework entirely
                 }
