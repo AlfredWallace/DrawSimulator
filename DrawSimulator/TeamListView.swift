@@ -84,27 +84,30 @@ struct TeamListView: View {
         }
     }
     
-    
     var body: some View {
-        GeometryReader { geo in
-            
-            List(groupedTeams, id: \.self) { teams in
-                Section {
-                    TeamListSectionTitleView(team: teams.first!)
-                    
-                    ForEach(teams) { team in
-                        TeamListLinkView(team: team, geo: geo)
+        ScrollView {
+            VStack(spacing: 20) {
+                ForEach(groupedTeams, id: \.self) { teams in
+                    VStack(alignment: .leading) {
+                        TeamListSectionTitleView(team: teams.first!)
+                        
+                        ForEach(teams) { team in
+                            TeamListLinkView(team: team)
+                        }
                     }
+                    .padding(15)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .fill(.shadow(.drop(radius: 5, y: 5)))
+                            .foregroundStyle(Color.defaultBackground)
+                    )
                 }
-                .listRowBackground(Color.accentColor)
-                .listRowSeparatorTint(.lightGray)
-                .foregroundColor(.white)
             }
+            .padding(.horizontal)
         }
         .navigationDestination(for: Team.self) { team in
             TeamDetailView(team: team)
         }
-        .preferredColorScheme(.light)
         .navigationTitle("Teams")
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {

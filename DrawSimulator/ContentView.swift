@@ -13,9 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            TeamListView()
+            TeamListView().background(Color.pitchGreen.gradient)
+                .foregroundColor(.defaultText)
         }
         .environmentObject(userSettings)
+        
     }
 }
 

@@ -10,31 +10,30 @@ import SwiftUI
 struct TeamListLinkView: View {
     
     let team: Team
-    let geo: GeometryProxy
-    var logoSize: CGFloat { geo.size.width * 0.16 }
     
     @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
         
         NavigationLink(value: team) {
-            HStack(alignment: .bottom) {
+            HStack(alignment: .center) {
                 Image(team.name)
                     .resizable()
                     .scaledToFit()
-                    .padding(5)
-                    .frame(width: logoSize, height: logoSize)
-                    .background(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .frame(width: 50, height: 50)
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text(team.name)
                         .font(.largeTitle)
                     
-                    TeamListLinkTagsView(team: team, geo: geo)
+//                    TeamListLinkTagsView(team: team, geo: geo) todo : rework entirely
                 }
                 .fontWeight(.bold)
                 .padding(.leading)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.forward")
             }
         }
     }
