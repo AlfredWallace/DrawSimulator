@@ -45,7 +45,7 @@ class UserSettings: ObservableObject, Codable {
         
         if displayMode == .dark { return "moon.stars" }
         
-        return "iphone"
+        return "circle.lefthalf.filled"
     }
     
     func getColorScheme() -> ColorScheme? {
