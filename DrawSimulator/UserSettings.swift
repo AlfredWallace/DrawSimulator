@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit.UITraitCollection
+import SwiftUI
 
 class UserSettings: ObservableObject, Codable {
     
@@ -15,7 +17,12 @@ class UserSettings: ObservableObject, Codable {
         case pool, country, seeding, none
     }
     
+    enum DisplayMode: String, Codable {
+        case light, dark, system
+    }
+    
     private(set) var grouping: Grouping
+    private(set) var displayMode: DisplayMode
     
     func setGrouping(_ grouping: Grouping) {
         objectWillChange.send()
@@ -23,8 +30,34 @@ class UserSettings: ObservableObject, Codable {
         save()
     }
     
-    init(forcedGrouping: Grouping) {
-        grouping = forcedGrouping
+    func setDisplayMode(_ displayMode: DisplayMode) {
+        objectWillChange.send()
+        self.displayMode = displayMode
+        save()
+    }
+    
+    func getDisplayModeIconName(for displayMode: DisplayMode? = nil) -> String {
+        
+        // If no argument is provided, we call the same function with the user defined value
+        if displayMode == nil { return getDisplayModeIconName(for: self.displayMode) }
+        
+        if displayMode == .light { return "sun.max" }
+        
+        if displayMode == .dark { return "moon.stars" }
+        
+        return "iphone"
+    }
+    
+    func getColorScheme() -> ColorScheme {
+        if displayMode == .light { return .light }
+        
+        if displayMode == .dark { return .dark }
+        
+        let userInterfaceStyle = UITraitCollection.current.userInterfaceStyle
+        
+        if userInterfaceStyle == .dark { return .dark }
+        
+        return .light
     }
     
     init() {
@@ -32,8 +65,10 @@ class UserSettings: ObservableObject, Codable {
             let contents = try Data(contentsOf: Self.savePath)
             let decoded = try JSONDecoder().decode(UserSettings.self, from: contents)
             grouping = decoded.grouping
+            displayMode = decoded.displayMode
         } catch {
             grouping = Grouping.pool
+            displayMode = DisplayMode.system
         }
     }
     

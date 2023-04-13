@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @StateObject private var userSettings = UserSettings()
     
     var body: some View {
@@ -17,6 +16,7 @@ struct ContentView: View {
                 .foregroundColor(.defaultText)
         }
         .environmentObject(userSettings)
+        .preferredColorScheme(userSettings.getColorScheme())
     }
 }
 

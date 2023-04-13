@@ -110,6 +110,31 @@ struct TeamListView: View {
         }
         .navigationTitle("Teams")
         .toolbar {
+            ToolbarItem {
+                Menu {
+                    Button {
+                        userSettings.setDisplayMode(.light)
+                    } label: {
+                        Label("Light mode", systemImage: userSettings.getDisplayModeIconName(for: .light))
+                    }
+                    
+                    Button {
+                        userSettings.setDisplayMode(.dark)
+                    } label: {
+                        Label("Dark mode", systemImage: userSettings.getDisplayModeIconName(for: .dark))
+                    }
+                    
+                    Button {
+                        userSettings.setDisplayMode(.system)
+                    } label: {
+                        Label("System", systemImage: userSettings.getDisplayModeIconName(for: .system))
+                    }
+                    
+                } label: {
+                    Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
+                }
+            }
+            
             ToolbarItemGroup(placement: .bottomBar) {
                 Button {
                     showingGroupingDialog = true
