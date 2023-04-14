@@ -88,14 +88,21 @@ struct TeamListView: View {
         ScrollView {
             VStack(spacing: 20) {
                 ForEach(groupedTeams, id: \.self) { teams in
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 10) {
                         TeamListSectionTitleView(team: teams.first!)
+                            .padding(.horizontal, 15)
+                        
+                        Rectangle()
+                            .fill(Color.pitchGreen)
+                            .frame(height: 2)
+                            .edgesIgnoringSafeArea(.horizontal)
                         
                         ForEach(teams) { team in
                             TeamListLinkView(team: team)
+                                .padding(.horizontal, 15)
                         }
                     }
-                    .padding(15)
+                    .padding(.vertical, 10)
                     .background(
                         RoundedRectangle(cornerRadius: 20, style: .continuous)
                             .fill(.shadow(.drop(radius: 5, y: 5)))

@@ -25,7 +25,9 @@ struct TeamListSectionTitleView: View {
                     Text("Alphabetical order")
                     
             }
+//            Spacer()
         }
         .font(.title2.bold())
+//        .border(.red)
     }
 }
