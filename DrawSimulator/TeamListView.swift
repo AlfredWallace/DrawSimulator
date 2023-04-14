@@ -144,7 +144,7 @@ struct TeamListView: View {
             }
             
             if userSettings.grouping != .none {
-                Button("Ungrouped") { userSettings.setGrouping(.none) }
+                Button("Do not group") { userSettings.setGrouping(.none) }
             }
         }
     }
