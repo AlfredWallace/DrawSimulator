@@ -13,12 +13,12 @@ struct TeamListLinkView: View {
     
     let team: Team
     
-    @EnvironmentObject var userSettings: UserSettings
-    @EnvironmentObject var geoSizeTracker: GeoSizeTracker
+    @EnvironmentObject private var userSettings: UserSettings
+    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
-    var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.15 }
+    private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.15 }
     
-    var teamName: String {
+    private var teamName: String {
         if dynamicTypeSize >= .xxxLarge {
             return team.shortName
         }
