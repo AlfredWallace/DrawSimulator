@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0B50C229E73B6100B96D53 /* Colors.xcassets */; };
+		BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43529E96B1B0040A4BB /* Flags.xcassets */; };
+		BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43729E96B620040A4BB /* Team logos.xcassets */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA208BF229D8667000D1EB9A /* TeamListLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BF129D8667000D1EB9A /* TeamListLinkView.swift */; };
 		BA3478B329C89836004F2C5A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3478B229C89836004F2C5A /* Country.swift */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		BA016390297ADB830030264F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA0B50C229E73B6100B96D53 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		BA11C43529E96B1B0040A4BB /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
+		BA11C43729E96B620040A4BB /* Team logos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Team logos.xcassets"; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA208BF129D8667000D1EB9A /* TeamListLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListLinkView.swift; sourceTree = "<group>"; };
 		BA3478B229C89836004F2C5A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -113,7 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				BA9979F42963B42D00AF04B8 /* Assets.xcassets */,
+				BA11C43529E96B1B0040A4BB /* Flags.xcassets */,
 				BA0B50C229E73B6100B96D53 /* Colors.xcassets */,
+				BA11C43729E96B620040A4BB /* Team logos.xcassets */,
 				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
 				BA96F37029E824AC00E365FB /* Chillax.ttf */,
 			);
@@ -204,10 +210,12 @@
 			files = (
 				BA96F37129E824AC00E365FB /* Chillax.ttf in Resources */,
 				BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */,
+				BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */,
 				BAD652D629C74CAB0043865B /* teams.json in Resources */,
 				BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */,
 				BA3478B529C8989B004F2C5A /* countries.json in Resources */,
 				BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */,
+				BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
