@@ -9,12 +9,22 @@ import SwiftUI
 
 struct TeamListLinkView: View {
     
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    
     let team: Team
     
     @EnvironmentObject var userSettings: UserSettings
     @EnvironmentObject var geoSizeTracker: GeoSizeTracker
     
     var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.15 }
+    
+    var teamName: String {
+        if dynamicTypeSize >= .xxxLarge {
+            return team.shortName
+        }
+        
+        return team.name
+    }
     
     var body: some View {
         
@@ -26,7 +36,7 @@ struct TeamListLinkView: View {
                     .scaledToFit()
                     .frame(width: logoSize, height: logoSize)
                 
-                Text(team.name.uppercased())
+                Text(teamName.uppercased())
                     .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 28, relativeTo: .largeTitle))
                 
                 Spacer()
