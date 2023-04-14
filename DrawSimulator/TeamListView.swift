@@ -90,6 +90,7 @@ struct TeamListView: View {
                 ForEach(groupedTeams, id: \.self) { teams in
                     VStack(alignment: .leading, spacing: 10) {
                         TeamListSectionTitleView(team: teams.first!)
+                            .font(.title2.bold())
                             .padding(.horizontal, 15)
                         
                         Rectangle()

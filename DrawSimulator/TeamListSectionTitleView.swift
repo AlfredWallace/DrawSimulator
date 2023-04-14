@@ -8,26 +8,58 @@
 import SwiftUI
 
 struct TeamListSectionTitleView: View {
+    
     let team: Team
-    @EnvironmentObject var userSettings: UserSettings
+    
+    @EnvironmentObject private var userSettings: UserSettings
+    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
+    
+    private var flagWidth: CGFloat { geoSizeTracker.getSize().width * 0.06 }
+    private var flagHeight: CGFloat { flagWidth * 3/4 }
+    private let whiteFlagFactor = 1.3
     
     var body: some View {
         
-        Group {
-            switch userSettings.grouping {
-                case .country:
+        switch userSettings.grouping {
+            case .country:
+                Label {
                     Text(SharedConstants.countries[team.countryId]!.name)
-                case .pool:
-                    Text("Pool \(team.pool)")
-                case .seeding:
-                    Text(team.seeded ? "Seeded teams" : "Unseeded teams")
-                default:
-                    Text("Alphabetical order")
-                    
-            }
-//            Spacer()
+                } icon: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 6, style: .continuous)
+                            .fill(.white)
+                            .frame(width: flagWidth * whiteFlagFactor, height: flagHeight * whiteFlagFactor)
+                        
+                        Image(SharedConstants.countries[team.countryId]!.name)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: flagWidth, height: flagHeight)
+                            .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+                    }
+                }
+                .labelStyle(.titleAndIcon)
+                
+            case .pool:
+                HStack {
+                    Text("Pool")
+                    Image(systemName: "\(team.pool.lowercased()).circle.fill")
+                }
+                
+            case .seeding:
+                if team.seeded {
+                    Label {
+                        Text("Seeded teams")
+                    } icon: {
+                        Image(systemName: "checkmark.seal.fill")
+                            .foregroundColor(.pitchGreen)
+                    }
+                } else {
+                    Text("Unseeded teams")
+                }
+                
+            default:
+                Text("Alphabetical order")
+                
         }
-        .font(.title2.bold())
-//        .border(.red)
     }
 }

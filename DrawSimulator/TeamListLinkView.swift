@@ -14,25 +14,20 @@ struct TeamListLinkView: View {
     @EnvironmentObject var userSettings: UserSettings
     @EnvironmentObject var geoSizeTracker: GeoSizeTracker
     
-    var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.13 }
+    var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.15 }
     
     var body: some View {
         
         NavigationLink(value: team) {
+            
             HStack(alignment: .center) {
                 Image(team.name)
                     .resizable()
                     .scaledToFit()
                     .frame(width: logoSize, height: logoSize)
                 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(team.name.uppercased())
-                        .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
-                    
-//                    TeamListLinkTagsView(team: team, geo: geo) todo : rework entirely
-                }
-                .fontWeight(.bold)
-                .padding(.leading)
+                Text(team.name.uppercased())
+                    .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 28, relativeTo: .largeTitle))
                 
                 Spacer()
                 
