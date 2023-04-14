@@ -112,24 +112,9 @@ struct TeamListView: View {
         .toolbar {
             ToolbarItem {
                 Menu {
-                    Button {
-                        userSettings.setDisplayMode(.light)
-                    } label: {
-                        Label("Light mode", systemImage: userSettings.getDisplayModeIconName(for: .light))
-                    }
-                    
-                    Button {
-                        userSettings.setDisplayMode(.dark)
-                    } label: {
-                        Label("Dark mode", systemImage: userSettings.getDisplayModeIconName(for: .dark))
-                    }
-                    
-                    Button {
-                        userSettings.setDisplayMode(.system)
-                    } label: {
-                        Label("System", systemImage: userSettings.getDisplayModeIconName(for: .system))
-                    }
-                    
+                    DisplayModeMenuButtonView(displayMode: .light)
+                    DisplayModeMenuButtonView(displayMode: .dark)
+                    DisplayModeMenuButtonView(displayMode: .system)
                 } label: {
                     Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
                 }
