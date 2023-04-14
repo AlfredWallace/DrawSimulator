@@ -11,6 +11,7 @@
 		BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43529E96B1B0040A4BB /* Flags.xcassets */; };
 		BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43729E96B620040A4BB /* Team logos.xcassets */; };
 		BA11C43A29E973180040A4BB /* DisplayModeMenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */; };
+		BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA208BF229D8667000D1EB9A /* TeamListLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BF129D8667000D1EB9A /* TeamListLinkView.swift */; };
 		BA3478B329C89836004F2C5A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3478B229C89836004F2C5A /* Country.swift */; };
@@ -39,6 +40,7 @@
 		BA11C43529E96B1B0040A4BB /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
 		BA11C43729E96B620040A4BB /* Team logos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Team logos.xcassets"; sourceTree = "<group>"; };
 		BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayModeMenuButtonView.swift; sourceTree = "<group>"; };
+		BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoSizeTracker.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA208BF129D8667000D1EB9A /* TeamListLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListLinkView.swift; sourceTree = "<group>"; };
 		BA3478B229C89836004F2C5A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
 				BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */,
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
+				BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */,
 				BA4870B129E5AE870076B85C /* TagStyle.swift */,
 				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
 				BADB61F129E297D400BD79D5 /* Views */,
@@ -233,6 +236,7 @@
 				BA11C43A29E973180040A4BB /* DisplayModeMenuButtonView.swift in Sources */,
 				BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */,
 				BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */,
+				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
 				BA4870B229E5AE870076B85C /* TagStyle.swift in Sources */,
 				BA3478B329C89836004F2C5A /* Country.swift in Sources */,
 				BACA167429DC6B3100E5C9CA /* TeamListSectionTitleView.swift in Sources */,

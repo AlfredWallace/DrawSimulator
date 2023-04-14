@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase
+    
     @StateObject private var userSettings = UserSettings()
+    @StateObject private var geoSizeTracker = GeoSizeTracker()
     
     var body: some View {
-        NavigationStack {
-            TeamListView().background(Color.pitchGreen.gradient)
-                .foregroundColor(.defaultText)
+        GeometryReader { geoWrapper in
+            NavigationStack {
+                TeamListView()
+                    .background(Color.pitchGreen.gradient)
+                    .foregroundColor(.defaultText)
+            }
+            .environmentObject(userSettings)
+            .environmentObject(geoSizeTracker)
+            .preferredColorScheme(userSettings.getColorScheme())
+            .onAppear {
+                geoSizeTracker.setSize(geoWrapper.size)
+            }
         }
-        .environmentObject(userSettings)
-        .preferredColorScheme(userSettings.getColorScheme())
     }
 }
 

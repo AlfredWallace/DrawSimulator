@@ -12,6 +12,9 @@ struct TeamListLinkView: View {
     let team: Team
     
     @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject var geoSizeTracker: GeoSizeTracker
+    
+    var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.13 }
     
     var body: some View {
         
@@ -20,7 +23,7 @@ struct TeamListLinkView: View {
                 Image(team.name)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 50, height: 50)
+                    .frame(width: logoSize, height: logoSize)
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text(team.name.uppercased())
