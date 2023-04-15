@@ -22,7 +22,7 @@ struct TeamGroupView: View {
                 .edgesIgnoringSafeArea(.horizontal)
             
             ForEach(teams) { team in
-                TeamListLinkView(team: team)
+                TeamLinkView(team: team)
                     .padding(.horizontal, 15)
             }
         }

@@ -1,5 +1,5 @@
 //
-//  TeamListLinkView.swift
+//  TeamLinkView.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 01/04/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TeamListLinkView: View {
+struct TeamLinkView: View {
     
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
