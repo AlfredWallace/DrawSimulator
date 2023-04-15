@@ -117,6 +117,7 @@ struct TeamListView: View {
                 .transition(.move(edge: .bottom))
             }
         }
+        .scrollIndicators(.hidden)
         .navigationDestination(for: Team.self) { team in
             TeamDetailView(team: team)
         }
