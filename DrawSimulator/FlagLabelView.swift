@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FlagLabelView: View {
+    
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
     enum Size {
@@ -40,10 +43,19 @@ struct FlagLabelView: View {
     
     private var flagWidth: CGFloat { geoSizeTracker.getSize().width * flagWidthFactor }
     private var flagHeight: CGFloat { flagWidth * 3/4 }
+    private var countryName: String {
+        let country = SharedConstants.countries[team.countryId]!
+        
+        if dynamicTypeSize > .xxxLarge {
+            return country.shortName
+        }
+        
+        return country.name
+    }
     
     var body: some View {
         Label {
-            Text(SharedConstants.countries[team.countryId]!.name)
+            Text(countryName)
                 .font(fontSize)
         } icon: {
             ZStack {

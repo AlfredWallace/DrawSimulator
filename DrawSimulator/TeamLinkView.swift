@@ -19,7 +19,7 @@ struct TeamLinkView: View {
     private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.15 }
     
     private var teamName: String {
-        if dynamicTypeSize >= .xxxLarge {
+        if dynamicTypeSize > .xxxLarge {
             return team.shortName
         }
         
@@ -37,7 +37,7 @@ struct TeamLinkView: View {
                     .frame(width: logoSize, height: logoSize)
                 
                 Text(teamName.uppercased())
-                    .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 28, relativeTo: .largeTitle))
+                    .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
                 
                 Spacer()
                 

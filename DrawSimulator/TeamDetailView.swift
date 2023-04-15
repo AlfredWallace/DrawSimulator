@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TeamDetailView: View {
     
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
     private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.45 }
@@ -29,7 +31,7 @@ struct TeamDetailView: View {
                             .scaledToFit()
                             .frame(width: logoSize, height: logoSize)
                         
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .center) {
                             PoolLabelView(team: team)
                             
                             DividerView()
@@ -38,7 +40,11 @@ struct TeamDetailView: View {
                             
                             DividerView()
                             
-                            Text(team.seeded ? "Seeded" : "Unseeded")
+                            if dynamicTypeSize <= .xxxLarge {
+                                Text(team.seeded ? "Seeded" : "Unseeded")
+                            } else {
+                                Text(team.seeded ? "1st" : "2nd")
+                            }
                         }
                         .font(.title2)
                         
