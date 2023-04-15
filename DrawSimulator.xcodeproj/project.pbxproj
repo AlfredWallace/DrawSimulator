@@ -27,6 +27,7 @@
 		BAB1C2A029E1B724000DAFE4 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */; };
 		BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */; };
 		BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */; };
+		BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACC352829EAE23200E22E6A /* FlagLabelView.swift */; };
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
 		BAD652D429C74C150043865B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD652D329C74C150043865B /* Team.swift */; };
 		BAD652D629C74CAB0043865B /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = BAD652D529C74CAA0043865B /* teams.json */; };
@@ -57,6 +58,7 @@
 		BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamGroupTitleView.swift; sourceTree = "<group>"; };
 		BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		BACC352829EAE23200E22E6A /* FlagLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagLabelView.swift; sourceTree = "<group>"; };
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
 		BAD652D329C74C150043865B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		BAD652D529C74CAA0043865B /* teams.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
 				BA208BF129D8667000D1EB9A /* TeamLinkView.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
+				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */,
 				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
 				BA3478B329C89836004F2C5A /* Country.swift in Sources */,
+				BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */,
 				BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */,
 				BAD652D429C74C150043865B /* Team.swift in Sources */,
 				BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */,
