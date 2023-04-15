@@ -11,15 +11,12 @@ struct TeamGroupView: View {
     let teams: [Team]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(spacing: 10) {
             TeamGroupTitleView(team: teams.first!)
                 .bold()
                 .padding(.horizontal, 15)
             
-            Rectangle()
-                .fill(Color.pitchGreen)
-                .frame(height: 2)
-                .edgesIgnoringSafeArea(.horizontal)
+            DividerView()
             
             ForEach(teams) { team in
                 TeamLinkView(team: team)

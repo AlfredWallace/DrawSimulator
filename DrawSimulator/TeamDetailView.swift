@@ -11,7 +11,7 @@ struct TeamDetailView: View {
     
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
-    private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.25 }
+    private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.45 }
     
     let team: Team
     
@@ -22,20 +22,37 @@ struct TeamDetailView: View {
                 .ignoresSafeArea()
             
             ScrollView {
-                HStack {
-                    Image(team.name)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: logoSize, height: logoSize)
-                    
-                    VStack {
-                        FlagLabelView(team: team, size: .large)
+                VStack {
+                    HStack {
+                        Image(team.name)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: logoSize, height: logoSize)
+                        
+                        VStack(alignment: .leading) {
+                            PoolLabelView(team: team)
+                            
+                            DividerView()
+                            
+                            FlagLabelView(team: team)
+                            
+                            DividerView()
+                            
+                            Text(team.seeded ? "Seeded" : "Unseeded")
+                        }
+                        .font(.title2)
+                        
+                        Spacer()
                     }
-                    
-                    Spacer()
+                    .padding(10)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .fill(.shadow(.drop(radius: 5, y: 5)))
+                            .foregroundStyle(Color.defaultBackground)
+                    )
                 }
+                .padding(.horizontal, 15)
             }
-            .padding(.horizontal, 15)
         }
         .navigationTitle(team.name)
     }

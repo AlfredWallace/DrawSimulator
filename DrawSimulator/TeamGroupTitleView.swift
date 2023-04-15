@@ -20,22 +20,10 @@ struct TeamGroupTitleView: View {
                 FlagLabelView(team: team)
                 
             case .pool:
-                HStack {
-                    Text("Pool")
-                    Image(systemName: "\(team.pool.lowercased()).circle.fill")
-                }
+                PoolLabelView(team: team)
                 
             case .seeding:
-                if team.seeded {
-                    Label {
-                        Text("Seeded teams")
-                    } icon: {
-                        Image(systemName: "checkmark.seal.fill")
-                            .foregroundColor(.pitchGreen)
-                    }
-                } else {
-                    Text("Unseeded teams")
-                }
+                Text("\(team.seeded ? "Seeded" : "Unseeded") teams")
                 
             default:
                 Text("Alphabetical order")
