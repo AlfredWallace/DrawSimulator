@@ -16,9 +16,14 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geoWrapper in
             NavigationStack {
-                TeamListView()
-                    .background(Color.pitchGreen.gradient)
-                    .foregroundColor(.defaultText)
+                ZStack {
+                    Rectangle()
+                        .fill(Color.pitchGreen.gradient)
+                        .ignoresSafeArea()
+                    
+                    TeamListView()
+                        .foregroundColor(.defaultText)
+                }
             }
             .environmentObject(userSettings)
             .environmentObject(geoSizeTracker)

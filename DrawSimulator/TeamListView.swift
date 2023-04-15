@@ -10,6 +10,7 @@ import SwiftUI
 struct TeamListView: View {
     
     @State private var showingGroupingDialog = false
+    @State private var showingList = true
     
     @EnvironmentObject private var userSettings: UserSettings
     
@@ -86,32 +87,35 @@ struct TeamListView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
-                ForEach(groupedTeams, id: \.self) { teams in
-                    VStack(alignment: .leading, spacing: 10) {
-                        TeamListSectionTitleView(team: teams.first!)
-                            .font(.title2.bold())
-                            .padding(.horizontal, 15)
-                        
-                        Rectangle()
-                            .fill(Color.pitchGreen)
-                            .frame(height: 2)
-                            .edgesIgnoringSafeArea(.horizontal)
-                        
-                        ForEach(teams) { team in
-                            TeamListLinkView(team: team)
+            if showingList {
+                VStack(spacing: 20) {
+                    ForEach(groupedTeams, id: \.self) { teams in
+                        VStack(alignment: .leading, spacing: 10) {
+                            TeamListSectionTitleView(team: teams.first!)
+                                .font(.title2.bold())
                                 .padding(.horizontal, 15)
+                            
+                            Rectangle()
+                                .fill(Color.pitchGreen)
+                                .frame(height: 2)
+                                .edgesIgnoringSafeArea(.horizontal)
+                            
+                            ForEach(teams) { team in
+                                TeamListLinkView(team: team)
+                                    .padding(.horizontal, 15)
+                            }
                         }
+                        .padding(.vertical, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .fill(.shadow(.drop(radius: 5, y: 5)))
+                                .foregroundStyle(Color.defaultBackground)
+                        )
                     }
-                    .padding(.vertical, 10)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .fill(.shadow(.drop(radius: 5, y: 5)))
-                            .foregroundStyle(Color.defaultBackground)
-                    )
+                    .padding(.horizontal)
                 }
+                .transition(.move(edge: .bottom))
             }
-            .padding(.horizontal)
         }
         .navigationDestination(for: Team.self) { team in
             TeamDetailView(team: team)
@@ -139,21 +143,11 @@ struct TeamListView: View {
             }
         }
         .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
-            if userSettings.grouping != .pool {
-                Button("Group by pool") { userSettings.setGrouping(.pool) }
-            }
-            
-            if userSettings.grouping != .country {
-                Button("Group by country") { userSettings.setGrouping(.country) }
-            }
-            
-            if userSettings.grouping != .seeding {
-                Button("Group by seeding") { userSettings.setGrouping(.seeding) }
-            }
-            
-            if userSettings.grouping != .none {
-                Button("Do not group") { userSettings.setGrouping(.none) }
-            }
+            GroupingDialogButtonView(grouping: .pool, showingList: $showingList)
+            GroupingDialogButtonView(grouping: .country, showingList: $showingList)
+            GroupingDialogButtonView(grouping: .seeding, showingList: $showingList)
+            GroupingDialogButtonView(grouping: .none, showingList: $showingList)
         }
     }
 }
+
