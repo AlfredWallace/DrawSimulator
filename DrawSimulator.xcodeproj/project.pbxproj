@@ -15,6 +15,7 @@
 		BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */; };
 		BA1E066329EB30E80015F4D5 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066229EB30E80015F4D5 /* DividerView.swift */; };
 		BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066429EB31640015F4D5 /* PoolLabelView.swift */; };
+		BA1E066729EB33710015F4D5 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066629EB33710015F4D5 /* CardViewModifier.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA208BF229D8667000D1EB9A /* TeamLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BF129D8667000D1EB9A /* TeamLinkView.swift */; };
 		BA3478B329C89836004F2C5A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3478B229C89836004F2C5A /* Country.swift */; };
@@ -47,6 +48,7 @@
 		BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoSizeTracker.swift; sourceTree = "<group>"; };
 		BA1E066229EB30E80015F4D5 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		BA1E066429EB31640015F4D5 /* PoolLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolLabelView.swift; sourceTree = "<group>"; };
+		BA1E066629EB33710015F4D5 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA208BF129D8667000D1EB9A /* TeamLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLinkView.swift; sourceTree = "<group>"; };
 		BA3478B229C89836004F2C5A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
 				BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */,
 				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
+				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
 				BADB61F129E297D400BD79D5 /* Views */,
 				BADB61EE29E2973900BD79D5 /* Data */,
 				BADB61ED29E296F800BD79D5 /* Assets */,
@@ -250,6 +253,7 @@
 				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
 				BA3478B329C89836004F2C5A /* Country.swift in Sources */,
 				BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */,
+				BA1E066729EB33710015F4D5 /* CardViewModifier.swift in Sources */,
 				BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */,
 				BAD652D429C74C150043865B /* Team.swift in Sources */,
 				BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */,

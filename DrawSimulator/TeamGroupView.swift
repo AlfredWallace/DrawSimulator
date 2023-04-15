@@ -24,10 +24,6 @@ struct TeamGroupView: View {
             }
         }
         .padding(.vertical, 10)
-        .background(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(.shadow(.drop(radius: 5, y: 5)))
-                .foregroundStyle(Color.defaultBackground)
-        )
+        .carded()
     }
 }
