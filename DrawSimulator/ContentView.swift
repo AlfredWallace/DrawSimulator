@@ -23,6 +23,7 @@ struct ContentView: View {
                         .foregroundColor(.defaultText)
                 }
             }
+            .tint(.defaultText)
             .environmentObject(userSettings)
             .environmentObject(geoSizeTracker)
             .preferredColorScheme(userSettings.getColorScheme())
