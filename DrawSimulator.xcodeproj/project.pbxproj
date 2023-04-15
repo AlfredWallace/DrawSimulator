@@ -149,12 +149,12 @@
 				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
 				BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */,
 				BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */,
+				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 				BA73B68829E0C63500807496 /* TeamListView.swift */,
 				BA9EA32729EAD344000E7E70 /* TeamGroupView.swift */,
 				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
 				BA208BF129D8667000D1EB9A /* TeamLinkView.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
-				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";

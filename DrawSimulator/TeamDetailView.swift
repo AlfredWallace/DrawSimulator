@@ -11,11 +11,7 @@ struct TeamDetailView: View {
     
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
-    private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.4 }
-    
-    private var flagWidth: CGFloat { geoSizeTracker.getSize().width * 0.06 }
-    private var flagHeight: CGFloat { flagWidth * 3/4 }
-    private let whiteFlagFactor = 1.3
+    private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.25 }
     
     let team: Team
     
@@ -33,7 +29,7 @@ struct TeamDetailView: View {
                         .frame(width: logoSize, height: logoSize)
                     
                     VStack {
-                        FlagLabelView(team: team)
+                        FlagLabelView(team: team, size: .large)
                     }
                     
                     Spacer()

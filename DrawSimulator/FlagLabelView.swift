@@ -10,20 +10,46 @@ import SwiftUI
 struct FlagLabelView: View {
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
-    private var flagWidth: CGFloat { geoSizeTracker.getSize().width * 0.06 }
-    private var flagHeight: CGFloat { flagWidth * 3/4 }
-    private let whiteFlagFactor = 1.3
+    enum Size {
+        case small, medium, large
+    }
     
-    let team: Team
+    private let team: Team
+    private let flagWidthFactor: CGFloat
+    private let borderFactor: CGFloat
+    private let fontSize: Font
+    
+    init(team: Team, size: Size = .small) {
+        self.team = team
+        
+        switch size {
+            case .large:
+                flagWidthFactor = 0.1
+                borderFactor = 1.2
+                fontSize = .largeTitle
+            case .medium:
+                flagWidthFactor = 0.08
+                borderFactor = 1.25
+                fontSize = .title
+            default:
+                flagWidthFactor = 0.06
+                borderFactor = 1.3
+                fontSize = .title2
+        }
+    }
+    
+    private var flagWidth: CGFloat { geoSizeTracker.getSize().width * flagWidthFactor }
+    private var flagHeight: CGFloat { flagWidth * 3/4 }
     
     var body: some View {
         Label {
             Text(SharedConstants.countries[team.countryId]!.name)
+                .font(fontSize)
         } icon: {
             ZStack {
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
                     .fill(.white)
-                    .frame(width: flagWidth * whiteFlagFactor, height: flagHeight * whiteFlagFactor)
+                    .frame(width: flagWidth * borderFactor, height: flagHeight * borderFactor)
                 
                 Image(SharedConstants.countries[team.countryId]!.name)
                     .resizable()
@@ -41,8 +67,14 @@ struct FlagLabelView_Previews: PreviewProvider {
     
     static var previews: some View {
         GeometryReader { geo in
-            FlagLabelView(team: Team.examples.first!)
-                .environmentObject(geoSizeTracker)
+            VStack {
+                FlagLabelView(team: Team.examples.first!, size: .small)
+                    .environmentObject(geoSizeTracker)
+                FlagLabelView(team: Team.examples.first!, size: .medium)
+                    .environmentObject(geoSizeTracker)
+                FlagLabelView(team: Team.examples.first!, size: .large)
+                    .environmentObject(geoSizeTracker)
+            }
         }
         .padding(20)
         .background(Color.pitchGreen)
