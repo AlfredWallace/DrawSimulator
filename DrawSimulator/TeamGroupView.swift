@@ -12,7 +12,7 @@ struct TeamGroupView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            TeamListSectionTitleView(team: teams.first!)
+            TeamGroupTitleView(team: teams.first!)
                 .font(.title2.bold())
                 .padding(.horizontal, 15)
             

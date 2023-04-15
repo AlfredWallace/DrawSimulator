@@ -1,5 +1,5 @@
 //
-//  TeamListSectionTitleView.swift
+//  TeamGroupTitleView.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 04/04/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TeamListSectionTitleView: View {
+struct TeamGroupTitleView: View {
     
     let team: Team
     
