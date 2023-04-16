@@ -14,9 +14,6 @@ struct TeamLinkView: View {
     let team: Team
     
     @EnvironmentObject private var userSettings: UserSettings
-    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
-    
-    private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.15 }
     
     private var teamName: String {
         if dynamicTypeSize > .xxxLarge {
@@ -31,10 +28,7 @@ struct TeamLinkView: View {
         NavigationLink(value: team) {
             
             HStack(alignment: .center) {
-                Image(team.name)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: logoSize, height: logoSize)
+                TeamLogoView(team: team, widthPercentage: 15)
                 
                 Text(teamName.uppercased())
                     .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))

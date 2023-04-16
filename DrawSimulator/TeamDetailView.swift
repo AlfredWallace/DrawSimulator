@@ -11,16 +11,6 @@ struct TeamDetailView: View {
     
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
-    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
-    
-    private var logoSize: CGFloat {
-        if dynamicTypeSize <= .xxxLarge {
-            return geoSizeTracker.getSize().width * 0.45
-        }
-        
-        return geoSizeTracker.getSize().width * 0.75
-    }
-    
     let team: Team
     
     var body: some View {
@@ -33,10 +23,7 @@ struct TeamDetailView: View {
                 VStack {
                     ViewThatFits {
                         HStack {
-                            Image(team.name)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: logoSize, height: logoSize)
+                            TeamLogoView(team: team, widthPercentage: 45)
                             
                             VStack {
                                 PoolLabelView(team: team)
@@ -52,10 +39,7 @@ struct TeamDetailView: View {
                         }
                         
                         VStack {
-                            Image(team.name)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: logoSize, height: logoSize)
+                            TeamLogoView(team: team, widthPercentage: 75)
                             
                             PoolLabelView(team: team)
                             
