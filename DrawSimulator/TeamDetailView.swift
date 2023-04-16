@@ -13,7 +13,13 @@ struct TeamDetailView: View {
     
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
-    private var logoSize: CGFloat { geoSizeTracker.getSize().width * 0.45 }
+    private var logoSize: CGFloat {
+        if dynamicTypeSize <= .xxxLarge {
+            return geoSizeTracker.getSize().width * 0.45
+        }
+        
+        return geoSizeTracker.getSize().width * 0.75
+    }
     
     let team: Team
     
@@ -25,13 +31,32 @@ struct TeamDetailView: View {
             
             ScrollView {
                 VStack {
-                    HStack {
-                        Image(team.name)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: logoSize, height: logoSize)
+                    ViewThatFits {
+                        HStack {
+                            Image(team.name)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: logoSize, height: logoSize)
+                            
+                            VStack {
+                                PoolLabelView(team: team)
+                                
+                                DividerView()
+                                
+                                FlagLabelView(team: team)
+                                
+                                DividerView()
+                                
+                                Text(team.seeded ? "Seeded" : "Unseeded")
+                            }
+                        }
                         
-                        VStack(alignment: .center) {
+                        VStack {
+                            Image(team.name)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: logoSize, height: logoSize)
+                            
                             PoolLabelView(team: team)
                             
                             DividerView()
@@ -40,16 +65,12 @@ struct TeamDetailView: View {
                             
                             DividerView()
                             
-                            if dynamicTypeSize <= .xxxLarge {
-                                Text(team.seeded ? "Seeded" : "Unseeded")
-                            } else {
-                                Text(team.seeded ? "1st" : "2nd")
-                            }
+                            Text(team.seeded ? "Seeded" : "Unseeded")
+                            
                         }
-                        .font(.title2)
                         
-                        Spacer()
                     }
+                    .font(.title3.bold())
                     .padding(10)
                     .carded()
                 }

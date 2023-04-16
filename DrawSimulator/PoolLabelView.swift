@@ -9,15 +9,11 @@ import SwiftUI
 
 struct PoolLabelView: View {
     
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    
     let team: Team
     
     var body: some View {
         HStack {
-            if dynamicTypeSize <= .xxxLarge {
-                Text("Pool")
-            }
+            Text("Pool")
             Image(systemName: "\(team.pool.lowercased()).circle.fill")
         }
     }
