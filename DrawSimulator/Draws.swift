@@ -16,6 +16,7 @@ class Draws: ObservableObject {
     }
     
     private(set) var pairings = [Pairing]()
+    private(set) var isRunning = false
     
     private func extractOneTeam(_ teams: inout [Team]) -> Team {
         let length = teams.count
@@ -61,8 +62,10 @@ class Draws: ObservableObject {
     }
     
     func draw(_ times: Int = 1) {
+        isRunning = true
         for _ in 0..<times {
             drawOnce()
         }
+        isRunning = false
     }
 }

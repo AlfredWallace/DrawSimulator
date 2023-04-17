@@ -104,10 +104,16 @@ struct TeamDetailView: View {
                                 
                                 Spacer()
                                 
-                                if let count = pairingCounts[opponent] {
-                                    Text("\((Float(count) / Float(drawsCount) * 100).rounded().formatted()) %")
+                                if draws.isRunning {
+                                    ProgressView()
                                 } else {
-                                    Text("no data")
+                                    
+                                    
+                                    if let count = pairingCounts[opponent] {
+                                        Text("\((Float(count) / Float(drawsCount) * 100).rounded().formatted()) %")
+                                    } else {
+                                        Text("no data")
+                                    }
                                 }
                             }
                         }
@@ -115,9 +121,37 @@ struct TeamDetailView: View {
                     .padding(15)
                     .carded()
                     
-                    Button("draw") {
-                        draws.draw(100)
+                    Group {
+                        if draws.isRunning {
+                            ProgressView()
+                        } else {
+                            Text("done")
+                        }
                     }
+                    .padding(15)
+                    .carded()
+                    
+                    Group {
+                        ProgressView()
+                    }
+                    .padding(15)
+                    .carded()
+                    
+                    Button {
+                        draws.draw(10_000)
+                    } label: {
+//                        if draws.isRunning == false {
+//                            ProgressView()
+//                        } else {
+                            Text("draw")
+                            .overlay {
+                                if draws.isRunning {
+                                    ProgressView()
+                                }
+                            }
+//                        }
+                    }
+                    .disabled(draws.isRunning)
                     .padding(15)
                     .carded()
                 }
