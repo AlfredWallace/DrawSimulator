@@ -20,6 +20,7 @@
 		BA208BF229D8667000D1EB9A /* TeamLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BF129D8667000D1EB9A /* TeamLinkView.swift */; };
 		BA3478B329C89836004F2C5A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3478B229C89836004F2C5A /* Country.swift */; };
 		BA3478B529C8989B004F2C5A /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3478B429C8989B004F2C5A /* countries.json */; };
+		BA616E6C29ED7F08003F817B /* Draws.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA616E6B29ED7F08003F817B /* Draws.swift */; };
 		BA73B68929E0C63500807496 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73B68829E0C63500807496 /* TeamListView.swift */; };
 		BA96F37129E824AC00E365FB /* Chillax.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA96F37029E824AC00E365FB /* Chillax.ttf */; };
 		BA9979F12963B42C00AF04B8 /* DrawSimulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */; };
@@ -54,6 +55,7 @@
 		BA208BF129D8667000D1EB9A /* TeamLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLinkView.swift; sourceTree = "<group>"; };
 		BA3478B229C89836004F2C5A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		BA3478B429C8989B004F2C5A /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		BA616E6B29ED7F08003F817B /* Draws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draws.swift; sourceTree = "<group>"; };
 		BA73B68829E0C63500807496 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		BA96F37029E824AC00E365FB /* Chillax.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Chillax.ttf; sourceTree = "<group>"; };
 		BA9979ED2963B42C00AF04B8 /* DrawSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,11 +109,12 @@
 				BA016390297ADB830030264F /* Info.plist */,
 				BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */,
 				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
-				BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */,
-				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
+				BA616E6B29ED7F08003F817B /* Draws.swift */,
 				BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */,
-				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
+				BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */,
 				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
+				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
+				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
 				BADB61F129E297D400BD79D5 /* Views */,
 				BADB61EE29E2973900BD79D5 /* Data */,
 				BADB61ED29E296F800BD79D5 /* Assets */,
@@ -247,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA616E6C29ED7F08003F817B /* Draws.swift in Sources */,
 				BAB1C2A029E1B724000DAFE4 /* SharedConstants.swift in Sources */,
 				BA11C43A29E973180040A4BB /* DisplayModeMenuButtonView.swift in Sources */,
 				BA9EA32829EAD344000E7E70 /* TeamGroupView.swift in Sources */,

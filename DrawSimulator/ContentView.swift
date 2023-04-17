@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
+    @StateObject private var draws = Draws()
     
     var body: some View {
         GeometryReader { geoWrapper in
@@ -26,6 +27,7 @@ struct ContentView: View {
             .tint(.defaultText)
             .environmentObject(userSettings)
             .environmentObject(geoSizeTracker)
+            .environmentObject(draws)
             .preferredColorScheme(userSettings.getColorScheme())
             .onAppear {
                 geoSizeTracker.setSize(geoWrapper.size)
