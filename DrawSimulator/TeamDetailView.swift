@@ -60,11 +60,28 @@ struct TeamDetailView: View {
             
             ScrollView {
                 VStack(spacing: 20) {
-                    ViewThatFits {
-                        HStack {
-                            TeamLogoView(team: team, widthPercentage: 45)
+                    
+                    CardView {
+                        ViewThatFits {
+                            HStack {
+                                TeamLogoView(team: team, widthPercentage: 45)
+                                
+                                VStack {
+                                    PoolLabelView(team: team)
+                                    
+                                    DividerView()
+                                    
+                                    FlagLabelView(team: team)
+                                    
+                                    DividerView()
+                                    
+                                    Text(team.seeded ? "Seeded" : "Unseeded")
+                                }
+                            }
                             
                             VStack {
+                                TeamLogoView(team: team, widthPercentage: 75)
+                                
                                 PoolLabelView(team: team)
                                 
                                 DividerView()
@@ -76,33 +93,10 @@ struct TeamDetailView: View {
                                 Text(team.seeded ? "Seeded" : "Unseeded")
                             }
                         }
-                        
-                        VStack {
-                            TeamLogoView(team: team, widthPercentage: 75)
-                            
-                            PoolLabelView(team: team)
-                            
-                            DividerView()
-                            
-                            FlagLabelView(team: team)
-                            
-                            DividerView()
-                            
-                            Text(team.seeded ? "Seeded" : "Unseeded")
-                            
-                        }
-                        
+                        .font(.title2.bold())
                     }
-                    .font(.title3.bold())
-                    .padding(10)
-                    .carded()
                     
-                    VStack {
-                        Text("Draw chances")
-                            .font(.title2.bold())
-                        
-                        DividerView()
-                        
+                    CardView(hasHeaderDivier: true) {
                         ForEach(opponents, id: \.self) { opponent in
                             HStack {
                                 TeamLogoView(team: opponent, widthPercentage: 8)
@@ -125,7 +119,10 @@ struct TeamDetailView: View {
                                 }
                             }
                         }
-                        
+                    } header: {
+                        Text("Draw chances")
+                            .font(.title2.bold())
+                    } footer: {
                         Button {
                             Task {
                                 await draws.draw(1_000)
@@ -148,8 +145,6 @@ struct TeamDetailView: View {
                         .foregroundColor(Color.defaultText)
                         .font(.title2.bold())
                     }
-                    .padding(15)
-                    .carded()
                 }
                 .padding(.horizontal, 15)
             }

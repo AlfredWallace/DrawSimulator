@@ -11,6 +11,7 @@ import SwiftUI
 struct CardViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .padding(10)
             .background(
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
                     .fill(.shadow(.drop(radius: 5, y: 5)))

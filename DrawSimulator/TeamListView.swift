@@ -90,7 +90,15 @@ struct TeamListView: View {
             if showingList {
                 VStack(spacing: 20) {
                     ForEach(groupedTeams, id: \.self) { teamGroup in
-                        TeamGroupView(teams: teamGroup)
+                        
+                        CardView(hasHeaderDivier: true) {
+                            ForEach(teamGroup) { team in
+                                TeamLinkView(team: team)
+                            }
+                        } header: {
+                            TeamGroupTitleView(team: teamGroup.first!)
+                                .font(.title2.bold())
+                        }
                     }
                 }
                 .padding(.horizontal)
