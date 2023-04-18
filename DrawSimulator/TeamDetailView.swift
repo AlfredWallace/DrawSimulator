@@ -98,9 +98,17 @@ struct TeamDetailView: View {
                     .carded()
                     
                     VStack {
+                        Text("Draw chances")
+                            .font(.title2.bold())
+                        
+                        DividerView()
+                        
                         ForEach(opponents, id: \.self) { opponent in
                             HStack {
-                                Text(opponent.name)
+                                TeamLogoView(team: opponent, widthPercentage: 8)
+                                
+                                Text(opponent.name.uppercased())
+                                    .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 16, relativeTo: .largeTitle))
                                 
                                 Spacer()
                                 
@@ -117,21 +125,28 @@ struct TeamDetailView: View {
                                 }
                             }
                         }
-                    }
-                    .padding(15)
-                    .carded()
-                
-                    
-                    Button {
-                        Task {
-                            await draws.draw(1_000)
+                        
+                        Button {
+                            Task {
+                                await draws.draw(1_000)
+                            }
+                        } label: {
+                            Spacer()
+                            if draws.isRunning {
+                                ProgressView()
+                            } else {
+                                Text("Draw")
+                            }
+                            Spacer()
                         }
-                    } label: {
-                        if draws.isRunning {
-                            ProgressView()
-                        } else {
-                            Text("draw")
-                        }
+                        .disabled(draws.isRunning)
+                        .padding(10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(draws.isRunning ? .gray : Color.pitchGreen)
+                        )
+                        .foregroundColor(Color.defaultText)
+                        .font(.title2.bold())
                     }
                     .padding(15)
                     .carded()
