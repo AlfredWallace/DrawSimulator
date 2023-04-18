@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Draws: ObservableObject {
+@MainActor class Draws: ObservableObject {
     
     struct Pairing: Hashable {
         let seededTeam: Team
@@ -15,17 +15,8 @@ class Draws: ObservableObject {
         var count: Int
     }
     
-    private(set) var pairings = [Pairing]() {
-        willSet {
-            objectWillChange.send()
-        }
-    }
-    
-    private(set) var isRunning = false {
-        willSet {
-            objectWillChange.send()
-        }
-    }
+    @Published private(set) var pairings = [Pairing]()
+    @Published private(set) var isRunning = false
     
     private func extractOneTeam(_ teams: inout [Team]) -> Team {
         let length = teams.count
@@ -69,11 +60,16 @@ class Draws: ObservableObject {
         }
     }
     
-    func draw(_ times: Int = 1) async {
+    func draw(_ times: Int = 1) {
         isRunning = true
-        for _ in 0..<times {
-            drawOnce()
+        Task {
+            await MainActor.run {
+                for _ in 0..<times {
+                    drawOnce()
+                }
+                
+                isRunning = false
+            }
         }
-        isRunning = false
     }
 }

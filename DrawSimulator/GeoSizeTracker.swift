@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GeoSizeTracker: ObservableObject {
+@MainActor class GeoSizeTracker: ObservableObject {
     private var size: CGSize?
     
     func getSize() -> CGSize {

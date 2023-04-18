@@ -125,9 +125,7 @@ struct TeamDetailView: View {
                             .font(.title2.bold())
                     } footer: {
                         Button {
-                            Task {
-                                await draws.draw(1_000)
-                            }
+                            draws.draw(10_000)
                         } label: {
                             Spacer()
                             if draws.isRunning {
