@@ -31,7 +31,7 @@ struct TeamLinkView: View {
                 TeamLogoView(team: team, widthPercentage: 15)
                 
                 Text(teamName.uppercased())
-                    .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
+                    .font(.custom(Fonts.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
                 
                 Spacer()
                 

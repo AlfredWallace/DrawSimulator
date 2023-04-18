@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613B929EEE8B8002CDE53 /* Fonts.swift */; };
 		BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0B50C229E73B6100B96D53 /* Colors.xcassets */; };
 		BA0FBA3F29EAA843003243F1 /* GroupingDialogButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */; };
 		BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43529E96B1B0040A4BB /* Flags.xcassets */; };
@@ -20,6 +21,7 @@
 		BA208BF229D8667000D1EB9A /* TeamLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BF129D8667000D1EB9A /* TeamLinkView.swift */; };
 		BA3478B329C89836004F2C5A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3478B229C89836004F2C5A /* Country.swift */; };
 		BA3478B529C8989B004F2C5A /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3478B429C8989B004F2C5A /* countries.json */; };
+		BA5ECAAD29EEE76B005DD83D /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5ECAAC29EEE76B005DD83D /* Countries.swift */; };
 		BA616E6C29ED7F08003F817B /* Draws.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA616E6B29ED7F08003F817B /* Draws.swift */; };
 		BA672D5129EEC4E50024C046 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA672D5029EEC4E50024C046 /* CardView.swift */; };
 		BA73B68929E0C63500807496 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73B68829E0C63500807496 /* TeamListView.swift */; };
@@ -28,7 +30,7 @@
 		BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9979F22963B42C00AF04B8 /* ContentView.swift */; };
 		BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F42963B42D00AF04B8 /* Assets.xcassets */; };
 		BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */; };
-		BAB1C2A029E1B724000DAFE4 /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */; };
+		BAB1C2A029E1B724000DAFE4 /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1C29F29E1B724000DAFE4 /* Teams.swift */; };
 		BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */; };
 		BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */; };
 		BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACC352829EAE23200E22E6A /* FlagLabelView.swift */; };
@@ -42,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		BA016390297ADB830030264F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BA0613B929EEE8B8002CDE53 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BA0B50C229E73B6100B96D53 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupingDialogButtonView.swift; sourceTree = "<group>"; };
 		BA11C43529E96B1B0040A4BB /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 		BA208BF129D8667000D1EB9A /* TeamLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLinkView.swift; sourceTree = "<group>"; };
 		BA3478B229C89836004F2C5A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		BA3478B429C8989B004F2C5A /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		BA5ECAAC29EEE76B005DD83D /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		BA616E6B29ED7F08003F817B /* Draws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draws.swift; sourceTree = "<group>"; };
 		BA672D5029EEC4E50024C046 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		BA73B68829E0C63500807496 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
@@ -64,7 +68,7 @@
 		BA9979F22963B42C00AF04B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA9979F42963B42D00AF04B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
+		BAB1C29F29E1B724000DAFE4 /* Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamGroupTitleView.swift; sourceTree = "<group>"; };
 		BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		BACC352829EAE23200E22E6A /* FlagLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagLabelView.swift; sourceTree = "<group>"; };
@@ -111,8 +115,6 @@
 				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
 				BA616E6B29ED7F08003F817B /* Draws.swift */,
 				BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */,
-				BAB1C29F29E1B724000DAFE4 /* SharedConstants.swift */,
-				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
 				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
 				BADB61F129E297D400BD79D5 /* Views */,
@@ -139,6 +141,7 @@
 				BA0B50C229E73B6100B96D53 /* Colors.xcassets */,
 				BA11C43729E96B620040A4BB /* Team logos.xcassets */,
 				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
+				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
 				BA96F37029E824AC00E365FB /* Chillax.ttf */,
 			);
 			name = Assets;
@@ -150,7 +153,9 @@
 				BAD652D529C74CAA0043865B /* teams.json */,
 				BA3478B429C8989B004F2C5A /* countries.json */,
 				BA3478B229C89836004F2C5A /* Country.swift */,
+				BA5ECAAC29EEE76B005DD83D /* Countries.swift */,
 				BAD652D329C74C150043865B /* Team.swift */,
+				BAB1C29F29E1B724000DAFE4 /* Teams.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -164,9 +169,10 @@
 				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
+				BA672D5029EEC4E50024C046 /* CardView.swift */,
+				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */,
 				BA73B68829E0C63500807496 /* TeamListView.swift */,
-				BA672D5029EEC4E50024C046 /* CardView.swift */,
 				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
 				BA208BF129D8667000D1EB9A /* TeamLinkView.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
@@ -251,11 +257,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA616E6C29ED7F08003F817B /* Draws.swift in Sources */,
-				BAB1C2A029E1B724000DAFE4 /* SharedConstants.swift in Sources */,
+				BAB1C2A029E1B724000DAFE4 /* Teams.swift in Sources */,
 				BA11C43A29E973180040A4BB /* DisplayModeMenuButtonView.swift in Sources */,
 				BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */,
 				BA1E066329EB30E80015F4D5 /* DividerView.swift in Sources */,
 				BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */,
+				BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */,
 				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
 				BA3478B329C89836004F2C5A /* Country.swift in Sources */,
 				BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */,
@@ -272,6 +279,7 @@
 				BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */,
 				BA208BF229D8667000D1EB9A /* TeamLinkView.swift in Sources */,
 				BA672D5129EEC4E50024C046 /* CardView.swift in Sources */,
+				BA5ECAAD29EEE76B005DD83D /* Countries.swift in Sources */,
 				BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -35,8 +35,8 @@ class Draws: ObservableObject {
     private func drawOnce() {
         
         // we will always pick a seeded team then pair it with an unseeded team (UEFA rule): this eliminates some complexity of the algorithm
-        var seededTeams = SharedConstants.teams.filter({ $0.seeded })
-        var unseededTeams = SharedConstants.teams.filter({ !$0.seeded })
+        var seededTeams = Teams.data.filter({ $0.seeded })
+        var unseededTeams = Teams.data.filter({ !$0.seeded })
         
         while seededTeams.isEmpty == false {
             let seededTeam = extractOneTeam(&seededTeams)

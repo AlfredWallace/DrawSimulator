@@ -16,7 +16,7 @@ struct TeamDetailView: View {
     let team: Team
     
     private var opponents: [Team] {
-        SharedConstants.teams.filter { opponent in
+        Teams.data.filter { opponent in
             opponent.seeded != team.seeded
             && opponent.countryId != team.countryId
             && opponent.pool != team.pool
@@ -102,7 +102,7 @@ struct TeamDetailView: View {
                                 TeamLogoView(team: opponent, widthPercentage: 8)
                                 
                                 Text(opponent.name.uppercased())
-                                    .font(.custom(SharedConstants.Chillax.bold.rawValue, size: 16, relativeTo: .largeTitle))
+                                    .font(.custom(Fonts.Chillax.bold.rawValue, size: 16, relativeTo: .largeTitle))
                                 
                                 Spacer()
                                 
@@ -110,11 +110,12 @@ struct TeamDetailView: View {
                                     ProgressView()
                                 } else {
                                     
-                                    
                                     if let count = pairingCounts[opponent] {
                                         Text("\((Float(count) / Float(drawsCount) * 100).rounded().formatted()) %")
+                                            .font(.custom(Fonts.Chillax.bold.rawValue, size: 16, relativeTo: .largeTitle))
                                     } else {
                                         Text("no data")
+                                            .font(.custom(Fonts.Chillax.bold.rawValue, size: 16, relativeTo: .largeTitle))
                                     }
                                 }
                             }
@@ -156,7 +157,7 @@ struct TeamDetailView: View {
 struct TeamDetailView_Previews: PreviewProvider {
     static let geo = GeoSizeTracker()
     static let draws = Draws()
-    static let teams = SharedConstants.teams
+    static let teams = Teams.data
     
     static var previews: some View {
         NavigationStack {

@@ -19,14 +19,14 @@ struct FlagLabelView: View {
     
     var body: some View {
         Label {
-            Text(SharedConstants.countries[team.countryId]!.name)
+            Text(Countries.data[team.countryId]!.name)
         } icon: {
             ZStack {
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
                     .fill(.white)
                     .frame(width: flagWidth * borderFactor, height: flagHeight * borderFactor)
                 
-                Image(SharedConstants.countries[team.countryId]!.name)
+                Image(Countries.data[team.countryId]!.name)
                     .resizable()
                     .scaledToFill()
                     .frame(width: flagWidth, height: flagHeight)

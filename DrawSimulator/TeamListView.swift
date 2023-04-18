@@ -28,7 +28,7 @@ struct TeamListView: View {
     }
     
     private var teamsGroupedByPool: [[Team]] {
-        Array(Dictionary(grouping: SharedConstants.teams, by: { $0.pool }).values).sorted {
+        Array(Dictionary(grouping: Teams.data, by: { $0.pool }).values).sorted {
             $0[0].pool < $1[0].pool
         }
     }
@@ -36,14 +36,14 @@ struct TeamListView: View {
     private var teamsGroupedByCountry: [[Team]] {
         
         // first we sort teams by name so that they appear sorted by name in each subarrays after the grouping
-        let teamsByName = SharedConstants.teams.sorted {
+        let teamsByName = Teams.data.sorted {
             $0.name < $1.name
         }
         
         // then we group teams by contry, and sort the groups by number of teams then country name
         return Array(Dictionary(grouping: teamsByName, by: { $0.countryId }).values).sorted { lhs, rhs in
             if lhs.count == rhs.count {
-                return SharedConstants.countries[lhs[0].countryId]!.name < SharedConstants.countries[rhs[0].countryId]!.name
+                return Countries.data[lhs[0].countryId]!.name < Countries.data[rhs[0].countryId]!.name
             }
             
             return lhs.count > rhs.count
@@ -54,7 +54,7 @@ struct TeamListView: View {
     private var teamsGroupedBySeeding: [[Team]] {
         
         // first we sort teams by name so that they appear sorted by name in each subarrays after the grouping
-        let teamsByName = SharedConstants.teams.sorted {
+        let teamsByName = Teams.data.sorted {
             $0.name < $1.name
         }
         
@@ -65,7 +65,7 @@ struct TeamListView: View {
     private var teamsUngrouped: [[Team]] {
         var result = [[Team]]()
         
-        result.append(SharedConstants.teams.sorted {
+        result.append(Teams.data.sorted {
             $0.name < $1.name
         })
         
