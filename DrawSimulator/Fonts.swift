@@ -16,4 +16,27 @@ class Fonts {
         case boldSemibold = "ChillaxVariable-Bold_Semibold"
         case bold = "ChillaxVariable-Bold"
     }
+    
+    enum MajorMono: String {
+        case regular = "MajorMonoDisplay-Regular"
+    }
+    
+    enum SourceCodePro: String {
+        case romanRegular = "SourceCodeProRoman-Regular"
+        case italicRegular = "SourceCodeProItalic-Regular"
+        case romanExtraLight = "SourceCodeRoman-ExtraLight"
+        case italicExtraLight = "SourceCodeItalic-ExtraLightItalic"
+        case romanLight = "SourceCodeProRoman-Light"
+        case italicLight = "SourceCodeProItalic-Light"
+        case romanMedium = "SourceCodeProRoman-Medium"
+        case italicMedium = "SourceCodeProItalic-Medium"
+        case romanSemiBold = "SourceCodeProRoman-SemiBold"
+        case italicSemiBold = "SourceCodeProItalic-SemiBold"
+        case romanBold = "SourceCodeProRoman-Bold"
+        case italicBold = "SourceCodeProItalic-Bold"
+        case romanExtraBold = "SourceCodeProRoman-ExtraBold"
+        case italicExtraBold = "SourceCodeProItalic-ExtraBold"
+        case romanBlack = "SourceCodeProRoman-Black"
+        case italicBlack = "SourceCodeProItalic-Black"
+    }
 }

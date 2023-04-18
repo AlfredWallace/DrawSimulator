@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613B929EEE8B8002CDE53 /* Fonts.swift */; };
+		BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */; };
+		BA0613C029EF4568002CDE53 /* MajorMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA0613BE29EF4568002CDE53 /* MajorMono.ttf */; };
+		BA0613C129EF4568002CDE53 /* MajorMono Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613BF29EF4568002CDE53 /* MajorMono Licence.txt */; };
+		BA0613C529EF4854002CDE53 /* SourceCodePro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA0613C229EF4854002CDE53 /* SourceCodePro-Italic.ttf */; };
+		BA0613C629EF4854002CDE53 /* SourceCodePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */; };
+		BA0613C729EF4854002CDE53 /* SourceCodePro Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */; };
+		BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */; };
 		BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0B50C229E73B6100B96D53 /* Colors.xcassets */; };
 		BA0FBA3F29EAA843003243F1 /* GroupingDialogButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */; };
 		BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43529E96B1B0040A4BB /* Flags.xcassets */; };
@@ -45,6 +52,13 @@
 /* Begin PBXFileReference section */
 		BA016390297ADB830030264F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA0613B929EEE8B8002CDE53 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Chillax Licence.txt"; sourceTree = "<group>"; };
+		BA0613BE29EF4568002CDE53 /* MajorMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MajorMono.ttf; sourceTree = "<group>"; };
+		BA0613BF29EF4568002CDE53 /* MajorMono Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MajorMono Licence.txt"; sourceTree = "<group>"; };
+		BA0613C229EF4854002CDE53 /* SourceCodePro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Italic.ttf"; sourceTree = "<group>"; };
+		BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceCodePro.ttf; sourceTree = "<group>"; };
+		BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SourceCodePro Licence.txt"; sourceTree = "<group>"; };
+		BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTypeStack.swift; sourceTree = "<group>"; };
 		BA0B50C229E73B6100B96D53 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupingDialogButtonView.swift; sourceTree = "<group>"; };
 		BA11C43529E96B1B0040A4BB /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
@@ -91,6 +105,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA0613BB29EF4463002CDE53 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
+			);
+			name = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		BA9979E42963B42C00AF04B8 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +140,7 @@
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
 				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
 				BADB61F129E297D400BD79D5 /* Views */,
+				BA0613BB29EF4463002CDE53 /* ViewModifiers */,
 				BADB61EE29E2973900BD79D5 /* Data */,
 				BADB61ED29E296F800BD79D5 /* Assets */,
 				BA9979F62963B42D00AF04B8 /* Preview Content */,
@@ -143,6 +166,12 @@
 				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
 				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
 				BA96F37029E824AC00E365FB /* Chillax.ttf */,
+				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
+				BA0613BE29EF4568002CDE53 /* MajorMono.ttf */,
+				BA0613BF29EF4568002CDE53 /* MajorMono Licence.txt */,
+				BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */,
+				BA0613C229EF4854002CDE53 /* SourceCodePro-Italic.ttf */,
+				BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -164,13 +193,13 @@
 			isa = PBXGroup;
 			children = (
 				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
+				BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */,
 				BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */,
 				BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */,
 				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
 				BA672D5029EEC4E50024C046 /* CardView.swift */,
-				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */,
 				BA73B68829E0C63500807496 /* TeamListView.swift */,
 				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
@@ -238,12 +267,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA0613C729EF4854002CDE53 /* SourceCodePro Licence.txt in Resources */,
 				BA96F37129E824AC00E365FB /* Chillax.ttf in Resources */,
+				BA0613C129EF4568002CDE53 /* MajorMono Licence.txt in Resources */,
+				BA0613C029EF4568002CDE53 /* MajorMono.ttf in Resources */,
 				BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */,
 				BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */,
+				BA0613C629EF4854002CDE53 /* SourceCodePro.ttf in Resources */,
+				BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */,
 				BAD652D629C74CAB0043865B /* teams.json in Resources */,
 				BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */,
 				BA3478B529C8989B004F2C5A /* countries.json in Resources */,
+				BA0613C529EF4854002CDE53 /* SourceCodePro-Italic.ttf in Resources */,
 				BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */,
 				BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */,
 			);
@@ -272,6 +307,7 @@
 				BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */,
 				BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */,
 				BA73B68929E0C63500807496 /* TeamListView.swift in Sources */,
+				BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */,
 				BA0FBA3F29EAA843003243F1 /* GroupingDialogButtonView.swift in Sources */,
 				BAE3BCB629EBDB2300C32416 /* TeamLogoView.swift in Sources */,
 				BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */,

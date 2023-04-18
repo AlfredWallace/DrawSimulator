@@ -52,6 +52,16 @@ struct TeamDetailView: View {
         }
     }
     
+    private func getOpponentPercentageString(for opponent: Team) -> String {
+        let suffix = "%"
+        
+        if let count = pairingCounts[opponent] {
+            return "\((Float(count) / Float(drawsCount) * 100).rounded().formatted()) \(suffix)"
+        }
+        
+        return "? \(suffix)"
+    }
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -62,26 +72,10 @@ struct TeamDetailView: View {
                 VStack(spacing: 20) {
                     
                     CardView {
-                        ViewThatFits {
-                            HStack {
-                                TeamLogoView(team: team, widthPercentage: 45)
-                                
-                                VStack {
-                                    PoolLabelView(team: team)
-                                    
-                                    DividerView()
-                                    
-                                    FlagLabelView(team: team)
-                                    
-                                    DividerView()
-                                    
-                                    Text(team.seeded ? "Seeded" : "Unseeded")
-                                }
-                            }
+                        DynamicTypeStack(.accessibility2) {
+                            TeamLogoView(team: team, widthPercentage: dynamicTypeSize >= .accessibility2 ? 75 : 45)
                             
                             VStack {
-                                TeamLogoView(team: team, widthPercentage: 75)
-                                
                                 PoolLabelView(team: team)
                                 
                                 DividerView()
@@ -97,27 +91,25 @@ struct TeamDetailView: View {
                     }
                     
                     CardView(hasHeaderDivier: true) {
-                        ForEach(opponents, id: \.self) { opponent in
-                            HStack {
-                                TeamLogoView(team: opponent, widthPercentage: 8)
-                                
-                                Text(opponent.name.uppercased())
-                                    .font(.custom(Fonts.Chillax.bold.rawValue, size: 16, relativeTo: .largeTitle))
-                                
-                                Spacer()
-                                
-                                if draws.isRunning {
-                                    ProgressView()
-                                } else {
+                        VStack(spacing: 8) {
+                            ForEach(opponents, id: \.self) { opponent in
+                                HStack {
+                                    TeamLogoView(team: opponent, widthPercentage: 8)
                                     
-                                    if let count = pairingCounts[opponent] {
-                                        Text("\((Float(count) / Float(drawsCount) * 100).rounded().formatted()) %")
-                                            .font(.custom(Fonts.Chillax.bold.rawValue, size: 16, relativeTo: .largeTitle))
+                                    Text((dynamicTypeSize >= .accessibility2 ? opponent.shortName : opponent.name).uppercased())
+                                        .font(.custom(Fonts.Chillax.bold.rawValue, size: 20, relativeTo: .largeTitle))
+                                    
+                                    Spacer()
+                                    
+                                    if draws.isRunning {
+                                        ProgressView()
                                     } else {
-                                        Text("no data")
-                                            .font(.custom(Fonts.Chillax.bold.rawValue, size: 16, relativeTo: .largeTitle))
+                                        Text(getOpponentPercentageString(for: opponent))
+                                            .font(.custom(Fonts.SourceCodePro.romanBold.rawValue, size: 22, relativeTo: .largeTitle))
                                     }
                                 }
+                                
+                                Divider()
                             }
                         }
                     } header: {
@@ -127,13 +119,8 @@ struct TeamDetailView: View {
                         Button {
                             draws.draw(10_000)
                         } label: {
-                            Spacer()
-                            if draws.isRunning {
-                                ProgressView()
-                            } else {
-                                Text("Draw")
-                            }
-                            Spacer()
+                            Text("Draw")
+                                .frame(maxWidth: .infinity)
                         }
                         .disabled(draws.isRunning)
                         .padding(10)
