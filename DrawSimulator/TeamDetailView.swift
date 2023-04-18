@@ -158,3 +158,16 @@ struct TeamDetailView: View {
     }
 }
 
+struct TeamDetailView_Previews: PreviewProvider {
+    static let geo = GeoSizeTracker()
+    static let draws = Draws()
+    static let teams = SharedConstants.teams
+    
+    static var previews: some View {
+        NavigationStack {
+            TeamDetailView(team: teams.first!)
+                .environmentObject(geo)
+                .environmentObject(draws)
+        }
+    }
+}
