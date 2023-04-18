@@ -15,7 +15,7 @@ struct TeamGroupTitleView: View {
     
     var body: some View {
         
-        switch userSettings.grouping {
+        switch userSettings.data.grouping {
             case .country:
                 FlagLabelView(team: team)
                 

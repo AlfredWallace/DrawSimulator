@@ -15,7 +15,7 @@ struct TeamListView: View {
     @EnvironmentObject private var userSettings: UserSettings
     
     private var groupingLabelStrings: (title: String, icon: String) {
-        switch userSettings.grouping {
+        switch userSettings.data.grouping {
             case .country:
                 return ("Grouped by country", "flag")
             case .pool:
@@ -73,7 +73,7 @@ struct TeamListView: View {
     }
     
     private var groupedTeams: [[Team]] {
-        switch userSettings.grouping {
+        switch userSettings.data.grouping {
             case .country:
                 return teamsGroupedByCountry
             case .pool:

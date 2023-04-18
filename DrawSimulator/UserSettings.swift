@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import UIKit.UITraitCollection
 import SwiftUI
 
-class UserSettings: ObservableObject, Codable {
+
+@MainActor class UserSettings: ObservableObject {
     
     private static let savePath = FileManager.documentsDirectory.appendingPathComponent("userSettings.json")
     
@@ -21,25 +21,27 @@ class UserSettings: ObservableObject, Codable {
         case light, dark, system
     }
     
-    private(set) var grouping: Grouping
-    private(set) var displayMode: DisplayMode
+    struct SettingsToSave: Codable {
+        var grouping: Grouping
+        var displayMode: DisplayMode
+    }
+    
+    @Published private(set) var data: SettingsToSave
     
     func setGrouping(_ grouping: Grouping) {
-        objectWillChange.send()
-        self.grouping = grouping
+        data.grouping = grouping
         save()
     }
     
     func setDisplayMode(_ displayMode: DisplayMode) {
-        objectWillChange.send()
-        self.displayMode = displayMode
+        data.displayMode = displayMode
         save()
     }
     
     func getDisplayModeIconName(for displayMode: DisplayMode? = nil) -> String {
         
         // If no argument is provided, we call the same function with the user defined value
-        if displayMode == nil { return getDisplayModeIconName(for: self.displayMode) }
+        if displayMode == nil { return getDisplayModeIconName(for: data.displayMode) }
         
         if displayMode == .light { return "sun.max" }
         
@@ -50,9 +52,9 @@ class UserSettings: ObservableObject, Codable {
     
     func getColorScheme() -> ColorScheme? {
         
-        if displayMode == .light { return .light }
+        if data.displayMode == .light { return .light }
         
-        if displayMode == .dark { return .dark }
+        if data.displayMode == .dark { return .dark }
         
         return nil
     }
@@ -60,18 +62,16 @@ class UserSettings: ObservableObject, Codable {
     init() {
         do {
             let contents = try Data(contentsOf: Self.savePath)
-            let decoded = try JSONDecoder().decode(UserSettings.self, from: contents)
-            grouping = decoded.grouping
-            displayMode = decoded.displayMode
+            let decoded = try JSONDecoder().decode(SettingsToSave.self, from: contents)
+            data = SettingsToSave(grouping: decoded.grouping, displayMode: decoded.displayMode)
         } catch {
-            grouping = Grouping.pool
-            displayMode = DisplayMode.system
+            data = SettingsToSave(grouping: Grouping.pool, displayMode: DisplayMode.system)
         }
     }
     
     private func save() {
         do {
-            let encoded = try JSONEncoder().encode(self)
+            let encoded = try JSONEncoder().encode(data)
             try encoded.write(to: Self.savePath, options: [.atomicWrite, .completeFileProtection])
         } catch {
             print("Unable to save user settings: \(error.localizedDescription)")
