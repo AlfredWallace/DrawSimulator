@@ -71,11 +71,9 @@ class Draws: ObservableObject {
     
     func draw(_ times: Int = 1) async {
         isRunning = true
-        print(isRunning)
         for _ in 0..<times {
             drawOnce()
         }
         isRunning = false
-        print(isRunning)
     }
 }
