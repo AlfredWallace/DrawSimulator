@@ -15,8 +15,17 @@ class Draws: ObservableObject {
         var count: Int
     }
     
-    private(set) var pairings = [Pairing]()
-    private(set) var isRunning = false
+    private(set) var pairings = [Pairing]() {
+        willSet {
+            objectWillChange.send()
+        }
+    }
+    
+    private(set) var isRunning = false {
+        willSet {
+            objectWillChange.send()
+        }
+    }
     
     private func extractOneTeam(_ teams: inout [Team]) -> Team {
         let length = teams.count
@@ -24,7 +33,6 @@ class Draws: ObservableObject {
     }
     
     private func drawOnce() {
-        objectWillChange.send()
         
         // we will always pick a seeded team then pair it with an unseeded team (UEFA rule): this eliminates some complexity of the algorithm
         var seededTeams = SharedConstants.teams.filter({ $0.seeded })
@@ -61,11 +69,13 @@ class Draws: ObservableObject {
         }
     }
     
-    func draw(_ times: Int = 1) {
+    func draw(_ times: Int = 1) async {
         isRunning = true
+        print(isRunning)
         for _ in 0..<times {
             drawOnce()
         }
         isRunning = false
+        print(isRunning)
     }
 }

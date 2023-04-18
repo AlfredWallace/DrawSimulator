@@ -120,38 +120,19 @@ struct TeamDetailView: View {
                     }
                     .padding(15)
                     .carded()
+                
                     
-                    Group {
+                    Button {
+                        Task {
+                            await draws.draw(1_000)
+                        }
+                    } label: {
                         if draws.isRunning {
                             ProgressView()
                         } else {
-                            Text("done")
+                            Text("draw")
                         }
                     }
-                    .padding(15)
-                    .carded()
-                    
-                    Group {
-                        ProgressView()
-                    }
-                    .padding(15)
-                    .carded()
-                    
-                    Button {
-                        draws.draw(10_000)
-                    } label: {
-//                        if draws.isRunning == false {
-//                            ProgressView()
-//                        } else {
-                            Text("draw")
-                            .overlay {
-                                if draws.isRunning {
-                                    ProgressView()
-                                }
-                            }
-//                        }
-                    }
-                    .disabled(draws.isRunning)
                     .padding(15)
                     .carded()
                 }
