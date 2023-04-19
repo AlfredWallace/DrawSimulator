@@ -117,7 +117,7 @@ struct TeamDetailView: View {
                             .font(.title2.bold())
                     } footer: {
                         Button {
-                            draws.draw(10_000)
+                            draws.draw(100_000)
                         } label: {
                             Text("Draw")
                                 .frame(maxWidth: .infinity)
