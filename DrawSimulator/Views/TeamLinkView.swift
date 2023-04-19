@@ -9,31 +9,24 @@ import SwiftUI
 
 struct TeamLinkView: View {
     
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    
     let team: Team
     
     @EnvironmentObject private var userSettings: UserSettings
-    
-    private var teamName: String {
-        if dynamicTypeSize > .xxxLarge {
-            return team.shortName
-        }
-        
-        return team.name
-    }
     
     var body: some View {
         
         NavigationLink(value: team) {
             
-            HStack(alignment: .center) {
-                TeamLogoView(team: team, widthPercentage: 15)
-                
-                Text(teamName.uppercased())
-                    .font(.custom(Fonts.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
-                
-                Spacer()
+            HStack {
+                ScrollView(.horizontal) {
+                    HStack {
+                        TeamLogoView(team: team, widthPercentage: 15)
+                        
+                        Text(team.name.uppercased())
+                            .font(.custom(Fonts.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
+                    }
+                }
+                .scrollIndicators(.hidden)
                 
                 Image(systemName: "chevron.forward")
             }
