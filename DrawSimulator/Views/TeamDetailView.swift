@@ -94,12 +94,16 @@ struct TeamDetailView: View {
                         VStack(spacing: 8) {
                             ForEach(opponents, id: \.self) { opponent in
                                 HStack {
-                                    TeamLogoView(team: opponent, widthPercentage: 8)
-                                    
-                                    Text((dynamicTypeSize >= .accessibility2 ? opponent.shortName : opponent.name).uppercased())
-                                        .font(.custom(Fonts.Chillax.bold.rawValue, size: 20, relativeTo: .largeTitle))
-                                    
-                                    Spacer()
+                                    ScrollView(.horizontal) {
+                                        HStack {
+                                            TeamLogoView(team: opponent, widthPercentage: 10)
+                                            
+                                            Text(opponent.name.uppercased())
+                                                .font(.custom(Fonts.Chillax.bold.rawValue, size: 22, relativeTo: .largeTitle))
+                                        }
+                                    }
+                                    .scrollIndicators(.hidden)
+                                    .padding(.trailing, 10)
                                     
                                     if draws.isRunning {
                                         ProgressView()
