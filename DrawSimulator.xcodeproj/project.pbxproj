@@ -15,6 +15,7 @@
 		BA0613C629EF4854002CDE53 /* SourceCodePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */; };
 		BA0613C729EF4854002CDE53 /* SourceCodePro Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */; };
 		BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */; };
+		BA0613CB29F017A9002CDE53 /* ButtonProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */; };
 		BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0B50C229E73B6100B96D53 /* Colors.xcassets */; };
 		BA0FBA3F29EAA843003243F1 /* GroupingDialogButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */; };
 		BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43529E96B1B0040A4BB /* Flags.xcassets */; };
@@ -59,6 +60,7 @@
 		BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceCodePro.ttf; sourceTree = "<group>"; };
 		BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SourceCodePro Licence.txt"; sourceTree = "<group>"; };
 		BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTypeStack.swift; sourceTree = "<group>"; };
+		BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonProgressStyle.swift; sourceTree = "<group>"; };
 		BA0B50C229E73B6100B96D53 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupingDialogButtonView.swift; sourceTree = "<group>"; };
 		BA11C43529E96B1B0040A4BB /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
@@ -105,12 +107,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA0613BB29EF4463002CDE53 /* ViewModifiers */ = {
+		BA0613BB29EF4463002CDE53 /* ViewUtils */ = {
 			isa = PBXGroup;
 			children = (
 				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
+				BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */,
 			);
-			name = ViewModifiers;
+			name = ViewUtils;
 			sourceTree = "<group>";
 		};
 		BA9979E42963B42C00AF04B8 = {
@@ -140,7 +143,7 @@
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
 				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
 				BADB61F129E297D400BD79D5 /* Views */,
-				BA0613BB29EF4463002CDE53 /* ViewModifiers */,
+				BA0613BB29EF4463002CDE53 /* ViewUtils */,
 				BADB61EE29E2973900BD79D5 /* Data */,
 				BADB61ED29E296F800BD79D5 /* Assets */,
 				BA9979F62963B42D00AF04B8 /* Preview Content */,
@@ -315,6 +318,7 @@
 				BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */,
 				BA208BF229D8667000D1EB9A /* TeamLinkView.swift in Sources */,
 				BA672D5129EEC4E50024C046 /* CardView.swift in Sources */,
+				BA0613CB29F017A9002CDE53 /* ButtonProgressStyle.swift in Sources */,
 				BA5ECAAD29EEE76B005DD83D /* Countries.swift in Sources */,
 				BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */,
 			);

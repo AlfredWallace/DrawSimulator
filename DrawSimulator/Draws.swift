@@ -17,14 +17,17 @@ import Foundation
     
     @Published private(set) var pairings = [Pairing]()
     @Published private(set) var isRunning = false
+    @Published var progress = 0.0
+    static let numberOfDraws = 10_000
     
     private func extractOneTeam(_ teams: inout [Team]) -> Team {
         let length = teams.count
         return teams.remove(at: Int.random(in: 0..<length))
     }
     
-    func draw(_ times: Int = 1) {
+    func draw(_ times: Int = numberOfDraws) {
         isRunning = true
+        progress = 0.0
         
         Task.detached {
             
@@ -36,6 +39,10 @@ import Foundation
                 var seededTeams = Teams.data.filter({ $0.seeded })
                 var unseededTeams = Teams.data.filter({ !$0.seeded })
                 var localPairings = [(seededTeam: Team, unseededTeam: Team)]()
+                
+                await MainActor.run {
+                    self.progress += 1.0
+                }
                 
                 while seededTeams.isEmpty == false {
                     

@@ -116,20 +116,25 @@ struct TeamDetailView: View {
                         Text("Draw chances")
                             .font(.title2.bold())
                     } footer: {
-                        Button {
-                            draws.draw(100_000)
-                        } label: {
-                            Text("Draw")
-                                .frame(maxWidth: .infinity)
+                        if draws.isRunning {
+                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                                .progressViewStyle(ButtonProgressStyle())
+                        } else {
+                            Button {
+                                draws.draw()
+                            } label: {
+                                Text("Draw")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .disabled(draws.isRunning)
+                            .padding(10)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(draws.isRunning ? .gray : Color.pitchGreen)
+                            )
+                            .foregroundColor(Color.defaultText)
+                            .font(.title2.bold())
                         }
-                        .disabled(draws.isRunning)
-                        .padding(10)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(draws.isRunning ? .gray : Color.pitchGreen)
-                        )
-                        .foregroundColor(Color.defaultText)
-                        .font(.title2.bold())
                     }
                 }
                 .padding(.horizontal, 15)
