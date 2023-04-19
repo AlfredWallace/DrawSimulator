@@ -9,7 +9,9 @@ import Foundation
 
 @MainActor class Draws: ObservableObject {
     
-    struct Pairing: Hashable {
+    private static let savePath = FileManager.documentsDirectory.appendingPathComponent("draws.json")
+    
+    struct Pairing: Hashable, Codable {
         let seededTeam: Team
         let unseededTeam: Team
         var count: Int
@@ -89,7 +91,26 @@ import Foundation
             await MainActor.run { [pairings] in
                 self.isRunning = false
                 self.pairings = pairings
+                self.save()
             }
+        }
+    }
+    
+    init() {
+        do {
+            let contents = try Data(contentsOf: Self.savePath)
+            pairings = try JSONDecoder().decode([Pairing].self, from: contents)
+        } catch {
+            pairings = []
+        }
+    }
+    
+    private func save() {
+        do {
+            let encoded = try JSONEncoder().encode(pairings)
+            try encoded.write(to: Self.savePath, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print("Unable to save the draws: \(error.localizedDescription)")
         }
     }
 }
