@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613B929EEE8B8002CDE53 /* Fonts.swift */; };
 		BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */; };
-		BA0613C029EF4568002CDE53 /* MajorMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA0613BE29EF4568002CDE53 /* MajorMono.ttf */; };
-		BA0613C129EF4568002CDE53 /* MajorMono Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613BF29EF4568002CDE53 /* MajorMono Licence.txt */; };
-		BA0613C529EF4854002CDE53 /* SourceCodePro-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA0613C229EF4854002CDE53 /* SourceCodePro-Italic.ttf */; };
-		BA0613C629EF4854002CDE53 /* SourceCodePro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */; };
-		BA0613C729EF4854002CDE53 /* SourceCodePro Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */; };
 		BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */; };
 		BA0613CB29F017A9002CDE53 /* ButtonProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */; };
 		BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0B50C229E73B6100B96D53 /* Colors.xcassets */; };
@@ -48,17 +43,16 @@
 		BAE3BCB629EBDB2300C32416 /* TeamLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */; };
 		BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* UserSettings.swift */; };
 		BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */; };
+		BAF749FB29F0831500430C23 /* Satoshi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAF749F929F0831500430C23 /* Satoshi.ttf */; };
+		BAF749FC29F0831500430C23 /* Satoshi License.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FA29F0831500430C23 /* Satoshi License.txt */; };
+		BAF749FF29F084E900430C23 /* Overpass Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FD29F084E900430C23 /* Overpass Licence.txt */; };
+		BAF74A0029F084E900430C23 /* Overpass.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FE29F084E900430C23 /* Overpass.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA016390297ADB830030264F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA0613B929EEE8B8002CDE53 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Chillax Licence.txt"; sourceTree = "<group>"; };
-		BA0613BE29EF4568002CDE53 /* MajorMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MajorMono.ttf; sourceTree = "<group>"; };
-		BA0613BF29EF4568002CDE53 /* MajorMono Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "MajorMono Licence.txt"; sourceTree = "<group>"; };
-		BA0613C229EF4854002CDE53 /* SourceCodePro-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Italic.ttf"; sourceTree = "<group>"; };
-		BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceCodePro.ttf; sourceTree = "<group>"; };
-		BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SourceCodePro Licence.txt"; sourceTree = "<group>"; };
 		BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTypeStack.swift; sourceTree = "<group>"; };
 		BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonProgressStyle.swift; sourceTree = "<group>"; };
 		BA0B50C229E73B6100B96D53 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -94,6 +88,10 @@
 		BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLogoView.swift; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		BAF749F929F0831500430C23 /* Satoshi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Satoshi.ttf; sourceTree = "<group>"; };
+		BAF749FA29F0831500430C23 /* Satoshi License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Satoshi License.txt"; sourceTree = "<group>"; };
+		BAF749FD29F084E900430C23 /* Overpass Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Overpass Licence.txt"; sourceTree = "<group>"; };
+		BAF749FE29F084E900430C23 /* Overpass.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Overpass.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,11 +116,10 @@
 				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
 				BA96F37029E824AC00E365FB /* Chillax.ttf */,
 				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
-				BA0613BE29EF4568002CDE53 /* MajorMono.ttf */,
-				BA0613BF29EF4568002CDE53 /* MajorMono Licence.txt */,
-				BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */,
-				BA0613C229EF4854002CDE53 /* SourceCodePro-Italic.ttf */,
-				BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */,
+				BAF749FE29F084E900430C23 /* Overpass.ttf */,
+				BAF749FD29F084E900430C23 /* Overpass Licence.txt */,
+				BAF749F929F0831500430C23 /* Satoshi.ttf */,
+				BAF749FA29F0831500430C23 /* Satoshi License.txt */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -270,20 +267,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0613C729EF4854002CDE53 /* SourceCodePro Licence.txt in Resources */,
+				BAF749FB29F0831500430C23 /* Satoshi.ttf in Resources */,
 				BA96F37129E824AC00E365FB /* Chillax.ttf in Resources */,
-				BA0613C129EF4568002CDE53 /* MajorMono Licence.txt in Resources */,
-				BA0613C029EF4568002CDE53 /* MajorMono.ttf in Resources */,
 				BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */,
 				BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */,
-				BA0613C629EF4854002CDE53 /* SourceCodePro.ttf in Resources */,
 				BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */,
 				BAD652D629C74CAB0043865B /* teams.json in Resources */,
+				BAF749FF29F084E900430C23 /* Overpass Licence.txt in Resources */,
 				BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */,
 				BA3478B529C8989B004F2C5A /* countries.json in Resources */,
-				BA0613C529EF4854002CDE53 /* SourceCodePro-Italic.ttf in Resources */,
+				BAF74A0029F084E900430C23 /* Overpass.ttf in Resources */,
 				BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */,
 				BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */,
+				BAF749FC29F0831500430C23 /* Satoshi License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

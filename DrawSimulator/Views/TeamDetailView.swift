@@ -21,6 +21,9 @@ struct TeamDetailView: View {
             && opponent.countryId != team.countryId
             && opponent.pool != team.pool
         }
+        .sorted {
+            $0.name < $1.name
+        }
     }
     
     private var pairingCounts: [Team: Int] {
@@ -91,15 +94,15 @@ struct TeamDetailView: View {
                     }
                     
                     CardView(hasHeaderDivier: true) {
-                        VStack(spacing: 8) {
+                        VStack(spacing: 0) {
                             ForEach(opponents, id: \.self) { opponent in
                                 HStack {
                                     ScrollView(.horizontal) {
                                         HStack {
-                                            TeamLogoView(team: opponent, widthPercentage: 10)
+                                            TeamLogoView(team: opponent, widthPercentage: 12)
                                             
                                             Text(opponent.name.uppercased())
-                                                .font(.custom(Fonts.Chillax.bold.rawValue, size: 22, relativeTo: .largeTitle))
+                                                .font(.custom(Fonts.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
                                         }
                                     }
                                     .scrollIndicators(.hidden)
@@ -109,9 +112,10 @@ struct TeamDetailView: View {
                                         ProgressView()
                                     } else {
                                         Text(getOpponentPercentageString(for: opponent))
-                                            .font(.custom(Fonts.SourceCodePro.romanBold.rawValue, size: 22, relativeTo: .largeTitle))
+                                            .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
                                     }
                                 }
+                                .padding(.vertical, 4)
                                 
                                 Divider()
                             }

@@ -17,26 +17,19 @@ class Fonts {
         case bold = "ChillaxVariable-Bold"
     }
     
-    enum MajorMono: String {
-        case regular = "MajorMonoDisplay-Regular"
+    enum Satoshi: String {
+        case boldRegular = "SatoshiVariable-Bold_Regular"
+        case boldLight = "SatoshiVariable-Bold_Light"
+        case boldMedium = "SatoshiVariable-Bold_Medium"
+        case boldBold = "SatoshiVariable-Bold_Bold"
+        case bold = "SatoshiVariable-Bold"
     }
     
-    enum SourceCodePro: String {
-        case romanRegular = "SourceCodeProRoman-Regular"
-        case italicRegular = "SourceCodeProItalic-Regular"
-        case romanExtraLight = "SourceCodeRoman-ExtraLight"
-        case italicExtraLight = "SourceCodeItalic-ExtraLightItalic"
-        case romanLight = "SourceCodeProRoman-Light"
-        case italicLight = "SourceCodeProItalic-Light"
-        case romanMedium = "SourceCodeProRoman-Medium"
-        case italicMedium = "SourceCodeProItalic-Medium"
-        case romanSemiBold = "SourceCodeProRoman-SemiBold"
-        case italicSemiBold = "SourceCodeProItalic-SemiBold"
-        case romanBold = "SourceCodeProRoman-Bold"
-        case italicBold = "SourceCodeProItalic-Bold"
-        case romanExtraBold = "SourceCodeProRoman-ExtraBold"
-        case italicExtraBold = "SourceCodeProItalic-ExtraBold"
-        case romanBlack = "SourceCodeProRoman-Black"
-        case italicBlack = "SourceCodeProItalic-Black"
+    enum Overpass: String {
+        case regular = "OverpassMono-Regular"
+        case light = "OverpassMono-Light"
+        case medium = "OverpassMono-Medium"
+        case semiBold = "OverpassMono-SemiBold"
+        case bold = "OverpassMono-Bold"
     }
 }

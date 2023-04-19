@@ -5,9 +5,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Chillax.ttf</string>
-		<string>MajorMono.ttf</string>
-		<string>SourceCodePro.ttf</string>
-		<string>SourceCodePro-Italic.ttf</string>
+		<string>Satoshi.ttf</string>
+		<string>Overpass.ttf</string>
 	</array>
 </dict>
 </plist>
