@@ -92,9 +92,12 @@ struct TeamListView: View {
                     ForEach(groupedTeams, id: \.self) { teamGroup in
                         
                         CardView(hasHeaderDivier: true) {
-                            ForEach(teamGroup) { team in
-                                TeamLinkView(team: team)
+                            VStack(spacing: 10) {
+                                ForEach(teamGroup) { team in
+                                    TeamLinkView(team: team)
+                                }
                             }
+                            .padding(.vertical, 5)
                         } header: {
                             TeamGroupTitleView(team: teamGroup.first!)
                                 .font(.title2.bold())
