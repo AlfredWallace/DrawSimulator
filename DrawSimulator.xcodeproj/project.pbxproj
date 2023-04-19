@@ -107,13 +107,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA0613BB29EF4463002CDE53 /* ViewUtils */ = {
+		BA0613CD29F03543002CDE53 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BA9979F42963B42D00AF04B8 /* Assets.xcassets */,
+				BA11C43529E96B1B0040A4BB /* Flags.xcassets */,
+				BA0B50C229E73B6100B96D53 /* Colors.xcassets */,
+				BA11C43729E96B620040A4BB /* Team logos.xcassets */,
+				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
+				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
+				BA96F37029E824AC00E365FB /* Chillax.ttf */,
+				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
+				BA0613BE29EF4568002CDE53 /* MajorMono.ttf */,
+				BA0613BF29EF4568002CDE53 /* MajorMono Licence.txt */,
+				BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */,
+				BA0613C229EF4854002CDE53 /* SourceCodePro-Italic.ttf */,
+				BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		BA0613CE29F03565002CDE53 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
+				BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */,
+				BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */,
+				BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */,
+				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
+				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
+				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
+				BA672D5029EEC4E50024C046 /* CardView.swift */,
+				BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */,
+				BA73B68829E0C63500807496 /* TeamListView.swift */,
+				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
+				BA208BF129D8667000D1EB9A /* TeamLinkView.swift */,
+				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BA0613D029F03597002CDE53 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BAD652D529C74CAA0043865B /* teams.json */,
+				BA3478B429C8989B004F2C5A /* countries.json */,
+				BA3478B229C89836004F2C5A /* Country.swift */,
+				BA5ECAAC29EEE76B005DD83D /* Countries.swift */,
+				BAD652D329C74C150043865B /* Team.swift */,
+				BAB1C29F29E1B724000DAFE4 /* Teams.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BA0613D129F035C4002CDE53 /* ViewUtils */ = {
 			isa = PBXGroup;
 			children = (
 				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
 				BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */,
 			);
-			name = ViewUtils;
+			path = ViewUtils;
 			sourceTree = "<group>";
 		};
 		BA9979E42963B42C00AF04B8 = {
@@ -135,6 +188,10 @@
 		BA9979EF2963B42C00AF04B8 /* DrawSimulator */ = {
 			isa = PBXGroup;
 			children = (
+				BA0613CE29F03565002CDE53 /* Views */,
+				BA0613D129F035C4002CDE53 /* ViewUtils */,
+				BA0613D029F03597002CDE53 /* Data */,
+				BA0613CD29F03543002CDE53 /* Assets */,
 				BA016390297ADB830030264F /* Info.plist */,
 				BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */,
 				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
@@ -142,10 +199,6 @@
 				BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */,
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
 				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
-				BADB61F129E297D400BD79D5 /* Views */,
-				BA0613BB29EF4463002CDE53 /* ViewUtils */,
-				BADB61EE29E2973900BD79D5 /* Data */,
-				BADB61ED29E296F800BD79D5 /* Assets */,
 				BA9979F62963B42D00AF04B8 /* Preview Content */,
 			);
 			path = DrawSimulator;
@@ -157,59 +210,6 @@
 				BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		BADB61ED29E296F800BD79D5 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				BA9979F42963B42D00AF04B8 /* Assets.xcassets */,
-				BA11C43529E96B1B0040A4BB /* Flags.xcassets */,
-				BA0B50C229E73B6100B96D53 /* Colors.xcassets */,
-				BA11C43729E96B620040A4BB /* Team logos.xcassets */,
-				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
-				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
-				BA96F37029E824AC00E365FB /* Chillax.ttf */,
-				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
-				BA0613BE29EF4568002CDE53 /* MajorMono.ttf */,
-				BA0613BF29EF4568002CDE53 /* MajorMono Licence.txt */,
-				BA0613C329EF4854002CDE53 /* SourceCodePro.ttf */,
-				BA0613C229EF4854002CDE53 /* SourceCodePro-Italic.ttf */,
-				BA0613C429EF4854002CDE53 /* SourceCodePro Licence.txt */,
-			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
-		BADB61EE29E2973900BD79D5 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				BAD652D529C74CAA0043865B /* teams.json */,
-				BA3478B429C8989B004F2C5A /* countries.json */,
-				BA3478B229C89836004F2C5A /* Country.swift */,
-				BA5ECAAC29EEE76B005DD83D /* Countries.swift */,
-				BAD652D329C74C150043865B /* Team.swift */,
-				BAB1C29F29E1B724000DAFE4 /* Teams.swift */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
-		BADB61F129E297D400BD79D5 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
-				BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */,
-				BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */,
-				BA0FBA3E29EAA843003243F1 /* GroupingDialogButtonView.swift */,
-				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
-				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
-				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
-				BA672D5029EEC4E50024C046 /* CardView.swift */,
-				BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */,
-				BA73B68829E0C63500807496 /* TeamListView.swift */,
-				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
-				BA208BF129D8667000D1EB9A /* TeamLinkView.swift */,
-				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
