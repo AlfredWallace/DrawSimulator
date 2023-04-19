@@ -56,13 +56,12 @@ struct TeamDetailView: View {
     }
     
     private func getOpponentPercentageString(for opponent: Team) -> String {
-        let suffix = "%"
         
         if let count = pairingCounts[opponent] {
-            return "\((Float(count) / Float(drawsCount) * 100).rounded().formatted()) \(suffix)"
+            return "\((Float(count) / Float(drawsCount) * 100).rounded().formatted())"
         }
         
-        return "? \(suffix)"
+        return "?"
     }
     
     var body: some View {
@@ -105,15 +104,19 @@ struct TeamDetailView: View {
                                                 .font(.custom(Fonts.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
                                         }
                                     }
-                                    .scrollIndicators(.hidden)
+                                    .scrollIndicators(.hidden) 
                                     .padding(.trailing, 10)
                                     
-                                    if draws.isRunning {
-                                        ProgressView()
-                                    } else {
-                                        Text(getOpponentPercentageString(for: opponent))
-                                            .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
+                                    HStack {
+                                        if draws.isRunning {
+                                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                                                .progressViewStyle(FootballProgressStyle())
+                                        } else {
+                                            Text(getOpponentPercentageString(for: opponent))
+                                        }
+                                        Text("%")
                                     }
+                                    .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
                                 }
                                 .padding(.vertical, 4)
                                 

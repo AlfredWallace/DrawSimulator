@@ -47,6 +47,7 @@
 		BAF749FC29F0831500430C23 /* Satoshi License.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FA29F0831500430C23 /* Satoshi License.txt */; };
 		BAF749FF29F084E900430C23 /* Overpass Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FD29F084E900430C23 /* Overpass Licence.txt */; };
 		BAF74A0029F084E900430C23 /* Overpass.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FE29F084E900430C23 /* Overpass.ttf */; };
+		BAF74A0229F088D300430C23 /* FootballProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF74A0129F088D300430C23 /* FootballProgressStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		BAF749FA29F0831500430C23 /* Satoshi License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Satoshi License.txt"; sourceTree = "<group>"; };
 		BAF749FD29F084E900430C23 /* Overpass Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Overpass Licence.txt"; sourceTree = "<group>"; };
 		BAF749FE29F084E900430C23 /* Overpass.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Overpass.ttf; sourceTree = "<group>"; };
+		BAF74A0129F088D300430C23 /* FootballProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootballProgressStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			children = (
 				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
 				BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */,
+				BAF74A0129F088D300430C23 /* FootballProgressStyle.swift */,
 			);
 			path = ViewUtils;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */,
 				BA0FBA3F29EAA843003243F1 /* GroupingDialogButtonView.swift in Sources */,
 				BAE3BCB629EBDB2300C32416 /* TeamLogoView.swift in Sources */,
+				BAF74A0229F088D300430C23 /* FootballProgressStyle.swift in Sources */,
 				BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */,
 				BA9979F12963B42C00AF04B8 /* DrawSimulatorApp.swift in Sources */,
 				BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */,
