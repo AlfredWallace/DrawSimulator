@@ -14,7 +14,7 @@ struct GroupingDialogButtonView: View {
     let grouping: UserSettings.Grouping
     @Binding var showingList: Bool
     
-    private let duration = 0.3
+    private let duration = 0.4
     
     private var speed: Double { 1 / duration }
     
@@ -33,14 +33,14 @@ struct GroupingDialogButtonView: View {
     
     var body: some View {
         Button(label) {
-            withAnimation(.default.speed(speed)) {
+            withAnimation(.easeIn(duration: duration).speed(speed)) {
                 showingList.toggle()
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                 userSettings.setGrouping(grouping)
                 
-                withAnimation(.default.speed(speed)) {
+                withAnimation(.easeOut(duration: duration).speed(speed)) {
                     showingList.toggle()
                 }
             }
