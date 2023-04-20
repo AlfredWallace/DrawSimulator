@@ -110,7 +110,7 @@ struct TeamDetailView: View {
                                     HStack {
                                         if draws.isRunning {
                                             ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-                                                .progressViewStyle(FootballProgressStyle())
+                                                .progressViewStyle(RandomNumberProgressStyle())
                                         } else {
                                             Text(getOpponentPercentageString(for: opponent))
                                         }

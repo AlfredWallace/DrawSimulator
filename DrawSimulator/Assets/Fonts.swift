@@ -17,14 +17,6 @@ class Fonts {
         case bold = "ChillaxVariable-Bold"
     }
     
-    enum Satoshi: String {
-        case boldRegular = "SatoshiVariable-Bold_Regular"
-        case boldLight = "SatoshiVariable-Bold_Light"
-        case boldMedium = "SatoshiVariable-Bold_Medium"
-        case boldBold = "SatoshiVariable-Bold_Bold"
-        case bold = "SatoshiVariable-Bold"
-    }
-    
     enum Overpass: String {
         case regular = "OverpassMono-Regular"
         case light = "OverpassMono-Light"
