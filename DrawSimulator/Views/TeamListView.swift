@@ -135,10 +135,10 @@ struct TeamListView: View {
             }
         }
         .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
-            GroupingDialogButtonView(grouping: .pool, showingList: $showingList)
-            GroupingDialogButtonView(grouping: .country, showingList: $showingList)
-            GroupingDialogButtonView(grouping: .seeding, showingList: $showingList)
-            GroupingDialogButtonView(grouping: .none, showingList: $showingList)
+            GroupingDialogChoiceView(grouping: .pool, showingList: $showingList)
+            GroupingDialogChoiceView(grouping: .country, showingList: $showingList)
+            GroupingDialogChoiceView(grouping: .seeding, showingList: $showingList)
+            GroupingDialogChoiceView(grouping: .none, showingList: $showingList)
         }
     }
 }
