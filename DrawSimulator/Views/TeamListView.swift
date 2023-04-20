@@ -14,19 +14,6 @@ struct TeamListView: View {
     
     @EnvironmentObject private var userSettings: UserSettings
     
-    private var groupingLabelStrings: (title: String, icon: String) {
-        switch userSettings.data.grouping {
-            case .country:
-                return ("Grouped by country", "flag")
-            case .pool:
-                return ("Grouped by pool", "list.bullet.below.rectangle")
-            case .seeding:
-                return ("Grouped by seeding", "checklist")
-            default:
-                return ("Ungrouped", "list.dash")
-        }
-    }
-    
     private var teamsGroupedByPool: [[Team]] {
         Array(Dictionary(grouping: Teams.data, by: { $0.pool }).values).sorted {
             $0[0].pool < $1[0].pool
@@ -128,9 +115,7 @@ struct TeamListView: View {
                 Button {
                     showingGroupingDialog = true
                 } label: {
-                    Label(groupingLabelStrings.title, systemImage: groupingLabelStrings.icon)
-                        .labelStyle(.titleAndIcon)
-                        .font(.title2)
+                    GroupingDialogButtonView()
                 }
             }
         }
