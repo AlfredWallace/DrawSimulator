@@ -21,7 +21,6 @@
 		BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066429EB31640015F4D5 /* PoolLabelView.swift */; };
 		BA1E066729EB33710015F4D5 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066629EB33710015F4D5 /* CardViewModifier.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
-		BA208BF229D8667000D1EB9A /* TeamLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BF129D8667000D1EB9A /* TeamLinkView.swift */; };
 		BA3478B329C89836004F2C5A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3478B229C89836004F2C5A /* Country.swift */; };
 		BA3478B529C8989B004F2C5A /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3478B429C8989B004F2C5A /* countries.json */; };
 		BA5ECAAD29EEE76B005DD83D /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5ECAAC29EEE76B005DD83D /* Countries.swift */; };
@@ -43,7 +42,7 @@
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
 		BAD652D429C74C150043865B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD652D329C74C150043865B /* Team.swift */; };
 		BAD652D629C74CAB0043865B /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = BAD652D529C74CAA0043865B /* teams.json */; };
-		BAE3BCB629EBDB2300C32416 /* TeamLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */; };
+		BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */; };
 		BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* UserSettings.swift */; };
 		BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */; };
 		BAF749FF29F084E900430C23 /* Overpass Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FD29F084E900430C23 /* Overpass Licence.txt */; };
@@ -66,7 +65,6 @@
 		BA1E066429EB31640015F4D5 /* PoolLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolLabelView.swift; sourceTree = "<group>"; };
 		BA1E066629EB33710015F4D5 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
-		BA208BF129D8667000D1EB9A /* TeamLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLinkView.swift; sourceTree = "<group>"; };
 		BA3478B229C89836004F2C5A /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		BA3478B429C8989B004F2C5A /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		BA5ECAAC29EEE76B005DD83D /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
@@ -89,7 +87,7 @@
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
 		BAD652D329C74C150043865B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		BAD652D529C74CAA0043865B /* teams.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
-		BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLogoView.swift; sourceTree = "<group>"; };
+		BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLabelView.swift; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		BAF749FD29F084E900430C23 /* Overpass Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Overpass Licence.txt"; sourceTree = "<group>"; };
@@ -136,10 +134,9 @@
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
 				BA672D5029EEC4E50024C046 /* CardView.swift */,
-				BAE3BCB529EBDB2300C32416 /* TeamLogoView.swift */,
 				BA73B68829E0C63500807496 /* TeamListView.swift */,
 				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
-				BA208BF129D8667000D1EB9A /* TeamLinkView.swift */,
+				BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
 			);
 			path = Views;
@@ -311,11 +308,10 @@
 				BA76EEBE29F13D6100F0D4E9 /* GroupingDialogButtonView.swift in Sources */,
 				BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */,
 				BA0FBA3F29EAA843003243F1 /* GroupingDialogChoiceView.swift in Sources */,
-				BAE3BCB629EBDB2300C32416 /* TeamLogoView.swift in Sources */,
+				BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */,
 				BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */,
 				BA9979F12963B42C00AF04B8 /* DrawSimulatorApp.swift in Sources */,
 				BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */,
-				BA208BF229D8667000D1EB9A /* TeamLinkView.swift in Sources */,
 				BA672D5129EEC4E50024C046 /* CardView.swift in Sources */,
 				BA0613CB29F017A9002CDE53 /* ButtonProgressStyle.swift in Sources */,
 				BA5ECAAD29EEE76B005DD83D /* Countries.swift in Sources */,

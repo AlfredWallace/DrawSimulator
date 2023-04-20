@@ -81,7 +81,12 @@ struct TeamListView: View {
                         CardView(hasHeaderDivier: true) {
                             VStack(spacing: 10) {
                                 ForEach(teamGroup) { team in
-                                    TeamLinkView(team: team)
+                                    NavigationLink(value: team) {
+                                        HStack {
+                                            TeamLabelView(team: team)
+                                            Image(systemName: "chevron.forward")
+                                        }
+                                    }
                                 }
                             }
                             .padding(.vertical, 5)

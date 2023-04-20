@@ -12,8 +12,11 @@ struct TeamDetailView: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     @EnvironmentObject private var draws: Draws
+    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
     let team: Team
+    
+    private var logoSize: CGFloat { geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45) }
     
     private var opponents: [Team] {
         Teams.data.filter { opponent in
@@ -75,7 +78,11 @@ struct TeamDetailView: View {
                     
                     CardView {
                         DynamicTypeStack(.accessibility2) {
-                            TeamLogoView(team: team, widthPercentage: dynamicTypeSize >= .accessibility2 ? 75 : 45)
+                            
+                            Image(team.name)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: logoSize, height: logoSize)
                             
                             VStack {
                                 PoolLabelView(team: team)
@@ -96,16 +103,8 @@ struct TeamDetailView: View {
                         VStack(spacing: 0) {
                             ForEach(opponents, id: \.self) { opponent in
                                 HStack {
-                                    ScrollView(.horizontal) {
-                                        HStack {
-                                            TeamLogoView(team: opponent, widthPercentage: 12)
-                                            
-                                            Text(opponent.name.uppercased())
-                                                .font(.custom(Fonts.Chillax.bold.rawValue, size: 26, relativeTo: .largeTitle))
-                                        }
-                                    }
-                                    .scrollIndicators(.hidden) 
-                                    .padding(.trailing, 10)
+                                    TeamLabelView(team: opponent, logoWidthPercentage: 12, fontSize: 22)
+                                        .padding(.trailing, 10)
                                     
                                     HStack {
                                         if draws.isRunning {
