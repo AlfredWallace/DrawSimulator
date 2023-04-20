@@ -143,7 +143,6 @@ struct TeamDetailView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .fill(draws.isRunning ? .gray : Color.pitchGreen)
                             )
-                            .foregroundColor(Color.defaultText)
                             .font(.title2.bold())
                         }
                     }

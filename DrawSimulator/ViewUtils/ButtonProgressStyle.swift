@@ -33,7 +33,6 @@ struct ButtonProgressStyle: ProgressViewStyle {
                             .strokeBorder(Color.pitchGreen, lineWidth: 3)
                     }
             )
-            .foregroundColor(Color.defaultText)
             .font(.title2.bold())
     }
 }

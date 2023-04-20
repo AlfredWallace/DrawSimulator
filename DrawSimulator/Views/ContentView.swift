@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    init() {
+        NavigationTheme.navigationBarColors()
+    }
+    
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
     @StateObject private var draws = Draws()
@@ -21,10 +25,8 @@ struct ContentView: View {
                         .ignoresSafeArea()
                     
                     TeamListView()
-                        .foregroundColor(.defaultText)
                 }
             }
-            .tint(.defaultText)
             .environmentObject(userSettings)
             .environmentObject(geoSizeTracker)
             .environmentObject(draws)
@@ -33,6 +35,8 @@ struct ContentView: View {
                 geoSizeTracker.setSize(geoWrapper.size)
             }
         }
+        .tint(.defaultText)
+        .foregroundColor(.defaultText)
     }
 }
 
