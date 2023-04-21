@@ -10,6 +10,7 @@ import SwiftUI
 struct GroupingDialogButtonView: View {
     
     @EnvironmentObject private var userSettings: UserSettings
+    @Binding var showingDialg: Bool
     
     private var groupingLabelStrings: (title: String, icon: String) {
         switch userSettings.data.grouping {
@@ -25,9 +26,14 @@ struct GroupingDialogButtonView: View {
     }
     
     var body: some View {
-        Label(groupingLabelStrings.title, systemImage: groupingLabelStrings.icon)
-            .labelStyle(.titleAndIcon)
-            .font(.title2)
+        Button {
+            showingDialg = true
+        } label: {
+            Label(groupingLabelStrings.title, systemImage: groupingLabelStrings.icon)
+                .labelStyle(.titleAndIcon)
+        }
+        .font(.title2)
+        .padding(.top, 10)
     }
 }
 

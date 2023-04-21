@@ -119,11 +119,7 @@ struct TeamListView: View {
             }
             
             ToolbarItemGroup(placement: .bottomBar) {
-                Button {
-                    showingGroupingDialog = true
-                } label: {
-                    GroupingDialogButtonView()
-                }
+                GroupingDialogButtonView(showingDialg: $showingGroupingDialog)
             }
         }
         .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
