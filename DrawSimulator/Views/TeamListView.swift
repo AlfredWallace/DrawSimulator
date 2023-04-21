@@ -73,34 +73,36 @@ struct TeamListView: View {
     }
     
     var body: some View {
-        ScrollView {
+        VStack {
             if showingList {
-                VStack(spacing: 20) {
-                    ForEach(groupedTeams, id: \.self) { teamGroup in
-                        
-                        CardView(hasHeaderDivier: true) {
-                            VStack(spacing: 10) {
-                                ForEach(teamGroup) { team in
-                                    NavigationLink(value: team) {
-                                        HStack {
-                                            TeamLabelView(team: team)
-                                            Image(systemName: "chevron.forward")
+                ScrollView {
+                    VStack(spacing: 20) {
+                        ForEach(groupedTeams, id: \.self) { teamGroup in
+                            
+                            CardView(hasHeaderDivier: true) {
+                                VStack(spacing: 10) {
+                                    ForEach(teamGroup) { team in
+                                        NavigationLink(value: team) {
+                                            HStack {
+                                                TeamLabelView(team: team)
+                                                Image(systemName: "chevron.forward")
+                                            }
                                         }
                                     }
                                 }
+                                .padding(.vertical, 5)
+                            } header: {
+                                TeamGroupTitleView(team: teamGroup.first!)
+                                    .font(.title2.bold())
                             }
-                            .padding(.vertical, 5)
-                        } header: {
-                            TeamGroupTitleView(team: teamGroup.first!)
-                                .font(.title2.bold())
                         }
                     }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+                .scrollIndicators(.hidden)
                 .transition(.move(edge: .bottom))
             }
         }
-        .scrollIndicators(.hidden)
         .navigationDestination(for: Team.self) { team in
             TeamDetailView(team: team)
         }
