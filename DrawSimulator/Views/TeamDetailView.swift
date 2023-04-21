@@ -129,6 +129,11 @@ struct TeamDetailView: View {
                         if draws.isRunning {
                             ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
                                 .progressViewStyle(ButtonProgressStyle())
+                                .onTapGesture {
+                                    if let task = draws.task {
+                                        draws.cancelDraw()
+                                    }
+                                }
                         } else {
                             Button {
                                 draws.draw()

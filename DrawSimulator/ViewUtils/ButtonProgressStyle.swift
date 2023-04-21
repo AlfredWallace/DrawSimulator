@@ -13,7 +13,7 @@ struct ButtonProgressStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         let fraction = configuration.fractionCompleted ?? 0.0
         
-        return Text("Calculating")
+        return Text("Cancel")
             .frame(maxWidth: .infinity)
             .padding(10)
             .background(
@@ -34,5 +34,6 @@ struct ButtonProgressStyle: ProgressViewStyle {
                     }
             )
             .font(.title2.bold())
+            .foregroundColor(.red)
     }
 }
