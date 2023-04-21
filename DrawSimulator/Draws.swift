@@ -19,7 +19,7 @@ import Foundation
     
     @Published private(set) var pairings = [Pairing]()
     @Published private(set) var isRunning = false
-    @Published var progress = 0.0
+    @Published private(set) var progress = 0.0
     static let numberOfDraws = 10_000
     
     private func extractOneTeam(_ teams: inout [Team]) -> Team {
@@ -31,8 +31,7 @@ import Foundation
         isRunning = true
         progress = 0.0
         
-        Task.detached {
-            
+        Task {
             var pairings = [Pairing]()
             
             outerLoop: for _ in 0..<times {
@@ -48,7 +47,7 @@ import Foundation
                 
                 while seededTeams.isEmpty == false {
                     
-                    let seededTeam = await self.extractOneTeam(&seededTeams)
+                    let seededTeam = self.extractOneTeam(&seededTeams)
                     
                     //UEFA rules
                     var opponents = unseededTeams.filter { opponent in
@@ -62,7 +61,7 @@ import Foundation
                         continue outerLoop
                     }
                     
-                    let unseededTeam = await self.extractOneTeam(&opponents)
+                    let unseededTeam = self.extractOneTeam(&opponents)
                     
                     unseededTeams.removeAll { team in
                         team == unseededTeam
