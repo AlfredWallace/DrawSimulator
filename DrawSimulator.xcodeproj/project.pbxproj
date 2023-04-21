@@ -130,6 +130,7 @@
 				BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */,
 				BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */,
 				BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */,
+				BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */,
 				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
@@ -168,7 +169,6 @@
 		BA9979E42963B42C00AF04B8 = {
 			isa = PBXGroup;
 			children = (
-				BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */,
 				BA9979EF2963B42C00AF04B8 /* DrawSimulator */,
 				BA9979EE2963B42C00AF04B8 /* Products */,
 			);
