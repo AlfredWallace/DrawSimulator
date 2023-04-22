@@ -9,25 +9,26 @@ import SwiftUI
 
 struct TeamGroupTitleView: View {
     
-    let team: Team
-    
-    @EnvironmentObject private var userSettings: UserSettings
+//    let team: Team
+//
+//    @EnvironmentObject private var userSettings: UserSettings
     
     var body: some View {
+        Text("TeamGroupTitleView")
         
-        switch userSettings.data.grouping {
-            case .country:
-                FlagLabelView(team: team)
-                
-            case .pool:
-                PoolLabelView(team: team)
-                
-            case .seeding:
-                Text("\(team.seeded ? "Seeded" : "Unseeded") teams")
-                
-            default:
-                Text("Alphabetical order")
-                
-        }
+//        switch userSettings.data.grouping {
+//            case .country:
+//                FlagLabelView(team: team)
+//
+//            case .pool:
+//                PoolLabelView(team: team)
+//
+//            case .seeding:
+//                Text("\(team.seeded ? "Seeded" : "Unseeded") teams")
+//
+//            default:
+//                Text("Alphabetical order")
+//
+//        }
     }
 }

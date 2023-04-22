@@ -9,35 +9,35 @@ import SwiftUI
 
 struct TeamDetailView: View {
     
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @Environment(\.managedObjectContext) private var moc
+//    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+//    @Environment(\.managedObjectContext) private var moc
+//
+//    @EnvironmentObject private var draws: Draws
+//    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
+//
+//    let team: Team
+//    let opponents: [Team]
+//    @FetchRequest private var pairings: FetchedResults<Pairing>
     
-    @EnvironmentObject private var draws: Draws
-    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
-    
-    let team: Team
-    let opponents: [Team]
-    @FetchRequest private var pairings: FetchedResults<Pairing>
-    
-    private var logoSize: CGFloat { geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45) }
-    
-    init(team: Team) {
-        self.team = team
+//    private var logoSize: CGFloat { geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45) }
+//
+//    init(team: Team) {
+//        self.team = team
+//
+//        self.opponents = []
+//            Teams.data.filter { opponent in
+//                opponent.seeded != team.seeded
+//                && opponent.countryId != team.countryId
+//                && opponent.pool != team.pool
+//            }
+//            .sorted {
+//                $0.name < $1.name
+//            }
         
-        self.opponents =
-            Teams.data.filter { opponent in
-                opponent.seeded != team.seeded
-                && opponent.countryId != team.countryId
-                && opponent.pool != team.pool
-            }
-            .sorted {
-                $0.name < $1.name
-            }
+//        let format = "\(team.seeded ? "seededTeam" : "unseededTeam")Id == \(team.id)"
+//        _pairings = FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: format))
         
-        let format = "\(team.seeded ? "seededTeam" : "unseededTeam")Id == \(team.id)"
-        _pairings = FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: format))
-        
-    }
+//    }
     
     //    private var pairingCounts: [Team: Int] {
     //
@@ -79,6 +79,7 @@ struct TeamDetailView: View {
     //
     var body: some View {
         ZStack {
+            Text("Team Detail View")
             //            Rectangle()
             //                .fill(Color.pitchGreen.gradient)
             //                .ignoresSafeArea()
@@ -145,43 +146,43 @@ struct TeamDetailView: View {
             //                                    }
             //                                }
             //                        } else {
-            List(pairings) { pairing in
-                Text("count: \(pairing.count)")
-            }
-            
-            Button {
-                draws.draw()
-            } label: {
-                Text("Draw")
-                    .frame(maxWidth: .infinity)
-            }
-            .disabled(draws.isRunning)
-            .padding(10)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(draws.isRunning ? .gray : Color.pitchGreen)
-            )
-            .font(.title2.bold())
+//            List(pairings) { pairing in
+//                Text("count: \(pairing.count)")
+//            }
+//
+//            Button {
+//                draws.draw()
+//            } label: {
+//                Text("Draw")
+//                    .frame(maxWidth: .infinity)
+//            }
+//            .disabled(draws.isRunning)
+//            .padding(10)
+//            .background(
+//                RoundedRectangle(cornerRadius: 10)
+//                    .fill(draws.isRunning ? .gray : Color.pitchGreen)
+//            )
+//            .font(.title2.bold())
             //                        }
             //                    }
             //                }
             //                .padding(.horizontal, 15)
             //            }
         }
-        .navigationTitle(team.name)
+//        .navigationTitle(team.name)
     }
 }
 
-struct TeamDetailView_Previews: PreviewProvider {
-    static let geo = GeoSizeTracker()
-    static let draws = Draws()
-    static let teams = Teams.data
-
-    static var previews: some View {
-        NavigationStack {
-            TeamDetailView(team: teams.first!)
-                .environmentObject(geo)
-                .environmentObject(draws)
-        }
-    }
-}
+//struct TeamDetailView_Previews: PreviewProvider {
+//    static let geo = GeoSizeTracker()
+//    static let draws = Draws()
+////    static let teams = Teams.data
+//
+//    static var previews: some View {
+//        NavigationStack {
+//            TeamDetailView(team: teams.first!)
+//                .environmentObject(geo)
+//                .environmentObject(draws)
+//        }
+//    }
+//}
