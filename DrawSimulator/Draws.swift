@@ -6,24 +6,28 @@
 //
 
 import Foundation
+import SwiftUI
 
 @MainActor class Draws: ObservableObject {
     
+    @Environment(\.managedObjectContext) private var moc
+    @FetchRequest(sortDescriptors: []) private var pairings: FetchedResults<Pairing>
+    
     private static let savePath = FileManager.documentsDirectory.appendingPathComponent("draws.json")
-    static let numberOfDraws = 10_000
+    static let numberOfDraws = 100
     
-    struct Pairing: Hashable, Codable {
-        let seededTeam: Team
-        let unseededTeam: Team
-        var count: Int
-    }
+//    struct Pairing: Hashable, Codable {
+//        let seededTeam: Team
+//        let unseededTeam: Team
+//        var count: Int
+//    }
     
-    @Published private(set) var pairings = [Pairing]()
+//    @Published private(set) var pairings = [Pairing]()
     @Published private(set) var isRunning = false
     @Published private(set) var progress = 0.0
     
     private(set) var task: Task<Void, Never>? = nil
-    private var pairingsBackup = [Pairing]()
+//    private var pairingsBackup = [Pairing]()
     
     private func extractOneTeam(_ teams: inout [Team]) -> Team {
         let length = teams.count
@@ -39,18 +43,18 @@ import Foundation
         progress = 0.0
         
         task = Task {
-            pairingsBackup = pairings
+//            pairingsBackup = pairings
             
-            var taskPairings = [Pairing]()
+//            var taskPairings = [Pairing]()
             
             outerLoop: for _ in 0..<times {
                 
-                if isRunning == false {
-                    if let task {
-                        task.cancel()
-                        pairings = pairingsBackup
-                    }
-                }
+//                if isRunning == false {
+//                    if let task {
+//                        task.cancel()
+//                        pairings = pairingsBackup
+//                    }
+//                }
                 
                 // we will always pick a seeded team then pair it with an unseeded team (UEFA rule): this eliminates some complexity of the algorithm
                 var seededTeams = Teams.data.filter({ $0.seeded })
@@ -84,8 +88,8 @@ import Foundation
                     }
                     
                     // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
-                    // because as soon as a team or its is picked, we discard them from the arrays
-                    // so: we can just add the current pairing to our local tuples
+                    // because as soon as a team or its opponent is picked, we discard them from the arrays
+                    // so: we can just add the current pairing to our local tuples without checking if it exists first
                     loopPairings.append((seededTeam: seededTeam, unseededTeam: unseededTeam))
                 }
                 
@@ -94,44 +98,49 @@ import Foundation
                 // if there is one, we increase the count, otherwise we create the pairing
                 for loopPairing in loopPairings {
                     
-                    if let pairingIndex =
-                        taskPairings.firstIndex(
-                            where: { p in
-                                p.seededTeam == loopPairing.seededTeam
-                                && p.unseededTeam == loopPairing.unseededTeam
-                            }
-                        )
-                    {
-                        taskPairings[pairingIndex].count += 1
-                    } else {
-                        taskPairings.append(Pairing(seededTeam: loopPairing.seededTeam, unseededTeam: loopPairing.unseededTeam, count: 1))
-                    }
+                    
+//                    _pairings = FetchRequest<Pairing>(sortDescriptors: [], predicate: NSPredicate(format: "seededTeamId = %@ AND unseededTeamId = %@", [loopPairing.seededTeam.id, loopPairing.unseededTeam.id]))
+                    
+                    
+                    
+//                    if let pairingIndex =
+//                        taskPairings.firstIndex(
+//                            where: { p in
+//                                p.seededTeam == loopPairing.seededTeam
+//                                && p.unseededTeam == loopPairing.unseededTeam
+//                            }
+//                        )
+//                    {
+//                        taskPairings[pairingIndex].count += 1
+//                    } else {
+//                        taskPairings.append(Pairing(seededTeam: loopPairing.seededTeam, unseededTeam: loopPairing.unseededTeam, count: 1))
+//                    }
                 }
             }
             
-            await MainActor.run { [taskPairings] in
-                self.isRunning = false
-                self.pairings = taskPairings
-                self.save()
-            }
+//            await MainActor.run { [taskPairings] in
+//                self.isRunning = false
+//                self.pairings = taskPairings
+//                self.save()
+//            }
         }
     }
     
-    init() {
-        do {
-            let contents = try Data(contentsOf: Self.savePath)
-            pairings = try JSONDecoder().decode([Pairing].self, from: contents)
-        } catch {
-            pairings = []
-        }
-    }
+//    init() {
+//        do {
+//            let contents = try Data(contentsOf: Self.savePath)
+//            pairings = try JSONDecoder().decode([Pairing].self, from: contents)
+//        } catch {
+//            pairings = []
+//        }
+//    }
     
     private func save() {
-        do {
-            let encoded = try JSONEncoder().encode(pairings)
-            try encoded.write(to: Self.savePath, options: [.atomicWrite, .completeFileProtection])
-        } catch {
-            print("Unable to save the draws: \(error.localizedDescription)")
-        }
+//        do {
+//            let encoded = try JSONEncoder().encode(pairings)
+//            try encoded.write(to: Self.savePath, options: [.atomicWrite, .completeFileProtection])
+//        } catch {
+//            print("Unable to save the draws: \(error.localizedDescription)")
+//        }
     }
 }
