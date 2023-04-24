@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 @main
 struct DrawSimulatorApp: App {
@@ -25,7 +26,8 @@ struct DrawSimulatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, coreDataController.container.viewContext)
+                .environment(\.managedObjectContext, coreDataController.mainContext)
+                .environmentObject(coreDataController)
         }
     }
 }

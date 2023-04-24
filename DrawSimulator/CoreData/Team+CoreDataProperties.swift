@@ -22,6 +22,15 @@ extension Team {
     @NSManaged public var country: Country?
     @NSManaged public var teamPools: NSSet?
 
+    public var nameProxy: String {
+        name ?? "unknown name"
+    }
+    
+    public var shortNameProxy: String {
+        shortName ?? "unknown short name"
+    }
+    
+    
 }
 
 // MARK: Generated accessors for teamPools

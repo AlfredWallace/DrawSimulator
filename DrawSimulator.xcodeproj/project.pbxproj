@@ -22,6 +22,7 @@
 		BA1E066729EB33710015F4D5 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066629EB33710015F4D5 /* CardViewModifier.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA3478B529C8989B004F2C5A /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3478B429C8989B004F2C5A /* countries.json */; };
+		BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */; };
 		BA616E6C29ED7F08003F817B /* Draws.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA616E6B29ED7F08003F817B /* Draws.swift */; };
 		BA672D5129EEC4E50024C046 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA672D5029EEC4E50024C046 /* CardView.swift */; };
 		BA73B68929E0C63500807496 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73B68829E0C63500807496 /* TeamListView.swift */; };
@@ -72,6 +73,7 @@
 		BA1E066629EB33710015F4D5 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA3478B429C8989B004F2C5A /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInitializer.swift; sourceTree = "<group>"; };
 		BA616E6B29ED7F08003F817B /* Draws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draws.swift; sourceTree = "<group>"; };
 		BA672D5029EEC4E50024C046 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		BA73B68829E0C63500807496 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			children = (
 				BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */,
 				BAD386EA29F3B99800369C7D /* CoreDataController.swift */,
+				BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */,
 				BA85376729F4364400D1CF55 /* Country+CoreDataClass.swift */,
 				BA85376829F4364400D1CF55 /* Country+CoreDataProperties.swift */,
 				BA85376929F4364400D1CF55 /* Season+CoreDataClass.swift */,
@@ -323,6 +326,7 @@
 				BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */,
 				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
 				BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */,
+				BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */,
 				BA85376E29F4364400D1CF55 /* Team+CoreDataProperties.swift in Sources */,
 				BA85377129F4364400D1CF55 /* Season+CoreDataClass.swift in Sources */,
 				BAD386E929F3B91800369C7D /* DrawSimulator.xcdatamodeld in Sources */,

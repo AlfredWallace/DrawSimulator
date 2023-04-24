@@ -6,15 +6,25 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
-    init() {
-        NavigationTheme.navigationBarColors()
-    }
+    
+    @FetchRequest(sortDescriptors: []) private var countries: FetchedResults<Country>
     
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
     @StateObject private var draws = Draws()
+    @StateObject private var databaseInitializer = DatabaseInitializer()
+    
+    @EnvironmentObject private var coreDataController: CoreDataController
+    
+    @State private var isFirstLaunch = true
+        
+    
+    init() {
+        NavigationTheme.navigationBarColors()
+    }
     
     var body: some View {
         GeometryReader { geoWrapper in
@@ -25,6 +35,12 @@ struct ContentView: View {
                         .ignoresSafeArea()
                     
                     TeamListView()
+                    
+                    VStack {
+                        ForEach(countries) { country in
+                            Text("\(country.nameProxy) (\(country.shortNameProxy))")
+                        }
+                    }
                 }
             }
             .environmentObject(userSettings)
@@ -37,6 +53,14 @@ struct ContentView: View {
         }
         .tint(.defaultText)
         .foregroundColor(.defaultText)
+        .onAppear {
+            if isFirstLaunch {
+                coreDataController.performAndSave { moc in
+                    databaseInitializer.initCountries(moc: moc)
+                }
+                isFirstLaunch = false
+            }
+        }
     }
 }
 
