@@ -18,7 +18,7 @@ extension Team {
 
     @NSManaged public var name: String?
     @NSManaged public var shortName: String?
-    @NSManaged public var pool: String?
+    @NSManaged public var sortingName: String?
     @NSManaged public var country: Country?
     @NSManaged public var teamPools: NSSet?
 
@@ -30,7 +30,9 @@ extension Team {
         shortName ?? "unknown short name"
     }
     
-    
+    public var sortingNameProxy: String {
+        sortingName ?? "unkown sorting name"
+    }
 }
 
 // MARK: Generated accessors for teamPools

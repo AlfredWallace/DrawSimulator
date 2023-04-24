@@ -21,8 +21,8 @@
     </entity>
     <entity name="Team" representedClassName="Team" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="pool" optional="YES" attributeType="String"/>
         <attribute name="shortName" optional="YES" attributeType="String"/>
+        <attribute name="sortingName" optional="YES" attributeType="String"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="teams" inverseEntity="Country"/>
         <relationship name="teamPools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamPool" inverseName="team" inverseEntity="TeamPool"/>
         <uniquenessConstraints>
