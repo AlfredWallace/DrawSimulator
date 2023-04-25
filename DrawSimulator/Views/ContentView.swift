@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) private var countries: FetchedResults<Country>
     @FetchRequest(sortDescriptors: [SortDescriptor(\.sortingName)]) private var teams: FetchedResults<Team>
+    @FetchRequest(sortDescriptors: []) private var seasons: FetchedResults<Season>
     
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
@@ -21,6 +22,15 @@ struct ContentView: View {
     @EnvironmentObject private var coreDataController: CoreDataController
     
     @State private var isFirstLaunch = true
+    
+    func getCountryName(for team: Team) -> String {
+        var countryName = "n/a"
+        if let country = team.country {
+            countryName = country.nameProxy
+        }
+        
+        return countryName
+    }
         
     
     init() {
@@ -38,14 +48,12 @@ struct ContentView: View {
                     TeamListView()
                     
                     VStack {
-                        ForEach(countries) { country in
-                            Text("\(country.nameProxy) (\(country.shortNameProxy))")
+                        ForEach(seasons) { season in
+                            Text("\(String(season.winYear))")
                         }
                         
-                        Divider()
-                        
                         ForEach(teams) { team in
-                            Text("\(team.nameProxy) (\(team.shortNameProxy))")
+                            Text("\(team.nameProxy) (\(getCountryName(for: team)))")
                         }
                     }
                 }
@@ -63,8 +71,7 @@ struct ContentView: View {
         .onAppear {
             if isFirstLaunch {
                 coreDataController.performAndSave { moc in
-                    databaseInitializer.initCountries(moc: moc)
-                    databaseInitializer.initTeams(moc: moc)
+                    databaseInitializer.initialize(moc: moc)
                 }
                 isFirstLaunch = false
             }

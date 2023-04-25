@@ -21,7 +21,6 @@
 		BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066429EB31640015F4D5 /* PoolLabelView.swift */; };
 		BA1E066729EB33710015F4D5 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066629EB33710015F4D5 /* CardViewModifier.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
-		BA3478B529C8989B004F2C5A /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BA3478B429C8989B004F2C5A /* countries.json */; };
 		BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */; };
 		BA616E6C29ED7F08003F817B /* Draws.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA616E6B29ED7F08003F817B /* Draws.swift */; };
 		BA672D5129EEC4E50024C046 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA672D5029EEC4E50024C046 /* CardView.swift */; };
@@ -48,7 +47,6 @@
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
 		BAD386E929F3B91800369C7D /* DrawSimulator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */; };
 		BAD386EB29F3B99800369C7D /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD386EA29F3B99800369C7D /* CoreDataController.swift */; };
-		BAD652D629C74CAB0043865B /* teams.json in Resources */ = {isa = PBXBuildFile; fileRef = BAD652D529C74CAA0043865B /* teams.json */; };
 		BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */; };
 		BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* UserSettings.swift */; };
 		BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */; };
@@ -72,7 +70,6 @@
 		BA1E066429EB31640015F4D5 /* PoolLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolLabelView.swift; sourceTree = "<group>"; };
 		BA1E066629EB33710015F4D5 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
-		BA3478B429C8989B004F2C5A /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInitializer.swift; sourceTree = "<group>"; };
 		BA616E6B29ED7F08003F817B /* Draws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draws.swift; sourceTree = "<group>"; };
 		BA672D5029EEC4E50024C046 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -100,7 +97,6 @@
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
 		BAD386E829F3B91800369C7D /* DrawSimulator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrawSimulator.xcdatamodel; sourceTree = "<group>"; };
 		BAD386EA29F3B99800369C7D /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
-		BAD652D529C74CAA0043865B /* teams.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = teams.json; sourceTree = "<group>"; };
 		BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLabelView.swift; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
@@ -157,15 +153,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BA0613D029F03597002CDE53 /* InitData */ = {
-			isa = PBXGroup;
-			children = (
-				BAD652D529C74CAA0043865B /* teams.json */,
-				BA3478B429C8989B004F2C5A /* countries.json */,
-			);
-			path = InitData;
-			sourceTree = "<group>";
-		};
 		BA0613D129F035C4002CDE53 /* ViewUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,7 +184,6 @@
 			children = (
 				BA0613CE29F03565002CDE53 /* Views */,
 				BA0613D129F035C4002CDE53 /* ViewUtils */,
-				BA0613D029F03597002CDE53 /* InitData */,
 				BAD386E629F3B8AE00369C7D /* CoreData */,
 				BA0613CD29F03543002CDE53 /* Assets */,
 				BA016390297ADB830030264F /* Info.plist */,
@@ -300,10 +286,8 @@
 				BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */,
 				BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */,
 				BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */,
-				BAD652D629C74CAB0043865B /* teams.json in Resources */,
 				BAF749FF29F084E900430C23 /* Overpass Licence.txt in Resources */,
 				BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */,
-				BA3478B529C8989B004F2C5A /* countries.json in Resources */,
 				BAF74A0029F084E900430C23 /* Overpass.ttf in Resources */,
 				BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */,
 				BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */,

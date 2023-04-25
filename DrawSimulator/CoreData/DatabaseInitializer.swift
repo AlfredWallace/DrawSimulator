@@ -9,49 +9,79 @@ import Foundation
 import CoreData
 
 class DatabaseInitializer: ObservableObject {
-    func initCountries(moc: NSManagedObjectContext) {
-        let countries = [
-            (name: "Italy", shortName: "ITA"),
-            (name: "Spain", shortName: "SPA"),
-            (name: "France", shortName: "FRA"),
-            (name: "England", shortName: "ENG"),
-            (name: "Belgium", shortName: "BEL"),
-            (name: "Germany", shortName: "GER"),
-            (name: "Portugal", shortName: "POR")
-        ]
-        
-        for country in countries {
-            let object = Country(context: moc)
-            object.name = country.name
-            object.shortName = country.shortName
-        }
+    
+    enum CountryIdentifier: String {
+        case ITA, SPA, FRA, ENG, BEL, GER, POR
     }
     
-    func initTeams(moc: NSManagedObjectContext) {
-        let teams = [
-            (name: "Paris Saint-Germain", shortName: "PSG", sortingName: "Paris"),
-            (name: "SSC Napoli", shortName: "NAP", sortingName: "Napoli"),
-            (name: "Liverpool FC", shortName: "LIV", sortingName: "Liverpool"),
-            (name: "FC Porto", shortName: "POR", sortingName: "Porto"),
-            (name: "Club Brugge", shortName: "BRU", sortingName: "Brugge"),
-            (name: "Bayern München", shortName: "BAY", sortingName: "Bayern"),
-            (name: "Inter Milan", shortName: "INT", sortingName: "Inter"),
-            (name: "Tottenham Hotspur", shortName: "TOT", sortingName: "Tottenham"),
-            (name: "Eintracht Frankfurt", shortName: "FRK", sortingName: "Frankfurt"),
-            (name: "Chelsea FC", shortName: "CHE", sortingName: "Chelsea"),
-            (name: "AC Milan", shortName: "ACM", sortingName: "Milan"),
-            (name: "Real Madrid", shortName: "RMA", sortingName: "Real"),
-            (name: "RB Leipzig", shortName: "RBL", sortingName: "Leipzig"),
-            (name: "Manchester City", shortName: "MCI", sortingName: "ManCity"),
-            (name: "Borussia Dortmund", shortName: "BVB", sortingName: "Dortmund"),
-            (name: "SL Benfica", shortName: "BEN", sortingName: "Benfica"),
+    enum TeamIdentifier: String {
+        case PSG, NAP, LIV, POR, BRU, BAY, INT, TOT, FRK, CHE, ACM, RMA, RBL, MCI, BVB, BEN
+    }
+    
+    func initialize(moc: NSManagedObjectContext) {
+        
+        // SEASONS
+        let winYears = [
+            2023
         ]
         
-        for team in teams {
-            let object = Team(context: moc)
-            object.name = team.name
-            object.shortName = team.shortName
-            object.sortingName = team.sortingName
+        var seasons = [Int: Season]()
+        
+        for winYear in winYears {
+            let season = Season(context: moc)
+            season.winYear = Int16(winYear)
+            seasons[winYear] = season
+        }
+        
+        // COUNTRIES
+        let countryTuples = [
+            (name: "Italy", shortName: CountryIdentifier.ITA),
+            (name: "Spain", shortName: CountryIdentifier.SPA),
+            (name: "France", shortName: CountryIdentifier.FRA),
+            (name: "England", shortName: CountryIdentifier.ENG),
+            (name: "Belgium", shortName: CountryIdentifier.BEL),
+            (name: "Germany", shortName: CountryIdentifier.GER),
+            (name: "Portugal", shortName: CountryIdentifier.POR)
+        ]
+        
+        var countries = [CountryIdentifier: Country]()
+        
+        for countryTuple in countryTuples {
+            let country = Country(context: moc)
+            country.name = countryTuple.name
+            country.shortName = countryTuple.shortName.rawValue
+            countries[countryTuple.shortName] = country
+        }
+        
+        // TEAMS
+        let teamTuples = [
+            (name: "Paris Saint-Germain", shortName: TeamIdentifier.PSG, sortingName: "Paris", country: countries[CountryIdentifier.FRA]),
+            (name: "SSC Napoli", shortName: TeamIdentifier.NAP, sortingName: "Napoli", country: countries[CountryIdentifier.ITA]),
+            (name: "Liverpool FC", shortName: TeamIdentifier.LIV, sortingName: "Liverpool", country: countries[CountryIdentifier.ENG]),
+            (name: "FC Porto", shortName: TeamIdentifier.POR, sortingName: "Porto", country: countries[CountryIdentifier.POR]),
+            (name: "Club Brugge", shortName: TeamIdentifier.BRU, sortingName: "Brugge", country: countries[CountryIdentifier.BEL]),
+            (name: "Bayern München", shortName: TeamIdentifier.BAY, sortingName: "Bayern", country: countries[CountryIdentifier.GER]),
+            (name: "Inter Milan", shortName: TeamIdentifier.INT, sortingName: "Inter", country: countries[CountryIdentifier.ITA]),
+            (name: "Tottenham Hotspur", shortName: TeamIdentifier.TOT, sortingName: "Tottenham", country: countries[CountryIdentifier.ENG]),
+            (name: "Eintracht Frankfurt", shortName: TeamIdentifier.FRK, sortingName: "Frankfurt", country: countries[CountryIdentifier.GER]),
+            (name: "Chelsea FC", shortName: TeamIdentifier.CHE, sortingName: "Chelsea", country: countries[CountryIdentifier.ENG]),
+            (name: "AC Milan", shortName: TeamIdentifier.ACM, sortingName: "Milan", country: countries[CountryIdentifier.ITA]),
+            (name: "Real Madrid", shortName: TeamIdentifier.RMA, sortingName: "Real", country: countries[CountryIdentifier.SPA]),
+            (name: "RB Leipzig", shortName: TeamIdentifier.RBL, sortingName: "Leipzig", country: countries[CountryIdentifier.GER]),
+            (name: "Manchester City", shortName: TeamIdentifier.MCI, sortingName: "ManCity", country: countries[CountryIdentifier.ENG]),
+            (name: "Borussia Dortmund", shortName: TeamIdentifier.BVB, sortingName: "Dortmund", country: countries[CountryIdentifier.GER]),
+            (name: "SL Benfica", shortName: TeamIdentifier.BEN, sortingName: "Benfica", country: countries[CountryIdentifier.POR]),
+        ]
+        
+        var teams = [TeamIdentifier: Team]()
+        
+        for teamTuple in teamTuples {
+            let team = Team(context: moc)
+            team.name = teamTuple.name
+            team.shortName = teamTuple.shortName.rawValue
+            team.sortingName = teamTuple.sortingName
+            team.country = teamTuple.country
+            teams[teamTuple.shortName] = team
         }
     }
 }
