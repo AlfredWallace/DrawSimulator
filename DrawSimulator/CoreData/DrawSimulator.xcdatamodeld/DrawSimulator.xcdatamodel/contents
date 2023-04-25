@@ -41,11 +41,6 @@
                 <constraint value="team"/>
                 <constraint value="season"/>
             </uniquenessConstraint>
-            <uniquenessConstraint>
-                <constraint value="season"/>
-                <constraint value="name"/>
-                <constraint value="seeded"/>
-            </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
 </model>

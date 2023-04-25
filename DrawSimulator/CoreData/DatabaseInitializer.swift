@@ -41,7 +41,7 @@ class DatabaseInitializer: ObservableObject {
             (name: "England", shortName: CountryIdentifier.ENG),
             (name: "Belgium", shortName: CountryIdentifier.BEL),
             (name: "Germany", shortName: CountryIdentifier.GER),
-            (name: "Portugal", shortName: CountryIdentifier.POR)
+            (name: "Portugal", shortName: CountryIdentifier.POR),
         ]
         
         var countries = [CountryIdentifier: Country]()
@@ -82,6 +82,34 @@ class DatabaseInitializer: ObservableObject {
             team.sortingName = teamTuple.sortingName
             team.country = teamTuple.country
             teams[teamTuple.shortName] = team
+        }
+        
+        // POOLS
+        let teamPoolTuples = [
+            (name: "A", seeded: true, team: teams[TeamIdentifier.NAP], season: seasons[2023]),
+            (name: "A", seeded: false, team: teams[TeamIdentifier.LIV], season: seasons[2023]),
+            (name: "B", seeded: true, team: teams[TeamIdentifier.POR], season: seasons[2023]),
+            (name: "B", seeded: false, team: teams[TeamIdentifier.BRU], season: seasons[2023]),
+            (name: "C", seeded: true, team: teams[TeamIdentifier.BAY], season: seasons[2023]),
+            (name: "C", seeded: false, team: teams[TeamIdentifier.INT], season: seasons[2023]),
+            (name: "D", seeded: true, team: teams[TeamIdentifier.TOT], season: seasons[2023]),
+            (name: "D", seeded: false, team: teams[TeamIdentifier.FRK], season: seasons[2023]),
+            (name: "E", seeded: true, team: teams[TeamIdentifier.CHE], season: seasons[2023]),
+            (name: "E", seeded: false, team: teams[TeamIdentifier.ACM], season: seasons[2023]),
+            (name: "F", seeded: true, team: teams[TeamIdentifier.RMA], season: seasons[2023]),
+            (name: "F", seeded: false, team: teams[TeamIdentifier.RBL], season: seasons[2023]),
+            (name: "G", seeded: true, team: teams[TeamIdentifier.MCI], season: seasons[2023]),
+            (name: "G", seeded: false, team: teams[TeamIdentifier.BVB], season: seasons[2023]),
+            (name: "H", seeded: true, team: teams[TeamIdentifier.BEN], season: seasons[2023]),
+            (name: "H", seeded: false, team: teams[TeamIdentifier.PSG], season: seasons[2023]),
+        ]
+        
+        for teamPoolTuple in teamPoolTuples {
+            let teamPool = TeamPool(context: moc)
+            teamPool.name = teamPoolTuple.name
+            teamPool.seeded = teamPoolTuple.seeded
+            teamPool.team = teamPoolTuple.team
+            teamPool.season = teamPoolTuple.season
         }
     }
 }
