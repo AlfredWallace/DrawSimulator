@@ -11,5 +11,26 @@ import CoreData
 
 @objc(Season)
 public class Season: NSManagedObject {
-
+    
+    @available(*, unavailable)
+    public init() {
+        fatalError("Use the custom properties initializer")
+    }
+    
+    @available(*, unavailable)
+    public init(context: NSManagedObjectContext) {
+        fatalError("Use the custom properties initializer")
+    }
+    
+    @objc
+    override private init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
+    }
+    
+    public init(context: NSManagedObjectContext, winYear: Int, teamPools: NSSet? = []) {
+        let entity = NSEntityDescription.entity(forEntityName: "Season", in: context)!
+        super.init(entity: entity, insertInto: context)
+        self.winYear = Int16(winYear)
+        self.teamPools = teamPools
+    }
 }

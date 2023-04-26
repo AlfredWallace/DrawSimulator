@@ -18,6 +18,11 @@ extension Season {
 
     @NSManaged public var winYear: Int16
     @NSManaged public var teamPools: NSSet?
+    
+    public var teamPoolsArray: [TeamPool] {
+        let teamPoolsSet = teamPools as? Set<TeamPool> ?? []
+        return teamPoolsSet.sorted { $0.name < $1.name }
+    }
 
 }
 

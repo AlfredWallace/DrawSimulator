@@ -97,7 +97,7 @@ struct TeamListView: View {
             ForEach(teamPools) { section in
                 CardView {
                     ForEach(section) { teamPool in
-                        Text("\(teamPool.team?.nameProxy ?? "no team") (\(teamPool.name))")
+                        Text("\(teamPool.team?.name ?? "no team") (\(teamPool.name))")
                     }
                 } header: {
                     Text(section.id)

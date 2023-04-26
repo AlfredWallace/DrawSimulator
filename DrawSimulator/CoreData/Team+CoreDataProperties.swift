@@ -16,22 +16,15 @@ extension Team {
         return NSFetchRequest<Team>(entityName: "Team")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var shortName: String?
-    @NSManaged public var sortingName: String?
+    @NSManaged public var name: String
+    @NSManaged public var shortName: String
+    @NSManaged public var sortingName: String
     @NSManaged public var country: Country?
     @NSManaged public var teamPools: NSSet?
-
-    public var nameProxy: String {
-        name ?? "unknown name"
-    }
     
-    public var shortNameProxy: String {
-        shortName ?? "unknown short name"
-    }
-    
-    public var sortingNameProxy: String {
-        sortingName ?? "unkown sorting name"
+    public var teamPoolsArray: [TeamPool] {
+        let teamPoolsSet = teamPools as? Set<TeamPool> ?? []
+        return teamPoolsSet.sorted { $0.name < $1.name }
     }
 }
 

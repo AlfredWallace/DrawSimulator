@@ -28,8 +28,7 @@ class DatabaseInitializer: ObservableObject {
         var seasons = [Int: Season]()
         
         for winYear in winYears {
-            let season = Season(context: moc)
-            season.winYear = Int16(winYear)
+            let season = Season(context: moc, winYear: winYear)
             seasons[winYear] = season
         }
         
@@ -47,9 +46,7 @@ class DatabaseInitializer: ObservableObject {
         var countries = [CountryIdentifier: Country]()
         
         for countryTuple in countryTuples {
-            let country = Country(context: moc)
-            country.name = countryTuple.name
-            country.shortName = countryTuple.shortName.rawValue
+            let country = Country(context: moc, name: countryTuple.name, shortName: countryTuple.shortName.rawValue)
             countries[countryTuple.shortName] = country
         }
         
@@ -76,11 +73,7 @@ class DatabaseInitializer: ObservableObject {
         var teams = [TeamIdentifier: Team]()
         
         for teamTuple in teamTuples {
-            let team = Team(context: moc)
-            team.name = teamTuple.name
-            team.shortName = teamTuple.shortName.rawValue
-            team.sortingName = teamTuple.sortingName
-            team.country = teamTuple.country
+            let team = Team(context: moc, name: teamTuple.name, shortName: teamTuple.shortName.rawValue, sortingName: teamTuple.sortingName, country: teamTuple.country)
             teams[teamTuple.shortName] = team
         }
         

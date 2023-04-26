@@ -16,21 +16,13 @@ extension Country {
         return NSFetchRequest<Country>(entityName: "Country")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var shortName: String?
+    @NSManaged public var name: String
+    @NSManaged public var shortName: String
     @NSManaged public var teams: NSSet?
-
-    public var nameProxy: String {
-        name ?? "unknown name"
-    }
-    
-    public var shortNameProxy: String {
-        shortName ?? "unknown short name"
-    }
     
     public var teamsProxy: [Team] {
         let teamsSet = teams as? Set<Team> ?? []
-        return teamsSet.sorted { $0.nameProxy < $1.nameProxy }
+        return teamsSet.sorted { $0.name < $1.name }
     }
 }
 
