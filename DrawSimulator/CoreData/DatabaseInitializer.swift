@@ -105,11 +105,13 @@ class DatabaseInitializer: ObservableObject {
         ]
         
         for teamPoolTuple in teamPoolTuples {
-            let teamPool = TeamPool(context: moc)
-            teamPool.name = teamPoolTuple.name
-            teamPool.seeded = teamPoolTuple.seeded
-            teamPool.team = teamPoolTuple.team
-            teamPool.season = teamPoolTuple.season
+            let _ = TeamPool(
+                context: moc,
+                name: teamPoolTuple.name,
+                seeded: teamPoolTuple.seeded,
+                season: teamPoolTuple.season,
+                team: teamPoolTuple.team
+            )
         }
     }
 }

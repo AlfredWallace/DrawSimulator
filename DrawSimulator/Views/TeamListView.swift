@@ -6,18 +6,37 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TeamListView: View {
+    
+    @EnvironmentObject private var userSettings: UserSettings
+    
+    let season: Season
     
     @State private var showingGroupingDialog = false
     @State private var showingList = true
     
-    @EnvironmentObject private var userSettings: UserSettings
+    @SectionedFetchRequest(
+        sectionIdentifier: \.name,
+        sortDescriptors: [SortDescriptor(\.name), SortDescriptor(\.seeded, order: .reverse)]
+    ) private var teamPools: SectionedFetchResults<String, TeamPool>
     
-//    private var teamsGroupedByPool: [[Team]] {
-//        Array(Dictionary(grouping: Teams.data, by: { $0.pool }).values).sorted {
-//            $0[0].pool < $1[0].pool
+    
+//    private struct PoolGrouping {
+//        let poolName: String
+//        let seededTeam: Team
+//        let unseededTeam: Team
+//    }
+//
+//    private var poolGrouping: [PoolGrouping] {
+//        var result = [PoolGrouping]()
+//
+//        for teamPool in teamPools {
+//
 //        }
+//
+//        return result
 //    }
 //
 //    private var teamsGroupedByCountry: [[Team]] {
@@ -58,7 +77,7 @@ struct TeamListView: View {
 //
 //        return result
 //    }
-    
+//
 //    private var groupedTeams: [[Team]] {
 //        switch userSettings.data.grouping {
 //            case .country:
@@ -74,6 +93,23 @@ struct TeamListView: View {
     
     var body: some View {
         VStack {
+            
+            ForEach(teamPools) { section in
+                CardView {
+                    ForEach(section) { teamPool in
+                        Text("\(teamPool.team?.nameProxy ?? "no team") (\(teamPool.name))")
+                    }
+                } header: {
+                    Text(section.id)
+                }
+            }
+            
+            DividerView()
+            
+//            ForEach(teamPools) { teamPool in
+//                Text("\(teamPool.nameProxy) - \(teamPool.seeded ? "1" : "2") - \(teamPool.team != nil ? teamPool.team!.nameProxy : "no team")")
+//            }
+            
 //            if showingList {
 //                ScrollView {
 //                    VStack(spacing: 20) {

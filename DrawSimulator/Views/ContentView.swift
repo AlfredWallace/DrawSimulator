@@ -9,10 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) private var countries: FetchedResults<Country>
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.sortingName)]) private var teams: FetchedResults<Team>
-    @FetchRequest(sortDescriptors: []) private var seasons: FetchedResults<Season>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
@@ -22,16 +19,6 @@ struct ContentView: View {
     @EnvironmentObject private var coreDataController: CoreDataController
     
     @State private var isFirstLaunch = true
-    
-    func getCountryName(for team: Team) -> String {
-        var countryName = "n/a"
-        if let country = team.country {
-            countryName = country.nameProxy
-        }
-        
-        return countryName
-    }
-        
     
     init() {
         NavigationTheme.navigationBarColors()
@@ -44,18 +31,16 @@ struct ContentView: View {
                     Rectangle()
                         .fill(Color.pitchGreen.gradient)
                         .ignoresSafeArea()
-                    
-                    TeamListView()
-                    
-                    VStack {
-                        ForEach(seasons) { season in
-                            Text("\(String(season.winYear))")
-                        }
-                        
-                        ForEach(teams) { team in
-                            Text("\(team.nameProxy) (\(getCountryName(for: team)))")
+                    ForEach(seasons) { season in
+                        CardView {
+                            NavigationLink(value: season) {
+                                Text(String(season.winYear))
+                            }
                         }
                     }
+                }
+                .navigationDestination(for: Season.self) { season in
+                    TeamListView(season: season)
                 }
             }
             .environmentObject(userSettings)
