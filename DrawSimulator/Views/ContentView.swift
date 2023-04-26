@@ -9,14 +9,15 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    
+    @EnvironmentObject private var coreDataController: CoreDataController
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
     @StateObject private var draws = Draws()
     @StateObject private var databaseInitializer = DatabaseInitializer()
-    
-    @EnvironmentObject private var coreDataController: CoreDataController
     
     @State private var isFirstLaunch = true
     
@@ -31,14 +32,29 @@ struct ContentView: View {
                     Rectangle()
                         .fill(Color.pitchGreen.gradient)
                         .ignoresSafeArea()
-                    ForEach(seasons) { season in
-                        CardView {
-                            NavigationLink(value: season) {
-                                Text(String(season.winYear))
+                    
+                    ScrollView {
+                        ForEach(seasons) { season in
+                            CardView {
+                                NavigationLink(value: season) {
+                                    VStack {
+                                        Text("Atatürk Olympic Stadium")
+                                            .font(.custom(Fonts.ElMessiri.bold.rawValue, size: CGFloat(20), relativeTo: .caption))
+                                        
+                                        Text("Istanbul")
+                                            .font(.custom(Fonts.ElMessiri.bold.rawValue, size: CGFloat(80), relativeTo: .largeTitle))
+                                        
+                                        Text("\(String(season.winYear - 1)) - \(String(season.winYear))")
+                                            .font(.custom(Fonts.Chillax.bold.rawValue, size: CGFloat(40), relativeTo: .largeTitle))
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                }
                             }
+                            .padding(.horizontal, 15)
                         }
                     }
                 }
+                .navigationTitle("Seasons")
                 .navigationDestination(for: Season.self) { season in
                     TeamListView(season: season)
                 }
@@ -67,5 +83,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(CoreDataController())
     }
 }
