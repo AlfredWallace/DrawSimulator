@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Country" representedClassName="Country" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="shortName" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="shortName" attributeType="String"/>
         <relationship name="teams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Team" inverseName="country" inverseEntity="Team"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -11,7 +11,7 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Season" representedClassName="Season" syncable="YES">
-        <attribute name="winYear" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="winYear" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="teamPools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamPool" inverseName="season" inverseEntity="TeamPool"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -20,9 +20,9 @@
         </uniquenessConstraints>
     </entity>
     <entity name="Team" representedClassName="Team" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="shortName" optional="YES" attributeType="String"/>
-        <attribute name="sortingName" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="shortName" attributeType="String"/>
+        <attribute name="sortingName" attributeType="String"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="teams" inverseEntity="Country"/>
         <relationship name="teamPools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamPool" inverseName="team" inverseEntity="TeamPool"/>
         <uniquenessConstraints>
@@ -32,8 +32,8 @@
         </uniquenessConstraints>
     </entity>
     <entity name="TeamPool" representedClassName="TeamPool" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="seeded" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="seeded" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="season" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Season" inverseName="teamPools" inverseEntity="Season"/>
         <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="teamPools" inverseEntity="Team"/>
         <uniquenessConstraints>
