@@ -19,7 +19,6 @@
 		BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */; };
 		BA1E066329EB30E80015F4D5 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066229EB30E80015F4D5 /* DividerView.swift */; };
 		BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066429EB31640015F4D5 /* PoolLabelView.swift */; };
-		BA1E066729EB33710015F4D5 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066629EB33710015F4D5 /* CardViewModifier.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */; };
 		BA616E6C29ED7F08003F817B /* Draws.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA616E6B29ED7F08003F817B /* Draws.swift */; };
@@ -70,7 +69,6 @@
 		BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoSizeTracker.swift; sourceTree = "<group>"; };
 		BA1E066229EB30E80015F4D5 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		BA1E066429EB31640015F4D5 /* PoolLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolLabelView.swift; sourceTree = "<group>"; };
-		BA1E066629EB33710015F4D5 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInitializer.swift; sourceTree = "<group>"; };
 		BA616E6B29ED7F08003F817B /* Draws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draws.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 		BA0613D129F035C4002CDE53 /* ViewUtils */ = {
 			isa = PBXGroup;
 			children = (
-				BA1E066629EB33710015F4D5 /* CardViewModifier.swift */,
 				BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */,
 				BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */,
 			);
@@ -322,7 +319,6 @@
 				BA85376E29F4364400D1CF55 /* Team+CoreDataProperties.swift in Sources */,
 				BA85377129F4364400D1CF55 /* Season+CoreDataClass.swift in Sources */,
 				BAD386E929F3B91800369C7D /* DrawSimulator.xcdatamodeld in Sources */,
-				BA1E066729EB33710015F4D5 /* CardViewModifier.swift in Sources */,
 				BA85377229F4364400D1CF55 /* Season+CoreDataProperties.swift in Sources */,
 				BAD386EB29F3B99800369C7D /* CoreDataController.swift in Sources */,
 				BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */,

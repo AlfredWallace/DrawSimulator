@@ -35,7 +35,7 @@ struct ContentView: View {
                     
                     ScrollView {
                         ForEach(seasons) { season in
-                            CardView {
+                            CardView(backgroundOverlay: LinearGradient(colors: [.red, .white], startPoint: .leading, endPoint: .trailing).opacity(0.2)) {
                                 NavigationLink(value: season) {
                                     VStack {
                                         Text("Atatürk Olympic Stadium")
