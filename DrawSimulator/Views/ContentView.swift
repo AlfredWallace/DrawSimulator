@@ -81,8 +81,11 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static var coreDataController = CoreDataController()
+    
     static var previews: some View {
         ContentView()
-            .environmentObject(CoreDataController())
+            .environment(\.managedObjectContext, coreDataController.mainContext)
+            .environmentObject(coreDataController)
     }
 }
