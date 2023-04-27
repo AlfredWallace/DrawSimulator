@@ -548,6 +548,7 @@
 		BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				BAD8E37529FAC71C0005B104 /* DrawSimulator 2.xcdatamodel */,
 				BAD386E829F3B91800369C7D /* DrawSimulator.xcdatamodel */,
 			);
 			currentVersion = BAD386E829F3B91800369C7D /* DrawSimulator.xcdatamodel */;

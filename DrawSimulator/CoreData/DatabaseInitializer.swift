@@ -21,15 +21,15 @@ class DatabaseInitializer: ObservableObject {
     func initialize(moc: NSManagedObjectContext) {
         
         // SEASONS
-        let winYears = [
-            2023
+        let seasonTuples = [
+            (winYear: 2023, city: "Istanbul", stadium: "Atatürk Olympic Stadium")
         ]
         
         var seasons = [Int: Season]()
         
-        for winYear in winYears {
-            let season = Season(context: moc, winYear: winYear)
-            seasons[winYear] = season
+        for seasonTuple in seasonTuples {
+            let season = Season(context: moc, winYear: seasonTuple.winYear, city: seasonTuple.city, stadium: seasonTuple.stadium)
+            seasons[seasonTuple.winYear] = season
         }
         
         // COUNTRIES

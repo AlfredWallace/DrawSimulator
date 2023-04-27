@@ -17,6 +17,8 @@ extension Season {
     }
 
     @NSManaged public var winYear: Int16
+    @NSManaged public var city: String
+    @NSManaged public var stadium: String
     @NSManaged public var teamPools: NSSet?
     
     public var teamPoolsArray: [TeamPool] {

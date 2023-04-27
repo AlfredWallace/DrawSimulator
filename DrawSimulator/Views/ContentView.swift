@@ -38,10 +38,10 @@ struct ContentView: View {
                             CardView(backgroundOverlay: LinearGradient(colors: [.red, .white], startPoint: .leading, endPoint: .trailing).opacity(0.2)) {
                                 NavigationLink(value: season) {
                                     VStack {
-                                        Text("Atatürk Olympic Stadium")
+                                        Text(season.stadium)
                                             .font(.custom(Fonts.ElMessiri.bold.rawValue, size: CGFloat(20), relativeTo: .caption))
                                         
-                                        Text("Istanbul")
+                                        Text(season.city)
                                             .font(.custom(Fonts.ElMessiri.bold.rawValue, size: CGFloat(80), relativeTo: .largeTitle))
                                         
                                         Text("\(String(season.winYear - 1)) - \(String(season.winYear))")

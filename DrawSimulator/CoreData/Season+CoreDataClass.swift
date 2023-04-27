@@ -27,10 +27,12 @@ public class Season: NSManagedObject {
         super.init(entity: entity, insertInto: context)
     }
     
-    public init(context: NSManagedObjectContext, winYear: Int, teamPools: NSSet? = []) {
+    public init(context: NSManagedObjectContext, winYear: Int, city: String, stadium: String, teamPools: NSSet? = []) {
         let entity = NSEntityDescription.entity(forEntityName: "Season", in: context)!
         super.init(entity: entity, insertInto: context)
         self.winYear = Int16(winYear)
+        self.city = city
+        self.stadium = stadium
         self.teamPools = teamPools
     }
 }
