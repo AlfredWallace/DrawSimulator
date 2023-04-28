@@ -30,12 +30,12 @@ struct ContentView: View {
             NavigationStack {
                 ZStack {
                     Rectangle()
-                        .fill(Color.pitchGreen.gradient)
+                        .fill(Color.defaultBackground.gradient)
                         .ignoresSafeArea()
                     
                     ScrollView {
                         ForEach(seasons) { season in
-                            CardView(backgroundOverlay: LinearGradient(colors: [.red, .white], startPoint: .leading, endPoint: .trailing).opacity(0.2)) {
+                            CardView {
                                 NavigationLink(value: season) {
                                     VStack {
                                         Text(season.stadium)
