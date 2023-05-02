@@ -1,5 +1,5 @@
 //
-//  SportFont.swift
+//  SportFontViewModifier.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 02/05/2023.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct SportFont: ViewModifier {
+struct SportFontViewModifier: ViewModifier {
     let textStyle: Font.TextStyle
     let size: CGFloat
     
@@ -58,6 +58,6 @@ struct SportFont: ViewModifier {
 
 extension View {
     func sportFont(_ textStyle: Font.TextStyle, multiplier: CGFloat = 1.0) -> some View {
-        modifier(SportFont(textStyle: textStyle, multiplier: multiplier))
+        modifier(SportFontViewModifier(textStyle: textStyle, multiplier: multiplier))
     }
 }

@@ -40,7 +40,7 @@
 		BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9979F22963B42C00AF04B8 /* ContentView.swift */; };
 		BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F42963B42D00AF04B8 /* Assets.xcassets */; };
 		BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */; };
-		BAC777DC2A00DF3400535F81 /* SportFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC777DB2A00DF3400535F81 /* SportFont.swift */; };
+		BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */; };
 		BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */; };
 		BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */; };
 		BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACC352829EAE23200E22E6A /* FlagLabelView.swift */; };
@@ -90,7 +90,7 @@
 		BA9979F22963B42C00AF04B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA9979F42963B42D00AF04B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BAC777DB2A00DF3400535F81 /* SportFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportFont.swift; sourceTree = "<group>"; };
+		BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportFontViewModifier.swift; sourceTree = "<group>"; };
 		BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamGroupTitleView.swift; sourceTree = "<group>"; };
 		BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		BACC352829EAE23200E22E6A /* FlagLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagLabelView.swift; sourceTree = "<group>"; };
@@ -137,14 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
-				BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */,
 				BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */,
 				BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */,
 				BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */,
-				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
-				BA672D5029EEC4E50024C046 /* CardView.swift */,
 				BA73B68829E0C63500807496 /* TeamListView.swift */,
 				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */,
@@ -157,10 +154,20 @@
 			isa = PBXGroup;
 			children = (
 				BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */,
-				BAC777DB2A00DF3400535F81 /* SportFont.swift */,
 				BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */,
+				BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */,
 			);
 			path = ViewUtils;
+			sourceTree = "<group>";
+		};
+		BA326D802A01588B00F8DA7C /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+				BA672D5029EEC4E50024C046 /* CardView.swift */,
+				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
+				BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */,
+			);
+			path = HelperViews;
 			sourceTree = "<group>";
 		};
 		BA9979E42963B42C00AF04B8 = {
@@ -183,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0613CE29F03565002CDE53 /* Views */,
+				BA326D802A01588B00F8DA7C /* HelperViews */,
 				BA0613D129F035C4002CDE53 /* ViewUtils */,
 				BAD386E629F3B8AE00369C7D /* CoreData */,
 				BA0613CD29F03543002CDE53 /* Assets */,
@@ -326,7 +334,7 @@
 				BA73B68929E0C63500807496 /* TeamListView.swift in Sources */,
 				BA85376D29F4364400D1CF55 /* Team+CoreDataClass.swift in Sources */,
 				BA76EEBE29F13D6100F0D4E9 /* GroupingDialogButtonView.swift in Sources */,
-				BAC777DC2A00DF3400535F81 /* SportFont.swift in Sources */,
+				BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */,
 				BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */,
 				BA0FBA3F29EAA843003243F1 /* GroupingDialogChoiceView.swift in Sources */,
 				BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */,
