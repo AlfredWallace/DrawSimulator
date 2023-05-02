@@ -37,7 +37,8 @@ struct ContentView: View {
                                         .sportFont(.body)
                                     Text(season.city)
                                         .sportFont(.largeTitle, multiplier: 2.4)
-                                    Text("\(String(season.winYear - 1)) - \(String(season.winYear))")
+                                        .dynamicTypeSize(.xSmall ... .large)
+                                    Text(String(season.winYear))
                                         .sportFont(.largeTitle, multiplier: 1.4)
                                 }
                                 .frame(maxWidth: .infinity)
