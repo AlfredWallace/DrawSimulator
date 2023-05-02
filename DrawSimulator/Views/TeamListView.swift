@@ -104,8 +104,6 @@ struct TeamListView: View {
                 }
             }
             
-            DividerView()
-            
 //            ForEach(teamPools) { teamPool in
 //                Text("\(teamPool.nameProxy) - \(teamPool.seeded ? "1" : "2") - \(teamPool.team != nil ? teamPool.team!.nameProxy : "no team")")
 //            }
@@ -138,6 +136,11 @@ struct TeamListView: View {
 //                .scrollIndicators(.hidden)
 //                .transition(.move(edge: .bottom))
 //            }
+        }
+        .background {
+            Rectangle()
+                .fill(Color.defaultBackground.gradient)
+                .ignoresSafeArea()
         }
 //        .navigationDestination(for: Team.self) { team in
 //            TeamDetailView(team: team)

@@ -24,11 +24,4 @@ class Fonts {
         case semiBold = "OverpassMono-SemiBold"
         case bold = "OverpassMono-Bold"
     }
-    
-    enum ElMessiri: String {
-        case regular = "ElMessiri-Regular"
-        case medium = "ElMessiri-Medium"
-        case semiBold = "ElMessiri-SemiBold"
-        case bold = "ElMessiri-Bold"
-    }
 }

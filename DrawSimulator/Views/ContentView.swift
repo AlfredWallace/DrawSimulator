@@ -28,31 +28,28 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geoWrapper in
             NavigationStack {
-                ZStack {
+                ScrollView {
+                    ForEach(seasons) { season in
+                        CardView {
+                            NavigationLink(value: season) {
+                                VStack {
+                                    Text(season.stadium)
+                                        .sportFont(.body)
+                                    Text(season.city)
+                                        .sportFont(.largeTitle, multiplier: 2.4)
+                                    Text("\(String(season.winYear - 1)) - \(String(season.winYear))")
+                                        .sportFont(.largeTitle, multiplier: 1.4)
+                                }
+                                .frame(maxWidth: .infinity)
+                            }
+                        }
+                        .padding(.horizontal, 15)
+                    }
+                }
+                .background {
                     Rectangle()
                         .fill(Color.defaultBackground.gradient)
                         .ignoresSafeArea()
-                    
-                    ScrollView {
-                        ForEach(seasons) { season in
-                            CardView {
-                                NavigationLink(value: season) {
-                                    VStack {
-                                        Text(season.stadium)
-                                            .font(.custom(Fonts.ElMessiri.bold.rawValue, size: CGFloat(20), relativeTo: .caption))
-                                        
-                                        Text(season.city)
-                                            .font(.custom(Fonts.ElMessiri.bold.rawValue, size: CGFloat(80), relativeTo: .largeTitle))
-                                        
-                                        Text("\(String(season.winYear - 1)) - \(String(season.winYear))")
-                                            .font(.custom(Fonts.Chillax.bold.rawValue, size: CGFloat(40), relativeTo: .largeTitle))
-                                    }
-                                    .frame(maxWidth: .infinity)
-                                }
-                            }
-                            .padding(.horizontal, 15)
-                        }
-                    }
                 }
                 .navigationTitle("Seasons")
                 .navigationDestination(for: Season.self) { season in

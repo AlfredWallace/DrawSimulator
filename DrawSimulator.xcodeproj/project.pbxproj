@@ -40,14 +40,13 @@
 		BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9979F22963B42C00AF04B8 /* ContentView.swift */; };
 		BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F42963B42D00AF04B8 /* Assets.xcassets */; };
 		BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */; };
+		BAC777DC2A00DF3400535F81 /* SportFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC777DB2A00DF3400535F81 /* SportFont.swift */; };
 		BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */; };
 		BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */; };
 		BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACC352829EAE23200E22E6A /* FlagLabelView.swift */; };
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
 		BAD386E929F3B91800369C7D /* DrawSimulator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */; };
 		BAD386EB29F3B99800369C7D /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD386EA29F3B99800369C7D /* CoreDataController.swift */; };
-		BAD8E37329F973260005B104 /* ElMessiri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAD8E37129F973260005B104 /* ElMessiri.ttf */; };
-		BAD8E37429F973260005B104 /* ElMessiri Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAD8E37229F973260005B104 /* ElMessiri Licence.txt */; };
 		BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */; };
 		BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* UserSettings.swift */; };
 		BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */; };
@@ -91,14 +90,13 @@
 		BA9979F22963B42C00AF04B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA9979F42963B42D00AF04B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BAC777DB2A00DF3400535F81 /* SportFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportFont.swift; sourceTree = "<group>"; };
 		BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamGroupTitleView.swift; sourceTree = "<group>"; };
 		BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		BACC352829EAE23200E22E6A /* FlagLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagLabelView.swift; sourceTree = "<group>"; };
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
 		BAD386E829F3B91800369C7D /* DrawSimulator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrawSimulator.xcdatamodel; sourceTree = "<group>"; };
 		BAD386EA29F3B99800369C7D /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
-		BAD8E37129F973260005B104 /* ElMessiri.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ElMessiri.ttf; sourceTree = "<group>"; };
-		BAD8E37229F973260005B104 /* ElMessiri Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ElMessiri Licence.txt"; sourceTree = "<group>"; };
 		BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLabelView.swift; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
@@ -129,8 +127,6 @@
 				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
 				BA96F37029E824AC00E365FB /* Chillax.ttf */,
 				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
-				BAD8E37129F973260005B104 /* ElMessiri.ttf */,
-				BAD8E37229F973260005B104 /* ElMessiri Licence.txt */,
 				BAF749FE29F084E900430C23 /* Overpass.ttf */,
 				BAF749FD29F084E900430C23 /* Overpass Licence.txt */,
 			);
@@ -161,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0613CA29F017A9002CDE53 /* ButtonProgressStyle.swift */,
+				BAC777DB2A00DF3400535F81 /* SportFont.swift */,
 				BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */,
 			);
 			path = ViewUtils;
@@ -286,12 +283,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA96F37129E824AC00E365FB /* Chillax.ttf in Resources */,
-				BAD8E37429F973260005B104 /* ElMessiri Licence.txt in Resources */,
 				BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */,
 				BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */,
 				BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */,
 				BAF749FF29F084E900430C23 /* Overpass Licence.txt in Resources */,
-				BAD8E37329F973260005B104 /* ElMessiri.ttf in Resources */,
 				BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */,
 				BAF74A0029F084E900430C23 /* Overpass.ttf in Resources */,
 				BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */,
@@ -331,6 +326,7 @@
 				BA73B68929E0C63500807496 /* TeamListView.swift in Sources */,
 				BA85376D29F4364400D1CF55 /* Team+CoreDataClass.swift in Sources */,
 				BA76EEBE29F13D6100F0D4E9 /* GroupingDialogButtonView.swift in Sources */,
+				BAC777DC2A00DF3400535F81 /* SportFont.swift in Sources */,
 				BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */,
 				BA0FBA3F29EAA843003243F1 /* GroupingDialogChoiceView.swift in Sources */,
 				BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */,
@@ -548,7 +544,6 @@
 		BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				BAD8E37529FAC71C0005B104 /* DrawSimulator 2.xcdatamodel */,
 				BAD386E829F3B91800369C7D /* DrawSimulator.xcdatamodel */,
 			);
 			currentVersion = BAD386E829F3B91800369C7D /* DrawSimulator.xcdatamodel */;
