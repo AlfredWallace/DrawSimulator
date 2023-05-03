@@ -103,8 +103,14 @@ struct SeasonDetailView: View {
                                     ForEach(section) { teamPool in
                                         NavigationLink(value: teamPool) {
                                             HStack {
-                                                //TeamLabelView(team: team)
-                                                Text("\(teamPool.team?.name ?? "no team") (\(teamPool.name))")
+                                                Group {
+                                                    if let team = teamPool.team {
+                                                        TeamLabelView(team: team)
+                                                    } else {
+                                                        Text("Error")
+                                                        Spacer()
+                                                    }
+                                                }
                                                 Image(systemName: "chevron.forward")
                                             }
                                         }
@@ -158,24 +164,24 @@ struct SeasonDetailView: View {
 }
 
 
-struct SeasonDetailView_Previews: PreviewProvider {
-    
-    static var coreDataController = CoreDataController(inMemory: true)
-    
-    static var databaseInitializer = DatabaseInitializer()
-    
-    static var previews: some View {
-        NavigationStack {
-            SeasonDetailView(season: databaseInitializer.seasons[2023, default: Season(context: coreDataController.mainContext, winYear: 1970, city: "Test", stadium: "test")])
-                .environment(\.managedObjectContext, coreDataController.mainContext)
-                .environmentObject(coreDataController)
-            
-        }
-        .onAppear {
-            coreDataController.performAndSave { moc in
-                databaseInitializer.initialize(moc: moc)
-            }
-        }
-    }
-}
+//struct SeasonDetailView_Previews: PreviewProvider {
+//    
+//    static var coreDataController = CoreDataController(inMemory: true)
+//    
+//    static var databaseInitializer = DatabaseInitializer()
+//    
+//    static var previews: some View {
+//        NavigationStack {
+//            SeasonDetailView(season: databaseInitializer.seasons[2023, default: Season(context: coreDataController.mainContext, winYear: 1970, city: "Test", stadium: "test")])
+//                .environment(\.managedObjectContext, coreDataController.mainContext)
+//                .environmentObject(coreDataController)
+//            
+//        }
+//        .onAppear {
+//            coreDataController.performAndSave { moc in
+//                databaseInitializer.initialize(moc: moc)
+//            }
+//        }
+//    }
+//}
 
