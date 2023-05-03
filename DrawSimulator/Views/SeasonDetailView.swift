@@ -139,7 +139,7 @@ struct SeasonDetailView: View {
         }
         .background {
             Rectangle()
-                .fill(Color.defaultBackground.gradient)
+                .fill(Color.pitchGreen.gradient)
                 .ignoresSafeArea()
         }
 //        .navigationDestination(for: Team.self) { team in
@@ -169,4 +169,17 @@ struct SeasonDetailView: View {
 //        }
     }
 }
+
+
+//struct SeasonDetailView_Previews: PreviewProvider {
+//
+//    
+//    static var coreDataController = CoreDataController()
+//    
+//    static var previews: some View {
+//        SeasonDetailView(season: seasons.first!)
+//            .environment(\.managedObjectContext, coreDataController.mainContext)
+//            .environmentObject(coreDataController)
+//    }
+//}
 

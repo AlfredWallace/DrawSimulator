@@ -79,7 +79,7 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var coreDataController = CoreDataController()
+    static var coreDataController = CoreDataController(inMemory: true)
     
     static var previews: some View {
         ContentView()

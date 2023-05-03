@@ -13,8 +13,13 @@ class CoreDataController: ObservableObject {
     let mainContext: NSManagedObjectContext
     let backgroundContext: NSManagedObjectContext
     
-    init() {
+    init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "DrawSimulator")
+        
+        if inMemory {
+            container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
+        }
+        
         self.mainContext = container.viewContext
         self.backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
 
@@ -38,16 +43,24 @@ class CoreDataController: ObservableObject {
         backgroundContext.performAndWait {
             operation(backgroundContext)
             
-            do {
-                try backgroundContext.save()
-            } catch {
-                print("Could not save the background context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+            if backgroundContext.hasChanges {
+                do {
+                    try backgroundContext.save()
+                } catch {
+                    print("Could not save the background context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+                }
+            } else {
+                print("Tried to save backgroundContext without any changes")
             }
             
-            do {
-                try mainContext.save()
-            } catch {
-                print("Could not save the main context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+            if mainContext.hasChanges {
+                do {
+                    try mainContext.save()
+                } catch {
+                    print("Could not save the main context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+                }
+            } else {
+                print("Tried to save mainContext without any changes")
             }
         }
     }
