@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class DatabaseInitializer: ObservableObject {
+class DatabaseInitializer {
     
     enum CountryIdentifier: String {
         case ITA, SPA, FRA, ENG, BEL, GER, POR
@@ -22,7 +22,7 @@ class DatabaseInitializer: ObservableObject {
     var countries = [CountryIdentifier: Country]()
     var teams = [TeamIdentifier: Team]()
     
-    func initialize(moc: NSManagedObjectContext) {
+    init(moc: NSManagedObjectContext) {
         
         // SEASONS
         let seasonTuples = [

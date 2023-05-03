@@ -10,16 +10,11 @@ import CoreData
 
 struct ContentView: View {
     
-    @EnvironmentObject private var coreDataController: CoreDataController
-    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
     @StateObject private var draws = Draws()
-    @StateObject private var databaseInitializer = DatabaseInitializer()
-    
-    @State private var isFirstLaunch = true
     
     init() {
         NavigationTheme.navigationBarColors()
@@ -68,23 +63,13 @@ struct ContentView: View {
         }
         .tint(.defaultText)
         .foregroundColor(.defaultText)
-        .onAppear {
-            if isFirstLaunch {
-                coreDataController.performAndSave { moc in
-                    databaseInitializer.initialize(moc: moc)
-                }
-                isFirstLaunch = false
-            }
-        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var coreDataController = CoreDataController(inMemory: true)
-    
     static var previews: some View {
         ContentView()
-            .environment(\.managedObjectContext, coreDataController.mainContext)
-            .environmentObject(coreDataController)
+            .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
     }
 }
+

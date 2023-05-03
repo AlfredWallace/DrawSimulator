@@ -21,13 +21,20 @@ struct DrawSimulatorApp: App {
 //        }
 //    }
     
-    @StateObject private var coreDataController = CoreDataController()
+    @State private var isFirstLaunch = true
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, coreDataController.mainContext)
-                .environmentObject(coreDataController)
+                .environment(\.managedObjectContext, CoreDataController.shared.mainContext)
+                .onAppear {
+                    if isFirstLaunch {
+                        CoreDataController.shared.performInBackground { moc in
+                            let _ = DatabaseInitializer(moc: moc)
+                        }
+                        isFirstLaunch = false
+                    }
+                }
         }
     }
 }

@@ -8,7 +8,19 @@
 import CoreData
 import SwiftUI
 
-class CoreDataController: ObservableObject {
+class CoreDataController {
+    static let shared = CoreDataController() // singleton
+    
+    static var preview: CoreDataController = {
+        var result = CoreDataController(inMemory: true)
+        
+        result.performInBackground { moc in
+            let _ = DatabaseInitializer(moc: moc)
+        }
+        
+        return result
+    }()
+    
     private let container: NSPersistentContainer
     let mainContext: NSManagedObjectContext
     let backgroundContext: NSManagedObjectContext
@@ -39,29 +51,33 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    func performAndSave(operation: (NSManagedObjectContext) -> Void) {
+    func performInBackground(operation: (NSManagedObjectContext) -> Void) {
         backgroundContext.performAndWait {
             operation(backgroundContext)
             
-            if backgroundContext.hasChanges {
-                do {
-                    try backgroundContext.save()
-                } catch {
-                    print("Could not save the background context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
-                }
-            } else {
-                print("Tried to save backgroundContext without any changes")
+            save()
+        }
+    }
+    
+    private func save() {
+        if backgroundContext.hasChanges {
+            do {
+                try backgroundContext.save()
+            } catch {
+                print("Could not save the background context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
             }
-            
-            if mainContext.hasChanges {
-                do {
-                    try mainContext.save()
-                } catch {
-                    print("Could not save the main context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
-                }
-            } else {
-                print("Tried to save mainContext without any changes")
+        } else {
+            print("Tried to save backgroundContext without any changes")
+        }
+        
+        if mainContext.hasChanges {
+            do {
+                try mainContext.save()
+            } catch {
+                print("Could not save the main context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
             }
+        } else {
+            print("Tried to save mainContext without any changes")
         }
     }
 }
