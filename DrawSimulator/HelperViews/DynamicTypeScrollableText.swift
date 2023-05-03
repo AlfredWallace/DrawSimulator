@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct DynamicTypeScrollableText: View {
-    
-    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
-    
     let text: String
     
     init(_ text: String) {
