@@ -18,14 +18,16 @@ class DatabaseInitializer: ObservableObject {
         case PSG, NAP, LIV, POR, BRU, BAY, INT, TOT, FRK, CHE, ACM, RMA, RBL, MCI, BVB, BEN
     }
     
+    var seasons = [Int: Season]()
+    var countries = [CountryIdentifier: Country]()
+    var teams = [TeamIdentifier: Team]()
+    
     func initialize(moc: NSManagedObjectContext) {
         
         // SEASONS
         let seasonTuples = [
             (winYear: 2023, city: "Istanbul", stadium: "Atatürk Olympic Stadium")
         ]
-        
-        var seasons = [Int: Season]()
         
         for seasonTuple in seasonTuples {
             let season = Season(context: moc, winYear: seasonTuple.winYear, city: seasonTuple.city, stadium: seasonTuple.stadium)
@@ -42,8 +44,6 @@ class DatabaseInitializer: ObservableObject {
             (name: "Germany", shortName: CountryIdentifier.GER),
             (name: "Portugal", shortName: CountryIdentifier.POR),
         ]
-        
-        var countries = [CountryIdentifier: Country]()
         
         for countryTuple in countryTuples {
             let country = Country(context: moc, name: countryTuple.name, shortName: countryTuple.shortName.rawValue)
@@ -69,8 +69,6 @@ class DatabaseInitializer: ObservableObject {
             (name: "Borussia Dortmund", shortName: TeamIdentifier.BVB, sortingName: "Dortmund", country: countries[CountryIdentifier.GER]),
             (name: "SL Benfica", shortName: TeamIdentifier.BEN, sortingName: "Benfica", country: countries[CountryIdentifier.POR]),
         ]
-        
-        var teams = [TeamIdentifier: Team]()
         
         for teamTuple in teamTuples {
             let team = Team(context: moc, name: teamTuple.name, shortName: teamTuple.shortName.rawValue, sortingName: teamTuple.sortingName, country: teamTuple.country)

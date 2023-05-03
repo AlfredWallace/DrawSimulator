@@ -47,6 +47,7 @@ struct ContentView: View {
                         .padding(.horizontal, 15)
                     }
                 }
+                .scrollIndicators(.hidden)
                 .background {
                     Rectangle()
                         .fill(Color.pitchGreen.gradient)
