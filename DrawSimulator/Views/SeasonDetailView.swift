@@ -93,49 +93,36 @@ struct SeasonDetailView: View {
     
     var body: some View {
         VStack {
-            
-            ForEach(teamPools) { section in
-                CardView {
-                    ForEach(section) { teamPool in
-                        Text("\(teamPool.team?.name ?? "no team") (\(teamPool.name))")
+            if showingList {
+                ScrollView {
+                    VStack(spacing: 20) {
+                        ForEach(teamPools) { section in
+                            
+                            CardView(hasHeaderDivier: true) {
+                                VStack(spacing: 10) {
+                                    ForEach(section) { teamPool in
+                                        NavigationLink(value: teamPool) {
+                                            HStack {
+                                                //TeamLabelView(team: team)
+                                                Text("\(teamPool.team?.name ?? "no team") (\(teamPool.name))")
+                                                Image(systemName: "chevron.forward")
+                                            }
+                                        }
+                                    }
+                                }
+                                .padding(.vertical, 5)
+                            } header: {
+                                Text(section.id)
+                                //TeamGroupTitleView(team: teamGroup.first!)
+                                //  .font(.title2.bold())
+                            }
+                        }
                     }
-                } header: {
-                    Text(section.id)
+                    .padding(.horizontal)
                 }
+                .scrollIndicators(.hidden)
+                .transition(.move(edge: .bottom))
             }
-            
-            //            ForEach(teamPools) { teamPool in
-            //                Text("\(teamPool.nameProxy) - \(teamPool.seeded ? "1" : "2") - \(teamPool.team != nil ? teamPool.team!.nameProxy : "no team")")
-            //            }
-            
-            //            if showingList {
-            //                ScrollView {
-            //                    VStack(spacing: 20) {
-            //                        ForEach(groupedTeams, id: \.self) { teamGroup in
-            //
-            //                            CardView(hasHeaderDivier: true) {
-            //                                VStack(spacing: 10) {
-            //                                    ForEach(teamGroup) { team in
-            //                                        NavigationLink(value: team) {
-            //                                            HStack {
-            //                                                TeamLabelView(team: team)
-            //                                                Image(systemName: "chevron.forward")
-            //                                            }
-            //                                        }
-            //                                    }
-            //                                }
-            //                                .padding(.vertical, 5)
-            //                            } header: {
-            //                                TeamGroupTitleView(team: teamGroup.first!)
-            //                                    .font(.title2.bold())
-            //                            }
-            //                        }
-            //                    }
-            //                    .padding(.horizontal)
-            //                }
-            //                .scrollIndicators(.hidden)
-            //                .transition(.move(edge: .bottom))
-            //            }
         }
         .background {
             Rectangle()
