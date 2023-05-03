@@ -54,7 +54,7 @@ struct ContentView: View {
                 }
                 .navigationTitle("Seasons")
                 .navigationDestination(for: Season.self) { season in
-                    TeamListView(season: season)
+                    SeasonDetailView(season: season)
                 }
             }
             .environmentObject(userSettings)
