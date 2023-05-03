@@ -49,7 +49,7 @@ struct ContentView: View {
                 }
                 .background {
                     Rectangle()
-                        .fill(Color.defaultBackground.gradient)
+                        .fill(Color.pitchGreen.gradient)
                         .ignoresSafeArea()
                 }
                 .navigationTitle("Seasons")
