@@ -11,11 +11,16 @@ import SwiftUI
 class CoreDataController {
     static let shared = CoreDataController() // singleton
     
-    static var preview: CoreDataController = {
+    static let preview: CoreDataController = {
         var result = CoreDataController(inMemory: true)
         
         result.performInBackground { moc in
-            let _ = DatabaseInitializer(moc: moc)
+            let dbi = DatabaseInitializer(moc)
+//            result.previewData = (
+//                seasons: dbi.seasons,
+//                countries: dbi.countries,
+//                teams: dbi.teams
+//            )
         }
         
         return result
@@ -24,6 +29,12 @@ class CoreDataController {
     private let container: NSPersistentContainer
     let mainContext: NSManagedObjectContext
     let backgroundContext: NSManagedObjectContext
+    
+    private(set) var previewData = (
+        seasons: [Int: Season](),
+        countries: [DatabaseInitializer.CountryIdentifier: Country](),
+        teams: [DatabaseInitializer.TeamIdentifier: Team]()
+    )
     
     init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "DrawSimulator")

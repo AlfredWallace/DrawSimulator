@@ -30,7 +30,7 @@ struct DrawSimulatorApp: App {
                 .onAppear {
                     if isFirstLaunch {
                         CoreDataController.shared.performInBackground { moc in
-                            let _ = DatabaseInitializer(moc: moc)
+                            let _ = DatabaseInitializer(moc)
                         }
                         isFirstLaunch = false
                     }
