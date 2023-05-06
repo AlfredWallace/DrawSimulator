@@ -164,24 +164,13 @@ struct SeasonDetailView: View {
 }
 
 
-//struct SeasonDetailView_Previews: PreviewProvider {
-//    
-//    static var coreDataController = CoreDataController(inMemory: true)
-//    
-//    static var databaseInitializer = DatabaseInitializer()
-//    
-//    static var previews: some View {
-//        NavigationStack {
-//            SeasonDetailView(season: databaseInitializer.seasons[2023, default: Season(context: coreDataController.mainContext, winYear: 1970, city: "Test", stadium: "test")])
-//                .environment(\.managedObjectContext, coreDataController.mainContext)
-//                .environmentObject(coreDataController)
-//            
-//        }
-//        .onAppear {
-//            coreDataController.performAndSave { moc in
-//                databaseInitializer.initialize(moc: moc)
-//            }
-//        }
-//    }
-//}
+struct SeasonDetailView_Previews: PreviewProvider {
+
+    static var previews: some View {
+        NavigationStack {
+            SeasonDetailView(season: DatabaseInitializer.makeSeason(CoreDataController.preview.mainContext, 2023))
+        }
+        .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
+    }
+}
 
