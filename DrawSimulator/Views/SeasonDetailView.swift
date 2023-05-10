@@ -97,74 +97,81 @@ struct SeasonDetailView: View {
     //    }
     
     var body: some View {
-        VStack {
-            if showingList {
-                ScrollView {
-                    VStack(spacing: 20) {
-                        ForEach(teamPools) { section in
-                            
-                            CardView(hasHeaderDivier: true) {
-                                VStack(spacing: 10) {
-                                    ForEach(section) { teamPool in
-                                        NavigationLink(value: teamPool) {
-                                            HStack {
-                                                Group {
-                                                    if let team = teamPool.team {
-                                                        TeamLabelView(team: team)
-                                                    } else {
-                                                        Text("Error")
-                                                        Spacer()
-                                                    }
-                                                }
-                                                Image(systemName: "chevron.forward")
-                                            }
-                                        }
-                                    }
-                                }
-                                .padding(.vertical, 5)
-                            } header: {
-                                Text(section.id)
-                                //TeamGroupTitleView(team: teamGroup.first!)
-                                //  .font(.title2.bold())
-                            }
-                        }
-                    }
-                    .padding(.horizontal)
-                }
-                .scrollIndicators(.hidden)
-                .transition(.move(edge: .bottom))
-            }
-        }
-        .background {
+        ZStack {
+            
             Rectangle()
                 .fill(Color.pitchGreen.gradient)
                 .ignoresSafeArea()
+            
+            VStack {
+                if showingList {
+                    ScrollView {
+                        VStack(spacing: 20) {
+                            ForEach(teamPools) { section in
+                                
+                                CardView(hasHeaderDivier: true) {
+                                    VStack(spacing: 10) {
+                                        ForEach(section) { teamPool in
+                                            NavigationLink(value: teamPool) {
+                                                HStack {
+                                                    Group {
+                                                        if let team = teamPool.team {
+                                                            TeamLabelView(team: team)
+                                                        } else {
+                                                            Text("Error")
+                                                            Spacer()
+                                                        }
+                                                    }
+                                                    Image(systemName: "chevron.forward")
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .padding(.vertical, 5)
+                                } header: {
+                                    Text(section.id)
+                                    //TeamGroupTitleView(team: teamGroup.first!)
+                                    //  .font(.title2.bold())
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .scrollIndicators(.hidden)
+                    .transition(.move(edge: .bottom))
+                }
+            }
         }
+        //        .background {
+        //            Rectangle()
+        //                .fill(Color.pitchGreen.gradient)
+        //                .ignoresSafeArea()
+        //        }
         //        .navigationDestination(for: Team.self) { team in
         //            TeamDetailView(team: team)
         //        }
         .navigationTitle("Teams")
-        //        .toolbar {
-        //            ToolbarItem {
-        //                Menu {
-        //                    DisplayModeMenuButtonView(displayMode: .light)
-        //                    DisplayModeMenuButtonView(displayMode: .dark)
-        //                    DisplayModeMenuButtonView(displayMode: .system)
-        //                } label: {
-        //                    Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
-        //                }
-        //            }
-        //
-        //            ToolbarItemGroup(placement: .bottomBar) {
-        //                GroupingDialogButtonView(showingDialg: $showingGroupingDialog)
-        //            }
-        //        }
-        //        .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
-        //            GroupingDialogChoiceView(grouping: .pool, showingList: $showingList)
-        //            GroupingDialogChoiceView(grouping: .country, showingList: $showingList)
-        //            GroupingDialogChoiceView(grouping: .seeding, showingList: $showingList)
-        //            GroupingDialogChoiceView(grouping: .none, showingList: $showingList)
-        //        }
+        .toolbar {
+            //            ToolbarItem {
+            //                Menu {
+            //                    DisplayModeMenuButtonView(displayMode: .light)
+            //                    DisplayModeMenuButtonView(displayMode: .dark)
+            //                    DisplayModeMenuButtonView(displayMode: .system)
+            //                } label: {
+            //                    Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
+            //                }
+            //            }
+            
+            ToolbarItemGroup(placement: .bottomBar) {
+                GroupingDialogButtonView(showingDialg: $showingGroupingDialog)
+            }
+        }
+        .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
+            GroupingDialogChoiceView(grouping: .pool, showingList: $showingList)
+            GroupingDialogChoiceView(grouping: .country, showingList: $showingList)
+            GroupingDialogChoiceView(grouping: .seeding, showingList: $showingList)
+            GroupingDialogChoiceView(grouping: .none, showingList: $showingList)
+        }
     }
 }
 
