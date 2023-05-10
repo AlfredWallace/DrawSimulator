@@ -17,11 +17,16 @@ struct SeasonDetailView: View {
     @State private var showingGroupingDialog = false
     @State private var showingList = true
     
-    @SectionedFetchRequest(
-        sectionIdentifier: \.name,
-        sortDescriptors: [SortDescriptor(\.name), SortDescriptor(\.seeded, order: .reverse)]
-    ) private var teamPools: SectionedFetchResults<String, TeamPool>
+    @SectionedFetchRequest private var teamPools: SectionedFetchResults<String, TeamPool>
     
+    init(season: Season) {
+        self.season = season
+        _teamPools = SectionedFetchRequest(
+            sectionIdentifier: \.name,
+            sortDescriptors: [SortDescriptor(\.name), SortDescriptor(\.seeded, order: .reverse)],
+            predicate: NSPredicate(format: "season == %@", season)
+        )
+    }
     
     //    private struct PoolGrouping {
     //        let poolName: String
