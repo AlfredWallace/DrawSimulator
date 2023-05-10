@@ -20,7 +20,7 @@ struct TeamLabelView: View {
     }
 
     @ViewBuilder private var viewToFit: some View {
-        Image(team.name)
+        Image(team.shortName)
             .resizable()
             .scaledToFit()
             .frame(width: logoSize, height: logoSize)

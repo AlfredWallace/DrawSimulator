@@ -17,7 +17,7 @@ class DatabaseInitializer {
     }
     
     enum TeamIdentifier: String {
-        case PSG, NAP, LIV, POR, BRU, BAY, INT, TOT, FRK, CHE, ACM, RMA, RBL, MCI, BVB, BEN
+        case PSG, NAP, LIV, FCP, BRU, BAY, INT, TOT, FRK, CHE, ACM, RMA, RBL, MCI, BVB, BEN
     }
     
     private struct TeamData {
@@ -51,7 +51,7 @@ class DatabaseInitializer {
         TeamIdentifier.PSG: TeamData(name: "Paris Saint-Germain", sortingName: "Paris", countryIdentifier: CountryIdentifier.FRA),
         TeamIdentifier.NAP: TeamData(name: "SSC Napoli", sortingName: "Napoli", countryIdentifier: CountryIdentifier.ITA),
         TeamIdentifier.LIV: TeamData(name: "Liverpool FC", sortingName: "Liverpool", countryIdentifier: CountryIdentifier.ENG),
-        TeamIdentifier.POR: TeamData(name: "FC Porto", sortingName: "Porto", countryIdentifier: CountryIdentifier.POR),
+        TeamIdentifier.FCP: TeamData(name: "FC Porto", sortingName: "Porto", countryIdentifier: CountryIdentifier.POR),
         TeamIdentifier.BRU: TeamData(name: "Club Brugge", sortingName: "Brugge", countryIdentifier: CountryIdentifier.BEL),
         TeamIdentifier.BAY: TeamData(name: "Bayern München", sortingName: "Bayern", countryIdentifier: CountryIdentifier.GER),
         TeamIdentifier.INT: TeamData(name: "Inter Milan", sortingName: "Inter", countryIdentifier: CountryIdentifier.ITA),
@@ -69,7 +69,7 @@ class DatabaseInitializer {
     static private let teamPoolData = [
         TeamPoolData(name: "A", seeded: true, teamIdentifier: TeamIdentifier.NAP, seasonWinYear: 2023),
         TeamPoolData(name: "A", seeded: false, teamIdentifier: TeamIdentifier.LIV, seasonWinYear: 2023),
-        TeamPoolData(name: "B", seeded: true, teamIdentifier: TeamIdentifier.POR, seasonWinYear: 2023),
+        TeamPoolData(name: "B", seeded: true, teamIdentifier: TeamIdentifier.FCP, seasonWinYear: 2023),
         TeamPoolData(name: "B", seeded: false, teamIdentifier: TeamIdentifier.BRU, seasonWinYear: 2023),
         TeamPoolData(name: "C", seeded: true, teamIdentifier: TeamIdentifier.BAY, seasonWinYear: 2023),
         TeamPoolData(name: "C", seeded: false, teamIdentifier: TeamIdentifier.INT, seasonWinYear: 2023),
