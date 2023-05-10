@@ -13,14 +13,8 @@ class CoreDataController {
     
     static let preview: CoreDataController = {
         var result = CoreDataController(inMemory: true)
-        
         result.performInBackground { moc in
-            let dbi = DatabaseInitializer(moc)
-//            result.previewData = (
-//                seasons: dbi.seasons,
-//                countries: dbi.countries,
-//                teams: dbi.teams
-//            )
+            DatabaseInitializer.makeSeason(moc, 2023)
         }
         
         return result
@@ -29,12 +23,6 @@ class CoreDataController {
     private let container: NSPersistentContainer
     let mainContext: NSManagedObjectContext
     let backgroundContext: NSManagedObjectContext
-    
-    private(set) var previewData = (
-        seasons: [Int: Season](),
-        countries: [DatabaseInitializer.CountryIdentifier: Country](),
-        teams: [DatabaseInitializer.TeamIdentifier: Team]()
-    )
     
     init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "DrawSimulator")
@@ -77,8 +65,6 @@ class CoreDataController {
             } catch {
                 print("Could not save the background context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
             }
-        } else {
-            print("Tried to save backgroundContext without any changes")
         }
         
         if mainContext.hasChanges {
@@ -87,8 +73,6 @@ class CoreDataController {
             } catch {
                 print("Could not save the main context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
             }
-        } else {
-            print("Tried to save mainContext without any changes")
         }
     }
 }

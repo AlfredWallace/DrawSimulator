@@ -163,14 +163,3 @@ struct SeasonDetailView: View {
     }
 }
 
-
-struct SeasonDetailView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        NavigationStack {
-            SeasonDetailView(season: DatabaseInitializer.makeSeason(CoreDataController.preview.mainContext, 2023))
-        }
-        .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
-    }
-}
-

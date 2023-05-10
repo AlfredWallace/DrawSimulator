@@ -37,7 +37,7 @@ class DatabaseInitializer {
         2023: (city: "Istanbul", stadium: "Atatürk Olympic Stadium")
     ]
     
-    static let countryData = [
+    static private let countryData = [
         CountryIdentifier.ITA : "Italy",
         CountryIdentifier.SPA : "Spain",
         CountryIdentifier.FRA : "France",
@@ -85,82 +85,105 @@ class DatabaseInitializer {
         TeamPoolData(name: "H", seeded: false, teamIdentifier: TeamIdentifier.PSG, seasonWinYear: 2023),
     ]
     
-    static func makeSeason(_ moc: NSManagedObjectContext, _ winYear: Int) -> Season {
-        guard let seasonData = seasonData[winYear] else {
+    static func makeSeason(_ moc: NSManagedObjectContext, _ winYear: Int) {
+        validateSeason(winYear)
+        
+        // If validates checks out, you can force unwrap everything
+
+        let season = Season(context: moc, winYear: winYear, city: seasonData[winYear]!.city, stadium: seasonData[winYear]!.stadium)
+        
+        var countries = Set<Country>()
+        
+        for oneTeamPool in teamPoolData {
+            let teamData = teamData[oneTeamPool.teamIdentifier]!
+            let countryIdentifier = teamData.countryIdentifier
+            
+            var country = countries.first(where: { $0.shortName == countryIdentifier.rawValue })
+            
+            if country == nil {
+                country = Country(context: moc, name: countryData[countryIdentifier]!, shortName: countryIdentifier.rawValue)
+                countries.insert(country!)
+            }
+            
+            let _ = TeamPool(
+                context: moc,
+                name: oneTeamPool.name,
+                seeded: oneTeamPool.seeded,
+                season: season,
+                team: Team(
+                    context: moc,
+                    name: teamData.name,
+                    shortName: oneTeamPool.teamIdentifier.rawValue,
+                    sortingName: teamData.sortingName,
+                    country: country
+                )
+            )
+        }
+    }
+    
+    private static func validateSeason(_ winYear: Int) {
+        
+        // Checking if season exists
+        if seasonData[winYear] == nil {
             fatalError("\(genericErrorMsg) There is no season \(winYear).")
         }
         
-        let season = Season(context: moc, winYear: winYear, city: seasonData.city, stadium: seasonData.stadium)
-        let seasonTeamPools = teamPoolData.filter({ $0.seasonWinYear == season.winYear })
-        
-        validateTeamPoolData(winYear, seasonTeamPools)
-        
-        var teamPools = [TeamPool]()
-        for oneTeamPool in seasonTeamPools {
-            teamPools.append(TeamPool(context: moc, name: oneTeamPool.name, seeded: oneTeamPool.seeded, season: season))
-        }
-        
-        return season
-    }
-    
-    static private func validateTeamPoolData(_ winYear: Int, _ data: [TeamPoolData]) {
-        let dataCount = data.count
+        let seasonTeamPools = teamPoolData.filter({ $0.seasonWinYear == winYear })
+        let teamPoolCount = seasonTeamPools.count
         let teamCount = 16
         
-        if dataCount != teamCount {
-            fatalError("\(genericErrorMsg) There has to be \(teamCount) teamPool associations for one season. Season \(winYear) currently has \(dataCount).")
+        // Checking if the number if teeamPool associations is 16
+        if teamPoolCount != teamCount {
+            fatalError("\(genericErrorMsg) There has to be \(teamCount) teamPool associations for one season. Season \(winYear) currently has \(teamPoolCount).")
         }
         
-        if Set(data.map({ $0.teamIdentifier })).count != teamCount {
+        // Checking if we have 16 different teams
+        if Set(seasonTeamPools.map({ $0.teamIdentifier })).count != teamCount {
             fatalError("\(genericErrorMsg) There cannot be team duplicates in the teamPools.")
         }
         
-        for pool in Dictionary(grouping: data, by: { $0.name }) {
+        // Grouping by pool name allows us to check:
+        // - if we have 8 associations of 2 teams
+        // - if we have, in each association, a seeded team and an unseeded one
+        for pool in Dictionary(grouping: seasonTeamPools, by: { $0.name }) {
             let teamPoolAssociations = pool.value
             
+            // checking associations of 2 teams
             if teamPoolAssociations.count != 2 {
-                fatalError("\(genericErrorMsg) There has to be exactly 2 teamPool associations of the same name.")
+                fatalError("\(genericErrorMsg) There has to be exactly 2 teamPool associations of the same pool name.")
             }
             
+            // checking seedings
             if teamPoolAssociations[0].seeded == teamPoolAssociations[1].seeded {
                 fatalError("\(genericErrorMsg) The 2 teamPool associations of a same pool name have to have different seedings.")
             }
         }
-    }
     
-    init(_ moc: NSManagedObjectContext) {
         
-        // SEASONS
+        // For readability reasons we will check for the rest in 2 other loops :
         
-//        for seasonTuple in seasonTuples {
-//            let season = Season(context: moc, winYear: seasonTuple.winYear, city: seasonTuple.city, stadium: seasonTuple.stadium)
-//            seasons[seasonTuple.winYear] = season
-//        }
-//        
-//        // COUNTRIES
-//        
-//        for countryTuple in countryTuples {
-//            let country = Country(context: moc, name: countryTuple.name, shortName: countryTuple.shortName.rawValue)
-//            countries[countryTuple.shortName] = country
-//        }
-//        
-//        // TEAMS
-//        
-//        for teamTuple in teamTuples {
-//            let team = Team(context: moc, name: teamTuple.name, shortName: teamTuple.shortName.rawValue, sortingName: teamTuple.sortingName, country: teamTuple.country)
-//            teams[teamTuple.shortName] = team
-//        }
-//        
-//        // POOLS
-//        
-//        for teamPoolTuple in teamPoolTuples {
-//            let _ = TeamPool(
-//                context: moc,
-//                name: teamPoolTuple.name,
-//                seeded: teamPoolTuple.seeded,
-//                season: teamPoolTuple.season,
-//                team: teamPoolTuple.team
-//            )
-//        }
+        
+        var countriesToCheck = Set<CountryIdentifier>()
+        // For each teamPool association we will check if the team exists, and save fot later the country identifier
+        // This is a small optimization to prevent us from checking multiple times some countries
+        for seasonTeamPool in seasonTeamPools {
+            let teamIdentifier = seasonTeamPool.teamIdentifier
+            
+            guard let team = teamData[teamIdentifier] else {
+                fatalError("\(genericErrorMsg) Team \(teamIdentifier) does not exist.")
+            }
+            
+            countriesToCheck.insert(team.countryIdentifier)
+        }
+        
+        if countriesToCheck.count == 0 {
+            fatalError("\(genericErrorMsg) There are no countries.")
+        }
+        
+        for countryIdentifier in countriesToCheck {
+            if countryData[countryIdentifier] == nil {
+                fatalError("\(genericErrorMsg) The country \(countryIdentifier) does not exist.")
+            }
+        }
     }
 }
