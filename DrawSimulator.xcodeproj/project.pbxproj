@@ -193,18 +193,15 @@
 		BA9979EF2963B42C00AF04B8 /* DrawSimulator */ = {
 			isa = PBXGroup;
 			children = (
+				BA0613CD29F03543002CDE53 /* Assets */,
+				BAA615DB2A2FB63A00543517 /* Classes */,
+				BAD386E629F3B8AE00369C7D /* CoreData */,
+				BAA615DC2A2FB6CB00543517 /* Extensions */,
+				BA9979F62963B42D00AF04B8 /* Preview Content */,
 				BA0613CE29F03565002CDE53 /* Views */,
 				BA0613D129F035C4002CDE53 /* ViewUtils */,
-				BAD386E629F3B8AE00369C7D /* CoreData */,
-				BA0613CD29F03543002CDE53 /* Assets */,
 				BA016390297ADB830030264F /* Info.plist */,
 				BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */,
-				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
-				BA616E6B29ED7F08003F817B /* Draws.swift */,
-				BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */,
-				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
-				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
-				BA9979F62963B42D00AF04B8 /* Preview Content */,
 			);
 			path = DrawSimulator;
 			sourceTree = "<group>";
@@ -215,6 +212,25 @@
 				BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BAA615DB2A2FB63A00543517 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BA616E6B29ED7F08003F817B /* Draws.swift */,
+				BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */,
+				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		BAA615DC2A2FB6CB00543517 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
+				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BAD386E629F3B8AE00369C7D /* CoreData */ = {
