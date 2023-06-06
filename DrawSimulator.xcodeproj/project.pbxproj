@@ -162,7 +162,7 @@
 			path = ViewUtils;
 			sourceTree = "<group>";
 		};
-		BA326D802A01588B00F8DA7C /* HelperViews */ = {
+		BA326D802A01588B00F8DA7C /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
 				BA672D5029EEC4E50024C046 /* CardView.swift */,
@@ -170,7 +170,7 @@
 				BA326D812A015A3500F8DA7C /* DynamicTypeScrollableText.swift */,
 				BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */,
 			);
-			path = HelperViews;
+			path = GenericViews;
 			sourceTree = "<group>";
 		};
 		BA9979E42963B42C00AF04B8 = {
@@ -193,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				BA0613CE29F03565002CDE53 /* Views */,
-				BA326D802A01588B00F8DA7C /* HelperViews */,
+				BA326D802A01588B00F8DA7C /* GenericViews */,
 				BA0613D129F035C4002CDE53 /* ViewUtils */,
 				BAD386E629F3B8AE00369C7D /* CoreData */,
 				BA0613CD29F03543002CDE53 /* Assets */,
