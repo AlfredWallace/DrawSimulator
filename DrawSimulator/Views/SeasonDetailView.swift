@@ -17,15 +17,30 @@ struct SeasonDetailView: View {
     @State private var showingGroupingDialog = false
     @State private var showingList = true
     
-    @SectionedFetchRequest private var teamPools: SectionedFetchResults<String, TeamPool>
+    @SectionedFetchRequest private var teamPoolsByPool: SectionedFetchResults<String, TeamPool>
+    @SectionedFetchRequest private var teamPoolsBySeeding: SectionedFetchResults<String, TeamPool>
+//    @SectionedFetchRequest private var teamPoolsByCountry: SectionedFetchResults<String, TeamPool>
     
     init(season: Season) {
         self.season = season
-        _teamPools = SectionedFetchRequest(
+        
+        _teamPoolsByPool = SectionedFetchRequest(
             sectionIdentifier: \.name,
             sortDescriptors: [SortDescriptor(\.name), SortDescriptor(\.seeded, order: .reverse)],
             predicate: NSPredicate(format: "season == %@", season)
         )
+        
+        _teamPoolsBySeeding = SectionedFetchRequest(
+            sectionIdentifier: \.seededString,
+            sortDescriptors: [SortDescriptor(\.seeded, order: .reverse), SortDescriptor(\.name)],
+            predicate: NSPredicate(format: "season == %@", season)
+        )
+        
+//        _teamPoolsByCountry = SectionedFetchRequest(
+//            sectionIdentifier: \.team?.country,
+//            sortDescriptors: [SortDescriptor(\.name), SortDescriptor(\.seeded, order: .reverse)],
+//            predicate: NSPredicate(format: "season == %@", season)
+//        )
     }
     
     //    private struct PoolGrouping {
@@ -83,19 +98,21 @@ struct SeasonDetailView: View {
     //        return result
     //    }
     //
-    //    private var groupedTeams: [[Team]] {
-    //        switch userSettings.data.grouping {
-    //            case .country:
-    //                return teamsGroupedByCountry
-    //            case .pool:
-    //                return teamsGroupedByPool
-    //            case .seeding:
-    //                return teamsGroupedBySeeding
-    //            default:
-    //                return teamsUngrouped
-    //        }
-    //    }
-    
+//        private var teamPools: SectionedFetchResults<String, TeamPool> {
+//            switch userSettings.data.grouping {
+////                case .country:
+////                    return teamsGroupedByCountry
+////                case .pool:
+//                default:
+//                    return teamPoolsBySeeding
+////                case .seeding:
+////                default:
+////                    return teamPoolsBySeeding
+////                default:
+////                    return teamsUngrouped
+//            }
+//        }
+//
     var body: some View {
         ZStack {
             
@@ -107,7 +124,7 @@ struct SeasonDetailView: View {
                 if showingList {
                     ScrollView {
                         VStack(spacing: 20) {
-                            ForEach(teamPools) { section in
+                            ForEach(teamPoolsBySeeding) { section in
                                 
                                 CardView(hasHeaderDivier: true) {
                                     VStack(spacing: 10) {
@@ -139,14 +156,12 @@ struct SeasonDetailView: View {
                     }
                     .scrollIndicators(.hidden)
                     .transition(.move(edge: .bottom))
+//                    .onAppear {
+//                        print(true.description)
+//                    }
                 }
             }
         }
-        //        .background {
-        //            Rectangle()
-        //                .fill(Color.pitchGreen.gradient)
-        //                .ignoresSafeArea()
-        //        }
         //        .navigationDestination(for: Team.self) { team in
         //            TeamDetailView(team: team)
         //        }

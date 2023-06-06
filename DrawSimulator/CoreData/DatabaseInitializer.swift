@@ -86,9 +86,9 @@ class DatabaseInitializer {
     ]
     
     static func makeSeason(_ moc: NSManagedObjectContext, _ winYear: Int) {
-        validateSeason(winYear)
         
-        // If validates checks out, you can force unwrap everything
+        // If validation checks out, you can force unwrap everything
+        validateSeason(winYear)
 
         let season = Season(context: moc, winYear: winYear, city: seasonData[winYear]!.city, stadium: seasonData[winYear]!.stadium)
         
@@ -99,25 +99,31 @@ class DatabaseInitializer {
             let countryIdentifier = teamData.countryIdentifier
             
             var country = countries.first(where: { $0.shortName == countryIdentifier.rawValue })
-            
+            // If we can't find the country, then it's the first time we encounter this one, so, we insert it
             if country == nil {
                 country = Country(context: moc, name: countryData[countryIdentifier]!, shortName: countryIdentifier.rawValue)
                 countries.insert(country!)
             }
             
-            let _ = TeamPool(
+            let team = Team(
+                context: moc,
+                name: teamData.name,
+                shortName: oneTeamPool.teamIdentifier.rawValue,
+                sortingName: teamData.sortingName,
+                country: country
+            )
+            
+            let teamPool = TeamPool(
                 context: moc,
                 name: oneTeamPool.name,
                 seeded: oneTeamPool.seeded,
                 season: season,
-                team: Team(
-                    context: moc,
-                    name: teamData.name,
-                    shortName: oneTeamPool.teamIdentifier.rawValue,
-                    sortingName: teamData.sortingName,
-                    country: country
-                )
+                team: team
             )
+            
+            team.addToTeamPools(teamPool)
+            season.addToTeamPools(teamPool)
+            country!.addToTeams(team)
         }
     }
     
