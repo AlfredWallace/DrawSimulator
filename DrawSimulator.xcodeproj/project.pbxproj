@@ -138,6 +138,7 @@
 		BA0613CE29F03565002CDE53 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BA326D802A01588B00F8DA7C /* GenericViews */,
 				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
 				BA73B68829E0C63500807496 /* SeasonDetailView.swift */,
 				BA11C43929E973180040A4BB /* DisplayModeMenuButtonView.swift */,
@@ -193,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				BA0613CE29F03565002CDE53 /* Views */,
-				BA326D802A01588B00F8DA7C /* GenericViews */,
 				BA0613D129F035C4002CDE53 /* ViewUtils */,
 				BAD386E629F3B8AE00369C7D /* CoreData */,
 				BA0613CD29F03543002CDE53 /* Assets */,
