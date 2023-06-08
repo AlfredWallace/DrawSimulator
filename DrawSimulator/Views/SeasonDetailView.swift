@@ -20,6 +20,7 @@ struct SeasonDetailView: View {
     @SectionedFetchRequest private var teamPoolsByPool: SectionedFetchResults<String, TeamPool>
     @SectionedFetchRequest private var teamPoolsBySeeding: SectionedFetchResults<String, TeamPool>
     @SectionedFetchRequest private var teamPoolsByCountry: SectionedFetchResults<String, TeamPool>
+    @SectionedFetchRequest private var teamPoolsUngrouped: SectionedFetchResults<String, TeamPool>
     
     init(season: Season) {
         self.season = season
@@ -32,14 +33,20 @@ struct SeasonDetailView: View {
 
         _teamPoolsBySeeding = SectionedFetchRequest(
             sectionIdentifier: \.seededString,
-            sortDescriptors: [SortDescriptor(\.seeded, order: .reverse), SortDescriptor(\.name)],
+            sortDescriptors: [SortDescriptor(\.seeded, order: .reverse), SortDescriptor(\.team!.sortingName)],
             predicate: NSPredicate(format: "season == %@", season)
         )
         
         _teamPoolsByCountry = SectionedFetchRequest(
             // force unwrap is possible because the data is fully checked before being inserted into DB (see DatabaseInitializer)
             sectionIdentifier: \.team!.country!.name,
-            sortDescriptors: [SortDescriptor(\.name), SortDescriptor(\.seeded, order: .reverse)],
+            sortDescriptors: [SortDescriptor(\.team!.country!.name), SortDescriptor(\.team!.sortingName)],
+            predicate: NSPredicate(format: "season == %@", season)
+        )
+        
+        _teamPoolsUngrouped = SectionedFetchRequest(
+            sectionIdentifier: \.season!.winYearString,
+            sortDescriptors: [SortDescriptor(\.team!.sortingName)],
             predicate: NSPredicate(format: "season == %@", season)
         )
     }
@@ -49,6 +56,8 @@ struct SeasonDetailView: View {
             switch userSettings.data.grouping {
                 case .country:
                     return teamPoolsByCountry
+                case .none:
+                    return teamPoolsUngrouped
                 case .seeding:
                     return teamPoolsBySeeding
                 default:

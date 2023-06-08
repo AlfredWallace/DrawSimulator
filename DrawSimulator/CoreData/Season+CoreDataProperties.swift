@@ -26,6 +26,9 @@ extension Season {
         return teamPoolsSet.sorted { $0.name < $1.name }
     }
 
+    @objc public var winYearString: String {
+        String(winYear)
+    }
 }
 
 // MARK: Generated accessors for teamPools
