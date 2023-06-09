@@ -93,7 +93,7 @@ struct TeamDetailView: View {
                     CardView {
                         DynamicTypeStack(.accessibility2) {
                             
-                            Image(team.name)
+                            Image(team.shortName)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: logoSize, height: logoSize)
@@ -103,7 +103,7 @@ struct TeamDetailView: View {
                                 
                                 DividerView()
                                 
-//                                FlagLabelView(team: team)
+                                FlagLabelView(team: team)
                                 
                                 DividerView()
                                 
