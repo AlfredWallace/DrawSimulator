@@ -15,7 +15,7 @@ struct TeamDetailView: View {
 //    @EnvironmentObject private var draws: Draws
 //    @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
 //
-//    let team: Team
+    let team: Team
 //    let opponents: [Team]
 //    @FetchRequest private var pairings: FetchedResults<Pairing>
     
