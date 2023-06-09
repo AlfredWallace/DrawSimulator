@@ -82,10 +82,9 @@ struct SeasonDetailView: View {
                                 CardView(hasHeaderDivier: true) {
                                     VStack(spacing: 10) {
                                         ForEach(section) { teamPool in
-                                            let team = teamPool.team!
-                                            NavigationLink(value: team) {
+                                            NavigationLink(value: teamPool) {
                                                 HStack {
-                                                    TeamLabelView(team: team)
+                                                    TeamLabelView(team: teamPool.team!)
                                                     Image(systemName: "chevron.forward")
                                                 }
                                             }
@@ -105,8 +104,8 @@ struct SeasonDetailView: View {
                 }
             }
         }
-        .navigationDestination(for: Team.self) { team in
-            TeamDetailView(team: team)
+        .navigationDestination(for: TeamPool.self) { teamPool in
+            TeamDetailView(teamPool: teamPool)
         }
         .navigationTitle("Teams")
         .toolbar {
