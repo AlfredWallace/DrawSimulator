@@ -24,13 +24,15 @@ struct SeasonDetailView: View {
     
     init(season: Season) {
         self.season = season
-
+        
+        // force unwrap is possible because the data is fully checked before being inserted into DB (see DatabaseInitializer)
+        
         _teamPoolsByPool = SectionedFetchRequest(
             sectionIdentifier: \.name,
             sortDescriptors: [SortDescriptor(\.name), SortDescriptor(\.seeded, order: .reverse)],
             predicate: NSPredicate(format: "season == %@", season)
         )
-
+        
         _teamPoolsBySeeding = SectionedFetchRequest(
             sectionIdentifier: \.seededString,
             sortDescriptors: [SortDescriptor(\.seeded, order: .reverse), SortDescriptor(\.team!.sortingName)],
@@ -38,7 +40,6 @@ struct SeasonDetailView: View {
         )
         
         _teamPoolsByCountry = SectionedFetchRequest(
-            // force unwrap is possible because the data is fully checked before being inserted into DB (see DatabaseInitializer)
             sectionIdentifier: \.team!.country!.name,
             sortDescriptors: [SortDescriptor(\.team!.country!.name), SortDescriptor(\.team!.sortingName)],
             predicate: NSPredicate(format: "season == %@", season)
@@ -51,20 +52,20 @@ struct SeasonDetailView: View {
         )
     }
     
-  
-        private var teamPools: SectionedFetchResults<String, TeamPool> {
-            switch userSettings.data.grouping {
-                case .country:
-                    return teamPoolsByCountry
-                case .none:
-                    return teamPoolsUngrouped
-                case .seeding:
-                    return teamPoolsBySeeding
-                default:
-                    return teamPoolsByPool
-            }
+    
+    private var teamPools: SectionedFetchResults<String, TeamPool> {
+        switch userSettings.data.grouping {
+            case .country:
+                return teamPoolsByCountry
+            case .none:
+                return teamPoolsUngrouped
+            case .seeding:
+                return teamPoolsBySeeding
+            default:
+                return teamPoolsByPool
         }
-
+    }
+    
     var body: some View {
         ZStack {
             
@@ -99,8 +100,7 @@ struct SeasonDetailView: View {
                                     .padding(.vertical, 5)
                                 } header: {
                                     Text(section.id)
-                                    //TeamGroupTitleView(team: teamGroup.first!)
-                                    //  .font(.title2.bold())
+                                        .font(.title2.bold())
                                 }
                             }
                         }
@@ -111,9 +111,9 @@ struct SeasonDetailView: View {
                 }
             }
         }
-        //        .navigationDestination(for: Team.self) { team in
-        //            TeamDetailView(team: team)
-        //        }
+//        .navigationDestination(for: Team.self) { team in
+//            TeamDetailView(team: team)
+//        }
         .navigationTitle("Teams")
         .toolbar {
             //            ToolbarItem {

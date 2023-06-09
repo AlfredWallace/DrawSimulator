@@ -42,7 +42,6 @@
 		BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F42963B42D00AF04B8 /* Assets.xcassets */; };
 		BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */; };
 		BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */; };
-		BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */; };
 		BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */; };
 		BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACC352829EAE23200E22E6A /* FlagLabelView.swift */; };
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
@@ -93,7 +92,6 @@
 		BA9979F42963B42D00AF04B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportFontViewModifier.swift; sourceTree = "<group>"; };
-		BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamGroupTitleView.swift; sourceTree = "<group>"; };
 		BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		BACC352829EAE23200E22E6A /* FlagLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagLabelView.swift; sourceTree = "<group>"; };
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 				BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */,
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
-				BACA167329DC6B3100E5C9CA /* TeamGroupTitleView.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
 			);
@@ -343,7 +340,6 @@
 				BAD386E929F3B91800369C7D /* DrawSimulator.xcdatamodeld in Sources */,
 				BA85377229F4364400D1CF55 /* Season+CoreDataProperties.swift in Sources */,
 				BAD386EB29F3B99800369C7D /* CoreDataController.swift in Sources */,
-				BACA167429DC6B3100E5C9CA /* TeamGroupTitleView.swift in Sources */,
 				BA85376F29F4364400D1CF55 /* Country+CoreDataClass.swift in Sources */,
 				BA76EEBA29F1189400F0D4E9 /* RandomNumberProgressStyle.swift in Sources */,
 				BA85376C29F4364400D1CF55 /* TeamPool+CoreDataProperties.swift in Sources */,
