@@ -16,12 +16,6 @@ import SwiftUI
     private static let savePath = FileManager.documentsDirectory.appendingPathComponent("draws.json")
     static let numberOfDraws = 100
     
-//    struct Pairing: Hashable, Codable {
-//        let seededTeam: Team
-//        let unseededTeam: Team
-//        var count: Int
-//    }
-    
 //    @Published private(set) var pairings = [Pairing]()
     @Published private(set) var isRunning = false
     @Published private(set) var progress = 0.0
@@ -126,21 +120,6 @@ import SwiftUI
 //        }
     }
     
-//    init() {
-//        do {
-//            let contents = try Data(contentsOf: Self.savePath)
-//            pairings = try JSONDecoder().decode([Pairing].self, from: contents)
-//        } catch {
-//            pairings = []
-//        }
-//    }
-    
     private func save() {
-//        do {
-//            let encoded = try JSONEncoder().encode(pairings)
-//            try encoded.write(to: Self.savePath, options: [.atomicWrite, .completeFileProtection])
-//        } catch {
-//            print("Unable to save the draws: \(error.localizedDescription)")
-//        }
     }
 }

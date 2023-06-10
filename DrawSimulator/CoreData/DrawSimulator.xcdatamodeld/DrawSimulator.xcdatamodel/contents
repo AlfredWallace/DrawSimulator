@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Country" representedClassName="Country" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <attribute name="shortName" attributeType="String"/>
@@ -10,10 +10,17 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="DrawPairing" representedClassName="DrawPairing" syncable="YES">
+        <attribute name="count" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="season" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Season" inverseName="drawPairings" inverseEntity="Season"/>
+        <relationship name="seededTeam" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="seededDrawPairings" inverseEntity="Team"/>
+        <relationship name="unseededTeam" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="unseededDrawPairings" inverseEntity="Team"/>
+    </entity>
     <entity name="Season" representedClassName="Season" syncable="YES">
         <attribute name="city" attributeType="String"/>
         <attribute name="stadium" attributeType="String"/>
         <attribute name="winYear" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="drawPairings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrawPairing" inverseName="season" inverseEntity="DrawPairing"/>
         <relationship name="teamPools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamPool" inverseName="season" inverseEntity="TeamPool"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -26,7 +33,9 @@
         <attribute name="shortName" attributeType="String"/>
         <attribute name="sortingName" attributeType="String"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="teams" inverseEntity="Country"/>
+        <relationship name="seededDrawPairings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrawPairing" inverseName="seededTeam" inverseEntity="DrawPairing"/>
         <relationship name="teamPools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamPool" inverseName="team" inverseEntity="TeamPool"/>
+        <relationship name="unseededDrawPairings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrawPairing" inverseName="unseededTeam" inverseEntity="DrawPairing"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="shortName"/>

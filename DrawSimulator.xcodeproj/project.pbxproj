@@ -41,6 +41,8 @@
 		BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9979F22963B42C00AF04B8 /* ContentView.swift */; };
 		BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F42963B42D00AF04B8 /* Assets.xcassets */; };
 		BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */; };
+		BAB0AF8D2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */; };
+		BAB0AF8E2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */; };
 		BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */; };
 		BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */; };
 		BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACC352829EAE23200E22E6A /* FlagLabelView.swift */; };
@@ -91,6 +93,8 @@
 		BA9979F22963B42C00AF04B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA9979F42963B42D00AF04B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawPairing+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawPairing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportFontViewModifier.swift; sourceTree = "<group>"; };
 		BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		BACC352829EAE23200E22E6A /* FlagLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagLabelView.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */,
 				BA85376729F4364400D1CF55 /* Country+CoreDataClass.swift */,
 				BA85376829F4364400D1CF55 /* Country+CoreDataProperties.swift */,
+				BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */,
+				BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */,
 				BA85376929F4364400D1CF55 /* Season+CoreDataClass.swift */,
 				BA85376A29F4364400D1CF55 /* Season+CoreDataProperties.swift */,
 				BA85376529F4364400D1CF55 /* Team+CoreDataClass.swift */,
@@ -331,6 +337,7 @@
 				BA1E066329EB30E80015F4D5 /* DividerView.swift in Sources */,
 				BA85376B29F4364400D1CF55 /* TeamPool+CoreDataClass.swift in Sources */,
 				BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */,
+				BAB0AF8D2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift in Sources */,
 				BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */,
 				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
 				BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */,
@@ -344,6 +351,7 @@
 				BA76EEBA29F1189400F0D4E9 /* RandomNumberProgressStyle.swift in Sources */,
 				BA85376C29F4364400D1CF55 /* TeamPool+CoreDataProperties.swift in Sources */,
 				BA85377029F4364400D1CF55 /* Country+CoreDataProperties.swift in Sources */,
+				BAB0AF8E2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift in Sources */,
 				BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */,
 				BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */,
 				BA73B68929E0C63500807496 /* SeasonDetailView.swift in Sources */,
