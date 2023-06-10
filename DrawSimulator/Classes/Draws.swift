@@ -27,33 +27,30 @@ import SwiftUI
         isRunning = false
     }
     
-    func draw(for season: Season, with moc: NSManagedObjectContext, _ times: Int = numberOfDraws) {
+    func draw(for season: Season, _ times: Int = numberOfDraws) {
         isRunning = true
         progress = 0.0
         
         task = Task {
             
-            deleteDraws(for: season, with: moc)
-            //
-            ////            var taskPairings = [Pairing]()
-            //
-        outerLoop: for _ in 0..<times {
-            //
-            //                if isRunning == false {
-            //                    if let task {
-            //                        task.cancel()
-            ////                        pairings = pairingsBackup
-            //                    }
-            //                }
-            //
-            //                // we will always pick a seeded team then pair it with an unseeded team (UEFA rule): this eliminates some complexity of the algorithm
-            //                var seededTeams = Teams.data.filter({ $0.seeded })
-            //                var unseededTeams = Teams.data.filter({ !$0.seeded })
-            //                var loopPairings = [(seededTeam: Team, unseededTeam: Team)]()
-            //
-            await MainActor.run {
-                self.progress += 1.0
-            }
+            deleteDraws(for: season)
+            
+            outerLoop: for _ in 0..<times {
+            
+                if isRunning == false {
+                    if let task {
+                        task.cancel()
+                    }
+                }
+                
+                // we will always pick a seeded team then pair it with an unseeded team (UEFA rule): this eliminates some complexity of the algorithm
+                var seededTeams = getTeams(for: season, seeded: true)
+                var unseededTeams = getTeams(for: season, seeded: false)
+//                var loopPairings = [(seededTeam: Team, unseededTeam: Team)]()
+//
+                await MainActor.run {
+                    self.progress += 1.0
+                }
             //
             //                while seededTeams.isEmpty == false {
             //
@@ -108,7 +105,8 @@ import SwiftUI
             //                }
             //            }
             //
-        }
+            }
+            
             await MainActor.run {
                 isRunning = false
             }
@@ -116,17 +114,31 @@ import SwiftUI
     }
     
     // no need to batch delete here because there will be a fairly small amount of data every time, probably around 64
-    private func deleteDraws(for season: Season, with moc: NSManagedObjectContext) {
-        let pairingsFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DrawPairing")
-        pairingsFetchRequest.predicate = NSPredicate(format: "season == %@", season)
+    private func deleteDraws(for season: Season) {
         
-        do {
-            let result = try moc.fetch(pairingsFetchRequest)
-            for pairing in result as! [DrawPairing] {
-                moc.delete(pairing)
+        CoreDataController.shared.performInBackground { moc in
+            let pairingsFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DrawPairing")
+            pairingsFetchRequest.predicate = NSPredicate(format: "season == %@", season)
+            
+            do {
+                let result = try moc.fetch(pairingsFetchRequest)
+                for pairing in result as! [DrawPairing] {
+                    moc.delete(pairing)
+                }
+            } catch let error as NSError {
+                print("Failed to fetch and delete pairings: \(error.localizedDescription)")
             }
-        } catch let error as NSError {
-            print("Failed to fetch and delete pairings: \(error.localizedDescription)")
         }
+    }
+    
+    private func getTeams(for season: Season, seeded: Bool) -> [Team] {
+        
+        CoreDataController.shared.performInBackground { moc in
+            let teamPoolsFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TeamPool")
+            teamPoolsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
+        }
+        
+        
+        return []
     }
 }
