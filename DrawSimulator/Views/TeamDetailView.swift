@@ -17,53 +17,34 @@ struct TeamDetailView: View {
     
     let teamPool: TeamPool
     let team: Team
-//    let opponents: [Team]
-//    @FetchRequest private var pairings: FetchedResults<Pairing>
-//
+    
+    @FetchRequest private var seasonPools: FetchedResults<TeamPool>
+    
+    var opponents: [Team] {
+        return seasonPools
+            .filter {
+                $0.seeded != teamPool.seeded &&
+                $0.team!.country != team.country &&
+                $0.name != teamPool.name
+            }
+            .map {
+                $0.team!
+            }
+    }
+
     private var logoSize: CGFloat { geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45) }
 
     init(teamPool: TeamPool) {
         self.teamPool = teamPool
         self.team = teamPool.team!
-//
-//        self.opponents = []
-//        Teams.data.filter { opponent in
-//            opponent.seeded != team.seeded
-//            && opponent.countryId != team.countryId
-//            && opponent.pool != team.pool
-//        }
-//        .sorted {
-//            $0.name < $1.name
-//        }
-//
-//        let format = "\(team.seeded ? "seededTeam" : "unseededTeam")Id == \(team.id)"
-//        _pairings = FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: format))
-//
+        
+        _seasonPools = FetchRequest(
+            sortDescriptors: [],
+            predicate: NSPredicate(format: "season == %@", teamPool.season!)
+        )
     }
-//
-//    private var pairingCounts: [Team: Int] {
-//
-//        guard draws.pairings.isEmpty == false else { return [:] }
-//
-//        var result = [Team: Int]()
-//
-//        for opponent in opponents {
-//            if let pairing = draws.pairings.first(where: { p in
-//                if team.seeded {
-//                    return p.seededTeam == team && p.unseededTeam == opponent
-//                }
-//
-//                return p.unseededTeam == team && p.seededTeam == opponent
-//            }) {
-//                result[opponent] = pairing.count
-//            }
-//        }
-//
-//        if result.isEmpty { return [:] }
-//
-//        return result
-//    }
-//
+    
+
 //    private var drawsCount: Int {
 //        pairingCounts.values.reduce(0) { acc, count in
 //            acc + count
@@ -113,32 +94,32 @@ struct TeamDetailView: View {
                         .font(.title2.bold())
                     }
                     
-//                    CardView(hasHeaderDivier: true) {
-//                        VStack(spacing: 0) {
-//                            ForEach(opponents, id: \.self) { opponent in
-//                                HStack {
-//                                    TeamLabelView(team: opponent, logoWidthPercentage: 12, fontSize: 22)
-//                                        .padding(.trailing, 10)
-//
-//                                    HStack {
+                    CardView(hasHeaderDivier: true) {
+                        VStack(spacing: 0) {
+                            ForEach(opponents, id: \.self) { opponent in
+                                HStack {
+                                    TeamLabelView(team: opponent, logoWidthPercentage: 12)
+                                        .padding(.trailing, 10)
+                                    
+                                    HStack {
 //                                        if draws.isRunning {
 //                                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
 //                                                .progressViewStyle(RandomNumberProgressStyle())
 //                                        } else {
 //                                            Text(getOpponentPercentageString(for: opponent))
 //                                        }
-//                                        Text("%")
-//                                    }
-//                                    .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
-//                                }
-//                                .padding(.vertical, 4)
-//
-//                                Divider()
-//                            }
-//                        }
-//                    } header: {
-//                        Text("Draw chances")
-//                            .font(.title2.bold())
+                                        Text("%")
+                                    }
+                                    .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
+                                }
+                                .padding(.vertical, 4)
+                                
+                                Divider()
+                            }
+                        }
+                    } header: {
+                        Text("Draw chances")
+                            .font(.title2.bold())
 //                    } footer: {
 //                        if draws.isRunning {
 //                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
@@ -167,7 +148,7 @@ struct TeamDetailView: View {
 //                            )
 //                            .font(.title2.bold())
 //                        }
-//                    }
+                    }
                 }
                 .padding(.horizontal, 15)
             }
