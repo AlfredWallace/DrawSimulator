@@ -31,9 +31,9 @@ struct TeamDetailView: View {
                 $0.team!
             }
     }
-
+    
     private var logoSize: CGFloat { geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45) }
-
+    
     init(teamPool: TeamPool) {
         self.teamPool = teamPool
         self.team = teamPool.team!
@@ -44,21 +44,21 @@ struct TeamDetailView: View {
         )
     }
     
-
-//    private var drawsCount: Int {
-//        pairingCounts.values.reduce(0) { acc, count in
-//            acc + count
-//        }
-//    }
-//
-//    private func getOpponentPercentageString(for opponent: Team) -> String {
-//
-//        if let count = pairingCounts[opponent] {
-//            return "\((Float(count) / Float(drawsCount) * 100).rounded().formatted())"
-//        }
-//
-//        return "?"
-//    }
+    
+    //    private var drawsCount: Int {
+    //        pairingCounts.values.reduce(0) { acc, count in
+    //            acc + count
+    //        }
+    //    }
+    //
+    //    private func getOpponentPercentageString(for opponent: Team) -> String {
+    //
+    //        if let count = pairingCounts[opponent] {
+    //            return "\((Float(count) / Float(drawsCount) * 100).rounded().formatted())"
+    //        }
+    //
+    //        return "?"
+    //    }
     
     var body: some View {
         ZStack {
@@ -102,13 +102,14 @@ struct TeamDetailView: View {
                                         .padding(.trailing, 10)
                                     
                                     HStack {
-//                                        if draws.isRunning {
-//                                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-//                                                .progressViewStyle(RandomNumberProgressStyle())
-//                                        } else {
-//                                            Text(getOpponentPercentageString(for: opponent))
-//                                        }
-                                        Text("%")
+                                        //                                        if draws.isRunning {
+                                        //                                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                                        //                                                .progressViewStyle(RandomNumberProgressStyle())
+                                        //                                        } else {
+                                        //                                            Text(getOpponentPercentageString(for: opponent))
+                                        //                                        }
+                                        //                                        Text("%")
+                                        Text("-")
                                     }
                                     .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
                                 }
@@ -120,34 +121,30 @@ struct TeamDetailView: View {
                     } header: {
                         Text("Draw chances")
                             .font(.title2.bold())
-//                    } footer: {
-//                        if draws.isRunning {
-//                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-//                                .progressViewStyle(ButtonProgressStyle())
-//                                .onTapGesture {
-//                                    if draws.task != nil {
-//                                        draws.cancelDraw()
-//                                    }
-//                                }
-//                        } else {
-//                            List(pairings) { pairing in
-//                                Text("count: \(pairing.count)")
-//                            }
-//
-//                            Button {
-//                                draws.draw()
-//                            } label: {
-//                                Text("Draw")
-//                                    .frame(maxWidth: .infinity)
-//                            }
-//                            .disabled(draws.isRunning)
-//                            .padding(10)
-//                            .background(
-//                                RoundedRectangle(cornerRadius: 10)
-//                                    .fill(draws.isRunning ? .gray : Color.pitchGreen)
-//                            )
-//                            .font(.title2.bold())
-//                        }
+                    } footer: {
+                        if draws.isRunning {
+                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                                .progressViewStyle(ButtonProgressStyle())
+                                .onTapGesture {
+                                    if draws.task != nil {
+                                        draws.cancelDraw()
+                                    }
+                                }
+                        } else {
+                            Button {
+                                draws.draw()
+                            } label: {
+                                Text("Draw")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .disabled(draws.isRunning)
+                            .padding(10)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(draws.isRunning ? .gray : Color.pitchGreen)
+                            )
+                            .font(.title2.bold())
+                        }
                     }
                 }
                 .padding(.horizontal, 15)
