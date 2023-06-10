@@ -132,7 +132,7 @@ struct TeamDetailView: View {
                                 }
                         } else {
                             Button {
-                                draws.draw()
+                                draws.draw(for: teamPool.season!, with: moc)
                             } label: {
                                 Text("Draw")
                                     .frame(maxWidth: .infinity)

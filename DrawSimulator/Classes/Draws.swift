@@ -5,23 +5,18 @@
 //  Created by Arthur Falque Pierrotin on 17/04/2023.
 //
 
+import CoreData
 import Foundation
 import SwiftUI
 
 @MainActor class Draws: ObservableObject {
     
-    @Environment(\.managedObjectContext) private var moc
-    //    @FetchRequest(sortDescriptors: []) private var pairings: FetchedResults<Pairing>
-    
-    private static let savePath = FileManager.documentsDirectory.appendingPathComponent("draws.json")
     static let numberOfDraws = 1000
     
-    //    @Published private(set) var pairings = [Pairing]()
     @Published private(set) var isRunning = false
     @Published private(set) var progress = 0.0
     
     private(set) var task: Task<Void, Never>? = nil
-    //    private var pairingsBackup = [Pairing]()
     
     private func extractOneTeam(_ teams: inout [Team]) -> Team {
         let length = teams.count
@@ -32,12 +27,13 @@ import SwiftUI
         isRunning = false
     }
     
-    func draw(_ times: Int = numberOfDraws) {
+    func draw(for season: Season, with moc: NSManagedObjectContext, _ times: Int = numberOfDraws) {
         isRunning = true
         progress = 0.0
         
         task = Task {
-            ////            pairingsBackup = pairings
+            
+            deleteDraws(for: season, with: moc)
             //
             ////            var taskPairings = [Pairing]()
             //
@@ -116,6 +112,21 @@ import SwiftUI
             await MainActor.run {
                 isRunning = false
             }
+        }
+    }
+    
+    // no need to batch delete here because there will be a fairly small amount of data every time, probably around 64
+    private func deleteDraws(for season: Season, with moc: NSManagedObjectContext) {
+        let pairingsFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DrawPairing")
+        pairingsFetchRequest.predicate = NSPredicate(format: "season == %@", season)
+        
+        do {
+            let result = try moc.fetch(pairingsFetchRequest)
+            for pairing in result as! [DrawPairing] {
+                moc.delete(pairing)
+            }
+        } catch let error as NSError {
+            print("Failed to fetch and delete pairings: \(error.localizedDescription)")
         }
     }
 }
