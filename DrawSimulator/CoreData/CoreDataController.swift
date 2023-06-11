@@ -13,7 +13,7 @@ class CoreDataController {
     
     static let preview: CoreDataController = {
         var result = CoreDataController(inMemory: true)
-        result.performInBackground { moc in
+        result.performInBackground(commit: true) { moc in
             DatabaseInitializer.makeSeason(moc, 2023)
         }
         
@@ -50,11 +50,11 @@ class CoreDataController {
         }
     }
     
-    func performInBackground(operation: (NSManagedObjectContext) -> Void) {
+    func performInBackground(commit: Bool, operation: (NSManagedObjectContext) -> Void) {
         backgroundContext.performAndWait {
             operation(backgroundContext)
             
-            save()
+            if commit { save() }
         }
     }
     

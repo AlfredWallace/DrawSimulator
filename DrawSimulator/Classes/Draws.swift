@@ -116,7 +116,7 @@ import SwiftUI
     // no need to batch delete here because there will be a fairly small amount of data every time, probably around 64
     private func deleteDraws(for season: Season) {
         
-        CoreDataController.shared.performInBackground { moc in
+        CoreDataController.shared.performInBackground(commit: false) { moc in
             let pairingsFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DrawPairing")
             pairingsFetchRequest.predicate = NSPredicate(format: "season == %@", season)
             
@@ -133,7 +133,7 @@ import SwiftUI
     
     private func getTeams(for season: Season, seeded: Bool) -> [Team] {
         
-        CoreDataController.shared.performInBackground { moc in
+        CoreDataController.shared.performInBackground(commit: false) { moc in
             let teamPoolsFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TeamPool")
             teamPoolsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
         }

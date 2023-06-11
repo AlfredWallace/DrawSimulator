@@ -29,7 +29,7 @@ struct DrawSimulatorApp: App {
                 .environment(\.managedObjectContext, CoreDataController.shared.mainContext)
                 .onAppear {
                     if isFirstLaunch {
-                        CoreDataController.shared.performInBackground { moc in
+                        CoreDataController.shared.performInBackground(commit: true) { moc in
                             DatabaseInitializer.makeSeason(moc, 2023)
                         }
                         isFirstLaunch = false
