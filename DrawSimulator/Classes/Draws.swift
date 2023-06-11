@@ -117,12 +117,12 @@ import SwiftUI
     private func deleteDraws(for season: Season) {
         
         CoreDataController.shared.performInBackground(commit: false) { moc in
-            let pairingsFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DrawPairing")
+            let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: "DrawPairing")
             pairingsFetchRequest.predicate = NSPredicate(format: "season == %@", season)
             
             do {
                 let result = try moc.fetch(pairingsFetchRequest)
-                for pairing in result as! [DrawPairing] {
+                for pairing in result {
                     moc.delete(pairing)
                 }
             } catch let error as NSError {
@@ -132,13 +132,21 @@ import SwiftUI
     }
     
     private func getTeams(for season: Season, seeded: Bool) -> [Team] {
+        var result = [Team]()
         
         CoreDataController.shared.performInBackground(commit: false) { moc in
-            let teamPoolsFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TeamPool")
+            let teamPoolsFetchRequest = NSFetchRequest<TeamPool>(entityName: "TeamPool")
             teamPoolsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
+            
+            do {
+                let teamPools = try moc.fetch(teamPoolsFetchRequest)
+                result = teamPools.map { $0.team! }
+                
+            } catch let error as NSError {
+                print("Failed to fetch teams: \(error.localizedDescription)")
+            }
         }
         
-        
-        return []
+        return result
     }
 }
