@@ -28,7 +28,7 @@ public class TeamPool: NSManagedObject {
     }
     
     public init(context: NSManagedObjectContext, name: String, seeded: Bool, season: Season? = nil, team: Team? = nil) {
-        let entity = NSEntityDescription.entity(forEntityName: "TeamPool", in: context)!
+        let entity = NSEntityDescription.entity(forEntityName: TeamPool.entityName, in: context)!
         super.init(entity: entity, insertInto: context)
         self.name = name
         self.seeded = seeded

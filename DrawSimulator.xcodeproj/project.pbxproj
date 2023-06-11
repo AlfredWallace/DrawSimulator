@@ -41,6 +41,7 @@
 		BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9979F22963B42C00AF04B8 /* ContentView.swift */; };
 		BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F42963B42D00AF04B8 /* Assets.xcassets */; };
 		BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */; };
+		BA9E26B92A35AE670073AB56 /* NSManagedObject-NameDescribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9E26B82A35AE670073AB56 /* NSManagedObject-NameDescribable.swift */; };
 		BAB0AF8D2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */; };
 		BAB0AF8E2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */; };
 		BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */; };
@@ -93,6 +94,7 @@
 		BA9979F22963B42C00AF04B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA9979F42963B42D00AF04B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9979F72963B42D00AF04B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BA9E26B82A35AE670073AB56 /* NSManagedObject-NameDescribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject-NameDescribable.swift"; sourceTree = "<group>"; };
 		BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawPairing+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawPairing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportFontViewModifier.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */,
 				BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */,
+				BA9E26B82A35AE670073AB56 /* NSManagedObject-NameDescribable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */,
 				BA672D5129EEC4E50024C046 /* CardView.swift in Sources */,
 				BA0613CB29F017A9002CDE53 /* ButtonProgressStyle.swift in Sources */,
+				BA9E26B92A35AE670073AB56 /* NSManagedObject-NameDescribable.swift in Sources */,
 				BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */,
 				BA326D822A015A3500F8DA7C /* DynamicTypeScrollableText.swift in Sources */,
 				BA76EEBC29F11F0E00F0D4E9 /* NavigationTheme.swift in Sources */,

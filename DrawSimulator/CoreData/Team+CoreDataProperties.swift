@@ -13,7 +13,7 @@ import CoreData
 extension Team {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Team> {
-        return NSFetchRequest<Team>(entityName: "Team")
+        return NSFetchRequest<Team>(entityName: Team.entityName)
     }
     
     @NSManaged public var name: String

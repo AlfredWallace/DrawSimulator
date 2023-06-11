@@ -117,7 +117,7 @@ import SwiftUI
     private func deleteDraws(for season: Season) {
         
         CoreDataController.shared.performInBackground(commit: false) { moc in
-            let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: "DrawPairing")
+            let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: DrawPairing.entityName)
             pairingsFetchRequest.predicate = NSPredicate(format: "season == %@", season)
             
             do {
@@ -135,7 +135,7 @@ import SwiftUI
         var result = [Team]()
         
         CoreDataController.shared.performInBackground(commit: false) { moc in
-            let teamPoolsFetchRequest = NSFetchRequest<TeamPool>(entityName: "TeamPool")
+            let teamPoolsFetchRequest = NSFetchRequest<TeamPool>(entityName: TeamPool.entityName)
             teamPoolsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
             
             do {

@@ -13,7 +13,7 @@ import CoreData
 extension DrawPairing {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<DrawPairing> {
-        return NSFetchRequest<DrawPairing>(entityName: "DrawPairing")
+        return NSFetchRequest<DrawPairing>(entityName: DrawPairing.entityName)
     }
 
     @NSManaged public var count: Int16

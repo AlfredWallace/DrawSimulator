@@ -13,7 +13,7 @@ import CoreData
 extension Country {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Country> {
-        return NSFetchRequest<Country>(entityName: "Country")
+        return NSFetchRequest<Country>(entityName: Country.entityName)
     }
 
     @NSManaged public var name: String

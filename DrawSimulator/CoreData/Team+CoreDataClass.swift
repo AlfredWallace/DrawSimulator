@@ -28,7 +28,7 @@ public class Team: NSManagedObject {
     }
     
     public init(context: NSManagedObjectContext, name: String, shortName: String, sortingName: String, country: Country? = nil, teamPools: NSSet? = []) {
-        let entity = NSEntityDescription.entity(forEntityName: "Team", in: context)!
+        let entity = NSEntityDescription.entity(forEntityName: Team.entityName, in: context)!
         super.init(entity: entity, insertInto: context)
         self.name = name
         self.shortName = shortName
