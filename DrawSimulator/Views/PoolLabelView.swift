@@ -9,12 +9,12 @@ import SwiftUI
 
 struct PoolLabelView: View {
     
-    let teamPool: TeamPool
+    let seasonTeam: SeasonTeam
     
     var body: some View {
         HStack {
             Text("Pool")
-            Image(systemName: "\(teamPool.name.lowercased()).circle.fill")
+            Image(systemName: "\(seasonTeam.poolName.lowercased()).circle.fill")
         }
     }
 }

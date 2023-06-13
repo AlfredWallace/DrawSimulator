@@ -21,10 +21,22 @@
         <attribute name="stadium" attributeType="String"/>
         <attribute name="winYear" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="drawPairings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrawPairing" inverseName="season" inverseEntity="DrawPairing"/>
-        <relationship name="teamPools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamPool" inverseName="season" inverseEntity="TeamPool"/>
+        <relationship name="seasonTeams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SeasonTeam" inverseName="season" inverseEntity="SeasonTeam"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="winYear"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="SeasonTeam" representedClassName="SeasonTeam" syncable="YES">
+        <attribute name="poolName" attributeType="String"/>
+        <attribute name="seeded" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="season" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Season" inverseName="seasonTeams" inverseEntity="Season"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="seasonTeams" inverseEntity="Team"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="team"/>
+                <constraint value="season"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
@@ -33,24 +45,12 @@
         <attribute name="shortName" attributeType="String"/>
         <attribute name="sortingName" attributeType="String"/>
         <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="teams" inverseEntity="Country"/>
+        <relationship name="seasonTeams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SeasonTeam" inverseName="team" inverseEntity="SeasonTeam"/>
         <relationship name="seededDrawPairings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrawPairing" inverseName="seededTeam" inverseEntity="DrawPairing"/>
-        <relationship name="teamPools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamPool" inverseName="team" inverseEntity="TeamPool"/>
         <relationship name="unseededDrawPairings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DrawPairing" inverseName="unseededTeam" inverseEntity="DrawPairing"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="shortName"/>
-            </uniquenessConstraint>
-        </uniquenessConstraints>
-    </entity>
-    <entity name="TeamPool" representedClassName="TeamPool" syncable="YES">
-        <attribute name="name" attributeType="String"/>
-        <attribute name="seeded" attributeType="Boolean" usesScalarValueType="YES"/>
-        <relationship name="season" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Season" inverseName="teamPools" inverseEntity="Season"/>
-        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="teamPools" inverseEntity="Team"/>
-        <uniquenessConstraints>
-            <uniquenessConstraint>
-                <constraint value="team"/>
-                <constraint value="season"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>

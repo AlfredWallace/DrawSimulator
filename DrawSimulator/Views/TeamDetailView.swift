@@ -15,17 +15,17 @@ struct TeamDetailView: View {
     @EnvironmentObject private var draws: Draws
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
     
-    let teamPool: TeamPool
+    let seasonTeam: SeasonTeam
     let team: Team
     
-    @FetchRequest private var seasonPools: FetchedResults<TeamPool>
+    @FetchRequest private var seasonPools: FetchedResults<SeasonTeam>
     
     var opponents: [Team] {
         return seasonPools
             .filter {
-                $0.seeded != teamPool.seeded &&
+                $0.seeded != seasonTeam.seeded &&
                 $0.team!.country != team.country &&
-                $0.name != teamPool.name
+                $0.poolName != seasonTeam.poolName
             }
             .map {
                 $0.team!
@@ -34,13 +34,13 @@ struct TeamDetailView: View {
     
     private var logoSize: CGFloat { geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45) }
     
-    init(teamPool: TeamPool) {
-        self.teamPool = teamPool
-        self.team = teamPool.team!
+    init(seasonTeam: SeasonTeam) {
+        self.seasonTeam = seasonTeam
+        self.team = seasonTeam.team!
         
         _seasonPools = FetchRequest(
             sortDescriptors: [],
-            predicate: NSPredicate(format: "season == %@", teamPool.season!)
+            predicate: NSPredicate(format: "season == %@", seasonTeam.season!)
         )
     }
     
@@ -80,7 +80,7 @@ struct TeamDetailView: View {
                                 .frame(width: logoSize, height: logoSize)
                             
                             VStack {
-                                PoolLabelView(teamPool: teamPool)
+                                PoolLabelView(seasonTeam: seasonTeam)
                                 
                                 DividerView()
                                 
@@ -88,7 +88,7 @@ struct TeamDetailView: View {
                                 
                                 DividerView()
                                 
-                                Text(teamPool.seededString)
+                                Text(seasonTeam.seededString)
                             }
                         }
                         .font(.title2.bold())
@@ -132,7 +132,7 @@ struct TeamDetailView: View {
                                 }
                         } else {
                             Button {
-                                draws.draw(for: teamPool.season!)
+                                draws.draw(for: seasonTeam.season!)
                             } label: {
                                 Text("Draw")
                                     .frame(maxWidth: .infinity)

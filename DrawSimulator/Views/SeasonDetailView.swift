@@ -17,35 +17,35 @@ struct SeasonDetailView: View {
     @State private var showingGroupingDialog = false
     @State private var showingList = true
     
-    @SectionedFetchRequest private var teamPoolsByPool: SectionedFetchResults<String, TeamPool>
-    @SectionedFetchRequest private var teamPoolsBySeeding: SectionedFetchResults<String, TeamPool>
-    @SectionedFetchRequest private var teamPoolsByCountry: SectionedFetchResults<String, TeamPool>
-    @SectionedFetchRequest private var teamPoolsUngrouped: SectionedFetchResults<String, TeamPool>
+    @SectionedFetchRequest private var seasonTeamsByPool: SectionedFetchResults<String, SeasonTeam>
+    @SectionedFetchRequest private var seasonTeamsBySeeding: SectionedFetchResults<String, SeasonTeam>
+    @SectionedFetchRequest private var seasonTeamsByCountry: SectionedFetchResults<String, SeasonTeam>
+    @SectionedFetchRequest private var seasonTeamsUngrouped: SectionedFetchResults<String, SeasonTeam>
     
     init(season: Season) {
         self.season = season
         
         // force unwrap is possible because the data is fully checked before being inserted into DB (see DatabaseInitializer)
         
-        _teamPoolsByPool = SectionedFetchRequest(
-            sectionIdentifier: \.name,
-            sortDescriptors: [SortDescriptor(\.name), SortDescriptor(\.seeded, order: .reverse)],
+        _seasonTeamsByPool = SectionedFetchRequest(
+            sectionIdentifier: \.poolName,
+            sortDescriptors: [SortDescriptor(\.poolName), SortDescriptor(\.seeded, order: .reverse)],
             predicate: NSPredicate(format: "season == %@", season)
         )
         
-        _teamPoolsBySeeding = SectionedFetchRequest(
+        _seasonTeamsBySeeding = SectionedFetchRequest(
             sectionIdentifier: \.seededString,
             sortDescriptors: [SortDescriptor(\.seeded, order: .reverse), SortDescriptor(\.team!.sortingName)],
             predicate: NSPredicate(format: "season == %@", season)
         )
         
-        _teamPoolsByCountry = SectionedFetchRequest(
+        _seasonTeamsByCountry = SectionedFetchRequest(
             sectionIdentifier: \.team!.country!.name,
             sortDescriptors: [SortDescriptor(\.team!.country!.name), SortDescriptor(\.team!.sortingName)],
             predicate: NSPredicate(format: "season == %@", season)
         )
         
-        _teamPoolsUngrouped = SectionedFetchRequest(
+        _seasonTeamsUngrouped = SectionedFetchRequest(
             sectionIdentifier: \.season!.winYearString,
             sortDescriptors: [SortDescriptor(\.team!.sortingName)],
             predicate: NSPredicate(format: "season == %@", season)
@@ -53,16 +53,16 @@ struct SeasonDetailView: View {
     }
     
     
-    private var teamPools: SectionedFetchResults<String, TeamPool> {
+    private var seasonTeams: SectionedFetchResults<String, SeasonTeam> {
         switch userSettings.data.grouping {
             case .country:
-                return teamPoolsByCountry
+                return seasonTeamsByCountry
             case .none:
-                return teamPoolsUngrouped
+                return seasonTeamsUngrouped
             case .seeding:
-                return teamPoolsBySeeding
+                return seasonTeamsBySeeding
             default:
-                return teamPoolsByPool
+                return seasonTeamsByPool
         }
     }
     
@@ -77,14 +77,14 @@ struct SeasonDetailView: View {
                 if showingList {
                     ScrollView {
                         VStack(spacing: 20) {
-                            ForEach(teamPools) { section in
+                            ForEach(seasonTeams) { section in
                                 
                                 CardView(hasHeaderDivier: true) {
                                     VStack(spacing: 10) {
-                                        ForEach(section) { teamPool in
-                                            NavigationLink(value: teamPool) {
+                                        ForEach(section) { seasonTeam in
+                                            NavigationLink(value: seasonTeam) {
                                                 HStack {
-                                                    TeamLabelView(team: teamPool.team!)
+                                                    TeamLabelView(team: seasonTeam.team!)
                                                     Image(systemName: "chevron.forward")
                                                 }
                                             }
@@ -104,8 +104,8 @@ struct SeasonDetailView: View {
                 }
             }
         }
-        .navigationDestination(for: TeamPool.self) { teamPool in
-            TeamDetailView(teamPool: teamPool)
+        .navigationDestination(for: SeasonTeam.self) { seasonTeam in
+            TeamDetailView(seasonTeam: seasonTeam)
         }
         .navigationTitle("Teams")
         .toolbar {

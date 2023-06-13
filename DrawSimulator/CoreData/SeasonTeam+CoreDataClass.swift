@@ -1,5 +1,5 @@
 //
-//  TeamPool+CoreDataClass.swift
+//  SeasonTeam+CoreDataClass.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 22/04/2023.
@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(TeamPool)
-public class TeamPool: NSManagedObject {
+@objc(SeasonTeam)
+public class SeasonTeam: NSManagedObject {
     
     @available(*, unavailable)
     public init() {
@@ -27,10 +27,10 @@ public class TeamPool: NSManagedObject {
         super.init(entity: entity, insertInto: context)
     }
     
-    public init(context: NSManagedObjectContext, name: String, seeded: Bool, season: Season? = nil, team: Team? = nil) {
-        let entity = NSEntityDescription.entity(forEntityName: TeamPool.entityName, in: context)!
+    public init(context: NSManagedObjectContext, poolName: String, seeded: Bool, season: Season? = nil, team: Team? = nil) {
+        let entity = NSEntityDescription.entity(forEntityName: SeasonTeam.entityName, in: context)!
         super.init(entity: entity, insertInto: context)
-        self.name = name
+        self.poolName = poolName
         self.seeded = seeded
         self.season = season
         self.team = team

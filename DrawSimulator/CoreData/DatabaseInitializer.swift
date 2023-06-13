@@ -26,8 +26,8 @@ class DatabaseInitializer {
         let countryIdentifier: CountryIdentifier
     }
     
-    private struct TeamPoolData {
-        let name: String
+    private struct SeasonTeamData {
+        let poolName: String
         let seeded: Bool
         let teamIdentifier: TeamIdentifier
         let seasonWinYear: Int
@@ -66,23 +66,23 @@ class DatabaseInitializer {
         TeamIdentifier.BEN: TeamData(name: "SL Benfica", sortingName: "Benfica", countryIdentifier: CountryIdentifier.POR),
     ]
 
-    static private let teamPoolData = [
-        TeamPoolData(name: "A", seeded: true, teamIdentifier: TeamIdentifier.NAP, seasonWinYear: 2023),
-        TeamPoolData(name: "A", seeded: false, teamIdentifier: TeamIdentifier.LIV, seasonWinYear: 2023),
-        TeamPoolData(name: "B", seeded: true, teamIdentifier: TeamIdentifier.FCP, seasonWinYear: 2023),
-        TeamPoolData(name: "B", seeded: false, teamIdentifier: TeamIdentifier.BRU, seasonWinYear: 2023),
-        TeamPoolData(name: "C", seeded: true, teamIdentifier: TeamIdentifier.BAY, seasonWinYear: 2023),
-        TeamPoolData(name: "C", seeded: false, teamIdentifier: TeamIdentifier.INT, seasonWinYear: 2023),
-        TeamPoolData(name: "D", seeded: true, teamIdentifier: TeamIdentifier.TOT, seasonWinYear: 2023),
-        TeamPoolData(name: "D", seeded: false, teamIdentifier: TeamIdentifier.FRK, seasonWinYear: 2023),
-        TeamPoolData(name: "E", seeded: true, teamIdentifier: TeamIdentifier.CHE, seasonWinYear: 2023),
-        TeamPoolData(name: "E", seeded: false, teamIdentifier: TeamIdentifier.ACM, seasonWinYear: 2023),
-        TeamPoolData(name: "F", seeded: true, teamIdentifier: TeamIdentifier.RMA, seasonWinYear: 2023),
-        TeamPoolData(name: "F", seeded: false, teamIdentifier: TeamIdentifier.RBL, seasonWinYear: 2023),
-        TeamPoolData(name: "G", seeded: true, teamIdentifier: TeamIdentifier.MCI, seasonWinYear: 2023),
-        TeamPoolData(name: "G", seeded: false, teamIdentifier: TeamIdentifier.BVB, seasonWinYear: 2023),
-        TeamPoolData(name: "H", seeded: true, teamIdentifier: TeamIdentifier.BEN, seasonWinYear: 2023),
-        TeamPoolData(name: "H", seeded: false, teamIdentifier: TeamIdentifier.PSG, seasonWinYear: 2023),
+    static private let seasonTeamData = [
+        SeasonTeamData(poolName: "A", seeded: true, teamIdentifier: TeamIdentifier.NAP, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "A", seeded: false, teamIdentifier: TeamIdentifier.LIV, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "B", seeded: true, teamIdentifier: TeamIdentifier.FCP, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "B", seeded: false, teamIdentifier: TeamIdentifier.BRU, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "C", seeded: true, teamIdentifier: TeamIdentifier.BAY, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "C", seeded: false, teamIdentifier: TeamIdentifier.INT, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "D", seeded: true, teamIdentifier: TeamIdentifier.TOT, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "D", seeded: false, teamIdentifier: TeamIdentifier.FRK, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "E", seeded: true, teamIdentifier: TeamIdentifier.CHE, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "E", seeded: false, teamIdentifier: TeamIdentifier.ACM, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "F", seeded: true, teamIdentifier: TeamIdentifier.RMA, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "F", seeded: false, teamIdentifier: TeamIdentifier.RBL, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "G", seeded: true, teamIdentifier: TeamIdentifier.MCI, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "G", seeded: false, teamIdentifier: TeamIdentifier.BVB, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "H", seeded: true, teamIdentifier: TeamIdentifier.BEN, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "H", seeded: false, teamIdentifier: TeamIdentifier.PSG, seasonWinYear: 2023),
     ]
     
     static func makeSeason(_ moc: NSManagedObjectContext, _ winYear: Int) {
@@ -94,8 +94,8 @@ class DatabaseInitializer {
         
         var countries = Set<Country>()
         
-        for oneTeamPool in teamPoolData {
-            let teamData = teamData[oneTeamPool.teamIdentifier]!
+        for oneSeasonTeam in seasonTeamData {
+            let teamData = teamData[oneSeasonTeam.teamIdentifier]!
             let countryIdentifier = teamData.countryIdentifier
             
             var country = countries.first(where: { $0.shortName == countryIdentifier.rawValue })
@@ -108,21 +108,21 @@ class DatabaseInitializer {
             let team = Team(
                 context: moc,
                 name: teamData.name,
-                shortName: oneTeamPool.teamIdentifier.rawValue,
+                shortName: oneSeasonTeam.teamIdentifier.rawValue,
                 sortingName: teamData.sortingName,
                 country: country
             )
             
-            let teamPool = TeamPool(
+            let seasonTeam = SeasonTeam(
                 context: moc,
-                name: oneTeamPool.name,
-                seeded: oneTeamPool.seeded,
+                poolName: oneSeasonTeam.poolName,
+                seeded: oneSeasonTeam.seeded,
                 season: season,
                 team: team
             )
             
-            team.addToTeamPools(teamPool)
-            season.addToTeamPools(teamPool)
+            team.addToSeasonTeams(seasonTeam)
+            season.addToSeasonTeams(seasonTeam)
             country!.addToTeams(team)
         }
     }
@@ -134,34 +134,34 @@ class DatabaseInitializer {
             fatalError("\(genericErrorMsg) There is no season \(winYear).")
         }
         
-        let seasonTeamPools = teamPoolData.filter({ $0.seasonWinYear == winYear })
-        let teamPoolCount = seasonTeamPools.count
+        let seasonTeams = seasonTeamData.filter({ $0.seasonWinYear == winYear })
+        let seasonTeamsCount = seasonTeams.count
         let teamCount = 16
         
         // Checking if the number if teeamPool associations is 16
-        if teamPoolCount != teamCount {
-            fatalError("\(genericErrorMsg) There has to be \(teamCount) teamPool associations for one season. Season \(winYear) currently has \(teamPoolCount).")
+        if seasonTeamsCount != teamCount {
+            fatalError("\(genericErrorMsg) There has to be \(teamCount) seasonTeam associations for one season. Season \(winYear) currently has \(seasonTeamsCount).")
         }
         
         // Checking if we have 16 different teams
-        if Set(seasonTeamPools.map({ $0.teamIdentifier })).count != teamCount {
-            fatalError("\(genericErrorMsg) There cannot be team duplicates in the teamPools.")
+        if Set(seasonTeams.map({ $0.teamIdentifier })).count != teamCount {
+            fatalError("\(genericErrorMsg) There cannot be team duplicates in the seasonTeams.")
         }
         
         // Grouping by pool name allows us to check:
         // - if we have 8 associations of 2 teams
         // - if we have, in each association, a seeded team and an unseeded one
-        for pool in Dictionary(grouping: seasonTeamPools, by: { $0.name }) {
-            let teamPoolAssociations = pool.value
+        for pool in Dictionary(grouping: seasonTeams, by: { $0.poolName }) {
+            let seasonTeamsAssociations = pool.value
             
             // checking associations of 2 teams
-            if teamPoolAssociations.count != 2 {
-                fatalError("\(genericErrorMsg) There has to be exactly 2 teamPool associations of the same pool name.")
+            if seasonTeamsAssociations.count != 2 {
+                fatalError("\(genericErrorMsg) There has to be exactly 2 seasonTeam associations of the same pool name.")
             }
             
             // checking seedings
-            if teamPoolAssociations[0].seeded == teamPoolAssociations[1].seeded {
-                fatalError("\(genericErrorMsg) The 2 teamPool associations of a same pool name have to have different seedings.")
+            if seasonTeamsAssociations[0].seeded == seasonTeamsAssociations[1].seeded {
+                fatalError("\(genericErrorMsg) The 2 seasonTeam associations of a same pool name have to have different seedings.")
             }
         }
     
@@ -170,10 +170,10 @@ class DatabaseInitializer {
         
         
         var countriesToCheck = Set<CountryIdentifier>()
-        // For each teamPool association we will check if the team exists, and save fot later the country identifier
+        // For each seasonTeam association we will check if the team exists, and save fot later the country identifier
         // This is a small optimization to prevent us from checking multiple times some countries
-        for seasonTeamPool in seasonTeamPools {
-            let teamIdentifier = seasonTeamPool.teamIdentifier
+        for seasonTeam in seasonTeams {
+            let teamIdentifier = seasonTeam.teamIdentifier
             
             guard let team = teamData[teamIdentifier] else {
                 fatalError("\(genericErrorMsg) Team \(teamIdentifier) does not exist.")

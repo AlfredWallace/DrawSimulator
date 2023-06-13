@@ -136,12 +136,12 @@ import SwiftUI
         var result = [Team]()
 
         CoreDataController.shared.performInBackground(commit: false) { moc in
-            let teamPoolsFetchRequest = NSFetchRequest<TeamPool>(entityName: TeamPool.entityName)
-            teamPoolsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
+            let seasonTeamsFetchRequest = NSFetchRequest<SeasonTeam>(entityName: SeasonTeam.entityName)
+            seasonTeamsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
 
             do {
-                let teamPools = try moc.fetch(teamPoolsFetchRequest)
-                result = teamPools.map { $0.team! }
+                let seasonTeams = try moc.fetch(seasonTeamsFetchRequest)
+                result = seasonTeams.map { $0.team! }
 
             } catch let error as NSError {
                 print("Failed to fetch teams: \(error.localizedDescription)")
@@ -155,12 +155,12 @@ import SwiftUI
         var result = [Team]()
         
 //        CoreDataController.shared.performInBackground(commit: false) { moc in
-//            let teamPoolsFetchRequest = NSFetchRequest<TeamPool>(entityName: TeamPool.entityName)
-//            teamPoolsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == 0 AND name != %@", season)
+//            let seasonTeamsFetchRequest = NSFetchRequest<SeasonTeam>(entityName: SeasonTeam.entityName)
+//            seasonTeamsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == 0 AND name != %@", season)
 //
 //            do {
-//                let teamPools = try moc.fetch(teamPoolsFetchRequest)
-//                result = teamPools.map { $0.team! }
+//                let seasonTeams = try moc.fetch(seasonTeamsFetchRequest)
+//                result = seasonTeams.map { $0.team! }
 //
 //            } catch let error as NSError {
 //                print("Failed to fetch teams: \(error.localizedDescription)")

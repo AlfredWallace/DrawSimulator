@@ -20,13 +20,13 @@ extension Team {
     @NSManaged public var shortName: String
     @NSManaged public var sortingName: String
     @NSManaged public var country: Country?
-    @NSManaged public var teamPools: NSSet?
+    @NSManaged public var seasonTeams: NSSet?
     @NSManaged public var seededDrawPairings: NSSet?
     @NSManaged public var unseededDrawPairings: NSSet?
     
-    public var teamPoolsArray: [TeamPool] {
-        let teamPoolsSet = teamPools as? Set<TeamPool> ?? []
-        return teamPoolsSet.sorted { $0.name < $1.name }
+    public var seasonTeamsArray: [SeasonTeam] {
+        let seasonTeamsSet = seasonTeams as? Set<SeasonTeam> ?? []
+        return seasonTeamsSet.sorted { $0.poolName < $1.poolName }
     }
     
     public var seededDrawPairingsArray: [DrawPairing] {
@@ -41,20 +41,20 @@ extension Team {
 
 }
 
-// MARK: Generated accessors for teamPools
+// MARK: Generated accessors for seasonTeams
 extension Team {
 
-    @objc(addTeamPoolsObject:)
-    @NSManaged public func addToTeamPools(_ value: TeamPool)
+    @objc(addSeasonTeamsObject:)
+    @NSManaged public func addToSeasonTeams(_ value: SeasonTeam)
 
-    @objc(removeTeamPoolsObject:)
-    @NSManaged public func removeFromTeamPools(_ value: TeamPool)
+    @objc(removeSeasonTeamsObject:)
+    @NSManaged public func removeFromSeasonTeams(_ value: SeasonTeam)
 
-    @objc(addTeamPools:)
-    @NSManaged public func addToTeamPools(_ values: NSSet)
+    @objc(addSeasonTeams:)
+    @NSManaged public func addToSeasonTeams(_ values: NSSet)
 
-    @objc(removeTeamPools:)
-    @NSManaged public func removeFromTeamPools(_ values: NSSet)
+    @objc(removeSeasonTeams:)
+    @NSManaged public func removeFromSeasonTeams(_ values: NSSet)
 
 }
 
