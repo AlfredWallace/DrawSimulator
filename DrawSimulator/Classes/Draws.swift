@@ -51,34 +51,35 @@ import SwiftUI
                 await MainActor.run {
                     self.progress += 1.0
                 }
-            //
-            //                while seededTeams.isEmpty == false {
-            //
-            //                    let seededTeam = self.extractOneTeam(&seededTeams)
-            //
-            //                    //UEFA rules
-            //                    var opponents = unseededTeams.filter { opponent in
-            //                        opponent.countryId != seededTeam.countryId
-            //                        && opponent.pool != seededTeam.pool
-            //                    }
-            //
-            //                    // invalid draw, we discard it completely (when at some point in the draw, the remaining teams are not compatible with the rules)
-            //                    // so: we won't add any of the tuples (localPairings) to our Pairing array (pairings)
-            //                    if opponents.isEmpty {
-            //                        continue outerLoop
-            //                    }
-            //
-            //                    let unseededTeam = self.extractOneTeam(&opponents)
-            //
-            //                    unseededTeams.removeAll { team in
-            //                        team == unseededTeam
-            //                    }
-            //
-            //                    // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
-            //                    // because as soon as a team or its opponent is picked, we discard them from the arrays
-            //                    // so: we can just add the current pairing to our local tuples without checking if it exists first
-            //                    loopPairings.append((seededTeam: seededTeam, unseededTeam: unseededTeam))
-            //                }
+            
+                while seededTeams.isEmpty == false {
+                    
+                    let seededTeam = self.extractOneTeam(&seededTeams)
+                    
+                    //UEFA rules
+                    var opponents = getOpponents(for: season, allowedAgainst: seededTeam)
+//                    var opponents = unseededTeams.filter { opponent in
+//                        opponent.countryId != seededTeam.countryId
+//                        && opponent.pool != seededTeam.pool
+//                    }
+                    
+                    // invalid draw, we discard it completely (when at some point in the draw, the remaining teams are not compatible with the rules)
+                    // so: we won't add any of the tuples (localPairings) to our Pairing array (pairings)
+                    if opponents.isEmpty {
+                        continue outerLoop
+                    }
+                    
+                    let unseededTeam = self.extractOneTeam(&opponents)
+                    
+                    unseededTeams.removeAll { team in
+                        team == unseededTeam
+                    }
+                    
+                    // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
+                    // because as soon as a team or its opponent is picked, we discard them from the arrays
+                    // so: we can just add the current pairing to our local tuples without checking if it exists first
+                    //                                loopPairings.append((seededTeam: seededTeam, unseededTeam: unseededTeam))
+                }
             //
             //                // if the draw has been completed (thus is valid) we increase the count for all the matching pairings
             //                // we look for an existing pairing matching the current iteration
@@ -133,19 +134,38 @@ import SwiftUI
     
     private func getTeams(for season: Season, seeded: Bool) -> [Team] {
         var result = [Team]()
-        
+
         CoreDataController.shared.performInBackground(commit: false) { moc in
             let teamPoolsFetchRequest = NSFetchRequest<TeamPool>(entityName: TeamPool.entityName)
             teamPoolsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
-            
+
             do {
                 let teamPools = try moc.fetch(teamPoolsFetchRequest)
                 result = teamPools.map { $0.team! }
-                
+
             } catch let error as NSError {
                 print("Failed to fetch teams: \(error.localizedDescription)")
             }
         }
+
+        return result
+    }
+    
+    private func getOpponents(for season: Season, allowedAgainst team: Team) -> [Team] {
+        var result = [Team]()
+        
+//        CoreDataController.shared.performInBackground(commit: false) { moc in
+//            let teamPoolsFetchRequest = NSFetchRequest<TeamPool>(entityName: TeamPool.entityName)
+//            teamPoolsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == 0 AND name != %@", season)
+//
+//            do {
+//                let teamPools = try moc.fetch(teamPoolsFetchRequest)
+//                result = teamPools.map { $0.team! }
+//
+//            } catch let error as NSError {
+//                print("Failed to fetch teams: \(error.localizedDescription)")
+//            }
+//        }
         
         return result
     }
