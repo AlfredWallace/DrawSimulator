@@ -18,10 +18,10 @@ struct TeamDetailView: View {
     let seasonTeam: SeasonTeam
     let team: Team
     
-    @FetchRequest private var seasonPools: FetchedResults<SeasonTeam>
+    @FetchRequest private var seasonTeams: FetchedResults<SeasonTeam>
     
     var opponents: [Team] {
-        return seasonPools
+        return seasonTeams
             .filter {
                 $0.seeded != seasonTeam.seeded &&
                 $0.team!.country != team.country &&
@@ -38,7 +38,7 @@ struct TeamDetailView: View {
         self.seasonTeam = seasonTeam
         self.team = seasonTeam.team!
         
-        _seasonPools = FetchRequest(
+        _seasonTeams = FetchRequest(
             sortDescriptors: [],
             predicate: NSPredicate(format: "season == %@", seasonTeam.season!)
         )
