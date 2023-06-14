@@ -132,7 +132,7 @@ struct TeamDetailView: View {
                                 }
                         } else {
                             Button {
-                                draws.draw(for: seasonTeam.season!)
+                                draws.draw(for: seasonTeam.season!.winYear)
                             } label: {
                                 Text("Draw")
                                     .frame(maxWidth: .infinity)

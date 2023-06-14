@@ -18,6 +18,7 @@ import SwiftUI
     
     private(set) var task: Task<Void, Never>? = nil
     private let coreDataController: CoreDataController
+    private var winYear: Int16 = 1970
     
     init(coreDataController: CoreDataController) {
         self.coreDataController = coreDataController
@@ -29,6 +30,10 @@ import SwiftUI
         let country: Country
     }
     
+    private enum SeasonError: Error {
+        case notExactlyOne(winYear: Int)
+    }
+    
     private func extractOneTeam(_ teams: inout [DrawTeam]) -> DrawTeam {
         let length = teams.count
         return teams.remove(at: Int.random(in: 0..<length))
@@ -38,11 +43,14 @@ import SwiftUI
         isRunning = false
     }
     
-    func draw(for season: Season, _ times: Int = numberOfDraws) {
+    func draw(for winYear: Int16, _ times: Int = numberOfDraws) {
         isRunning = true
         progress = 0.0
         
         task = Task {
+            
+            self.winYear = winYear
+            let season = getSeason()
             
             deleteDraws(for: season)
             
@@ -92,9 +100,9 @@ import SwiftUI
                     // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
                     // because as soon as a team or its opponent is picked, we discard them from the arrays
                     // so: we can just add the current without checking if it exists first
-//                    coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
-//                        innerLoopPairings.append(DrawPairing(context: moc, count: 1, season: season, seededTeam: seededDrawTeam.team, unseededTeam: pickedOpponent.team))
-//                    }
+                    coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
+                        innerLoopPairings.append(DrawPairing(context: moc, count: 1, season: season, seededTeam: seededDrawTeam.team, unseededTeam: pickedOpponent.team))
+                    }
                 }
             //
             //                // if the draw has been completed (thus is valid) we increase the count for all the matching pairings
@@ -145,6 +153,30 @@ import SwiftUI
             } catch let error as NSError {
                 print("Failed to fetch and delete pairings: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    private func getSeason() -> Season {
+        var seasons = [Season]()
+        
+        coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
+            let seasonRequest = NSFetchRequest<Season>(entityName: Season.entityName)
+            seasonRequest.predicate = NSPredicate(format: "winYear == %@", winYear as NSNumber)
+            
+            do {
+                seasons = try moc.fetch(seasonRequest)
+            } catch {
+                print("Failed to fetch the seasons: \(error.localizedDescription)")
+            }
+        }
+        
+        switch seasons.count {
+            case 0:
+                fatalError("There are no seasons with the winYear: \(winYear)")
+            case 1:
+                return seasons.first!
+            default:
+                fatalError("Database corrupted, there are several seasons with the winYear: \(winYear)")
         }
     }
     
