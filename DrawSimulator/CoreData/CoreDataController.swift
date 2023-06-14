@@ -8,7 +8,7 @@
 import CoreData
 import SwiftUI
 
-class CoreDataController {
+class CoreDataController: ObservableObject {
     static let shared = CoreDataController() // singleton
     
     static let preview: CoreDataController = {

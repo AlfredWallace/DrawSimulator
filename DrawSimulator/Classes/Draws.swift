@@ -17,6 +17,7 @@ import SwiftUI
     @Published private(set) var progress = 0.0
     
     private(set) var task: Task<Void, Never>? = nil
+    private var coreDataController: CoreDataController? = nil
     
     private struct DrawTeam: Equatable {
         let poolName: String
@@ -27,6 +28,15 @@ import SwiftUI
     private func extractOneTeam(_ teams: inout [DrawTeam]) -> DrawTeam {
         let length = teams.count
         return teams.remove(at: Int.random(in: 0..<length))
+    }
+    
+    func setCoreDataController(_ coreDataController: CoreDataController) {
+        self.coreDataController = coreDataController
+    }
+    
+    func getCoreDataController() -> CoreDataController {
+        guard let coreDataController else { fatalError("Draws.coreDataController is not properly initialized") }
+        return coreDataController
     }
     
     func cancelDraw() {
@@ -128,7 +138,7 @@ import SwiftUI
     // no need to batch delete here because there will be a fairly small amount of data every time, probably around 64
     private func deleteDraws(for season: Season) {
         
-        CoreDataController.shared.performInBackgroundContextAndWait(commit: false) { moc in
+        getCoreDataController().performInBackgroundContextAndWait(commit: false) { moc in
             let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: DrawPairing.entityName)
             pairingsFetchRequest.predicate = NSPredicate(format: "season == %@", season)
             
@@ -146,7 +156,7 @@ import SwiftUI
     private func getDrawTeams(for season: Season, seeded: Bool) -> [DrawTeam] {
         var result = [DrawTeam]()
 
-        CoreDataController.shared.performInBackgroundContextAndWait(commit: false) { moc in
+        getCoreDataController().performInBackgroundContextAndWait(commit: false) { moc in
             let seasonTeamsFetchRequest = NSFetchRequest<SeasonTeam>(entityName: SeasonTeam.entityName)
             seasonTeamsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
 

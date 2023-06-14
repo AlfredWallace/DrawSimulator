@@ -10,6 +10,8 @@ import CoreData
 
 struct ContentView: View {
     
+    @EnvironmentObject private var coreDataController: CoreDataController
+    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
     @StateObject private var userSettings = UserSettings()
@@ -59,6 +61,7 @@ struct ContentView: View {
             .preferredColorScheme(userSettings.getColorScheme())
             .onAppear {
                 geoSizeTracker.setSize(geoWrapper.size)
+                draws.setCoreDataController(coreDataController)
             }
         }
         .tint(.defaultText)
@@ -70,6 +73,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
+            .environmentObject(CoreDataController.preview)
     }
 }
 
