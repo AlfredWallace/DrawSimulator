@@ -30,6 +30,11 @@ import SwiftUI
         let country: Country
     }
     
+    private struct InnerLoopPairing {
+        let seededTeam: Team
+        let unseededTeam: Team
+    }
+    
     private enum SeasonError: Error {
         case notExactlyOne(winYear: Int)
     }
@@ -77,7 +82,7 @@ import SwiftUI
                     
                     let seededDrawTeam = self.extractOneTeam(&seededDrawTeams)
                     
-                    var innerLoopPairings = [DrawPairing]()
+                    var innerLoopPairings = [InnerLoopPairing]()
                     
                     //UEFA rules
                     var possibleOpponents = unseededDrawTeams.filter { opponent in
@@ -100,9 +105,7 @@ import SwiftUI
                     // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
                     // because as soon as a team or its opponent is picked, we discard them from the arrays
                     // so: we can just add the current without checking if it exists first
-                    coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
-                        innerLoopPairings.append(DrawPairing(context: moc, count: 1, season: season, seededTeam: seededDrawTeam.team, unseededTeam: pickedOpponent.team))
-                    }
+                    innerLoopPairings.append(InnerLoopPairing(seededTeam: seededDrawTeam.team, unseededTeam: pickedOpponent.team))
                 }
             //
             //                // if the draw has been completed (thus is valid) we increase the count for all the matching pairings
