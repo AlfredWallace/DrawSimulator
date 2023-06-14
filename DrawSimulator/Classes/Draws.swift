@@ -50,8 +50,8 @@ import SwiftUI
                 }
                 
                 // we will always pick a seeded team then pair it with an unseeded team (UEFA rule): this eliminates some complexity of the algorithm
-                var seededTeams = getTeams(for: season, seeded: true)
-                var unseededTeams = getTeams(for: season, seeded: false)
+                var seededDrawTeams = getDrawTeams(for: season, seeded: true)
+                var unseededDrawTeams = getDrawTeams(for: season, seeded: false)
 //                var loopPairings = [(seededTeam: Team, unseededTeam: Team)]()
 //
                 await MainActor.run {
@@ -59,26 +59,26 @@ import SwiftUI
                 }
             
                     
-                while seededTeams.isEmpty == false {
+                while seededDrawTeams.isEmpty == false {
                     
-                    let seededTeam = self.extractOneTeam(&seededTeams)
+                    let seededDrawTeam = self.extractOneTeam(&seededDrawTeams)
                     
                     //UEFA rules
-                    var opponents = unseededTeams.filter { opponent in
-                        opponent.country != seededTeam.country
-                        && opponent.poolName != seededTeam.poolName
+                    var possibleOpponents = unseededDrawTeams.filter { opponent in
+                        opponent.country != seededDrawTeam.country
+                        && opponent.poolName != seededDrawTeam.poolName
                     }
                     
                     // If opponents is empty, it's an invalid draw, so we discard the entire draw
                     // (happens rarely, when at some point in the draw, the remaining teams are not compatible with the rules)
-                    if opponents.isEmpty {
+                    if possibleOpponents.isEmpty {
                         continue outerLoop
                     }
                     
-                    let unseededTeam = self.extractOneTeam(&opponents)
+                    let pickedOpponent = self.extractOneTeam(&possibleOpponents)
                     
-                    unseededTeams.removeAll { team in
-                        team == unseededTeam
+                    unseededDrawTeams.removeAll { drawTeam in
+                        drawTeam == pickedOpponent
                     }
                     
                     // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
@@ -139,7 +139,7 @@ import SwiftUI
         }
     }
     
-    private func getTeams(for season: Season, seeded: Bool) -> [DrawTeam] {
+    private func getDrawTeams(for season: Season, seeded: Bool) -> [DrawTeam] {
         var result = [DrawTeam]()
 
         CoreDataController.shared.performInBackgroundContextAndWait(commit: false) { moc in
