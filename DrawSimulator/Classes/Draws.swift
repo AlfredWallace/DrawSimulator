@@ -69,8 +69,8 @@ import SwiftUI
                         && opponent.poolName != seededTeam.poolName
                     }
                     
-                    // invalid draw, we discard it completely (when at some point in the draw, the remaining teams are not compatible with the rules)
-                    // so: we won't add any of the tuples (localPairings) to our Pairing array (pairings)
+                    // If opponents is empty, it's an invalid draw, so we discard the entire draw
+                    // (happens rarely, when at some point in the draw, the remaining teams are not compatible with the rules)
                     if opponents.isEmpty {
                         continue outerLoop
                     }
