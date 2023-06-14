@@ -10,16 +10,15 @@ import CoreData
 
 struct ContentView: View {
     
-    @EnvironmentObject private var coreDataController: CoreDataController
-    
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
-    @StateObject private var draws = Draws()
+    @StateObject private var draws: Draws
     
-    init() {
+    init(coreDataController: CoreDataController) {
         NavigationTheme.navigationBarColors()
+        self._draws = StateObject(wrappedValue: Draws(coreDataController: coreDataController))
     }
     
     var body: some View {
@@ -61,7 +60,6 @@ struct ContentView: View {
             .preferredColorScheme(userSettings.getColorScheme())
             .onAppear {
                 geoSizeTracker.setSize(geoWrapper.size)
-                draws.setCoreDataController(coreDataController)
             }
         }
         .tint(.defaultText)
@@ -70,10 +68,10 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+
     static var previews: some View {
-        ContentView()
+        ContentView(coreDataController: CoreDataController.preview)
             .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
-            .environmentObject(CoreDataController.preview)
     }
 }
 

@@ -17,7 +17,11 @@ import SwiftUI
     @Published private(set) var progress = 0.0
     
     private(set) var task: Task<Void, Never>? = nil
-    private var coreDataController: CoreDataController? = nil
+    private let coreDataController: CoreDataController
+    
+    init(coreDataController: CoreDataController) {
+        self.coreDataController = coreDataController
+    }
     
     private struct DrawTeam: Equatable {
         let poolName: String
@@ -28,15 +32,6 @@ import SwiftUI
     private func extractOneTeam(_ teams: inout [DrawTeam]) -> DrawTeam {
         let length = teams.count
         return teams.remove(at: Int.random(in: 0..<length))
-    }
-    
-    func setCoreDataController(_ coreDataController: CoreDataController) {
-        self.coreDataController = coreDataController
-    }
-    
-    func getCoreDataController() -> CoreDataController {
-        guard let coreDataController else { fatalError("Draws.coreDataController is not properly initialized") }
-        return coreDataController
     }
     
     func cancelDraw() {
@@ -97,7 +92,7 @@ import SwiftUI
                     // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
                     // because as soon as a team or its opponent is picked, we discard them from the arrays
                     // so: we can just add the current without checking if it exists first
-//                    CoreDataController.shared.performInBackgroundContextAndWait(commit: false) { moc in
+//                    coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
 //                        innerLoopPairings.append(DrawPairing(context: moc, count: 1, season: season, seededTeam: seededDrawTeam.team, unseededTeam: pickedOpponent.team))
 //                    }
                 }
@@ -138,7 +133,7 @@ import SwiftUI
     // no need to batch delete here because there will be a fairly small amount of data every time, probably around 64
     private func deleteDraws(for season: Season) {
         
-        getCoreDataController().performInBackgroundContextAndWait(commit: false) { moc in
+        coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
             let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: DrawPairing.entityName)
             pairingsFetchRequest.predicate = NSPredicate(format: "season == %@", season)
             
@@ -156,7 +151,7 @@ import SwiftUI
     private func getDrawTeams(for season: Season, seeded: Bool) -> [DrawTeam] {
         var result = [DrawTeam]()
 
-        getCoreDataController().performInBackgroundContextAndWait(commit: false) { moc in
+        coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
             let seasonTeamsFetchRequest = NSFetchRequest<SeasonTeam>(entityName: SeasonTeam.entityName)
             seasonTeamsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
 
