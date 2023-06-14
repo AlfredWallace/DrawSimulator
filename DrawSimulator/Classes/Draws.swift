@@ -50,6 +50,7 @@ import SwiftUI
                 }
                 
                 // we will always pick a seeded team then pair it with an unseeded team (UEFA rule): this eliminates some complexity of the algorithm
+                // todo : optimiser pour pas faire 2 requêtes à chaque boucle
                 var seededDrawTeams = getDrawTeams(for: season, seeded: true)
                 var unseededDrawTeams = getDrawTeams(for: season, seeded: false)
 //                var loopPairings = [(seededTeam: Team, unseededTeam: Team)]()
@@ -59,9 +60,11 @@ import SwiftUI
                 }
             
                     
-                while seededDrawTeams.isEmpty == false {
+                innerLoop: while seededDrawTeams.isEmpty == false {
                     
                     let seededDrawTeam = self.extractOneTeam(&seededDrawTeams)
+                    
+                    var innerLoopPairings = [DrawPairing]()
                     
                     //UEFA rules
                     var possibleOpponents = unseededDrawTeams.filter { opponent in
@@ -83,9 +86,10 @@ import SwiftUI
                     
                     // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
                     // because as soon as a team or its opponent is picked, we discard them from the arrays
-                    // so: we can just add the current pairing to our local tuples without checking if it exists first
-                    //                                loopPairings.append((seededTeam: seededTeam, unseededTeam: unseededTeam))
-                    
+                    // so: we can just add the current without checking if it exists first
+//                    CoreDataController.shared.performInBackgroundContextAndWait(commit: false) { moc in
+//                        innerLoopPairings.append(DrawPairing(context: moc, count: 1, season: season, seededTeam: seededDrawTeam.team, unseededTeam: pickedOpponent.team))
+//                    }
                 }
             //
             //                // if the draw has been completed (thus is valid) we increase the count for all the matching pairings
