@@ -22,15 +22,7 @@ struct TeamDetailView: View {
     @FetchRequest private var seasonTeams: FetchedResults<SeasonTeam>
     
     var opponents: [Team] {
-        return seasonTeams
-            .filter {
-                $0.seeded != seasonTeam.seeded &&
-                $0.team!.country != team.country &&
-                $0.poolName != seasonTeam.poolName
-            }
-            .map {
-                $0.team!
-            }
+        return seasonTeams.map { $0.team! }
     }
     
     private var logoSize: CGFloat { geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45) }
@@ -41,7 +33,13 @@ struct TeamDetailView: View {
         
         _seasonTeams = FetchRequest(
             sortDescriptors: [],
-            predicate: NSPredicate(format: "season == %@", seasonTeam.season!)
+            predicate: NSPredicate( // no problem for the team.country condition, because the database is initialized with safeguards
+                format: "season == %@ AND seeded != %@ AND poolName != %@ AND team.country != %@",
+                seasonTeam.season!,
+                seasonTeam.seeded as NSNumber,
+                seasonTeam.poolName,
+                team.country!
+            )
         )
     }
     
