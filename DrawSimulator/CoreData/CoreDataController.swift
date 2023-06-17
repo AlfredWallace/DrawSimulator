@@ -58,12 +58,14 @@ class CoreDataController: ObservableObject {
         }
     }
     
-    private func save() {
-        if backgroundContext.hasChanges {
-            do {
-                try backgroundContext.save()
-            } catch {
-                print("Could not save the background context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+    func save() {
+        backgroundContext.performAndWait {
+            if backgroundContext.hasChanges {
+                do {
+                    try backgroundContext.save()
+                } catch {
+                    print("Could not save the background context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+                }
             }
         }
         
