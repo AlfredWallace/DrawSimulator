@@ -17,6 +17,7 @@ struct TeamDetailView: View {
     
     let seasonTeam: SeasonTeam
     let team: Team
+    let drawsCount = 0
     
     @FetchRequest private var seasonTeams: FetchedResults<SeasonTeam>
     
@@ -62,7 +63,6 @@ struct TeamDetailView: View {
     
     var body: some View {
         ZStack {
-            //            Text("Team Detail View")
             
             Rectangle()
                 .fill(Color.pitchGreen.gradient)
@@ -119,7 +119,7 @@ struct TeamDetailView: View {
                             }
                         }
                     } header: {
-                        Text("Draw chances")
+                        Text("Draw chances (\(drawsCount))")
                             .font(.title2.bold())
                     } footer: {
                         if draws.isRunning {
@@ -153,17 +153,3 @@ struct TeamDetailView: View {
         .navigationTitle(team.name)
     }
 }
-
-//struct TeamDetailView_Previews: PreviewProvider {
-//    static let geo = GeoSizeTracker()
-//    static let draws = Draws()
-////    static let teams = Teams.data
-//
-//    static var previews: some View {
-//        NavigationStack {
-//            TeamDetailView(team: teams.first!)
-//                .environmentObject(geo)
-//                .environmentObject(draws)
-//        }
-//    }
-//}
