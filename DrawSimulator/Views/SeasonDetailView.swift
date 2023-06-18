@@ -109,15 +109,6 @@ struct SeasonDetailView: View {
         }
         .navigationTitle("Teams")
         .toolbar {
-//            ToolbarItem {
-//                Menu {
-//                    DisplayModeMenuButtonView(displayMode: .light)
-//                    DisplayModeMenuButtonView(displayMode: .dark)
-//                    DisplayModeMenuButtonView(displayMode: .system)
-//                } label: {
-//                    Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
-//                }
-//            }
             
             ToolbarItemGroup(placement: .bottomBar) {
                 GroupingDialogButtonView(showingDialg: $showingGroupingDialog)

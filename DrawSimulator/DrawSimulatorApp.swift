@@ -23,11 +23,13 @@ struct DrawSimulatorApp: App {
     
     @State private var isFirstLaunch = true
     @StateObject private var coreDataController = CoreDataController.shared
+    @StateObject private var userSettings = UserSettings()
     
     var body: some Scene {
         WindowGroup {
             ContentView(coreDataController: coreDataController)
                 .environment(\.managedObjectContext, coreDataController.mainContext)
+                .environmentObject(userSettings)
                 .onAppear {
                     if isFirstLaunch {
                         coreDataController.performInBackgroundContextAndWait(commit: true) { moc in

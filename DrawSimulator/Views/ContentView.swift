@@ -12,9 +12,10 @@ struct ContentView: View {
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
-    @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
     @StateObject private var draws: Draws
+    
+    @EnvironmentObject private var userSettings: UserSettings
     
     init(coreDataController: CoreDataController) {
         NavigationTheme.navigationBarColors()
@@ -53,8 +54,18 @@ struct ContentView: View {
                 .navigationDestination(for: Season.self) { season in
                     SeasonDetailView(season: season)
                 }
+                .toolbar {
+                    ToolbarItem {
+                        Menu {
+                            DisplayModeMenuButtonView(displayMode: .light)
+                            DisplayModeMenuButtonView(displayMode: .dark)
+                            DisplayModeMenuButtonView(displayMode: .system)
+                        } label: {
+                            Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
+                        }
+                    }
+                }
             }
-            .environmentObject(userSettings)
             .environmentObject(geoSizeTracker)
             .environmentObject(draws)
             .preferredColorScheme(userSettings.getColorScheme())
