@@ -19,16 +19,6 @@ struct TeamLabelView: View {
         geoSizeTracker.getSize().width * CGFloat(logoWidthPercentage) / 100
     }
 
-    @ViewBuilder private var viewToFit: some View {
-        Image(team.shortName)
-            .resizable()
-            .scaledToFit()
-            .frame(width: logoSize, height: logoSize)
-
-        Text(team.name.uppercased())
-            .sportFont(textStyle)
-    }
-
     init(team: Team, logoWidthPercentage: Int = 14, textStyle: Font.TextStyle = .body) {
         self.team = team
         self.logoWidthPercentage = logoWidthPercentage
@@ -36,18 +26,18 @@ struct TeamLabelView: View {
     }
     
     var body: some View {
-        ViewThatFits {
+        
+        ScrollView(.horizontal) {
             HStack {
-                viewToFit
-                Spacer()
+                Image(team.shortName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: logoSize, height: logoSize)
+                
+                Text(team.name.uppercased())
+                    .sportFont(textStyle)
             }
-            
-            ScrollView(.horizontal) {
-                HStack {
-                    viewToFit
-                }
-            }
-            .scrollIndicators(.hidden)
         }
+        .scrollIndicators(.hidden)
     }
 }
