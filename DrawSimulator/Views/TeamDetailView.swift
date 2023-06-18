@@ -54,6 +54,18 @@ struct TeamDetailView: View {
         return result
     }
     
+    private var totalPairingCount: Float {
+        Float(
+            opponents.reduce(0) { acc, opponent in
+                acc + opponent.pairingCount
+            }
+        )
+    }
+    
+    private func getOpponentPercentageString(for opponent: Opponent) -> String {
+        "\((Float(opponent.pairingCount) / totalPairingCount * 100).rounded().formatted())"
+    }
+    
     private var logoSize: CGFloat {
         geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45)
     }
@@ -84,22 +96,6 @@ struct TeamDetailView: View {
             )
         )
     }
-    
-    
-    //    private var drawsCount: Int {
-    //        pairingCounts.values.reduce(0) { acc, count in
-    //            acc + count
-    //        }
-    //    }
-    //
-    //    private func getOpponentPercentageString(for opponent: Team) -> String {
-    //
-    //        if let count = pairingCounts[opponent] {
-    //            return "\((Float(count) / Float(drawsCount) * 100).rounded().formatted())"
-    //        }
-    //
-    //        return "?"
-    //    }
     
     var body: some View {
         ZStack {
@@ -146,8 +142,7 @@ struct TeamDetailView: View {
                                             ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
                                                 .progressViewStyle(RandomNumberProgressStyle())
                                         } else {
-                                            Text(String(opponent.pairingCount))
-//                                            Text(getOpponentPercentageString(for: opponent))
+                                            Text(getOpponentPercentageString(for: opponent))
                                         }
                                         Text("%")
                                     }
