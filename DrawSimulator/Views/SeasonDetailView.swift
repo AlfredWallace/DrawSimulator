@@ -71,9 +71,15 @@ struct SeasonDetailView: View {
             
             BackgroundView()
             
-            VStack {
-                if showingList {
-                    ScrollView {
+            ScrollView {
+                ZStack {
+                    
+                    // prevents the ScrollView from shrinking horizontally when showingList becomes false
+                    HStack {
+                        Spacer()
+                    }
+                    
+                    if showingList {
                         VStack(spacing: 20) {
                             ForEach(seasonTeams) { section in
                                 
@@ -96,11 +102,11 @@ struct SeasonDetailView: View {
                             }
                         }
                         .padding(.horizontal)
+                        .transition(.move(edge: .bottom))
                     }
-                    .scrollIndicators(.hidden)
-                    .transition(.move(edge: .bottom))
                 }
             }
+            .scrollIndicators(.hidden)
         }
         .navigationDestination(for: SeasonTeam.self) { seasonTeam in
             TeamDetailView(seasonTeam: seasonTeam)
