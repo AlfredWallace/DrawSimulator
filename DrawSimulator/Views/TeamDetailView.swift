@@ -17,21 +17,52 @@ struct TeamDetailView: View {
     
     let seasonTeam: SeasonTeam
     let team: Team
-    let drawsCount = 0
     
-    @FetchRequest private var seasonTeams: FetchedResults<SeasonTeam>
+    @FetchRequest private var opponentSeasonTeams: FetchedResults<SeasonTeam>
+    @FetchRequest private var drawPairings: FetchedResults<DrawPairing>
     
-    var opponents: [Team] {
-        return seasonTeams.map { $0.team! }
+    private struct Opponent: Hashable {
+        let team: Team
+        let pairingCount: Int
     }
     
-    private var logoSize: CGFloat { geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45) }
+    private var opponents: [Opponent] {
+        var result = [Opponent]()
+        
+        for seasonTeam in opponentSeasonTeams {
+            
+            let opponentTeam = seasonTeam.team!
+            
+            let pairing = drawPairings.first {
+                self.seasonTeam.seeded
+                ? $0.unseededTeam == opponentTeam
+                : $0.seededTeam == opponentTeam
+            }
+            
+            if let pairing {
+                result.append(
+                    Opponent(
+                        team: opponentTeam,
+                        pairingCount: Int(pairing.count)
+                    )
+                )
+            } else {
+                print("Could not find a drawPairing (team: \(self.team.name), opponent: \(opponentTeam.name)")
+            }
+        }
+        
+        return result
+    }
+    
+    private var logoSize: CGFloat {
+        geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45)
+    }
     
     init(seasonTeam: SeasonTeam) {
         self.seasonTeam = seasonTeam
         self.team = seasonTeam.team!
         
-        _seasonTeams = FetchRequest(
+        _opponentSeasonTeams = FetchRequest(
             sortDescriptors: [],
             predicate: NSPredicate( // no problem for the team.country condition, because the database is initialized with safeguards
                 format: "season == %@ AND seeded != %@ AND poolName != %@ AND team.country != %@",
@@ -39,6 +70,17 @@ struct TeamDetailView: View {
                 seasonTeam.seeded as NSNumber,
                 seasonTeam.poolName,
                 team.country!
+            )
+        )
+        
+        let teamColumn =  seasonTeam.seeded ? "seededTeam" : "unseededTeam"
+        
+        _drawPairings = FetchRequest(
+            sortDescriptors: [],
+            predicate: NSPredicate(
+                format: "season == %@ AND \(teamColumn) == %@",
+                seasonTeam.season!,
+                team
             )
         )
     }
@@ -96,18 +138,18 @@ struct TeamDetailView: View {
                         VStack(spacing: 0) {
                             ForEach(opponents, id: \.self) { opponent in
                                 HStack {
-                                    TeamLabelView(team: opponent, logoWidthPercentage: 12)
+                                    TeamLabelView(team: opponent.team, logoWidthPercentage: 12)
                                         .padding(.trailing, 10)
                                     
                                     HStack {
-                                        //                                        if draws.isRunning {
-                                        //                                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-                                        //                                                .progressViewStyle(RandomNumberProgressStyle())
-                                        //                                        } else {
-                                        //                                            Text(getOpponentPercentageString(for: opponent))
-                                        //                                        }
-                                        //                                        Text("%")
-                                        Text("-")
+                                        if draws.isRunning {
+                                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                                                .progressViewStyle(RandomNumberProgressStyle())
+                                        } else {
+                                            Text(String(opponent.pairingCount))
+//                                            Text(getOpponentPercentageString(for: opponent))
+                                        }
+                                        Text("%")
                                     }
                                     .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
                                 }
@@ -117,7 +159,7 @@ struct TeamDetailView: View {
                             }
                         }
                     } header: {
-                        Text("Draw chances (\(drawsCount))")
+                        Text("Draw chances")
                             .font(.title2.bold())
                     } footer: {
                         if draws.isRunning {
