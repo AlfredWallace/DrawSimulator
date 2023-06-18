@@ -100,10 +100,8 @@ struct TeamDetailView: View {
     var body: some View {
         ZStack {
             
-            Rectangle()
-                .fill(Color.pitchGreen.gradient)
-                .ignoresSafeArea()
-            
+            BackgroundView()
+
             ScrollView {
                 VStack(spacing: 20) {
                     

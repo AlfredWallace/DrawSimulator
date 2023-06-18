@@ -24,6 +24,7 @@
 		BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */; };
 		BA616E6C29ED7F08003F817B /* Draws.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA616E6B29ED7F08003F817B /* Draws.swift */; };
 		BA672D5129EEC4E50024C046 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA672D5029EEC4E50024C046 /* CardView.swift */; };
+		BA6BDE772A3F56DE007A019C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BDE762A3F56DE007A019C /* BackgroundView.swift */; };
 		BA73B68929E0C63500807496 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73B68829E0C63500807496 /* SeasonDetailView.swift */; };
 		BA76EEBA29F1189400F0D4E9 /* RandomNumberProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */; };
 		BA76EEBC29F11F0E00F0D4E9 /* NavigationTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEBB29F11F0E00F0D4E9 /* NavigationTheme.swift */; };
@@ -76,6 +77,7 @@
 		BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInitializer.swift; sourceTree = "<group>"; };
 		BA616E6B29ED7F08003F817B /* Draws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draws.swift; sourceTree = "<group>"; };
 		BA672D5029EEC4E50024C046 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		BA6BDE762A3F56DE007A019C /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		BA73B68829E0C63500807496 /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
 		BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberProgressStyle.swift; sourceTree = "<group>"; };
 		BA76EEBB29F11F0E00F0D4E9 /* NavigationTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTheme.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		BA326D802A01588B00F8DA7C /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
+				BA6BDE762A3F56DE007A019C /* BackgroundView.swift */,
 				BA672D5029EEC4E50024C046 /* CardView.swift */,
 				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
 				BA326D812A015A3500F8DA7C /* DynamicTypeScrollableText.swift */,
@@ -344,6 +347,7 @@
 				BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */,
 				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
 				BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */,
+				BA6BDE772A3F56DE007A019C /* BackgroundView.swift in Sources */,
 				BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */,
 				BA85376E29F4364400D1CF55 /* Team+CoreDataProperties.swift in Sources */,
 				BA85377129F4364400D1CF55 /* Season+CoreDataClass.swift in Sources */,

@@ -23,7 +23,15 @@ struct ContentView: View {
     }
     
     var body: some View {
-        GeometryReader { geoWrapper in
+        
+        ZStack {
+            GeometryReader { geoWrapper in
+                Spacer()
+                    .onAppear {
+                        geoSizeTracker.setSize(geoWrapper.size)
+                    }
+            }
+            
             NavigationStack {
                 ScrollView {
                     ForEach(seasons) { season in
@@ -46,9 +54,7 @@ struct ContentView: View {
                 }
                 .scrollIndicators(.hidden)
                 .background {
-                    Rectangle()
-                        .fill(Color.pitchGreen.gradient)
-                        .ignoresSafeArea()
+                    BackgroundView()
                 }
                 .navigationTitle("Seasons")
                 .navigationDestination(for: Season.self) { season in
@@ -69,9 +75,6 @@ struct ContentView: View {
             .environmentObject(geoSizeTracker)
             .environmentObject(draws)
             .preferredColorScheme(userSettings.getColorScheme())
-            .onAppear {
-                geoSizeTracker.setSize(geoWrapper.size)
-            }
         }
         .tint(.defaultText)
         .foregroundColor(.defaultText)
@@ -80,9 +83,12 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 
+    static var userSettings = UserSettings()
+    
     static var previews: some View {
         ContentView(coreDataController: CoreDataController.preview)
             .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
+            .environmentObject(userSettings)
     }
 }
 

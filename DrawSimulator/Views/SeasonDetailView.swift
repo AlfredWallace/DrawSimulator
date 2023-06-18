@@ -69,9 +69,7 @@ struct SeasonDetailView: View {
     var body: some View {
         ZStack {
             
-            Rectangle()
-                .fill(Color.pitchGreen.gradient)
-                .ignoresSafeArea()
+            BackgroundView()
             
             VStack {
                 if showingList {
