@@ -33,26 +33,26 @@ struct ContentView: View {
             }
             
             NavigationStack {
-                ScrollView {
-                    ForEach(seasons) { season in
-                        CardView {
-                            NavigationLink(value: season) {
-                                VStack {
-                                    Text(season.stadium)
-                                        .sportFont(.body)
-                                    Text(season.city)
-                                        .sportFont(.largeTitle, multiplier: 2.4)
-                                        .dynamicTypeSize(.xSmall ... .large)
-                                    Text(String(season.winYear))
-                                        .sportFont(.largeTitle, multiplier: 1.4)
-                                }
-                                .frame(maxWidth: .infinity)
+                
+                List(seasons) { season in
+                    NavigationLink(value: season) {
+                        VStack(alignment: .leading, spacing: 0) {
+
+                            Text(String(season.winYear))
+                                .sportFont(.largeTitle, multiplier: 2.5)
+                                .dynamicTypeSize(.xSmall ... .large)
+
+                            Group {
+                                Text(season.stadium)
+                                Text(season.city)
                             }
+                            .sportFont(.body)
                         }
-                        .padding(.horizontal, 15)
                     }
+                    .listRowSeparatorTint(.pitchGreen)
                 }
-                .scrollIndicators(.hidden)
+                .listStyle(.plain)
+                
                 .navigationTitle("Seasons")
                 .navigationDestination(for: Season.self) { season in
                     SeasonDetailView(season: season)
