@@ -113,7 +113,6 @@ struct SeasonDetailView: View {
         }
         .navigationTitle("Teams")
         .toolbar {
-            
             ToolbarItemGroup(placement: .bottomBar) {
                 GroupingDialogButtonView(showingDialg: $showingGroupingDialog)
             }

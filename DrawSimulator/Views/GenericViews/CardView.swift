@@ -42,7 +42,7 @@ struct CardView<Content: View, HeaderContent: View, FooterContent: View, Backgro
         .padding(10)
         .background(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(.shadow(.drop(radius: 5, y: 5)))
+                .stroke(Color.strokeGray, lineWidth: 3)
                 .foregroundStyle(Color.defaultBackground)
                 .overlay {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
