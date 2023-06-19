@@ -53,9 +53,6 @@ struct ContentView: View {
                     }
                 }
                 .scrollIndicators(.hidden)
-                .background {
-                    BackgroundView()
-                }
                 .navigationTitle("Seasons")
                 .navigationDestination(for: Season.self) { season in
                     SeasonDetailView(season: season)

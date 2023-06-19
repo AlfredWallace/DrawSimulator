@@ -98,90 +98,85 @@ struct TeamDetailView: View {
     }
     
     var body: some View {
-        ZStack {
-            
-            BackgroundView()
-
-            ScrollView {
-                VStack(spacing: 20) {
-                    
-                    CardView {
-                        DynamicTypeStack(.accessibility2) {
+        ScrollView {
+            VStack(spacing: 20) {
+                
+                CardView {
+                    DynamicTypeStack(.accessibility2) {
+                        
+                        Image(team.shortName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: logoSize, height: logoSize)
+                        
+                        VStack {
+                            PoolLabelView(seasonTeam: seasonTeam)
                             
-                            Image(team.shortName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: logoSize, height: logoSize)
+                            DividerView()
                             
-                            VStack {
-                                PoolLabelView(seasonTeam: seasonTeam)
-                                
-                                DividerView()
-                                
-                                FlagLabelView(team: team)
-                                
-                                DividerView()
-                                
-                                Text(seasonTeam.seededString)
-                            }
+                            FlagLabelView(team: team)
+                            
+                            DividerView()
+                            
+                            Text(seasonTeam.seededString)
                         }
+                    }
+                    .font(.title2.bold())
+                }
+                
+                CardView(hasHeaderDivier: true) {
+                    VStack(spacing: 0) {
+                        ForEach(opponents, id: \.self) { opponent in
+                            HStack {
+                                TeamLabelView(team: opponent.team, logoWidthPercentage: 12)
+                                    .padding(.trailing, 10)
+                                
+                                HStack {
+                                    if draws.isRunning {
+                                        ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                                            .progressViewStyle(RandomNumberProgressStyle())
+                                    } else {
+                                        Text(getOpponentPercentageString(for: opponent))
+                                    }
+                                    Text("%")
+                                }
+                                .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
+                            }
+                            .padding(.vertical, 4)
+                            
+                            Divider()
+                        }
+                    }
+                } header: {
+                    Text("Draw chances")
+                        .font(.title2.bold())
+                } footer: {
+                    if draws.isRunning {
+                        ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                            .progressViewStyle(ButtonProgressStyle())
+                            .onTapGesture {
+                                if draws.task != nil {
+                                    draws.cancelDraw()
+                                }
+                            }
+                    } else {
+                        Button {
+                            draws.draw(for: seasonTeam.season!.winYear)
+                        } label: {
+                            Text("Draw")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .disabled(draws.isRunning)
+                        .padding(10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(draws.isRunning ? .gray : Color.pitchGreen)
+                        )
                         .font(.title2.bold())
                     }
-                    
-                    CardView(hasHeaderDivier: true) {
-                        VStack(spacing: 0) {
-                            ForEach(opponents, id: \.self) { opponent in
-                                HStack {
-                                    TeamLabelView(team: opponent.team, logoWidthPercentage: 12)
-                                        .padding(.trailing, 10)
-                                    
-                                    HStack {
-                                        if draws.isRunning {
-                                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-                                                .progressViewStyle(RandomNumberProgressStyle())
-                                        } else {
-                                            Text(getOpponentPercentageString(for: opponent))
-                                        }
-                                        Text("%")
-                                    }
-                                    .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
-                                }
-                                .padding(.vertical, 4)
-                                
-                                Divider()
-                            }
-                        }
-                    } header: {
-                        Text("Draw chances")
-                            .font(.title2.bold())
-                    } footer: {
-                        if draws.isRunning {
-                            ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-                                .progressViewStyle(ButtonProgressStyle())
-                                .onTapGesture {
-                                    if draws.task != nil {
-                                        draws.cancelDraw()
-                                    }
-                                }
-                        } else {
-                            Button {
-                                draws.draw(for: seasonTeam.season!.winYear)
-                            } label: {
-                                Text("Draw")
-                                    .frame(maxWidth: .infinity)
-                            }
-                            .disabled(draws.isRunning)
-                            .padding(10)
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(draws.isRunning ? .gray : Color.pitchGreen)
-                            )
-                            .font(.title2.bold())
-                        }
-                    }
                 }
-                .padding(.horizontal, 15)
             }
+            .padding(.horizontal, 15)
         }
         .navigationTitle(team.name)
     }

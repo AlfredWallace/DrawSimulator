@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-struct CardView<Content: View, HeaderContent: View, FooterContent: View, BackgroundOverlay: ShapeStyle>: View {
+struct CardView<Content: View, HeaderContent: View, FooterContent: View>: View {
     let hasHeaderDivider: Bool
     let hasFooterDivider: Bool
-    let backgroundOverlay: BackgroundOverlay
     let content: () -> Content
     let header: () -> HeaderContent?
     let footer: () -> FooterContent?
@@ -18,14 +17,12 @@ struct CardView<Content: View, HeaderContent: View, FooterContent: View, Backgro
     init(
         hasHeaderDivier: Bool = false,
         hasFooterDivider: Bool = false,
-        backgroundOverlay: BackgroundOverlay = Color.defaultBackground,
         @ViewBuilder content: @escaping () -> Content,
         @ViewBuilder header: @escaping () -> HeaderContent = { EmptyView() },
         @ViewBuilder footer: @escaping () -> FooterContent = { EmptyView() }
     ) {
         self.hasHeaderDivider = hasHeaderDivier
         self.hasFooterDivider = hasFooterDivider
-        self.backgroundOverlay = backgroundOverlay
         self.content = content
         self.header = header
         self.footer = footer
@@ -42,12 +39,8 @@ struct CardView<Content: View, HeaderContent: View, FooterContent: View, Backgro
         .padding(10)
         .background(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(Color.strokeGray, lineWidth: 3)
+                .stroke(Color.pitchGreen, lineWidth: 2)
                 .foregroundStyle(Color.defaultBackground)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(backgroundOverlay)
-                }
         )
     }
 }
@@ -55,7 +48,7 @@ struct CardView<Content: View, HeaderContent: View, FooterContent: View, Backgro
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(hasHeaderDivier: true, hasFooterDivider: true, backgroundOverlay: Color.blue.gradient) {
+        CardView(hasHeaderDivier: true, hasFooterDivider: true) {
             Text("content")
         } header: {
             Text("head")

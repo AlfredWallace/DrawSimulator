@@ -67,47 +67,42 @@ struct SeasonDetailView: View {
     }
     
     var body: some View {
-        ZStack {
-            
-            BackgroundView()
-            
-            ScrollView {
-                ZStack {
-                    
-                    // prevents the ScrollView from shrinking horizontally when showingList becomes false
-                    HStack {
-                        Spacer()
-                    }
-                    
-                    if showingList {
-                        VStack(spacing: 20) {
-                            ForEach(seasonTeams) { section in
-                                
-                                CardView(hasHeaderDivier: true) {
-                                    VStack(spacing: 10) {
-                                        ForEach(section) { seasonTeam in
-                                            NavigationLink(value: seasonTeam) {
-                                                HStack {
-                                                    TeamLabelView(team: seasonTeam.team!)
-                                                    Image(systemName: "chevron.forward")
-                                                }
+        ScrollView {
+            ZStack {
+                
+                // prevents the ScrollView from shrinking horizontally when showingList becomes false
+                HStack {
+                    Spacer()
+                }
+                
+                if showingList {
+                    VStack(spacing: 20) {
+                        ForEach(seasonTeams) { section in
+                            
+                            CardView(hasHeaderDivier: true) {
+                                VStack(spacing: 10) {
+                                    ForEach(section) { seasonTeam in
+                                        NavigationLink(value: seasonTeam) {
+                                            HStack {
+                                                TeamLabelView(team: seasonTeam.team!)
+                                                Image(systemName: "chevron.forward")
                                             }
                                         }
                                     }
-                                    .padding(.vertical, 5)
-                                } header: {
-                                    Text(section.id)
-                                        .font(.title2.bold())
                                 }
+                                .padding(.vertical, 5)
+                            } header: {
+                                Text(section.id)
+                                    .font(.title2.bold())
                             }
                         }
-                        .padding(.horizontal)
-                        .transition(.move(edge: .bottom))
                     }
+                    .padding(.horizontal)
+                    .transition(.move(edge: .bottom))
                 }
             }
-            .scrollIndicators(.hidden)
         }
+        .scrollIndicators(.hidden)
         .navigationDestination(for: SeasonTeam.self) { seasonTeam in
             TeamDetailView(seasonTeam: seasonTeam)
         }
