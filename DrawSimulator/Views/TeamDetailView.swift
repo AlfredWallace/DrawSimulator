@@ -190,12 +190,7 @@ struct TeamDetailView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        let moc = CoreDataController.preview.mainContext
-        let seasonTeamRequest = NSFetchRequest<SeasonTeam>(entityName: SeasonTeam.entityName)
-        seasonTeamRequest.fetchLimit = 1
-        
-        let seasonTeams = try? moc.fetch(seasonTeamRequest)
-        let seasonTeam = (seasonTeams!.first)!
+        let seasonTeam = PreviewDataFetcher.fetchData(for: SeasonTeam.self)
         
         return ZStack {
             GeometryReader { geoWrapper in

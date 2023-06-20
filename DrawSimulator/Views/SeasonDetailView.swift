@@ -111,12 +111,9 @@ struct SeasonDetailView_Previews: PreviewProvider {
     static var geoSizeTracker = GeoSizeTracker()
     
     static var previews: some View {
-        let moc = CoreDataController.preview.mainContext
-        let seasonRequest = NSFetchRequest<Season>(entityName: Season.entityName)
-        seasonRequest.predicate = NSPredicate(format: "winYear == 2023")
         
-        let seasons = try? moc.fetch(seasonRequest)
-        let season = (seasons!.first)!
+        let moc = CoreDataController.preview.mainContext
+        let season = PreviewDataFetcher.fetchData(for: Season.self)
         
         return ZStack {
             GeometryReader { geoWrapper in

@@ -48,6 +48,7 @@
 		BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */; };
 		BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */; };
 		BACB2CFD2A41C40F00B9F456 /* SeasonSectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB2CFC2A41C40F00B9F456 /* SeasonSectionTitleView.swift */; };
+		BACB2CFF2A41F9D900B9F456 /* PreviewDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB2CFE2A41F9D900B9F456 /* PreviewDataFetcher.swift */; };
 		BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACC352829EAE23200E22E6A /* FlagLabelView.swift */; };
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
 		BAD386E929F3B91800369C7D /* DrawSimulator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */; };
@@ -103,6 +104,7 @@
 		BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportFontViewModifier.swift; sourceTree = "<group>"; };
 		BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		BACB2CFC2A41C40F00B9F456 /* SeasonSectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSectionTitleView.swift; sourceTree = "<group>"; };
+		BACB2CFE2A41F9D900B9F456 /* PreviewDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataFetcher.swift; sourceTree = "<group>"; };
 		BACC352829EAE23200E22E6A /* FlagLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagLabelView.swift; sourceTree = "<group>"; };
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
 		BAD386E829F3B91800369C7D /* DrawSimulator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrawSimulator.xcdatamodel; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */,
 				BAD386EA29F3B99800369C7D /* CoreDataController.swift */,
 				BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */,
+				BACB2CFE2A41F9D900B9F456 /* PreviewDataFetcher.swift */,
 				BA85376729F4364400D1CF55 /* Country+CoreDataClass.swift */,
 				BA85376829F4364400D1CF55 /* Country+CoreDataProperties.swift */,
 				BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */,
@@ -350,6 +353,7 @@
 				BAB0AF8D2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift in Sources */,
 				BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */,
 				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
+				BACB2CFF2A41F9D900B9F456 /* PreviewDataFetcher.swift in Sources */,
 				BACC352929EAE23200E22E6A /* FlagLabelView.swift in Sources */,
 				BA6BDE772A3F56DE007A019C /* BackgroundView.swift in Sources */,
 				BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */,
