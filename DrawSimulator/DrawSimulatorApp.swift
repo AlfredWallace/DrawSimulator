@@ -22,17 +22,17 @@ struct DrawSimulatorApp: App {
 //    }
     
     @State private var isFirstLaunch = true
-    @StateObject private var coreDataController = CoreDataController.shared
     @StateObject private var userSettings = UserSettings()
     
     var body: some Scene {
         WindowGroup {
-            ContentView(coreDataController: coreDataController)
-                .environment(\.managedObjectContext, coreDataController.mainContext)
+            ContentView()
+                .environment(\.managedObjectContext, CoreDataController.shared.mainContext)
                 .environmentObject(userSettings)
+                .environmentObject(Draws(coreDataController: CoreDataController.shared))
                 .onAppear {
                     if isFirstLaunch {
-                        coreDataController.performInBackgroundContextAndWait(commit: true) { moc in
+                        CoreDataController.shared.performInBackgroundContextAndWait(commit: true) { moc in
                             DatabaseInitializer.makeSeason(moc, 2023)
                         }
                         isFirstLaunch = false

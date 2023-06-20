@@ -13,13 +13,12 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
     @StateObject private var geoSizeTracker = GeoSizeTracker()
-    @StateObject private var draws: Draws
     
     @EnvironmentObject private var userSettings: UserSettings
+    @EnvironmentObject private var draws: Draws
     
-    init(coreDataController: CoreDataController) {
+    init() {
         NavigationTheme.navigationBarColors()
-        self._draws = StateObject(wrappedValue: Draws(coreDataController: coreDataController))
     }
     
     var body: some View {
@@ -83,9 +82,10 @@ struct ContentView_Previews: PreviewProvider {
     static var userSettings = UserSettings()
     
     static var previews: some View {
-        ContentView(coreDataController: CoreDataController.preview)
+        ContentView()
             .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
             .environmentObject(userSettings)
+            .environmentObject(Draws(coreDataController: CoreDataController.preview))
     }
 }
 

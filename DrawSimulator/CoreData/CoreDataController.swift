@@ -8,7 +8,7 @@
 import CoreData
 import SwiftUI
 
-class CoreDataController: ObservableObject {
+struct CoreDataController {
     static let shared = CoreDataController() // singleton
     
     static let preview: CoreDataController = {
@@ -25,24 +25,24 @@ class CoreDataController: ObservableObject {
     let backgroundContext: NSManagedObjectContext
     
     init(inMemory: Bool = false) {
-        self.container = NSPersistentContainer(name: "DrawSimulator")
+        container = NSPersistentContainer(name: "DrawSimulator")
         
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
         
-        self.mainContext = container.viewContext
-        self.backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        mainContext = container.viewContext
+        backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        
+        mainContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        
+        backgroundContext.parent = mainContext
+        
+        mainContext.automaticallyMergesChangesFromParent = true
+        backgroundContext.automaticallyMergesChangesFromParent = true
 
         container.loadPersistentStores { description, error in
-
-            self.mainContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-            self.backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-            
-            self.backgroundContext.parent = self.mainContext
-            
-            self.mainContext.automaticallyMergesChangesFromParent = true
-            self.backgroundContext.automaticallyMergesChangesFromParent = true
 
             if let error {
                 print("Core Data failed to load. error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
