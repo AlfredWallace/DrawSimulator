@@ -14,11 +14,15 @@ struct PreviewDataFetcher {
         case notFound
     }
     
-    static func fetchData<T: NSManagedObject>(for type: T.Type) -> T {
+    static func fetchData<T: NSManagedObject>(for type: T.Type, withPredicate predicate: NSPredicate? = nil) -> T {
         
         let moc = CoreDataController.preview.mainContext
         let request = NSFetchRequest<T>(entityName: T.entityName)
         request.fetchLimit = 1
+        
+        if let predicate {
+            request.predicate = predicate
+        }
         
         do {
             let results = try moc.fetch(request)
