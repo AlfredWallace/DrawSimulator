@@ -78,9 +78,7 @@ struct SeasonDetailView: View {
                             }
                         }
                     } header: {
-                        Text(section.id)
-                            .font(.title.bold())
-                            .foregroundColor(.pitchGreen)
+                        SeasonSectionTitleView(sectionId: section.id)
                     }
                     .listRowSeparatorTint(.pitchGreen)
                 }
