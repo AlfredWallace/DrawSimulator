@@ -117,8 +117,6 @@ struct SeasonDetailView_Previews: PreviewProvider {
         
         let seasons = try? moc.fetch(seasonRequest)
         let season = (seasons!.first)!
-        print(season)
-        
         
         return ZStack {
             GeometryReader { geoWrapper in

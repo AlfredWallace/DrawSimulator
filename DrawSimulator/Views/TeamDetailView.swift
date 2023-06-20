@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct TeamDetailView: View {
     
@@ -179,5 +180,35 @@ struct TeamDetailView: View {
             .padding(.horizontal, 15)
         }
         .navigationTitle(team.name)
+    }
+}
+
+
+struct TeamDetailView_Previews: PreviewProvider {
+    
+    static var geoSizeTracker = GeoSizeTracker()
+    
+    static var previews: some View {
+        
+        let moc = CoreDataController.preview.mainContext
+        let seasonTeamRequest = NSFetchRequest<SeasonTeam>(entityName: SeasonTeam.entityName)
+        seasonTeamRequest.fetchLimit = 1
+        
+        let seasonTeams = try? moc.fetch(seasonTeamRequest)
+        let seasonTeam = (seasonTeams!.first)!
+        
+        return ZStack {
+            GeometryReader { geoWrapper in
+                Spacer()
+                    .onAppear {
+                        geoSizeTracker.setSize(geoWrapper.size)
+                    }
+            }
+            
+            TeamDetailView(seasonTeam: seasonTeam)
+                .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
+                .environmentObject(geoSizeTracker)
+                .environmentObject(Draws(coreDataController: CoreDataController.preview))
+        }
     }
 }
