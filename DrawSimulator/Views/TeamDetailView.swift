@@ -11,7 +11,6 @@ import CoreData
 struct TeamDetailView: View {
     
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @Environment(\.managedObjectContext) private var moc
     
     @EnvironmentObject private var draws: Draws
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
@@ -19,83 +18,54 @@ struct TeamDetailView: View {
     let seasonTeam: SeasonTeam
     let team: Team
     
-    @FetchRequest private var opponentSeasonTeams: FetchedResults<SeasonTeam>
-    @FetchRequest private var drawPairings: FetchedResults<DrawPairing>
-    
-    private struct Opponent: Hashable {
-        let team: Team
-        let pairingCount: Int
+    private var logoSize: CGFloat {
+        geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45)
     }
     
-    private var opponents: [Opponent] {
-        var result = [Opponent]()
-        
-        for seasonTeam in opponentSeasonTeams {
-            
-            let opponentTeam = seasonTeam.team!
-            
-            let pairing = drawPairings.first {
-                self.seasonTeam.seeded
-                ? $0.unseededTeam == opponentTeam
-                : $0.seededTeam == opponentTeam
-            }
-            
-            if let pairing {
-                result.append(
-                    Opponent(
-                        team: opponentTeam,
-                        pairingCount: Int(pairing.count)
-                    )
-                )
+    private var opponentsSeasonTeams: [SeasonTeam] {
+        seasonTeam.season!.seasonTeamsArray.filter {
+            $0.seeded != seasonTeam.seeded
+            && $0.poolName != seasonTeam.poolName
+            && $0.team!.country != team.country
+        }
+    }
+    
+    private var drawPairings: [DrawPairing] {
+        seasonTeam.season!.drawPairingsArray.filter {
+            if seasonTeam.seeded {
+                return $0.seededTeam == team
             } else {
-                print("Could not find a drawPairing (team: \(self.team.name), opponent: \(opponentTeam.name)")
+                return $0.unseededTeam == team
             }
         }
-        
-        return result
     }
     
     private var totalPairingCount: Float {
         Float(
-            opponents.reduce(0) { acc, opponent in
-                acc + opponent.pairingCount
+            drawPairings.reduce(0) { acc, drawPairing in
+                acc + drawPairing.count
             }
         )
     }
     
-    private func getOpponentPercentageString(for opponent: Opponent) -> String {
-        "\((Float(opponent.pairingCount) / totalPairingCount * 100).rounded().formatted())"
-    }
-    
-    private var logoSize: CGFloat {
-        geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45)
+    private func getOpponentPercentageString(for opponent: Team) -> String {
+        
+        let pairing = drawPairings.first(where: {
+            if seasonTeam.seeded {
+                return $0.unseededTeam == opponent
+            } else {
+                return $0.seededTeam == opponent
+            }
+        })
+        
+        guard let pairing else { return "n/a" }
+        
+        return "\((Float(pairing.count) / totalPairingCount * 100).rounded().formatted()) %"
     }
     
     init(seasonTeam: SeasonTeam) {
         self.seasonTeam = seasonTeam
         self.team = seasonTeam.team!
-        
-        _opponentSeasonTeams = FetchRequest(
-            sortDescriptors: [],
-            predicate: NSPredicate( // no problem for the team.country condition, because the database is initialized with safeguards
-                format: "season == %@ AND seeded != %@ AND poolName != %@ AND team.country != %@",
-                seasonTeam.season!,
-                seasonTeam.seeded as NSNumber,
-                seasonTeam.poolName,
-                team.country!
-            )
-        )
-        
-        let teamColumn =  seasonTeam.seeded ? "seededTeam" : "unseededTeam"
-        
-        _drawPairings = FetchRequest(
-            sortDescriptors: [],
-            predicate: NSPredicate(
-                format: "season == %@ AND \(teamColumn) == %@",
-                seasonTeam.season!,
-                team
-            )
-        )
     }
     
     var body: some View {
@@ -127,24 +97,27 @@ struct TeamDetailView: View {
                 
                 CardView(hasHeaderDivier: true) {
                     VStack(spacing: 0) {
-                        ForEach(opponents, id: \.self) { opponent in
+                        
+                        ForEach(opponentsSeasonTeams) { opponentSeasonTeam in
                             HStack {
-                                TeamLabelView(team: opponent.team, logoWidthPercentage: 12)
+                                TeamLabelView(team: opponentSeasonTeam.team!, logoWidthPercentage: 12)
                                     .padding(.trailing, 10)
                                 
+                                Spacer()
+
                                 HStack {
                                     if draws.isRunning {
                                         ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
                                             .progressViewStyle(RandomNumberProgressStyle())
+                                        Text("%")
                                     } else {
-                                        Text(getOpponentPercentageString(for: opponent))
+                                        Text(getOpponentPercentageString(for: opponentSeasonTeam.team!))
                                     }
-                                    Text("%")
                                 }
                                 .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
                             }
                             .padding(.vertical, 4)
-                            
+
                             Divider()
                         }
                     }
