@@ -67,56 +67,41 @@ struct SeasonDetailView: View {
     }
     
     var body: some View {
-        ScrollView {
-            ZStack {
+        VStack {
+            if showingList {
                 
-                // prevents the ScrollView from shrinking horizontally when showingList becomes false
-                HStack {
-                    Spacer()
-                }
-                
-                if showingList {
-                    VStack(spacing: 20) {
-                        ForEach(seasonTeams) { section in
-
-                            CardView(hasHeaderDivier: true) {
-                                VStack(spacing: 10) {
-                                    ForEach(section) { seasonTeam in
-                                        NavigationLink(value: seasonTeam) {
-                                            HStack {
-                                                TeamLabelView(team: seasonTeam.team!)
-                                                Image(systemName: "chevron.forward")
-                                            }
-                                        }
-                                    }
-                                }
-                                .padding(.vertical, 5)
-                            } header: {
-                                Text(section.id)
-                                    .font(.title2.bold())
+                List(seasonTeams) { section in
+                    Section {
+                        ForEach(section) { seasonTeam in
+                            NavigationLink(value: seasonTeam) {
+                                TeamLabelView(team: seasonTeam.team!)
                             }
                         }
+                    } header: {
+                        Text(section.id)
+                            .font(.title.bold())
+                            .foregroundColor(.pitchGreen)
                     }
-                    .padding(.horizontal)
-                    .transition(.move(edge: .bottom))
+                    .listRowSeparatorTint(.pitchGreen)
                 }
+                .navigationDestination(for: SeasonTeam.self) { seasonTeam in
+                    TeamDetailView(seasonTeam: seasonTeam)
+                }
+                .navigationTitle("Teams")
+                .toolbar {
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        GroupingDialogButtonView(showingDialg: $showingGroupingDialog)
+                    }
+                }
+                .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
+                    GroupingDialogChoiceView(grouping: .pool, showingList: $showingList)
+                    GroupingDialogChoiceView(grouping: .country, showingList: $showingList)
+                    GroupingDialogChoiceView(grouping: .seeding, showingList: $showingList)
+                    GroupingDialogChoiceView(grouping: .none, showingList: $showingList)
+                }
+                .transition(.move(edge: .bottom))
+                .listStyle(.plain)
             }
-        }
-        .scrollIndicators(.hidden)
-        .navigationDestination(for: SeasonTeam.self) { seasonTeam in
-            TeamDetailView(seasonTeam: seasonTeam)
-        }
-        .navigationTitle("Teams")
-        .toolbar {
-            ToolbarItemGroup(placement: .bottomBar) {
-                GroupingDialogButtonView(showingDialg: $showingGroupingDialog)
-            }
-        }
-        .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
-            GroupingDialogChoiceView(grouping: .pool, showingList: $showingList)
-            GroupingDialogChoiceView(grouping: .country, showingList: $showingList)
-            GroupingDialogChoiceView(grouping: .seeding, showingList: $showingList)
-            GroupingDialogChoiceView(grouping: .none, showingList: $showingList)
         }
     }
 }

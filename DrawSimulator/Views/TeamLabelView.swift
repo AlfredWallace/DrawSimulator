@@ -10,15 +10,15 @@ import SwiftUI
 struct TeamLabelView: View {
     
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
-
+    
     let team: Team
     let logoWidthPercentage: Int
     let textStyle: Font.TextStyle
-
+    
     private var logoSize: CGFloat {
         geoSizeTracker.getSize().width * CGFloat(logoWidthPercentage) / 100
     }
-
+    
     init(team: Team, logoWidthPercentage: Int = 14, textStyle: Font.TextStyle = .body) {
         self.team = team
         self.logoWidthPercentage = logoWidthPercentage
@@ -26,18 +26,14 @@ struct TeamLabelView: View {
     }
     
     var body: some View {
-        
-        ScrollView(.horizontal) {
-            HStack {
-                Image(team.shortName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: logoSize, height: logoSize)
-                
-                Text(team.name.uppercased())
-                    .sportFont(textStyle)
-            }
+        HStack {
+            Image(team.shortName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: logoSize, height: logoSize)
+            
+            Text(team.name.uppercased())
+                .sportFont(textStyle)
         }
-        .scrollIndicators(.hidden)
     }
 }
