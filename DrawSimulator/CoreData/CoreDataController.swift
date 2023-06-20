@@ -12,12 +12,12 @@ struct CoreDataController {
     static let shared = CoreDataController() // singleton
     
     static let preview: CoreDataController = {
-        var result = CoreDataController(inMemory: true)
-        result.performInBackgroundContextAndWait(commit: true) { moc in
-            DatabaseInitializer.makeSeason(moc, 2023)
-        }
+        let controller = CoreDataController(inMemory: true)
+        let moc = controller.mainContext
+        DatabaseInitializer.makeSeason(moc, 2023)
+        try? moc.save()
         
-        return result
+        return controller
     }()
     
     private let container: NSPersistentContainer

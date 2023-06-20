@@ -78,7 +78,7 @@ struct SeasonDetailView: View {
                 if showingList {
                     VStack(spacing: 20) {
                         ForEach(seasonTeams) { section in
-                            
+
                             CardView(hasHeaderDivier: true) {
                                 VStack(spacing: 10) {
                                     ForEach(section) { seasonTeam in
@@ -121,3 +121,38 @@ struct SeasonDetailView: View {
     }
 }
 
+
+struct SeasonDetailView_Previews: PreviewProvider {
+    
+    static var userSettings = UserSettings()
+    static var geoSizeTracker = GeoSizeTracker()
+    
+    static var previews: some View {
+        let moc = CoreDataController.preview.mainContext
+        let seasonRequest = NSFetchRequest<Season>(entityName: Season.entityName)
+        seasonRequest.predicate = NSPredicate(format: "winYear == 2023")
+        
+        let seasons = try? moc.fetch(seasonRequest)
+        let season = (seasons!.first)!
+        print(season)
+        
+        
+        return ZStack {
+            GeometryReader { geoWrapper in
+                Spacer()
+                    .onAppear {
+                        geoSizeTracker.setSize(geoWrapper.size)
+                    }
+            }
+            
+            NavigationStack {
+                SeasonDetailView(season: season)
+            }
+            
+        }
+        .environment(\.managedObjectContext, moc)
+        .environmentObject(userSettings)
+        .environmentObject(geoSizeTracker)
+        .tint(.defaultText)
+    }
+}
