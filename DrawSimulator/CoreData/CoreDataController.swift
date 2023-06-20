@@ -14,7 +14,7 @@ struct CoreDataController {
     static let preview: CoreDataController = {
         let controller = CoreDataController(inMemory: true)
         let moc = controller.mainContext
-        DatabaseInitializer.makeSeason(moc, 2023)
+        DatabaseInitializer.shared.makeSeason(moc, 2023)
         try? moc.save()
         
         return controller

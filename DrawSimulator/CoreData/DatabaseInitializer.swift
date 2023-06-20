@@ -8,9 +8,11 @@
 import Foundation
 import CoreData
 
-class DatabaseInitializer {
+struct DatabaseInitializer {
     
-    static private let genericErrorMsg = "Hard coded data is invalid."
+    static let shared = DatabaseInitializer()
+    
+    private let genericErrorMsg = "Hard coded data is invalid."
     
     enum CountryIdentifier: String {
         case ITA, SPA, FRA, ENG, BEL, GER, POR
@@ -33,11 +35,11 @@ class DatabaseInitializer {
         let seasonWinYear: Int
     }
     
-    static private let seasonData = [
+    private let seasonData = [
         2023: (city: "Istanbul", stadium: "Atatürk Olympic Stadium")
     ]
     
-    static private let countryData = [
+    private let countryData = [
         CountryIdentifier.ITA : "Italy",
         CountryIdentifier.SPA : "Spain",
         CountryIdentifier.FRA : "France",
@@ -47,7 +49,7 @@ class DatabaseInitializer {
         CountryIdentifier.POR : "Portugal",
     ]
 
-    static private let teamData = [
+    private let teamData = [
         TeamIdentifier.PSG: TeamData(name: "Paris Saint-Germain", sortingName: "Paris", countryIdentifier: CountryIdentifier.FRA),
         TeamIdentifier.NAP: TeamData(name: "SSC Napoli", sortingName: "Napoli", countryIdentifier: CountryIdentifier.ITA),
         TeamIdentifier.LIV: TeamData(name: "Liverpool FC", sortingName: "Liverpool", countryIdentifier: CountryIdentifier.ENG),
@@ -66,7 +68,7 @@ class DatabaseInitializer {
         TeamIdentifier.BEN: TeamData(name: "SL Benfica", sortingName: "Benfica", countryIdentifier: CountryIdentifier.POR),
     ]
 
-    static private let seasonTeamData = [
+    private let seasonTeamData = [
         SeasonTeamData(poolName: "A", seeded: true, teamIdentifier: TeamIdentifier.NAP, seasonWinYear: 2023),
         SeasonTeamData(poolName: "A", seeded: false, teamIdentifier: TeamIdentifier.LIV, seasonWinYear: 2023),
         SeasonTeamData(poolName: "B", seeded: true, teamIdentifier: TeamIdentifier.FCP, seasonWinYear: 2023),
@@ -85,7 +87,7 @@ class DatabaseInitializer {
         SeasonTeamData(poolName: "H", seeded: false, teamIdentifier: TeamIdentifier.PSG, seasonWinYear: 2023),
     ]
     
-    static func makeSeason(_ moc: NSManagedObjectContext, _ winYear: Int) {
+    func makeSeason(_ moc: NSManagedObjectContext, _ winYear: Int) {
         
         // If validation checks out, you can force unwrap everything
         validateSeason(winYear)
@@ -127,7 +129,7 @@ class DatabaseInitializer {
         }
     }
     
-    private static func validateSeason(_ winYear: Int) {
+    private func validateSeason(_ winYear: Int) {
         
         // Checking if season exists
         if seasonData[winYear] == nil {
