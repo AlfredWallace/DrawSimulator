@@ -37,3 +37,39 @@ struct TeamLabelView: View {
         }
     }
 }
+
+struct TeamLabelView_Previews: PreviewProvider {
+    
+    static var userSettings = UserSettings()
+    static var geoSizeTracker = GeoSizeTracker()
+    
+    static var previews: some View {
+        
+        let moc = CoreDataController.preview.mainContext
+        let team = PreviewDataFetcher.fetchData(
+            for: Team.self,
+            withPredicate: NSPredicate(format: "shortName == %@", DatabaseInitializer.TeamIdentifier.PSG.rawValue)
+        )
+        
+        return ZStack {
+            GeometryReader { geoWrapper in
+                Spacer()
+                    .onAppear {
+                        geoSizeTracker.setSize(geoWrapper.size)
+                    }
+            }
+            
+            NavigationStack {
+                List {
+                    NavigationLink(value: team) {
+                        TeamLabelView(team: team)
+                    }
+                }
+                .listStyle(.plain)
+            }
+            
+        }
+        .environmentObject(geoSizeTracker)
+        .tint(.defaultText)
+    }
+}
