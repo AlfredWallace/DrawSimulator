@@ -33,7 +33,6 @@ struct GroupingDialogButtonView: View {
                 .labelStyle(.titleAndIcon)
         }
         .font(.title2.bold())
-        .padding(.top, 10)
     }
 }
 
