@@ -13,6 +13,7 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
     @StateObject private var geoSizeTracker = GeoSizeTracker()
+    @State private var areSettingsVisible = false
     
     @EnvironmentObject private var userSettings: UserSettings
     @EnvironmentObject private var draws: Draws
@@ -50,21 +51,34 @@ struct ContentView: View {
                     }
                     .listRowSeparatorTint(.pitchGreen)
                 }
-                
                 .navigationTitle("Seasons")
                 .navigationDestination(for: Season.self) { season in
                     SeasonDetailView(season: season)
                 }
                 .toolbar {
-                    ToolbarItem {
-                        Menu {
-                            DisplayModeMenuButtonView(displayMode: .light)
-                            DisplayModeMenuButtonView(displayMode: .dark)
-                            DisplayModeMenuButtonView(displayMode: .system)
+//                    ToolbarItem {
+//                        Menu {
+//                            DisplayModeMenuButtonView(displayMode: .light)
+//                            DisplayModeMenuButtonView(displayMode: .dark)
+//                            DisplayModeMenuButtonView(displayMode: .system)
+//                        } label: {
+//                            Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
+//                        }
+//                    }
+                    
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        Button {
+                            areSettingsVisible = true
                         } label: {
-                            Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
+                            Label("Settings", systemImage: "slider.horizontal.3")
+                                .font(.title2.bold())
+                                .foregroundColor(.pitchGreen)
+                                .labelStyle(.titleAndIcon)
                         }
                     }
+                }
+                .sheet(isPresented: $areSettingsVisible) {
+                    SettingsView()
                 }
             }
             .environmentObject(geoSizeTracker)

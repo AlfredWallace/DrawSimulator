@@ -43,6 +43,7 @@
 		BAB0AF8D2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */; };
 		BAB0AF8E2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */; };
 		BAC0E7362A42D75600017CDF /* TeamNameThatFits.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0E7352A42D75600017CDF /* TeamNameThatFits.swift */; };
+		BAC0E7382A43138D00017CDF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0E7372A43138D00017CDF /* SettingsView.swift */; };
 		BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */; };
 		BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */; };
 		BACB2CFD2A41C40F00B9F456 /* SeasonSectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACB2CFC2A41C40F00B9F456 /* SeasonSectionTitleView.swift */; };
@@ -97,6 +98,7 @@
 		BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawPairing+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawPairing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BAC0E7352A42D75600017CDF /* TeamNameThatFits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamNameThatFits.swift; sourceTree = "<group>"; };
+		BAC0E7372A43138D00017CDF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportFontViewModifier.swift; sourceTree = "<group>"; };
 		BACAC34029C9D51A003B8782 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		BACB2CFC2A41C40F00B9F456 /* SeasonSectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonSectionTitleView.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */,
 				BAC0E7352A42D75600017CDF /* TeamNameThatFits.swift */,
+				BAC0E7372A43138D00017CDF /* SettingsView.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
 			);
 			path = Views;
@@ -342,6 +345,7 @@
 				BA11C43A29E973180040A4BB /* DisplayModeMenuButtonView.swift in Sources */,
 				BACB2CFD2A41C40F00B9F456 /* SeasonSectionTitleView.swift in Sources */,
 				BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */,
+				BAC0E7382A43138D00017CDF /* SettingsView.swift in Sources */,
 				BA1E066329EB30E80015F4D5 /* DividerView.swift in Sources */,
 				BA85376B29F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift in Sources */,
 				BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */,
