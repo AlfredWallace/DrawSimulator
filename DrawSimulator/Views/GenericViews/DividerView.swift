@@ -11,7 +11,7 @@ struct DividerView: View {
     var body: some View {
         Rectangle()
             .fill(Color.pitchGreen)
-            .frame(height: 2)
+            .frame(height: 1)
             .edgesIgnoringSafeArea(.horizontal)
     }
 }

@@ -69,90 +69,78 @@ struct TeamDetailView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                
-                CardView {
-                    DynamicTypeStack(.accessibility2) {
+        
+        List {
+            Section {
+                DynamicTypeStack(.accessibility2) {
+                    
+                    Image(team.shortName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: logoSize, height: logoSize)
+                    
+                    VStack {
+                        PoolLabelView(seasonTeam: seasonTeam)
                         
-                        Image(team.shortName)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: logoSize, height: logoSize)
+                        DividerView()
                         
-                        VStack {
-                            PoolLabelView(seasonTeam: seasonTeam)
-                            
-                            DividerView()
-                            
-                            FlagLabelView(team: team)
-                            
-                            DividerView()
-                            
-                            Text(seasonTeam.seededString)
-                        }
+                        FlagLabelView(team: team)
+                        
+                        DividerView()
+                        
+                        Text(seasonTeam.seededString)
                     }
-                    .font(.title2.bold())
                 }
-                
-                CardView(hasHeaderDivier: true) {
-                    VStack(spacing: 0) {
+                .font(.title2.bold())
+            }
+            .listSectionSeparator(.hidden)
+            
+            Section {
+                ForEach(opponentsSeasonTeams) { opponentSeasonTeam in
+                    HStack {
+                        TeamLabelView(team: opponentSeasonTeam.team!, logoWidthPercentage: 12)
+                            .padding(.trailing, 10)
                         
-                        ForEach(opponentsSeasonTeams) { opponentSeasonTeam in
-                            HStack {
-                                TeamLabelView(team: opponentSeasonTeam.team!, logoWidthPercentage: 12)
-                                    .padding(.trailing, 10)
-                                
-                                Spacer()
-
-                                HStack {
-                                    if draws.isRunning {
-                                        ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-                                            .progressViewStyle(RandomNumberProgressStyle())
-                                        Text("%")
-                                    } else {
-                                        Text(getOpponentPercentageString(for: opponentSeasonTeam.team!))
-                                    }
-                                }
-                                .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
+                        Spacer()
+                        
+                        HStack {
+                            if draws.isRunning {
+                                ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                                    .progressViewStyle(RandomNumberProgressStyle())
+                                Text("%")
+                            } else {
+                                Text(getOpponentPercentageString(for: opponentSeasonTeam.team!))
                             }
-                            .padding(.vertical, 4)
-
-                            Divider()
                         }
+                        .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
                     }
-                } header: {
-                    Text("Draw chances")
-                        .font(.title2.bold())
-                } footer: {
-                    if draws.isRunning {
-                        ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-                            .progressViewStyle(ButtonProgressStyle())
-                            .onTapGesture {
-                                if draws.task != nil {
-                                    draws.cancelDraw()
-                                }
-                            }
-                    } else {
-                        Button {
-                            draws.draw(for: seasonTeam.season!.winYear)
-                        } label: {
-                            Text("Draw")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .disabled(draws.isRunning)
-                        .padding(10)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(draws.isRunning ? .gray : Color.pitchGreen)
-                        )
-                        .font(.title2.bold())
+                }
+            } header: {
+                Text("Draw chances")
+                    .font(.title2.bold())
+                    .foregroundColor(.pitchGreen)
+            }
+            
+            
+        }
+        .listStyle(.plain)
+        .navigationTitle(team.name)
+        .toolbar {
+            ToolbarItemGroup(placement: .bottomBar) {
+                if draws.isRunning {
+                    ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                } else {
+                    Button {
+                        draws.draw(for: seasonTeam.season!.winYear)
+                    } label: {
+                        Text("Draw")
+                            .font(.title2)
                     }
+                    .disabled(draws.isRunning)
+                    .padding(10)
                 }
             }
-            .padding(.horizontal, 15)
         }
-        .navigationTitle(team.name)
     }
 }
 
@@ -176,10 +164,12 @@ struct TeamDetailView_Previews: PreviewProvider {
                     }
             }
             
-            TeamDetailView(seasonTeam: seasonTeam)
-                .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
-                .environmentObject(geoSizeTracker)
-                .environmentObject(Draws(coreDataController: CoreDataController.preview))
+            NavigationStack {
+                TeamDetailView(seasonTeam: seasonTeam)
+                    .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
+                    .environmentObject(geoSizeTracker)
+                    .environmentObject(Draws(coreDataController: CoreDataController.preview))
+            }
         }
     }
 }
