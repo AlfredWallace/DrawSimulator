@@ -138,7 +138,7 @@ struct TeamDetailView: View {
                             }
                         } label: {
                             Text("Cancel")
-                                .font(.title2)
+                                .font(.title2.bold())
                                 .foregroundColor(.red)
                         }
                     }
@@ -147,7 +147,7 @@ struct TeamDetailView: View {
                         draws.draw(for: seasonTeam.season!.winYear)
                     } label: {
                         Text("Draw")
-                            .font(.title2)
+                            .font(.title2.bold())
                     }
                     .disabled(draws.isRunning)
                     .padding(10)
