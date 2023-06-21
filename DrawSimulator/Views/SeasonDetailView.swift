@@ -89,6 +89,7 @@ struct SeasonDetailView: View {
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
                         GroupingDialogButtonView(showingDialg: $showingGroupingDialog)
+                            .foregroundColor(.pitchGreen)
                     }
                 }
                 .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {

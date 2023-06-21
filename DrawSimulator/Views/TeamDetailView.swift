@@ -129,6 +129,7 @@ struct TeamDetailView: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 if draws.isRunning {
                     ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                        .tint(Color.pitchGreen)
                 } else {
                     Button {
                         draws.draw(for: seasonTeam.season!.winYear)
@@ -138,6 +139,7 @@ struct TeamDetailView: View {
                     }
                     .disabled(draws.isRunning)
                     .padding(10)
+                    .foregroundColor(Color.pitchGreen)
                 }
             }
         }
