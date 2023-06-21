@@ -54,4 +54,8 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="UserSetting" representedClassName="UserSetting" syncable="YES">
+        <attribute name="settingKey" attributeType="String"/>
+        <attribute name="settingValue" attributeType="String"/>
+    </entity>
 </model>

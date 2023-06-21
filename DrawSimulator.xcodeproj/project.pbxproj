@@ -20,6 +20,8 @@
 		BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066429EB31640015F4D5 /* PoolLabelView.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */; };
+		BA4434222A4380AF002EE261 /* UserSetting+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4434202A4380AF002EE261 /* UserSetting+CoreDataClass.swift */; };
+		BA4434232A4380AF002EE261 /* UserSetting+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4434212A4380AF002EE261 /* UserSetting+CoreDataProperties.swift */; };
 		BA616E6C29ED7F08003F817B /* Draws.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA616E6B29ED7F08003F817B /* Draws.swift */; };
 		BA6BDE772A3F56DE007A019C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BDE762A3F56DE007A019C /* BackgroundView.swift */; };
 		BA73B68929E0C63500807496 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73B68829E0C63500807496 /* SeasonDetailView.swift */; };
@@ -74,6 +76,8 @@
 		BA1E066429EB31640015F4D5 /* PoolLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolLabelView.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInitializer.swift; sourceTree = "<group>"; };
+		BA4434202A4380AF002EE261 /* UserSetting+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSetting+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		BA4434212A4380AF002EE261 /* UserSetting+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSetting+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		BA616E6B29ED7F08003F817B /* Draws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draws.swift; sourceTree = "<group>"; };
 		BA6BDE762A3F56DE007A019C /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		BA73B68829E0C63500807496 /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				BA85376429F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift */,
 				BA85376529F4364400D1CF55 /* Team+CoreDataClass.swift */,
 				BA85376629F4364400D1CF55 /* Team+CoreDataProperties.swift */,
+				BA4434202A4380AF002EE261 /* UserSetting+CoreDataClass.swift */,
+				BA4434212A4380AF002EE261 /* UserSetting+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -341,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAC0E7362A42D75600017CDF /* TeamNameThatFits.swift in Sources */,
+				BA4434232A4380AF002EE261 /* UserSetting+CoreDataProperties.swift in Sources */,
 				BA616E6C29ED7F08003F817B /* Draws.swift in Sources */,
 				BA11C43A29E973180040A4BB /* DisplayModeMenuButtonView.swift in Sources */,
 				BACB2CFD2A41C40F00B9F456 /* SeasonSectionTitleView.swift in Sources */,
@@ -367,6 +374,7 @@
 				BA85377029F4364400D1CF55 /* Country+CoreDataProperties.swift in Sources */,
 				BAB0AF8E2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift in Sources */,
 				BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */,
+				BA4434222A4380AF002EE261 /* UserSetting+CoreDataClass.swift in Sources */,
 				BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */,
 				BA73B68929E0C63500807496 /* SeasonDetailView.swift in Sources */,
 				BA85376D29F4364400D1CF55 /* Team+CoreDataClass.swift in Sources */,
