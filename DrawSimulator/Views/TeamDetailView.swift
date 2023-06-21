@@ -128,8 +128,20 @@ struct TeamDetailView: View {
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {
                 if draws.isRunning {
-                    ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
-                        .tint(Color.pitchGreen)
+                    HStack {
+                        ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                            .tint(Color.pitchGreen)
+                        
+                        Button {
+                            if draws.task != nil {
+                                draws.cancelDraw()
+                            }
+                        } label: {
+                            Text("Cancel")
+                                .font(.title2)
+                                .foregroundColor(.red)
+                        }
+                    }
                 } else {
                     Button {
                         draws.draw(for: seasonTeam.season!.winYear)
