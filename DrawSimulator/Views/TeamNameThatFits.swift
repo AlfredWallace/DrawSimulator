@@ -19,6 +19,7 @@ struct TeamNameThatFits: View {
     var body: some View {
         ViewThatFits {
             Text(team.name.uppercased())
+            Text(team.sortingName.uppercased())
             Text(team.shortName.uppercased())
         }
         .sportFont(textStyle)
