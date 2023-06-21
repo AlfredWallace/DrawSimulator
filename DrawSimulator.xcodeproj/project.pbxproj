@@ -24,7 +24,7 @@
 		BA6BDE772A3F56DE007A019C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BDE762A3F56DE007A019C /* BackgroundView.swift */; };
 		BA73B68929E0C63500807496 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73B68829E0C63500807496 /* SeasonDetailView.swift */; };
 		BA76EEBA29F1189400F0D4E9 /* RandomNumberProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */; };
-		BA76EEBC29F11F0E00F0D4E9 /* NavigationTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEBB29F11F0E00F0D4E9 /* NavigationTheme.swift */; };
+		BA76EEBC29F11F0E00F0D4E9 /* CustomTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEBB29F11F0E00F0D4E9 /* CustomTheme.swift */; };
 		BA76EEBE29F13D6100F0D4E9 /* GroupingDialogButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */; };
 		BA85376B29F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85376329F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift */; };
 		BA85376C29F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85376429F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift */; };
@@ -77,7 +77,7 @@
 		BA6BDE762A3F56DE007A019C /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		BA73B68829E0C63500807496 /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
 		BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberProgressStyle.swift; sourceTree = "<group>"; };
-		BA76EEBB29F11F0E00F0D4E9 /* NavigationTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTheme.swift; sourceTree = "<group>"; };
+		BA76EEBB29F11F0E00F0D4E9 /* CustomTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTheme.swift; sourceTree = "<group>"; };
 		BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupingDialogButtonView.swift; sourceTree = "<group>"; };
 		BA85376329F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeasonTeam+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA85376429F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeasonTeam+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 				BA0B50C229E73B6100B96D53 /* Colors.xcassets */,
 				BA11C43729E96B620040A4BB /* Team logos.xcassets */,
 				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
-				BA76EEBB29F11F0E00F0D4E9 /* NavigationTheme.swift */,
+				BA76EEBB29F11F0E00F0D4E9 /* CustomTheme.swift */,
 				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
 				BA96F37029E824AC00E365FB /* Chillax.ttf */,
 				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
@@ -376,7 +376,7 @@
 				BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */,
 				BA9E26B92A35AE670073AB56 /* NSManagedObject-NameDescribable.swift in Sources */,
 				BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */,
-				BA76EEBC29F11F0E00F0D4E9 /* NavigationTheme.swift in Sources */,
+				BA76EEBC29F11F0E00F0D4E9 /* CustomTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,9 +18,7 @@ struct ContentView: View {
     @EnvironmentObject private var draws: Draws
     
     init() {
-        NavigationTheme.navigationBarColors()
-        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor(Color.pitchGreen)
-
+        CustomTheme.setColors()
     }
     
     var body: some View {
