@@ -98,7 +98,7 @@ struct TeamDetailView: View {
             Section {
                 ForEach(opponentsSeasonTeams) { opponentSeasonTeam in
                     HStack {
-                        TeamLabelView(team: opponentSeasonTeam.team!, logoWidthPercentage: 12)
+                        TeamLabelView(team: opponentSeasonTeam.team!, textStyle: .title2)
                             .padding(.trailing, 10)
                         
                         Spacer()
@@ -124,7 +124,6 @@ struct TeamDetailView: View {
             
             
         }
-        .listStyle(.plain)
         .navigationTitle(team.name)
         .toolbar {
             ToolbarItemGroup(placement: .bottomBar) {

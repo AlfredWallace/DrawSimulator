@@ -50,7 +50,6 @@ struct ContentView: View {
                     }
                     .listRowSeparatorTint(.pitchGreen)
                 }
-                .listStyle(.plain)
                 
                 .navigationTitle("Seasons")
                 .navigationDestination(for: Season.self) { season in

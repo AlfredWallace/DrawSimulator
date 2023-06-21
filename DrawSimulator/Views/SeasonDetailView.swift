@@ -74,7 +74,7 @@ struct SeasonDetailView: View {
                     Section {
                         ForEach(section) { seasonTeam in
                             NavigationLink(value: seasonTeam) {
-                                TeamLabelView(team: seasonTeam.team!)
+                                TeamLabelView(team: seasonTeam.team!, textStyle: .title2)
                             }
                         }
                     } header: {
@@ -98,7 +98,6 @@ struct SeasonDetailView: View {
                     GroupingDialogChoiceView(grouping: .none, showingList: $showingList)
                 }
                 .transition(.move(edge: .bottom))
-                .listStyle(.plain)
             }
         }
     }
