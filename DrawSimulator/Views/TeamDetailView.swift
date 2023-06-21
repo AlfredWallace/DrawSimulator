@@ -115,6 +115,7 @@ struct TeamDetailView: View {
                         .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
                     }
                 }
+                .listRowSeparatorTint(.pitchGreen)
             } header: {
                 Text("Draw chances")
                     .font(.title2.bold())
