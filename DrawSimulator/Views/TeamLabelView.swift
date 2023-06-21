@@ -32,8 +32,7 @@ struct TeamLabelView: View {
                 .scaledToFit()
                 .frame(width: logoSize, height: logoSize)
             
-            Text(team.name.uppercased())
-                .sportFont(textStyle)
+            TeamNameThatFits(team: team, textStyle: textStyle)
         }
     }
 }
@@ -45,7 +44,6 @@ struct TeamLabelView_Previews: PreviewProvider {
     
     static var previews: some View {
         
-        let moc = CoreDataController.preview.mainContext
         let team = PreviewDataFetcher.fetchData(
             for: Team.self,
             withPredicate: NSPredicate(format: "shortName == %@", DatabaseInitializer.TeamIdentifier.PSG.rawValue)
