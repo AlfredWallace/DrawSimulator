@@ -22,13 +22,11 @@ struct DrawSimulatorApp: App {
 //    }
     
     @State private var isFirstLaunch = true
-    @StateObject private var userSettings = UserSettings()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, CoreDataController.shared.mainContext)
-                .environmentObject(userSettings)
                 .environmentObject(Draws(coreDataController: CoreDataController.shared))
                 .onAppear {
                     if isFirstLaunch {

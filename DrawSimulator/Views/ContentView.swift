@@ -13,9 +13,9 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
     @StateObject private var geoSizeTracker = GeoSizeTracker()
+    @StateObject private var userSettings = UserSettings()
     @State private var areSettingsVisible = false
     
-    @EnvironmentObject private var userSettings: UserSettings
     @EnvironmentObject private var draws: Draws
     
     init() {
@@ -83,6 +83,7 @@ struct ContentView: View {
             }
             .environmentObject(geoSizeTracker)
             .environmentObject(draws)
+            .environmentObject(userSettings)
             .preferredColorScheme(userSettings.getColorScheme())
         }
         .tint(.defaultText)
