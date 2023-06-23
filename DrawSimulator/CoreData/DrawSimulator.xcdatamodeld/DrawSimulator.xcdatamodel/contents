@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Country" representedClassName="Country" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <attribute name="shortName" attributeType="String"/>
@@ -53,9 +53,5 @@
                 <constraint value="shortName"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
-    </entity>
-    <entity name="UserSetting" representedClassName="UserSetting" syncable="YES">
-        <attribute name="settingKey" attributeType="String"/>
-        <attribute name="settingValue" attributeType="String"/>
     </entity>
 </model>
