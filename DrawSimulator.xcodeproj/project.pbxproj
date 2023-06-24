@@ -19,6 +19,8 @@
 		BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066429EB31640015F4D5 /* PoolLabelView.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */; };
+		BA39FF9A2A4779BA00A98EFA /* SeasonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39FF992A4779BA00A98EFA /* SeasonListView.swift */; };
+		BA39FF9C2A477E6E00A98EFA /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39FF9B2A477E6E00A98EFA /* InformationView.swift */; };
 		BA616E6C29ED7F08003F817B /* Draws.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA616E6B29ED7F08003F817B /* Draws.swift */; };
 		BA6BDE772A3F56DE007A019C /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6BDE762A3F56DE007A019C /* BackgroundView.swift */; };
 		BA73B68929E0C63500807496 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73B68829E0C63500807496 /* SeasonDetailView.swift */; };
@@ -72,6 +74,8 @@
 		BA1E066429EB31640015F4D5 /* PoolLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolLabelView.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInitializer.swift; sourceTree = "<group>"; };
+		BA39FF992A4779BA00A98EFA /* SeasonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListView.swift; sourceTree = "<group>"; };
+		BA39FF9B2A477E6E00A98EFA /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		BA616E6B29ED7F08003F817B /* Draws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draws.swift; sourceTree = "<group>"; };
 		BA6BDE762A3F56DE007A019C /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		BA73B68829E0C63500807496 /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				BA326D802A01588B00F8DA7C /* GenericViews */,
 				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
 				BA73B68829E0C63500807496 /* SeasonDetailView.swift */,
+				BA39FF992A4779BA00A98EFA /* SeasonListView.swift */,
+				BA39FF9B2A477E6E00A98EFA /* InformationView.swift */,
 				BACB2CFC2A41C40F00B9F456 /* SeasonSectionTitleView.swift */,
 				BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */,
 				BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */,
@@ -353,10 +359,12 @@
 				BA6BDE772A3F56DE007A019C /* BackgroundView.swift in Sources */,
 				BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */,
 				BA85376E29F4364400D1CF55 /* Team+CoreDataProperties.swift in Sources */,
+				BA39FF9A2A4779BA00A98EFA /* SeasonListView.swift in Sources */,
 				BA85377129F4364400D1CF55 /* Season+CoreDataClass.swift in Sources */,
 				BAD386E929F3B91800369C7D /* DrawSimulator.xcdatamodeld in Sources */,
 				BA85377229F4364400D1CF55 /* Season+CoreDataProperties.swift in Sources */,
 				BAD386EB29F3B99800369C7D /* CoreDataController.swift in Sources */,
+				BA39FF9C2A477E6E00A98EFA /* InformationView.swift in Sources */,
 				BA85376F29F4364400D1CF55 /* Country+CoreDataClass.swift in Sources */,
 				BA76EEBA29F1189400F0D4E9 /* RandomNumberProgressStyle.swift in Sources */,
 				BA85376C29F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift in Sources */,

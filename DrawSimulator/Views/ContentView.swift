@@ -10,13 +10,8 @@ import CoreData
 
 struct ContentView: View {
     
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
-    
-    @StateObject private var geoSizeTracker = GeoSizeTracker()
     @StateObject private var userSettings = UserSettings()
-    @State private var areSettingsVisible = false
-    
-    @EnvironmentObject private var draws: Draws
+    @StateObject private var geoSizeTracker = GeoSizeTracker()
     
     init() {
         CustomTheme.setColors()
@@ -32,49 +27,24 @@ struct ContentView: View {
                     }
             }
             
-            NavigationStack {
+            TabView {
+                SeasonListView()
+                    .tabItem {
+                        Label("Seasons", systemImage: "soccerball")
+                    }
                 
-                List(seasons) { season in
-                    NavigationLink(value: season) {
-                        VStack(alignment: .leading, spacing: 0) {
-
-                            Text(String(season.winYear))
-                                .sportFont(.largeTitle, multiplier: 2.5)
-                                .dynamicTypeSize(.xSmall ... .large)
-
-                            Group {
-                                Text(season.stadium)
-                                Text(season.city)
-                            }
-                            .sportFont(.body)
-                        }
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "slider.horizontal.3")
                     }
-                    .listRowSeparatorTint(.pitchGreen)
-                }
-                .navigationTitle("Seasons")
-                .navigationDestination(for: Season.self) { season in
-                    SeasonDetailView(season: season)
-                }
-                .toolbar {
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        Button {
-                            areSettingsVisible = true
-                        } label: {
-                            Label("Settings", systemImage: "slider.horizontal.3")
-                                .font(.title2.bold())
-                                .foregroundColor(.pitchGreen)
-                                .labelStyle(.titleAndIcon)
-                        }
+                
+                InformationView()
+                    .tabItem {
+                        Label("Information", systemImage: "info.square")
                     }
-                }
-                .sheet(isPresented: $areSettingsVisible) {
-                    SettingsView()
-                }
             }
-            .environmentObject(geoSizeTracker)
-            .environmentObject(draws)
             .environmentObject(userSettings)
-            .preferredColorScheme(userSettings.getColorScheme())
+            .environmentObject(geoSizeTracker)
         }
         .tint(.defaultText)
         .foregroundColor(.defaultText)

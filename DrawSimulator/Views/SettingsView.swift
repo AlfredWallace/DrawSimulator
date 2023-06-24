@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject private var userSettings: UserSettings
     
     private let accuracy = [
@@ -18,7 +17,6 @@ struct SettingsView: View {
     ]
     
     var body: some View {
-        VStack {
             Form {
                 Picker("Display mode", selection: $userSettings.data.displayMode) {
                     ForEach(UserSettings.DisplayMode.allCases) {
@@ -36,19 +34,6 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.inline)
             }
-            .preferredColorScheme(userSettings.getColorScheme())
-            
-            Spacer()
-            
-            Button {
-                dismiss()
-            } label: {
-                Text("OK")
-                    .font(.title2.bold())
-                    .foregroundColor(.pitchGreen)
-                    .labelStyle(.titleAndIcon)
-            }
-        }
     }
 }
 
