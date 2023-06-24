@@ -11,8 +11,6 @@ import SwiftUI
 
 @MainActor class Draws: ObservableObject {
     
-    static let numberOfDraws = 1000
-    
     @Published private(set) var isRunning = false
     @Published private(set) var progress = 0.0
     
@@ -48,7 +46,7 @@ import SwiftUI
         isRunning = false
     }
     
-    func draw(for winYear: Int16, _ times: Int = numberOfDraws) {
+    func draw(for winYear: Int16, times: Int) {
         isRunning = true
         progress = 0.0
         
@@ -64,8 +62,9 @@ import SwiftUI
             let seededDrawTeams = getDrawTeams(for: season, seeded: true)
             let unseededDrawTeams = getDrawTeams(for: season, seeded: false)
             
-            outerLoop: for _ in 0..<times {
-            
+        outerLoop:
+            for _ in 0..<times {
+                
                 if isRunning == false {
                     if let task {
                         task.cancel()
@@ -75,14 +74,15 @@ import SwiftUI
                 // optimization: we use copy for every iteration so that getDrawTeams is not called everytime
                 var seededDrawTeamsCopy = seededDrawTeams
                 var unseededDrawTeamsCopy = unseededDrawTeams
-
+                
                 await MainActor.run {
                     self.progress += 1.0
                 }
-
+                
                 var innerLoopPairings = [InnerLoopPairing]()
                 
-                innerLoop: while seededDrawTeamsCopy.isEmpty == false {
+            innerLoop:
+                while seededDrawTeamsCopy.isEmpty == false {
                     
                     let seededDrawTeam = self.extractOneTeam(&seededDrawTeamsCopy)
                     
@@ -114,18 +114,18 @@ import SwiftUI
                 // we look for an existing pairing matching the current iteration
                 // if there is one, we increase the count, otherwise we create the pairing
                 for innerLoopPairing in innerLoopPairings {
-
+                    
                     coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
-
+                        
                         let seededTeam = innerLoopPairing.seededTeam
                         let unseededTeam = innerLoopPairing.unseededTeam
-
+                        
                         let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: DrawPairing.entityName)
                         pairingsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seededTeam == %@ AND unseededTeam == %@", season, seededTeam, unseededTeam)
-
+                        
                         do {
                             let pairingsResult = try moc.fetch(pairingsFetchRequest)
-
+                            
                             switch pairingsResult.count {
                                 case 0:
                                     let _ = DrawPairing(context: moc, count: 1, season: season, seededTeam: seededTeam, unseededTeam: unseededTeam)
@@ -196,11 +196,11 @@ import SwiftUI
     
     private func getDrawTeams(for season: Season, seeded: Bool) -> [DrawTeam] {
         var result = [DrawTeam]()
-
+        
         coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
             let seasonTeamsFetchRequest = NSFetchRequest<SeasonTeam>(entityName: SeasonTeam.entityName)
             seasonTeamsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seeded == %@", season, seeded as NSNumber)
-
+            
             do {
                 let seasonTeams = try moc.fetch(seasonTeamsFetchRequest)
                 result = seasonTeams.map {
@@ -210,12 +210,12 @@ import SwiftUI
                         country: $0.team!.country!
                     )
                 }
-
+                
             } catch let error as NSError {
                 print("Failed to fetch teams: \(error.localizedDescription)")
             }
         }
-
+        
         return result
     }
 }

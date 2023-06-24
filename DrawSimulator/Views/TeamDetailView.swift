@@ -14,6 +14,7 @@ struct TeamDetailView: View {
     
     @EnvironmentObject private var draws: Draws
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
+    @EnvironmentObject private var userSettings: UserSettings
     
     let seasonTeam: SeasonTeam
     let team: Team
@@ -48,7 +49,7 @@ struct TeamDetailView: View {
         )
     }
     
-    private func getOpponentPercentageString(for opponent: Team) -> String {
+    private func getOpponentPercentage(for opponent: Team) -> Float? {
         
         let pairing = drawPairings.first(where: {
             if seasonTeam.seeded {
@@ -58,9 +59,9 @@ struct TeamDetailView: View {
             }
         })
         
-        guard let pairing else { return "n/a" }
+        guard let pairing else { return nil }
         
-        return "\((Float(pairing.count) / totalPairingCount * 100).rounded().formatted()) %"
+        return Float(pairing.count) / totalPairingCount * 100
     }
     
     init(seasonTeam: SeasonTeam) {
@@ -105,11 +106,10 @@ struct TeamDetailView: View {
                         
                         HStack {
                             if draws.isRunning {
-                                ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                                ProgressView(value: draws.progress, total: Double(userSettings.data.numberOfDraws))
                                     .progressViewStyle(RandomNumberProgressStyle())
-                                Text("%")
                             } else {
-                                Text(getOpponentPercentageString(for: opponentSeasonTeam.team!))
+                                Text("\(getOpponentPercentage(for: opponentSeasonTeam.team!) ?? 0.0, specifier: "%.2f") %")
                             }
                         }
                         .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
@@ -129,7 +129,7 @@ struct TeamDetailView: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 if draws.isRunning {
                     HStack {
-                        ProgressView(value: draws.progress, total: Double(Draws.numberOfDraws))
+                        ProgressView(value: draws.progress, total: Double(userSettings.data.numberOfDraws))
                             .tint(Color.pitchGreen)
                         
                         Button {
@@ -144,7 +144,7 @@ struct TeamDetailView: View {
                     }
                 } else {
                     Button {
-                        draws.draw(for: seasonTeam.season!.winYear)
+                        draws.draw(for: seasonTeam.season!.winYear, times: userSettings.data.numberOfDraws)
                     } label: {
                         Text("Draw")
                             .font(.title2.bold())

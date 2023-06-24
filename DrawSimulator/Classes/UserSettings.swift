@@ -26,6 +26,7 @@ import SwiftUI
     struct SettingsToSave: Codable {
         var grouping: Grouping
         var displayMode: DisplayMode
+        var numberOfDraws: Int
     }
     
     @Published public var data: SettingsToSave {
@@ -59,9 +60,9 @@ import SwiftUI
         do {
             let contents = try Data(contentsOf: Self.savePath)
             let decoded = try JSONDecoder().decode(SettingsToSave.self, from: contents)
-            data = SettingsToSave(grouping: decoded.grouping, displayMode: decoded.displayMode)
+            data = SettingsToSave(grouping: decoded.grouping, displayMode: decoded.displayMode, numberOfDraws: decoded.numberOfDraws)
         } catch {
-            data = SettingsToSave(grouping: Grouping.pool, displayMode: DisplayMode.system)
+            data = SettingsToSave(grouping: Grouping.pool, displayMode: DisplayMode.system, numberOfDraws: 2000)
         }
     }
     
