@@ -23,7 +23,10 @@ struct FlagLabelView: View {
     
     var body: some View {
         Label {
-            Text(country.name)
+            ViewThatFits {
+                Text(country.name)
+                Text(country.shortName)
+            }
         } icon: {
             ZStack {
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
