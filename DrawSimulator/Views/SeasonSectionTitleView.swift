@@ -47,28 +47,28 @@ struct SeasonSectionTitleView_Previews: PreviewProvider {
         SeasonSectionTitleView(sectionId: "A")
             .environmentObject({ () -> UserSettings in
                 let userSettings = UserSettings()
-                userSettings.setGrouping(.pool)
+                userSettings.data.grouping = .pool
                 return userSettings
             }())
         
         SeasonSectionTitleView(sectionId: "France")
             .environmentObject({ () -> UserSettings in
                 let userSettings = UserSettings()
-                userSettings.setGrouping(.country)
+                userSettings.data.grouping = .country
                 return userSettings
             }())
         
         SeasonSectionTitleView(sectionId: "Seeded")
             .environmentObject({ () -> UserSettings in
                 let userSettings = UserSettings()
-                userSettings.setGrouping(.seeding)
+                userSettings.data.grouping = .seeding
                 return userSettings
             }())
         
         SeasonSectionTitleView(sectionId: "2023")
             .environmentObject({ () -> UserSettings in
                 let userSettings = UserSettings()
-                userSettings.setGrouping(.none)
+                userSettings.data.grouping = .none
                 return userSettings
             }())
     }

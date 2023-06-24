@@ -9,10 +9,30 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var userSettings: UserSettings
     
     var body: some View {
-        Button("Dismiss me!") {
-            dismiss()
+        VStack {
+            Form {
+                Picker("Display mode", selection: $userSettings.data.displayMode) {
+                    ForEach(UserSettings.DisplayMode.allCases) {
+                        Text($0.rawValue)
+                    }
+                }
+                .pickerStyle(.inline)
+            }
+            .preferredColorScheme(userSettings.getColorScheme())
+            
+            Spacer()
+            
+            Button {
+                dismiss()
+            } label: {
+                Text("OK")
+                    .font(.title2.bold())
+                    .foregroundColor(.pitchGreen)
+                    .labelStyle(.titleAndIcon)
+            }
         }
     }
 }
@@ -20,5 +40,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(UserSettings())
     }
 }

@@ -13,12 +13,14 @@ import SwiftUI
     
     private static let savePath = FileManager.documentsDirectory.appendingPathComponent("userSettings.json")
     
-    enum Grouping: String, Codable {
+    enum Grouping: String, Codable, CaseIterable, Identifiable {
         case pool, country, seeding, none
+        var id: Self { self }
     }
     
-    enum DisplayMode: String, Codable {
+    enum DisplayMode: String, Codable, CaseIterable, Identifiable {
         case light, dark, system
+        var id: Self { self }
     }
     
     struct SettingsToSave: Codable {
@@ -26,16 +28,10 @@ import SwiftUI
         var displayMode: DisplayMode
     }
     
-    @Published private(set) var data: SettingsToSave
-    
-    func setGrouping(_ grouping: Grouping) {
-        data.grouping = grouping
-        save()
-    }
-    
-    func setDisplayMode(_ displayMode: DisplayMode) {
-        data.displayMode = displayMode
-        save()
+    @Published public var data: SettingsToSave {
+        didSet {
+            save()
+        }
     }
     
     func getDisplayModeIconName(for displayMode: DisplayMode? = nil) -> String {

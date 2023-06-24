@@ -56,16 +56,6 @@ struct ContentView: View {
                     SeasonDetailView(season: season)
                 }
                 .toolbar {
-//                    ToolbarItem {
-//                        Menu {
-//                            DisplayModeMenuButtonView(displayMode: .light)
-//                            DisplayModeMenuButtonView(displayMode: .dark)
-//                            DisplayModeMenuButtonView(displayMode: .system)
-//                        } label: {
-//                            Label("Display mode", systemImage: userSettings.getDisplayModeIconName())
-//                        }
-//                    }
-                    
                     ToolbarItemGroup(placement: .bottomBar) {
                         Button {
                             areSettingsVisible = true

@@ -38,7 +38,7 @@ struct GroupingDialogChoiceView: View {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                userSettings.setGrouping(grouping)
+                userSettings.data.grouping = grouping
 
                 withAnimation(.easeOut.speed(speed)) {
                     showingList.toggle()
