@@ -22,7 +22,8 @@ struct SettingsView: View {
             Form {
                 Picker("Display mode", selection: $userSettings.data.displayMode) {
                     ForEach(UserSettings.DisplayMode.allCases) {
-                        Text($0.rawValue)
+                        Text($0.rawValue.capitalized)
+                            .tag($0)
                     }
                 }
                 .pickerStyle(.inline)
