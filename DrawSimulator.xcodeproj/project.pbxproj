@@ -57,8 +57,6 @@
 		BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */; };
 		BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* UserSettings.swift */; };
 		BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */; };
-		BAF749FF29F084E900430C23 /* Overpass Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FD29F084E900430C23 /* Overpass Licence.txt */; };
-		BAF74A0029F084E900430C23 /* Overpass.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAF749FE29F084E900430C23 /* Overpass.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,8 +112,6 @@
 		BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLabelView.swift; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
-		BAF749FD29F084E900430C23 /* Overpass Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Overpass Licence.txt"; sourceTree = "<group>"; };
-		BAF749FE29F084E900430C23 /* Overpass.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Overpass.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +137,6 @@
 				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
 				BA96F37029E824AC00E365FB /* Chillax.ttf */,
 				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
-				BAF749FE29F084E900430C23 /* Overpass.ttf */,
-				BAF749FD29F084E900430C23 /* Overpass Licence.txt */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -339,9 +333,7 @@
 				BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */,
 				BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */,
 				BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */,
-				BAF749FF29F084E900430C23 /* Overpass Licence.txt in Resources */,
 				BA9979F82963B42D00AF04B8 /* Preview Assets.xcassets in Resources */,
-				BAF74A0029F084E900430C23 /* Overpass.ttf in Resources */,
 				BA9979F52963B42D00AF04B8 /* Assets.xcassets in Resources */,
 				BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */,
 			);

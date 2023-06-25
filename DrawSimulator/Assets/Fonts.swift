@@ -16,12 +16,4 @@ class Fonts {
         case boldSemibold = "ChillaxVariable-Bold_Semibold"
         case bold = "ChillaxVariable-Bold"
     }
-    
-    enum Overpass: String {
-        case regular = "OverpassMono-Regular"
-        case light = "OverpassMono-Light"
-        case medium = "OverpassMono-Medium"
-        case semiBold = "OverpassMono-SemiBold"
-        case bold = "OverpassMono-Bold"
-    }
 }

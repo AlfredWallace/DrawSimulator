@@ -116,7 +116,7 @@ struct TeamDetailView: View {
                             Text("%")
                         }
                         .frame(width: geoSizeTracker.getSize().width * 0.23)
-                        .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
+                        .font(.title3.bold().monospaced())
                     }
                 }
                 .listRowSeparatorTint(.pitchGreen)
