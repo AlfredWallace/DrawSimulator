@@ -20,7 +20,26 @@ struct TeamDetailView: View {
     let team: Team
     
     private var logoSize: CGFloat {
-        geoSizeTracker.getSize().width * (dynamicTypeSize >= .accessibility2 ? 0.75 : 0.45)
+        var factor = 1.0
+        
+        switch dynamicTypeSize {
+            case .xSmall:
+                factor = 0.36
+            case .small:
+                factor = 0.38
+            case .medium:
+                factor = 0.40
+            case .large:
+                factor = 0.42
+            case .xLarge:
+                factor = 0.44
+            case .xxLarge:
+                factor = 0.46
+            default:
+                factor = 0.75
+        }
+        
+        return geoSizeTracker.getSize().width * factor
     }
     
     private var opponentsSeasonTeams: [SeasonTeam] {
