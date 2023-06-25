@@ -17,6 +17,7 @@ struct SettingsView: View {
     ]
     
     var body: some View {
+        NavigationStack {
             Form {
                 Picker("Display mode", selection: $userSettings.data.displayMode) {
                     ForEach(UserSettings.DisplayMode.allCases) {
@@ -34,6 +35,8 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.inline)
             }
+            .navigationTitle("Settings")
+        }
     }
 }
 

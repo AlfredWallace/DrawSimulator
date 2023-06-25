@@ -38,15 +38,15 @@ struct ContentView: View {
                         Label("Settings", systemImage: "slider.horizontal.3")
                     }
                 
-                InformationView()
+                AboutView()
                     .tabItem {
-                        Label("Information", systemImage: "info.square")
+                        Label("About", systemImage: "info.square")
                     }
             }
             .environmentObject(userSettings)
             .environmentObject(geoSizeTracker)
         }
-        .tint(.defaultText)
+        .tint(.pitchGreen)
         .foregroundColor(.defaultText)
     }
 }
