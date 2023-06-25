@@ -51,6 +51,7 @@ struct ContentView: View {
         }
         .tint(.pitchGreen)
         .foregroundColor(.defaultText)
+        .dynamicTypeSize(.xSmall ... .accessibility2)
     }
 }
 
