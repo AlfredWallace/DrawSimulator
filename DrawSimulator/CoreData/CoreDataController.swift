@@ -9,7 +9,7 @@ import CoreData
 import SwiftUI
 
 struct CoreDataController {
-    static let shared = CoreDataController() // singleton
+    static let shared = CoreDataController()
     
     static let preview: CoreDataController = {
         let controller = CoreDataController(inMemory: true)
@@ -25,7 +25,7 @@ struct CoreDataController {
     let mainContext: NSManagedObjectContext
     let backgroundContext: NSManagedObjectContext
     
-    init(inMemory: Bool = false) {
+    private init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "DrawSimulator")
         
         if inMemory {
