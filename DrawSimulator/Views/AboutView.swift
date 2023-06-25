@@ -1,5 +1,5 @@
 //
-//  InformationView.swift
+//  AboutView.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 24/06/2023.

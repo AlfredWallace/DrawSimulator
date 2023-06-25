@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613B929EEE8B8002CDE53 /* Fonts.swift */; };
 		BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */; };
-		BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */; };
+		BA0613C929EF51C3002CDE53 /* StackThatFits.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613C829EF51C3002CDE53 /* StackThatFits.swift */; };
 		BA0B50C329E73B6100B96D53 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA0B50C229E73B6100B96D53 /* Colors.xcassets */; };
 		BA0FBA3F29EAA843003243F1 /* GroupingDialogChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */; };
 		BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43529E96B1B0040A4BB /* Flags.xcassets */; };
@@ -64,7 +64,7 @@
 		BA016390297ADB830030264F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA0613B929EEE8B8002CDE53 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Chillax Licence.txt"; sourceTree = "<group>"; };
-		BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTypeStack.swift; sourceTree = "<group>"; };
+		BA0613C829EF51C3002CDE53 /* StackThatFits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackThatFits.swift; sourceTree = "<group>"; };
 		BA0B50C229E73B6100B96D53 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupingDialogChoiceView.swift; sourceTree = "<group>"; };
 		BA11C43529E96B1B0040A4BB /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				BA1E066229EB30E80015F4D5 /* DividerView.swift */,
-				BA0613C829EF51C3002CDE53 /* DynamicTypeStack.swift */,
+				BA0613C829EF51C3002CDE53 /* StackThatFits.swift */,
 			);
 			path = GenericViews;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 				BA85376D29F4364400D1CF55 /* Team+CoreDataClass.swift in Sources */,
 				BA76EEBE29F13D6100F0D4E9 /* GroupingDialogButtonView.swift in Sources */,
 				BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */,
-				BA0613C929EF51C3002CDE53 /* DynamicTypeStack.swift in Sources */,
+				BA0613C929EF51C3002CDE53 /* StackThatFits.swift in Sources */,
 				BA0FBA3F29EAA843003243F1 /* GroupingDialogChoiceView.swift in Sources */,
 				BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */,
 				BA9979F32963B42C00AF04B8 /* ContentView.swift in Sources */,

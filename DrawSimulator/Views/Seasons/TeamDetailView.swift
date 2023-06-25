@@ -73,7 +73,7 @@ struct TeamDetailView: View {
         
         List {
             Section {
-                DynamicTypeStack() {
+                StackThatFits() {
                     
                     Image(team.shortName)
                         .resizable()

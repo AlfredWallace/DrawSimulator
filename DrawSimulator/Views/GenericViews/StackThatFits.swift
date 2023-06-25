@@ -1,5 +1,5 @@
 //
-//  DynamicTypeStack.swift
+//  StackThatFits.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 19/04/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DynamicTypeStack<Content: View>: View {
+struct StackThatFits<Content: View>: View {
     let content: () -> Content
     
     init(@ViewBuilder content: @escaping () -> Content) {
