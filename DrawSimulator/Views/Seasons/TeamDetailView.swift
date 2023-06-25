@@ -100,7 +100,10 @@ struct TeamDetailView: View {
                         .frame(width: logoSize, height: logoSize)
                     
                     VStack {
-                        PoolLabelView(seasonTeam: seasonTeam)
+                        HStack {
+                            Text("Pool")
+                            Image(systemName: "\(seasonTeam.poolName.lowercased()).circle.fill")
+                        }
                         
                         DividerView()
                         

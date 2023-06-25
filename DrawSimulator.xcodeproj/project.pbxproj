@@ -16,7 +16,6 @@
 		BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43729E96B620040A4BB /* Team logos.xcassets */; };
 		BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */; };
 		BA1E066329EB30E80015F4D5 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066229EB30E80015F4D5 /* DividerView.swift */; };
-		BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066429EB31640015F4D5 /* PoolLabelView.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA349B6729F69E2D00F2B122 /* DatabaseInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */; };
 		BA39FF9A2A4779BA00A98EFA /* SeasonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA39FF992A4779BA00A98EFA /* SeasonListView.swift */; };
@@ -69,7 +68,6 @@
 		BA11C43729E96B620040A4BB /* Team logos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Team logos.xcassets"; sourceTree = "<group>"; };
 		BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoSizeTracker.swift; sourceTree = "<group>"; };
 		BA1E066229EB30E80015F4D5 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
-		BA1E066429EB31640015F4D5 /* PoolLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoolLabelView.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInitializer.swift; sourceTree = "<group>"; };
 		BA39FF992A4779BA00A98EFA /* SeasonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonListView.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 				BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */,
 				BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */,
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
-				BA1E066429EB31640015F4D5 /* PoolLabelView.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */,
 				BAC0E7352A42D75600017CDF /* TeamNameThatFits.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
@@ -383,7 +380,6 @@
 				BA9979F12963B42C00AF04B8 /* DrawSimulatorApp.swift in Sources */,
 				BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */,
 				BA9E26B92A35AE670073AB56 /* NSManagedObject-NameDescribable.swift in Sources */,
-				BA1E066529EB31640015F4D5 /* PoolLabelView.swift in Sources */,
 				BA76EEBC29F11F0E00F0D4E9 /* CustomTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
