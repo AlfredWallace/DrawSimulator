@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FlagLabelView: View {
     
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
 
     let country: Country
@@ -17,8 +19,37 @@ struct FlagLabelView: View {
         country = team.country!
     }
 
-    private var flagWidth: CGFloat { geoSizeTracker.getSize().width * 0.06 }
-    private var flagHeight: CGFloat { flagWidth * 3/4 }
+    private var flagWidth: CGFloat {
+        var factor = 1.0
+        
+        switch dynamicTypeSize {
+            case .xSmall:
+                fallthrough
+            case .small:
+                factor = 0.06
+            case .medium:
+                fallthrough
+            case .large:
+                factor = 0.07
+            case .xLarge:
+                fallthrough
+            case .xxLarge:
+                factor = 0.08
+            case .xxxLarge:
+                fallthrough
+            case .accessibility1:
+                factor = 0.09
+            default:
+                factor = 0.1
+        }
+        
+        return geoSizeTracker.getSize().width * factor
+    }
+    
+    private var flagHeight: CGFloat {
+        flagWidth * 3/4
+    }
+    
     private let borderFactor = 1.3
     
     var body: some View {
@@ -30,7 +61,7 @@ struct FlagLabelView: View {
         } icon: {
             ZStack {
                 RoundedRectangle(cornerRadius: 6, style: .continuous)
-                    .fill(.white)
+                    .fill(Color.lightGray)
                     .frame(width: flagWidth * borderFactor, height: flagHeight * borderFactor)
 
                 Image(country.name)
@@ -41,5 +72,19 @@ struct FlagLabelView: View {
             }
         }
         .labelStyle(.titleAndIcon)
+    }
+}
+
+struct FlagLabelView_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        
+        let seasonTeam = PreviewDataFetcher.fetchData(
+            for: SeasonTeam.self,
+            withPredicate: NSPredicate(format: "team.shortName == %@", DatabaseInitializer.TeamIdentifier.PSG.rawValue)
+        )
+        
+        FlagLabelView(team: seasonTeam.team!)
+            .environmentObject(GeoSizeTracker())
     }
 }
