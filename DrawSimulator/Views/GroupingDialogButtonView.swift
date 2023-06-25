@@ -32,7 +32,7 @@ struct GroupingDialogButtonView: View {
             Label(groupingLabelStrings.title, systemImage: groupingLabelStrings.icon)
                 .labelStyle(.titleAndIcon)
         }
-        .font(.title2.bold())
+        .font(.title2)
     }
 }
 

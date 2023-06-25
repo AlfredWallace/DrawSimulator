@@ -67,10 +67,9 @@ struct SeasonDetailView: View {
     }
     
     var body: some View {
-        VStack {
+        ZStack {
             if showingList {
-                
-                List(seasonTeams) { section in
+                List (seasonTeams) { section in
                     Section {
                         ForEach(section) { seasonTeam in
                             NavigationLink(value: seasonTeam) {
@@ -81,6 +80,10 @@ struct SeasonDetailView: View {
                         SeasonSectionTitleView(sectionId: section.id)
                     }
                     .listRowSeparatorTint(.pitchGreen)
+                }
+                // little trick to prevent the floating button to overlap the last item
+                .safeAreaInset(edge: .bottom, spacing: 50) {
+                    Text("")
                 }
                 .navigationDestination(for: SeasonTeam.self) { seasonTeam in
                     TeamDetailView(seasonTeam: seasonTeam)
@@ -99,6 +102,27 @@ struct SeasonDetailView: View {
                     GroupingDialogChoiceView(grouping: .none, showingList: $showingList)
                 }
                 .transition(.move(edge: .bottom))
+            }
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button {
+                        
+                    } label: {
+                        Label("Run draw", systemImage: "play")
+                            .foregroundColor(.defaultBackground)
+                            .font(.title3)
+                            .padding(.horizontal, 15)
+                            .padding(.vertical, 10)
+                            .background {
+                                Capsule()
+                                    .fill(Color.pitchGreen)
+                            }
+                    }
+                    .padding()
+                }
             }
         }
     }
