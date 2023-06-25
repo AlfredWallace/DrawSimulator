@@ -41,6 +41,14 @@ This is expected: results are rounded, which can lead to some small mistakes.
 """
 The font used for the team names in team lists is Chillax, provided by Indian Type Foundry through their website www.fontshare.com
 """
+        ),
+        
+        SectionInfo(
+            title: "Images credit",
+            content:
+"""
+All team logos and country flags come from the corresponding Wikipedia pages.
+"""
         )
     ]
     
