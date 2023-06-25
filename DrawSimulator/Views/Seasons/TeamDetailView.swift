@@ -49,7 +49,7 @@ struct TeamDetailView: View {
         )
     }
     
-    private func getOpponentPercentage(for opponent: Team) -> Float? {
+    private func getOpponentPercentage(for opponent: Team) -> Float {
         
         let pairing = drawPairings.first(where: {
             if seasonTeam.seeded {
@@ -59,7 +59,7 @@ struct TeamDetailView: View {
             }
         })
         
-        guard let pairing else { return nil }
+        guard let pairing else { return 0.0 }
         
         return Float(pairing.count) / totalPairingCount * 100
     }
@@ -73,7 +73,7 @@ struct TeamDetailView: View {
         
         List {
             Section {
-                DynamicTypeStack(.accessibility2) {
+                DynamicTypeStack() {
                     
                     Image(team.shortName)
                         .resizable()
@@ -105,13 +105,17 @@ struct TeamDetailView: View {
                         Spacer()
                         
                         HStack {
+                            Spacer()
+                            
                             if draws.isRunning {
                                 ProgressView(value: draws.progress, total: Double(userSettings.data.numberOfDraws))
                                     .progressViewStyle(RandomNumberProgressStyle())
                             } else {
-                                Text("\(getOpponentPercentage(for: opponentSeasonTeam.team!) ?? 0.0, specifier: "%.2f") %")
+                                Text("\(getOpponentPercentage(for: opponentSeasonTeam.team!).rounded().formatted())")
                             }
+                            Text("%")
                         }
+                        .frame(width: geoSizeTracker.getSize().width * 0.23)
                         .font(.custom(Fonts.Overpass.bold.rawValue, size: 20, relativeTo: .largeTitle))
                     }
                 }

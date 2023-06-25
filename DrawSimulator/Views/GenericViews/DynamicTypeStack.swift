@@ -8,23 +8,18 @@
 import SwiftUI
 
 struct DynamicTypeStack<Content: View>: View {
-    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    
-    let vStackTypeSize: DynamicTypeSize
     let content: () -> Content
     
-    init(_ vStackTypeSize: DynamicTypeSize = .accessibility1, @ViewBuilder content: @escaping () -> Content) {
-        self.vStackTypeSize = vStackTypeSize
+    init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content
     }
     
     var body: some View {
-        if dynamicTypeSize >= vStackTypeSize {
-            VStack {
+        ViewThatFits {
+            HStack {
                 content()
             }
-        } else {
-            HStack {
+            VStack {
                 content()
             }
         }
