@@ -29,7 +29,8 @@ struct GroupingDialogButtonView: View {
         Button {
             showingDialg = true
         } label: {
-            NavigationStackActionButtonLabelView(groupingLabelStrings.title, systemImage: groupingLabelStrings.icon)
+            Label(groupingLabelStrings.title, systemImage: groupingLabelStrings.icon)
+                .navigationStackActionButtonLabel()
         }
     }
 }

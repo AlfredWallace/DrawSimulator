@@ -168,7 +168,8 @@ struct TeamDetailView: View {
                     Button {
                         draws.draw(for: seasonTeam.season!.winYear, times: userSettings.data.numberOfDraws)
                     } label: {
-                        NavigationStackActionButtonLabelView("Run draw", systemImage: "play")
+                        Label("Run draw", systemImage: "play")
+                            .navigationStackActionButtonLabel()
                     }
                 }
             }
