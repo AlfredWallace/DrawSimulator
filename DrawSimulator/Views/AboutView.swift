@@ -49,6 +49,14 @@ The font used for the team names in team lists is Chillax, provided by Indian Ty
 """
 All team logos and country flags come from the corresponding Wikipedia pages.
 """
+        ),
+        
+        SectionInfo(
+            title: "Thanks",
+            content:
+"""
+This is my fist iOS app, nothing would've been possible without the quality of Paul Hudson's Hacking With Swift course.
+"""
         )
     ]
     
@@ -57,7 +65,6 @@ All team logos and country flags come from the corresponding Wikipedia pages.
             List(sections, id: \.self) { section in
                 Section {
                     Text(section.content)
-                    .allowsTightening(true)
                 } header: {
                     SectionTitleStyleView(section.title)
                 }
@@ -73,3 +80,4 @@ struct AboutView_Previews: PreviewProvider {
         AboutView()
     }
 }
+
