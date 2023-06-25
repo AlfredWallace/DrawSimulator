@@ -50,7 +50,7 @@ struct FlagLabelView: View {
         flagWidth * 3/4
     }
     
-    private let borderFactor = 1.3
+    private let borderFactor = 1.1
     
     var body: some View {
         Label {
@@ -60,7 +60,8 @@ struct FlagLabelView: View {
             }
         } icon: {
             ZStack {
-                RoundedRectangle(cornerRadius: 6, style: .continuous)
+                
+                RoundedRectangle(cornerRadius: 5, style: .continuous)
                     .fill(Color.lightGray)
                     .frame(width: flagWidth * borderFactor, height: flagHeight * borderFactor)
 
@@ -69,6 +70,7 @@ struct FlagLabelView: View {
                     .scaledToFill()
                     .frame(width: flagWidth, height: flagHeight)
                     .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
+
             }
         }
         .labelStyle(.titleAndIcon)
