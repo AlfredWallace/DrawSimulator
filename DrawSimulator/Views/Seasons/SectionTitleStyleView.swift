@@ -16,7 +16,7 @@ struct SectionTitleStyleView: View {
     
     var body: some View {
         Text(title)
-            .font(.title2.bold())
+            .font(.title3.bold())
             .foregroundColor(.pitchGreen)
     }
 }

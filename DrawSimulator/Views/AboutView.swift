@@ -16,22 +16,10 @@ struct AboutView: View {
     
     private let sections = [
         SectionInfo(
-            title: "Changing results",
+            title: "Variable results",
             content:
 """
-When running a draw several times, you will likely see different results, usually between 1 or 2 percentage points, for instance:
-
-First draw:
-
-- Manchester City 33 %
-- Bayern 27 %
-- Real 40%
-
-Second draw:
-
-- Manchester City 31 %
-- Bayern 28 %
-- Real 41%
+Between one draw and another, you will likely see different results, usually between 1 or 2 percentage points.
 
 This is expected: to be extremely accurate, it would take too much time.
 """
@@ -41,7 +29,9 @@ This is expected: to be extremely accurate, it would take too much time.
             title: "Total other than 100%",
             content:
 """
-This is expected: results are rounded, so, sometimes it doesn't add up to 100%.
+When adding the percentages from a draw, you may not get a total of 100%.
+
+This is expected: results are rounded, which can lead to some small mistakes.
 """
         ),
         
