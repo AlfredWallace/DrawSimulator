@@ -137,21 +137,18 @@ struct TeamDetailView: View {
                                 draws.cancelDraw()
                             }
                         } label: {
-                            Text("Cancel")
-                                .font(.title2.bold())
+                            Label("Cancel", systemImage: "xmark")
+                                .font(.title2)
                                 .foregroundColor(.red)
+                                .labelStyle(.iconOnly)
                         }
                     }
                 } else {
                     Button {
                         draws.draw(for: seasonTeam.season!.winYear, times: userSettings.data.numberOfDraws)
                     } label: {
-                        Text("Draw")
-                            .font(.title2.bold())
+                        NavigationStackActionButtonLabelView("Run draw", systemImage: "play")
                     }
-                    .disabled(draws.isRunning)
-                    .padding(10)
-                    .foregroundColor(Color.pitchGreen)
                 }
             }
         }
@@ -178,11 +175,17 @@ struct TeamDetailView_Previews: PreviewProvider {
                     }
             }
             
-            NavigationStack {
-                TeamDetailView(seasonTeam: seasonTeam)
-                    .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
-                    .environmentObject(geoSizeTracker)
-                    .environmentObject(Draws(coreDataController: CoreDataController.preview))
+            TabView {
+                
+                NavigationStack {
+                    TeamDetailView(seasonTeam: seasonTeam)
+                        .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
+                        .environmentObject(geoSizeTracker)
+                        .environmentObject(Draws(coreDataController: CoreDataController.preview))
+                }
+                .tabItem {
+                    Text("dummy preview tab view")
+                }
             }
         }
     }
