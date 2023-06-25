@@ -31,7 +31,8 @@ struct DrawSimulatorApp: App {
                 .onAppear {
                     if isFirstLaunch {
                         CoreDataController.shared.performInBackgroundContextAndWait(commit: true) { moc in
-                            DatabaseInitializer.shared.makeSeason(moc, 2023)
+                            let databaseInitializer = DatabaseInitializer()
+                            databaseInitializer.makeSeason(moc, 2023)
                         }
                         isFirstLaunch = false
                     }

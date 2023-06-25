@@ -10,15 +10,13 @@ import CoreData
 
 struct DatabaseInitializer {
     
-    static let shared = DatabaseInitializer()
-    
     private let genericErrorMsg = "Hard coded data is invalid."
     
-    enum CountryIdentifier: String {
+    public enum CountryIdentifier: String {
         case ITA, SPA, FRA, ENG, BEL, GER, POR
     }
     
-    enum TeamIdentifier: String {
+    public enum TeamIdentifier: String {
         case PSG, NAP, LIV, FCP, BRU, BAY, INT, TOT, FRK, CHE, ACM, RMA, RBL, MCI, BVB, BEN
     }
     
