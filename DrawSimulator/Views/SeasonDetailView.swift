@@ -103,27 +103,6 @@ struct SeasonDetailView: View {
                 }
                 .transition(.move(edge: .bottom))
             }
-            
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Button {
-                        
-                    } label: {
-                        Label("Run draw", systemImage: "play")
-                            .foregroundColor(.defaultBackground)
-                            .font(.title3)
-                            .padding(.horizontal, 15)
-                            .padding(.vertical, 10)
-                            .background {
-                                Capsule()
-                                    .fill(Color.pitchGreen)
-                            }
-                    }
-                    .padding()
-                }
-            }
         }
     }
 }
