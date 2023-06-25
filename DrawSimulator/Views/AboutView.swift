@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct AboutView: View {
-    var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    Text(
+    
+    private struct SectionInfo: Hashable {
+        let title: String
+        let content: String
+    }
+    
+    private let sections = [
+        SectionInfo(
+            title: "Changing results",
+            content:
 """
 When running a draw several times, you will likely see different results, usually between 1 or 2 percentage points, for instance:
 
@@ -30,20 +35,33 @@ Second draw:
 
 This is expected: to be extremely accurate, it would take too much time.
 """
-                    )
-                    .allowsTightening(true)
-                } header: {
-                    SectionTitleStyleView("Changing results")
-                }
-                
-                Section {
-                    Text(
+        ),
+        
+        SectionInfo(
+            title: "Total other than 100%",
+            content:
 """
 This is expected: results are rounded, so, sometimes it doesn't add up to 100%.
 """
-                    )
+        ),
+        
+        SectionInfo(
+            title: "Fonts credit",
+            content:
+"""
+The font used for the team names in team lists is Chillax, provided by Indian Type Foundry through their website www.fontshare.com
+"""
+        )
+    ]
+    
+    var body: some View {
+        NavigationStack {
+            List(sections, id: \.self) { section in
+                Section {
+                    Text(section.content)
+                    .allowsTightening(true)
                 } header: {
-                    SectionTitleStyleView("Total other than 100%")
+                    SectionTitleStyleView(section.title)
                 }
             }
             .listStyle(.sidebar)
