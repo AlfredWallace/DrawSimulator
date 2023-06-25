@@ -140,7 +140,8 @@ struct TeamDetailView: View {
                 }
                 .listRowSeparatorTint(.pitchGreen)
             } header: {
-                SectionTitleStyleView("Draw chances")
+                Text("Draw chances")
+                    .sectionTitle()
             }
             
             

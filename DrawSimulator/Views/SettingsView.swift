@@ -20,19 +20,25 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Picker("Display mode", selection: $userSettings.data.displayMode) {
+                Picker(selection: $userSettings.data.displayMode) {
                     ForEach(UserSettings.DisplayMode.allCases) {
                         Text($0.rawValue.capitalized)
                             .tag($0)
                     }
+                } label: {
+                    Text("Display mode")
+                        .sectionTitle()
                 }
                 .pickerStyle(.inline)
                 
-                Picker("Draw speed/accuracy", selection: $userSettings.data.numberOfDraws) {
+                Picker(selection: $userSettings.data.numberOfDraws) {
                     ForEach(accuracy.keys.sorted(), id: \.self) {
                         Text(accuracy[$0, default: "error"])
                             .tag($0)
                     }
+                } label: {
+                    Text("Draw speed/accuracy")
+                        .sectionTitle()
                 }
                 .pickerStyle(.inline)
                 .disabled(draws.isRunning)

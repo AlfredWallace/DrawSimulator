@@ -27,7 +27,8 @@ struct SeasonSectionTitleView: View {
     }
     
     var body: some View {
-        SectionTitleStyleView(title)
+        Text(title)
+            .sectionTitle()
     }
 }
 

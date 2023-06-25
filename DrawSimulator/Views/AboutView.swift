@@ -66,7 +66,8 @@ This is my fist iOS app, nothing would've been possible without the quality of P
                 Section {
                     Text(section.content)
                 } header: {
-                    SectionTitleStyleView(section.title)
+                    Text(section.title)
+                        .sectionTitle()
                 }
             }
             .listStyle(.sidebar)
