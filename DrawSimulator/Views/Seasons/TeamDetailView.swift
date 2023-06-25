@@ -121,9 +121,7 @@ struct TeamDetailView: View {
                 }
                 .listRowSeparatorTint(.pitchGreen)
             } header: {
-                Text("Draw chances")
-                    .font(.title2.bold())
-                    .foregroundColor(.pitchGreen)
+                SectionTitleStyleView("Draw chances")
             }
             
             

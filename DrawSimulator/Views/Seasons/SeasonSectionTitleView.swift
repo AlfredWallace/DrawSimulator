@@ -27,9 +27,7 @@ struct SeasonSectionTitleView: View {
     }
     
     var body: some View {
-        Text(title)
-            .font(.title2.bold())
-            .foregroundColor(.pitchGreen)
+        SectionTitleStyleView(title)
     }
 }
 
