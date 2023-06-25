@@ -10,6 +10,8 @@ import CoreData
 
 struct ContentView: View {
     
+    @EnvironmentObject private var draws: Draws
+    
     @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
     
@@ -32,6 +34,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Seasons", systemImage: "soccerball")
                     }
+                    .badge(draws.isRunning ? Text("R") : nil)
                 
                 SettingsView()
                     .tabItem {

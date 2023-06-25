@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject private var userSettings: UserSettings
+    @EnvironmentObject private var draws: Draws
     
     private let accuracy = [
         1_000: "Fastest, least precise",
@@ -34,6 +35,7 @@ struct SettingsView: View {
                     }
                 }
                 .pickerStyle(.inline)
+                .disabled(draws.isRunning)
             }
             .navigationTitle("Settings")
         }
@@ -44,5 +46,6 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(UserSettings())
+            .environmentObject(Draws(coreDataController: CoreDataController.preview))
     }
 }
