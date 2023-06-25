@@ -28,7 +28,7 @@ struct SeasonDetailView: View {
         // force unwrap is possible because the data is fully checked before being inserted into DB (see DatabaseInitializer)
         
         _seasonTeamsByPool = SectionedFetchRequest(
-            sectionIdentifier: \.poolName,
+            sectionIdentifier: \.fullPoolName,
             sortDescriptors: [SortDescriptor(\.poolName), SortDescriptor(\.seeded, order: .reverse)],
             predicate: NSPredicate(format: "season == %@", season)
         )
@@ -77,7 +77,8 @@ struct SeasonDetailView: View {
                             }
                         }
                     } header: {
-                        SeasonSectionTitleView(sectionId: section.id)
+                        Text(section.id)
+                            .sectionTitle()
                     }
                     .listRowSeparatorTint(.pitchGreen)
                 }

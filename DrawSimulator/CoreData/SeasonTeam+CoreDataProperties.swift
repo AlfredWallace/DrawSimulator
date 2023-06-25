@@ -24,6 +24,10 @@ extension SeasonTeam {
     @objc public var seededString: String {
         seeded ? "Seeded" : "Unseeded"
     }
+    
+    @objc public var fullPoolName: String {
+        "Pool \(poolName)"
+    }
 }
 
 extension SeasonTeam : Identifiable {
