@@ -10,12 +10,11 @@ import CoreData
 
 struct TeamDetailView: View {
     
-    @AppStorage("drawAccuracy") private var drawAccuracy = UserSettings.DrawAccuracy.medium
-    
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     
     @EnvironmentObject private var draws: Draws
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
+    @EnvironmentObject private var userSettings: UserSettings
     
     let seasonTeam: SeasonTeam
     let team: Team
@@ -131,7 +130,7 @@ struct TeamDetailView: View {
                             Spacer()
                             
                             if draws.isRunning {
-                                ProgressView(value: draws.progress, total: Double(UserSettings.drawAccuracyCount[drawAccuracy, default: 1]))
+                                ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount[userSettings.drawAccuracy, default: 1]))
                                     .progressViewStyle(RandomNumberProgressStyle())
                             } else {
                                 Text("\(getOpponentPercentage(for: opponentSeasonTeam.team!).rounded().formatted())")
@@ -155,7 +154,7 @@ struct TeamDetailView: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 if draws.isRunning {
                     HStack {
-                        ProgressView(value: draws.progress, total: Double(UserSettings.drawAccuracyCount[drawAccuracy, default: 1]))
+                        ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount[userSettings.drawAccuracy, default: 1]))
                             .tint(Color.pitchGreen)
                         
                         Button {
@@ -171,7 +170,7 @@ struct TeamDetailView: View {
                     }
                 } else {
                     Button {
-                        draws.draw(for: seasonTeam.season!.winYear, times: UserSettings.drawAccuracyCount[drawAccuracy, default: 1])
+                        draws.draw(for: seasonTeam.season!.winYear, times: userSettings.drawAccuracyCount[userSettings.drawAccuracy, default: 1])
                     } label: {
                         Label("Run draw", systemImage: "play")
                             .navigationStackActionButtonLabel()
@@ -208,6 +207,7 @@ struct TeamDetailView_Previews: PreviewProvider {
                     TeamDetailView(seasonTeam: seasonTeam)
                         .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
                         .environmentObject(geoSizeTracker)
+                        .environmentObject(UserSettings())
                         .environmentObject(Draws(coreDataController: CoreDataController.preview))
                 }
                 .tabItem {

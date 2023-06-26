@@ -9,9 +9,10 @@ import SwiftUI
 
 struct GroupingDialogChoiceView: View {
     
-    @AppStorage("grouping") private var grouping = UserSettings.Grouping.pool
+    @EnvironmentObject private var userSettings: UserSettings
 
     let localGrouping: UserSettings.Grouping
+    
     @Binding var showingList: Bool
 
     private let duration = 0.3
@@ -38,7 +39,7 @@ struct GroupingDialogChoiceView: View {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                grouping = localGrouping
+                userSettings.grouping = localGrouping
 
                 withAnimation(.easeOut.speed(speed)) {
                     showingList.toggle()

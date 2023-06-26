@@ -10,7 +10,7 @@ import CoreData
 
 struct SeasonDetailView: View {
     
-    @AppStorage("grouping") private var grouping = UserSettings.Grouping.pool
+    @EnvironmentObject private var userSettings: UserSettings
     
     let season: Season
     
@@ -54,7 +54,7 @@ struct SeasonDetailView: View {
     
     
     private var seasonTeams: SectionedFetchResults<String, SeasonTeam> {
-        switch grouping {
+        switch userSettings.grouping {
             case .country:
                 return seasonTeamsByCountry
             case .none:
@@ -67,7 +67,7 @@ struct SeasonDetailView: View {
     }
     
     private var groupingButtonLabel: String {
-        switch grouping {
+        switch userSettings.grouping {
             case .country:
                 return "Grouped by country"
             case .pool:
@@ -80,7 +80,7 @@ struct SeasonDetailView: View {
     }
     
     private var groupingButtonIcon: String {
-        switch grouping {
+        switch userSettings.grouping {
             case .country:
                 return "flag"
             case .pool:
@@ -167,6 +167,7 @@ struct SeasonDetailView_Previews: PreviewProvider {
         }
         .environment(\.managedObjectContext, moc)
         .environmentObject(geoSizeTracker)
+        .environmentObject(UserSettings())
         .tint(.defaultText)
     }
 }

@@ -209,7 +209,6 @@
 				BA0613D129F035C4002CDE53 /* ViewUtils */,
 				BA016390297ADB830030264F /* Info.plist */,
 				BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */,
-				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
 			);
 			path = DrawSimulator;
 			sourceTree = "<group>";
@@ -227,6 +226,7 @@
 			children = (
 				BA616E6B29ED7F08003F817B /* Draws.swift */,
 				BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */,
+				BAE5C29629D466370094A6D8 /* UserSettings.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

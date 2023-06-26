@@ -10,11 +10,10 @@ import CoreData
 
 struct ContentView: View {
     
-    @AppStorage("displayMode") private var displayMode = UserSettings.DisplayMode.system
-    
     @EnvironmentObject private var draws: Draws
     
     @StateObject private var geoSizeTracker = GeoSizeTracker()
+    @StateObject private var userSettings = UserSettings()
     
     init() {
         CustomTheme.setColors()
@@ -48,11 +47,12 @@ struct ContentView: View {
                     }
             }
             .environmentObject(geoSizeTracker)
+            .environmentObject(userSettings)
         }
         .tint(.pitchGreen)
         .foregroundColor(.defaultText)
         .dynamicTypeSize(.xSmall ... .accessibility2)
-        .preferredColorScheme(UserSettings.getColorScheme(displayMode))
+        .preferredColorScheme(userSettings.getColorScheme())
     }
 }
 
