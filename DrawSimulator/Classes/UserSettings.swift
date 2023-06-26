@@ -12,19 +12,16 @@ import SwiftUI
     
     private let store = UserDefaults.standard
     
-    enum Grouping: String, Identifiable, CaseIterable {
+    enum Grouping: String, IterableEnum {
         case pool, country, seeding, none
-        var id: Self { self }
     }
     
-    enum DisplayMode: String, Identifiable, CaseIterable {
+    enum DisplayMode: String, IterableEnum {
         case light, dark, system
-        var id: Self { self }
     }
     
-    enum DrawAccuracy: String, Identifiable, CaseIterable {
+    enum DrawAccuracy: String, IterableEnum {
         case low, medium, high
-        var id: Self { self }
     }
     
     let drawAccuracyCount: [DrawAccuracy: Int] = [
