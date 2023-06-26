@@ -24,7 +24,6 @@
 		BA73B68929E0C63500807496 /* SeasonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA73B68829E0C63500807496 /* SeasonDetailView.swift */; };
 		BA76EEBA29F1189400F0D4E9 /* RandomNumberProgressStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */; };
 		BA76EEBC29F11F0E00F0D4E9 /* CustomTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEBB29F11F0E00F0D4E9 /* CustomTheme.swift */; };
-		BA76EEBE29F13D6100F0D4E9 /* GroupingDialogButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */; };
 		BA85376B29F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85376329F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift */; };
 		BA85376C29F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85376429F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift */; };
 		BA85376D29F4364400D1CF55 /* Team+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA85376529F4364400D1CF55 /* Team+CoreDataClass.swift */; };
@@ -76,7 +75,6 @@
 		BA73B68829E0C63500807496 /* SeasonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonDetailView.swift; sourceTree = "<group>"; };
 		BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberProgressStyle.swift; sourceTree = "<group>"; };
 		BA76EEBB29F11F0E00F0D4E9 /* CustomTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTheme.swift; sourceTree = "<group>"; };
-		BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupingDialogButtonView.swift; sourceTree = "<group>"; };
 		BA85376329F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeasonTeam+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA85376429F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeasonTeam+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA85376529F4364400D1CF55 /* Team+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			children = (
 				BA39FF992A4779BA00A98EFA /* SeasonListView.swift */,
 				BA73B68829E0C63500807496 /* SeasonDetailView.swift */,
-				BA76EEBD29F13D6100F0D4E9 /* GroupingDialogButtonView.swift */,
 				BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */,
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */,
@@ -370,7 +367,6 @@
 				BACAC34129C9D51A003B8782 /* Bundle-Decodable.swift in Sources */,
 				BA73B68929E0C63500807496 /* SeasonDetailView.swift in Sources */,
 				BA85376D29F4364400D1CF55 /* Team+CoreDataClass.swift in Sources */,
-				BA76EEBE29F13D6100F0D4E9 /* GroupingDialogButtonView.swift in Sources */,
 				BAC777DC2A00DF3400535F81 /* SportFontViewModifier.swift in Sources */,
 				BA0613C929EF51C3002CDE53 /* StackThatFits.swift in Sources */,
 				BA0FBA3F29EAA843003243F1 /* GroupingDialogChoiceView.swift in Sources */,

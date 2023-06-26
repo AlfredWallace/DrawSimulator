@@ -19,7 +19,7 @@ struct GroupingDialogChoiceView: View {
     private var speed: Double { 1 / duration }
 
     private var label: String {
-        switch grouping {
+        switch localGrouping {
             case .pool:
                 return "Group by pool"
             case .country:

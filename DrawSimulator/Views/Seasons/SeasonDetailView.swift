@@ -66,6 +66,32 @@ struct SeasonDetailView: View {
         }
     }
     
+    private var groupingButtonLabel: String {
+        switch grouping {
+            case .country:
+                return "Grouped by country"
+            case .pool:
+                return "Grouped by pool"
+            case .seeding:
+                return "Grouped by seeding"
+            default:
+                return "Ungrouped"
+        }
+    }
+    
+    private var groupingButtonIcon: String {
+        switch grouping {
+            case .country:
+                return "flag"
+            case .pool:
+                return "list.bullet.below.rectangle"
+            case .seeding:
+                return "checklist"
+            default:
+                return "list.dash"
+        }
+    }
+    
     var body: some View {
         ZStack {
             if showingList {
@@ -92,7 +118,12 @@ struct SeasonDetailView: View {
                 .navigationTitle("Teams")
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
-                        GroupingDialogButtonView(showingDialg: $showingGroupingDialog)
+                        Button {
+                            showingGroupingDialog = true
+                        } label: {
+                            Label(groupingButtonLabel, systemImage: groupingButtonIcon)
+                                .navigationStackActionButtonLabel()
+                        }
                     }
                 }
                 .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
