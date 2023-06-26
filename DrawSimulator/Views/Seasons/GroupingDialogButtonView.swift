@@ -9,11 +9,12 @@ import SwiftUI
 
 struct GroupingDialogButtonView: View {
     
-    @EnvironmentObject private var userSettings: UserSettings
+    @AppStorage("grouping") private var grouping = UserSettings.Grouping.pool
+    
     @Binding var showingDialg: Bool
 
     private var groupingLabelStrings: (title: String, icon: String) {
-        switch userSettings.data.grouping {
+        switch grouping {
             case .country:
                 return ("Grouped by country", "flag")
             case .pool:

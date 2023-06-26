@@ -10,7 +10,7 @@ import CoreData
 
 struct SeasonDetailView: View {
     
-    @EnvironmentObject private var userSettings: UserSettings
+    @AppStorage("grouping") private var grouping = UserSettings.Grouping.pool
     
     let season: Season
     
@@ -54,7 +54,7 @@ struct SeasonDetailView: View {
     
     
     private var seasonTeams: SectionedFetchResults<String, SeasonTeam> {
-        switch userSettings.data.grouping {
+        switch grouping {
             case .country:
                 return seasonTeamsByCountry
             case .none:
@@ -96,10 +96,10 @@ struct SeasonDetailView: View {
                     }
                 }
                 .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
-                    GroupingDialogChoiceView(grouping: .pool, showingList: $showingList)
-                    GroupingDialogChoiceView(grouping: .country, showingList: $showingList)
-                    GroupingDialogChoiceView(grouping: .seeding, showingList: $showingList)
-                    GroupingDialogChoiceView(grouping: .none, showingList: $showingList)
+                    GroupingDialogChoiceView(localGrouping: .pool, showingList: $showingList)
+                    GroupingDialogChoiceView(localGrouping: .country, showingList: $showingList)
+                    GroupingDialogChoiceView(localGrouping: .seeding, showingList: $showingList)
+                    GroupingDialogChoiceView(localGrouping: .none, showingList: $showingList)
                 }
                 .transition(.move(edge: .bottom))
             }
@@ -109,8 +109,6 @@ struct SeasonDetailView: View {
 
 
 struct SeasonDetailView_Previews: PreviewProvider {
-    
-    static var userSettings = UserSettings()
     static var geoSizeTracker = GeoSizeTracker()
     
     static var previews: some View {
@@ -137,7 +135,6 @@ struct SeasonDetailView_Previews: PreviewProvider {
             
         }
         .environment(\.managedObjectContext, moc)
-        .environmentObject(userSettings)
         .environmentObject(geoSizeTracker)
         .tint(.defaultText)
     }

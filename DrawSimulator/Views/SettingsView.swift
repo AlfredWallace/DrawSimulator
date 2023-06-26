@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject private var userSettings: UserSettings
-    @EnvironmentObject private var draws: Draws
     
-    private let accuracy = [
-        1_000: "Fastest, least precise",
-        2_000: "Balanced",
-        5_000: "Slowest, most precise",
-    ]
+    @AppStorage("displayMode") private var displayMode = UserSettings.DisplayMode.system
+    @AppStorage("drawAccuracy") private var drawAccuracy = UserSettings.DrawAccuracy.medium
+    
+    @EnvironmentObject private var draws: Draws
     
     var body: some View {
         NavigationStack {
             Form {
-                Picker(selection: $userSettings.data.displayMode) {
+                Picker(selection: $displayMode) {
                     ForEach(UserSettings.DisplayMode.allCases) {
                         Text($0.rawValue.capitalized)
                             .tag($0)
@@ -31,9 +28,9 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.inline)
                 
-                Picker(selection: $userSettings.data.numberOfDraws) {
-                    ForEach(accuracy.keys.sorted(), id: \.self) {
-                        Text(accuracy[$0, default: "error"])
+                Picker(selection: $drawAccuracy) {
+                    ForEach(UserSettings.DrawAccuracy.allCases) {
+                        Text(UserSettings.drawAccuracyLabel[$0, default: "error"])
                             .tag($0)
                     }
                 } label: {
@@ -51,7 +48,6 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
-            .environmentObject(UserSettings())
             .environmentObject(Draws(coreDataController: CoreDataController.preview))
     }
 }

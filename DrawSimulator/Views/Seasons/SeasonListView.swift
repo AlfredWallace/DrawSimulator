@@ -10,7 +10,6 @@ import SwiftUI
 struct SeasonListView: View {
     
     @EnvironmentObject private var draws: Draws
-    @EnvironmentObject private var userSettings: UserSettings
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
     
@@ -40,7 +39,6 @@ struct SeasonListView: View {
                 SeasonDetailView(season: season)
             }
         }
-        .preferredColorScheme(userSettings.getColorScheme())
     }
 }
 
@@ -48,7 +46,6 @@ struct SeasonListView_Previews: PreviewProvider {
     static var previews: some View {
         SeasonListView()
             .environmentObject(Draws(coreDataController: CoreDataController.preview))
-            .environmentObject(UserSettings())
             .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
     }
 }

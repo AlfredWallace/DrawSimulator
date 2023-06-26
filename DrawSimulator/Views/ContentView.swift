@@ -10,9 +10,10 @@ import CoreData
 
 struct ContentView: View {
     
+    @AppStorage("displayMode") private var displayMode = UserSettings.DisplayMode.system
+    
     @EnvironmentObject private var draws: Draws
     
-    @StateObject private var userSettings = UserSettings()
     @StateObject private var geoSizeTracker = GeoSizeTracker()
     
     init() {
@@ -46,23 +47,19 @@ struct ContentView: View {
                         Label("About", systemImage: "info.square")
                     }
             }
-            .environmentObject(userSettings)
             .environmentObject(geoSizeTracker)
         }
         .tint(.pitchGreen)
         .foregroundColor(.defaultText)
         .dynamicTypeSize(.xSmall ... .accessibility2)
+        .preferredColorScheme(UserSettings.getColorScheme(displayMode))
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
-
-    static var userSettings = UserSettings()
-    
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
-            .environmentObject(userSettings)
             .environmentObject(Draws(coreDataController: CoreDataController.preview))
     }
 }

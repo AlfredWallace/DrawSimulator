@@ -38,8 +38,6 @@ struct TeamLabelView: View {
 }
 
 struct TeamLabelView_Previews: PreviewProvider {
-    
-    static var userSettings = UserSettings()
     static var geoSizeTracker = GeoSizeTracker()
     
     static var previews: some View {
