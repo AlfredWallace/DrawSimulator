@@ -21,7 +21,7 @@ struct DrawSimulatorApp: App {
 //        }
 //    }
     
-    @State private var isFirstLaunch = true
+    @AppStorage("appFirstLaunch") private var appFirstLaunch = true
     
     var body: some Scene {
         WindowGroup {
@@ -29,12 +29,12 @@ struct DrawSimulatorApp: App {
                 .environment(\.managedObjectContext, CoreDataController.shared.mainContext)
                 .environmentObject(Draws(coreDataController: CoreDataController.shared))
                 .onAppear {
-                    if isFirstLaunch {
+                    if appFirstLaunch {
                         CoreDataController.shared.performInBackgroundContextAndWait(commit: true) { moc in
                             let databaseInitializer = DatabaseInitializer()
                             databaseInitializer.makeSeason(moc, 2023)
                         }
-                        isFirstLaunch = false
+                        appFirstLaunch = false
                     }
                 }
         }
