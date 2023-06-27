@@ -88,7 +88,7 @@
 		BA85376929F4364400D1CF55 /* Season+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Season+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA85376A29F4364400D1CF55 /* Season+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Season+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA96F37029E824AC00E365FB /* Chillax.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Chillax.ttf; sourceTree = "<group>"; };
-		BA9979ED2963B42C00AF04B8 /* DrawSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA9979ED2963B42C00AF04B8 /* Draw Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Draw Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9979F02963B42C00AF04B8 /* DrawSimulatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSimulatorApp.swift; sourceTree = "<group>"; };
 		BA9979F22963B42C00AF04B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA9979F42963B42D00AF04B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 		BA9979EE2963B42C00AF04B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BA9979ED2963B42C00AF04B8 /* DrawSimulator.app */,
+				BA9979ED2963B42C00AF04B8 /* Draw Simulator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,7 +317,7 @@
 			);
 			name = DrawSimulator;
 			productName = DrawSimulator;
-			productReference = BA9979ED2963B42C00AF04B8 /* DrawSimulator.app */;
+			productReference = BA9979ED2963B42C00AF04B8 /* Draw Simulator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -561,7 +561,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = wallace.alfred.DrawSimulator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Draw Simulator";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -595,7 +595,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = wallace.alfred.DrawSimulator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Draw Simulator";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
