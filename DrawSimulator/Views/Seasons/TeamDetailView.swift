@@ -91,6 +91,7 @@ struct TeamDetailView: View {
     var body: some View {
         
         List {
+            // first section is the current team card
             Section {
                 StackThatFits() {
                     
@@ -118,6 +119,7 @@ struct TeamDetailView: View {
             }
             .listSectionSeparator(.hidden)
             
+            // second section is the list of opponents
             Section {
                 ForEach(opponentsSeasonTeams) { opponentSeasonTeam in
                     HStack {
@@ -146,8 +148,6 @@ struct TeamDetailView: View {
                 Text("Draw chances")
                     .sectionTitle()
             }
-            
-            
         }
         .navigationTitle(team.name)
         .toolbar {
