@@ -24,7 +24,6 @@ struct SettingsView: View {
                     Text("Display mode")
                         .sectionTitle()
                 }
-                .pickerStyle(.inline)
                 
                 Picker(selection: $userSettings.drawAccuracy) {
                     ForEach(UserSettings.DrawAccuracy.allCases) {
@@ -35,10 +34,10 @@ struct SettingsView: View {
                     Text("Draw speed/accuracy")
                         .sectionTitle()
                 }
-                .pickerStyle(.inline)
                 .disabled(draws.isRunning)
             }
             .navigationTitle("Settings")
+            .pickerStyle(.inline)
         }
     }
 }

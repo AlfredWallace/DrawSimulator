@@ -142,8 +142,8 @@
 			children = (
 				BA326D802A01588B00F8DA7C /* GenericViews */,
 				BA221EDC2A487868002F3694 /* Seasons */,
-				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
 				BA39FF9B2A477E6E00A98EFA /* AboutView.swift */,
+				BA9979F22963B42C00AF04B8 /* ContentView.swift */,
 				BAC0E7372A43138D00017CDF /* SettingsView.swift */,
 			);
 			path = Views;

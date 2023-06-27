@@ -48,6 +48,7 @@ struct ContentView: View {
             }
             .environmentObject(geoSizeTracker)
             .environmentObject(userSettings)
+            .scrollIndicators(.hidden)
         }
         .tint(.pitchGreen)
         .foregroundColor(.defaultText)
