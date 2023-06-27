@@ -53,17 +53,6 @@ import SwiftUI
         }
     }
     
-    var drawAccuracyLabel: String {
-        switch drawAccuracy {
-            case .low:
-                return "Fastest, least precise"
-            case .medium:
-                return "Balanced"
-            case .high:
-                return "Slowest, most precise"
-        }
-    }
-    
     private func get<T: RawRepresentable<String>>(_ key: String, defaultValue: T) -> T {
         guard let savedValue = store.string(forKey: key) else {
             return defaultValue
@@ -90,4 +79,14 @@ import SwiftUI
         return nil
     }
     
+    func getDrawAccuracyLabel(drawAccuracy: DrawAccuracy) -> String {
+        switch drawAccuracy {
+            case .low:
+                return "Fastest, least precise"
+            case .medium:
+                return "Balanced"
+            case .high:
+                return "Slowest, most precise"
+        }
+    }
 }
