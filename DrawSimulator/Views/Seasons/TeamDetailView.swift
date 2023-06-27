@@ -130,7 +130,7 @@ struct TeamDetailView: View {
                             Spacer()
                             
                             if draws.isRunning {
-                                ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount[userSettings.drawAccuracy, default: 1]))
+                                ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount))
                                     .progressViewStyle(RandomNumberProgressStyle())
                             } else {
                                 Text("\(getOpponentPercentage(for: opponentSeasonTeam.team!).rounded().formatted())")
@@ -154,7 +154,7 @@ struct TeamDetailView: View {
             ToolbarItemGroup(placement: .bottomBar) {
                 if draws.isRunning {
                     HStack {
-                        ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount[userSettings.drawAccuracy, default: 1]))
+                        ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount))
                             .tint(Color.pitchGreen)
                         
                         Button {
@@ -170,7 +170,7 @@ struct TeamDetailView: View {
                     }
                 } else {
                     Button {
-                        draws.draw(for: seasonTeam.season!.winYear, times: userSettings.drawAccuracyCount[userSettings.drawAccuracy, default: 1])
+                        draws.draw(for: seasonTeam.season!.winYear, times: userSettings.drawAccuracyCount)
                     } label: {
                         Label("Run draw", systemImage: "play")
                             .navigationStackActionButtonLabel()

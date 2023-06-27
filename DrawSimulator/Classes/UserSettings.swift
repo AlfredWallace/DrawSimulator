@@ -24,18 +24,6 @@ import SwiftUI
         case low, medium, high
     }
     
-    let drawAccuracyCount: [DrawAccuracy: Int] = [
-        .low: 1_000,
-        .medium: 2_000,
-        .high: 5_000,
-    ]
-    
-    let drawAccuracyLabel: [DrawAccuracy: String] = [
-        .low: "Fastest, least precise",
-        .medium: "Balanced",
-        .high: "Slowest, most precise",
-    ]
-    
     var displayMode: DisplayMode {
         get { self.get("displayMode", defaultValue: .system) }
         
@@ -52,6 +40,28 @@ import SwiftUI
         get { self.get("drawAccuracy", defaultValue: .medium) }
         
         set { self.set("drawAccuracy", newValue: newValue) }
+    }
+    
+    var drawAccuracyCount: Int  {
+        switch drawAccuracy {
+            case .low:
+                return 1_000
+            case .medium:
+                return 2_000
+            case .high:
+                return 5_000
+        }
+    }
+    
+    var drawAccuracyLabel: String {
+        switch drawAccuracy {
+            case .low:
+                return "Fastest, least precise"
+            case .medium:
+                return "Balanced"
+            case .high:
+                return "Slowest, most precise"
+        }
     }
     
     private func get<T: RawRepresentable<String>>(_ key: String, defaultValue: T) -> T {

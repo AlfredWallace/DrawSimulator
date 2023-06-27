@@ -27,7 +27,7 @@ struct SettingsView: View {
                 
                 Picker(selection: $userSettings.drawAccuracy) {
                     ForEach(UserSettings.DrawAccuracy.allCases) {
-                        Text(userSettings.drawAccuracyLabel[$0, default: "error"])
+                        Text(userSettings.drawAccuracyLabel)
                             .tag($0)
                     }
                 } label: {
