@@ -101,6 +101,7 @@ struct SeasonDetailView: View {
                             NavigationLink(value: seasonTeam) {
                                 TeamLabelView(team: seasonTeam.team!, textStyle: .title2)
                             }
+                            .accessibilityHint("Will take you to the team's detail page.")
                         }
                     } header: {
                         Text(section.id)

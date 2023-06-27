@@ -66,12 +66,15 @@ struct TeamDetailView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: logoSize, height: logoSize)
+                        .accessibilityHidden(true)
                     
                     VStack {
                         HStack {
                             Text("Pool")
                             Image(systemName: "\(seasonTeam.poolName.lowercased()).circle.fill")
                         }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("Pool \(seasonTeam.poolName)")
                         
                         DividerView()
                         
@@ -110,11 +113,12 @@ struct TeamDetailView: View {
                                 draws.cancelDraw()
                             }
                         } label: {
-                            Label("Cancel", systemImage: "xmark")
+                            Label("Cancel draw", systemImage: "xmark")
                                 .font(.title2)
                                 .foregroundColor(.red)
                                 .labelStyle(.iconOnly)
                         }
+                        .accessibilityHint("Will cancel the running draw.")
                     }
                 } else {
                     Button {
@@ -123,6 +127,7 @@ struct TeamDetailView: View {
                         Label("Run draw", systemImage: "play")
                             .navigationStackActionButtonLabel()
                     }
+                    .accessibilityHint("Will start a draw for the whole season.")
                 }
             }
         }

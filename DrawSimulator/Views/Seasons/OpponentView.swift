@@ -41,19 +41,23 @@ struct OpponentView: View {
         )
     }
     
-    private func getOpponentPercentage(for opponent: Team) -> Float {
+    private var opponentPercentageString: String {
+        var percentage: Float = 0.0
+        let opponentTeam = opponent.team!
         
         let pairing = drawPairings.first(where: {
             if seasonTeam.seeded {
-                return $0.unseededTeam == opponent
+                return $0.unseededTeam == opponentTeam
             } else {
-                return $0.seededTeam == opponent
+                return $0.seededTeam == opponentTeam
             }
         })
         
-        guard let pairing else { return 0.0 }
+        if let pairing {
+            percentage = Float(pairing.count) / totalPairingCount * 100
+        }
         
-        return Float(pairing.count) / totalPairingCount * 100
+        return "\(percentage.rounded().formatted())"
     }
     
     var body: some View {
@@ -70,13 +74,20 @@ struct OpponentView: View {
                     ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount))
                         .progressViewStyle(RandomNumberProgressStyle())
                 } else {
-                    Text("\(getOpponentPercentage(for: opponent.team!).rounded().formatted())")
+                    Text(opponentPercentageString)
                 }
                 Text("%")
             }
             .frame(width: geoSizeTracker.getSize().width * 0.23)
             .font(.title3.bold().monospaced())
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(
+                draws.isRunning
+                ? "Waiting for the draw results"
+                : "\(opponentPercentageString) %"
+            )
         }
+        .accessibilityElement(children: .combine)
     }
 }
 
