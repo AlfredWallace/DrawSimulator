@@ -108,10 +108,6 @@ struct SeasonDetailView: View {
                     }
                     .listRowSeparatorTint(.pitchGreen)
                 }
-                // little trick to prevent the floating button to overlap the last item
-                .safeAreaInset(edge: .bottom, spacing: 50) {
-                    Text("")
-                }
                 .navigationDestination(for: SeasonTeam.self) { seasonTeam in
                     TeamDetailView(seasonTeam: seasonTeam)
                 }
