@@ -11,7 +11,7 @@ struct GroupingDialogChoiceView: View {
     
     @EnvironmentObject private var userSettings: UserSettings
 
-    let localGrouping: UserSettings.Grouping
+    let newGroupingValue: UserSettings.Grouping
     
     @Binding var showingList: Bool
 
@@ -20,7 +20,7 @@ struct GroupingDialogChoiceView: View {
     private var speed: Double { 1 / duration }
 
     private var label: String {
-        switch localGrouping {
+        switch newGroupingValue {
             case .pool:
                 return "Group by pool"
             case .country:
@@ -39,7 +39,7 @@ struct GroupingDialogChoiceView: View {
             }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-                userSettings.grouping = localGrouping
+                userSettings.grouping = newGroupingValue
 
                 withAnimation(.easeOut.speed(speed)) {
                     showingList.toggle()

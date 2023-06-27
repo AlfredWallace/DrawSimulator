@@ -123,10 +123,10 @@ struct SeasonDetailView: View {
                     }
                 }
                 .confirmationDialog("Change team grouping", isPresented: $showingGroupingDialog) {
-                    GroupingDialogChoiceView(localGrouping: .pool, showingList: $showingList)
-                    GroupingDialogChoiceView(localGrouping: .country, showingList: $showingList)
-                    GroupingDialogChoiceView(localGrouping: .seeding, showingList: $showingList)
-                    GroupingDialogChoiceView(localGrouping: .none, showingList: $showingList)
+                    GroupingDialogChoiceView(newGroupingValue: .pool, showingList: $showingList)
+                    GroupingDialogChoiceView(newGroupingValue: .country, showingList: $showingList)
+                    GroupingDialogChoiceView(newGroupingValue: .seeding, showingList: $showingList)
+                    GroupingDialogChoiceView(newGroupingValue: .none, showingList: $showingList)
                 }
                 .transition(.move(edge: .bottom))
             }
