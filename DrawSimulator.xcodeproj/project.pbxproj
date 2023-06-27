@@ -126,15 +126,12 @@
 		BA0613CD29F03543002CDE53 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BA418A112A4B22A200E46A87 /* Fonts */,
+				BA418A122A4B22B500E46A87 /* Helpers */,
 				BA9979F42963B42D00AF04B8 /* Assets.xcassets */,
-				BA11C43529E96B1B0040A4BB /* Flags.xcassets */,
 				BA0B50C229E73B6100B96D53 /* Colors.xcassets */,
+				BA11C43529E96B1B0040A4BB /* Flags.xcassets */,
 				BA11C43729E96B620040A4BB /* Team logos.xcassets */,
-				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
-				BA76EEBB29F11F0E00F0D4E9 /* CustomTheme.swift */,
-				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
-				BA96F37029E824AC00E365FB /* Chillax.ttf */,
-				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -154,10 +151,10 @@
 		BA0613D129F035C4002CDE53 /* ViewUtils */ = {
 			isa = PBXGroup;
 			children = (
-				BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */,
-				BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */,
 				BAE2A6A52A48D67200B44A1E /* NavigationStackActionButtonLabelViewModifier.swift */,
+				BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */,
 				BAE2A6A72A48D90700B44A1E /* SectionTitleViewModifier.swift */,
+				BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */,
 			);
 			path = ViewUtils;
 			sourceTree = "<group>";
@@ -165,14 +162,14 @@
 		BA221EDC2A487868002F3694 /* Seasons */ = {
 			isa = PBXGroup;
 			children = (
-				BA39FF992A4779BA00A98EFA /* SeasonListView.swift */,
-				BA73B68829E0C63500807496 /* SeasonDetailView.swift */,
-				BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */,
 				BACC352829EAE23200E22E6A /* FlagLabelView.swift */,
+				BA0FBA3E29EAA843003243F1 /* GroupingDialogChoiceView.swift */,
+				BA418A0E2A4B1A1500E46A87 /* OpponentView.swift */,
+				BA73B68829E0C63500807496 /* SeasonDetailView.swift */,
+				BA39FF992A4779BA00A98EFA /* SeasonListView.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */,
 				BAC0E7352A42D75600017CDF /* TeamNameThatFits.swift */,
 				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
-				BA418A0E2A4B1A1500E46A87 /* OpponentView.swift */,
 			);
 			path = Seasons;
 			sourceTree = "<group>";
@@ -192,6 +189,42 @@
 				BA338EBD2A4A46A8009BCAA8 /* IterableEnum.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BA418A102A4B226F00E46A87 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				BA85376729F4364400D1CF55 /* Country+CoreDataClass.swift */,
+				BA85376829F4364400D1CF55 /* Country+CoreDataProperties.swift */,
+				BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */,
+				BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */,
+				BA85376929F4364400D1CF55 /* Season+CoreDataClass.swift */,
+				BA85376A29F4364400D1CF55 /* Season+CoreDataProperties.swift */,
+				BA85376329F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift */,
+				BA85376429F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift */,
+				BA85376529F4364400D1CF55 /* Team+CoreDataClass.swift */,
+				BA85376629F4364400D1CF55 /* Team+CoreDataProperties.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		BA418A112A4B22A200E46A87 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BA96F37029E824AC00E365FB /* Chillax.ttf */,
+				BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BA418A122A4B22B500E46A87 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */,
+				BA76EEBB29F11F0E00F0D4E9 /* CustomTheme.swift */,
+				BA0613B929EEE8B8002CDE53 /* Fonts.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		BA9979E42963B42C00AF04B8 = {
@@ -258,20 +291,11 @@
 		BAD386E629F3B8AE00369C7D /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */,
+				BA418A102A4B226F00E46A87 /* Entities */,
 				BAD386EA29F3B99800369C7D /* CoreDataController.swift */,
 				BA349B6629F69E2D00F2B122 /* DatabaseInitializer.swift */,
+				BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */,
 				BACB2CFE2A41F9D900B9F456 /* PreviewDataFetcher.swift */,
-				BA85376729F4364400D1CF55 /* Country+CoreDataClass.swift */,
-				BA85376829F4364400D1CF55 /* Country+CoreDataProperties.swift */,
-				BAB0AF8B2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift */,
-				BAB0AF8C2A34C3780038A6E6 /* DrawPairing+CoreDataProperties.swift */,
-				BA85376929F4364400D1CF55 /* Season+CoreDataClass.swift */,
-				BA85376A29F4364400D1CF55 /* Season+CoreDataProperties.swift */,
-				BA85376329F4364400D1CF55 /* SeasonTeam+CoreDataClass.swift */,
-				BA85376429F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift */,
-				BA85376529F4364400D1CF55 /* Team+CoreDataClass.swift */,
-				BA85376629F4364400D1CF55 /* Team+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
