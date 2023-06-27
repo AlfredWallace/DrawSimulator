@@ -30,6 +30,8 @@ struct SeasonListView: View {
                         }
                         .sportFont(.body)
                     }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("Season \(season.winYear - 1) - \(season.winYear) (final played in \(season.city) at the \(season.stadium))")
                 }
                 .listRowSeparatorTint(.pitchGreen)
             }
