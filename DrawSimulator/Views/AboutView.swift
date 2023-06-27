@@ -55,7 +55,7 @@ All team logos and country flags come from the corresponding Wikipedia pages.
             title: "Thanks",
             content:
 """
-This is my fist iOS app, nothing would've been possible without the quality of Paul Hudson's Hacking With Swift course.
+This is my first iOS app, nothing would've been possible without the quality of Paul Hudson's Hacking With Swift course.
 """
         )
     ]
