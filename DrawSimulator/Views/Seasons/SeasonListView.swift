@@ -23,7 +23,6 @@ struct SeasonListView: View {
                         
                         Text(String(season.winYear))
                             .sportFont(.largeTitle, multiplier: 2.5)
-                            .dynamicTypeSize(.xSmall ... .large)
                         
                         Group {
                             Text(season.stadium)
