@@ -10,7 +10,7 @@ import SwiftUI
 struct DividerView: View {
     var body: some View {
         Rectangle()
-            .fill(Color.pitchGreen)
+            .fill(Color.blueTheme)
             .frame(height: 1)
             .edgesIgnoringSafeArea(.horizontal)
     }

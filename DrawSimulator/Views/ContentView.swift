@@ -50,7 +50,7 @@ struct ContentView: View {
             .environmentObject(userSettings)
             .scrollIndicators(.hidden)
         }
-        .tint(.pitchGreen)
+        .tint(.blueTheme)
         .foregroundColor(.defaultText)
         .dynamicTypeSize(.xSmall ... .accessibility2)
         .preferredColorScheme(userSettings.getColorScheme())

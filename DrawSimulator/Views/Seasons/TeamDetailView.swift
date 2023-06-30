@@ -94,7 +94,7 @@ struct TeamDetailView: View {
                 ForEach(opponentsSeasonTeams) { opponentSeasonTeam in
                     OpponentView(seasonTeam: seasonTeam, opponent: opponentSeasonTeam)
                 }
-                .listRowSeparatorTint(.pitchGreen)
+                .listRowSeparatorTint(.blueTheme)
             } header: {
                 Text("Draw chances")
                     .sectionTitle()
@@ -106,7 +106,7 @@ struct TeamDetailView: View {
                 if draws.isRunning {
                     HStack {
                         ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount))
-                            .tint(Color.pitchGreen)
+                            .tint(Color.blueTheme)
                         
                         Button {
                             if draws.task != nil {

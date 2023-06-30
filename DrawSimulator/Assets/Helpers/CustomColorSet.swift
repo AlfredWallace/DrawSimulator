@@ -14,6 +14,7 @@ extension Color {
     static let darkGray = Color("DarkGray")
     static let uefaBlue = Color("UefaBlue")
     static let pitchGreen = Color("PitchGreen")
+    static let blueTheme = Color("BlueTheme")
     static let defaultText = Color("DefaultText")
     static let defaultBackground = Color("DefaultBackground")
 }

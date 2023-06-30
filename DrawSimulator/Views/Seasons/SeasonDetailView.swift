@@ -107,7 +107,7 @@ struct SeasonDetailView: View {
                         Text(section.id)
                             .sectionTitle()
                     }
-                    .listRowSeparatorTint(.pitchGreen)
+                    .listRowSeparatorTint(.blueTheme)
                 }
                 .navigationDestination(for: SeasonTeam.self) { seasonTeam in
                     TeamDetailView(seasonTeam: seasonTeam)

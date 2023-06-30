@@ -34,7 +34,7 @@ struct SeasonListView: View {
                     .accessibilityLabel("Season \(season.winYear - 1) - \(season.winYear). Final played in \(season.city) at the \(season.stadium).")
                     .accessibilityHint("Will take you to the season's teams.")
                 }
-                .listRowSeparatorTint(.pitchGreen)
+                .listRowSeparatorTint(.blueTheme)
             }
             .navigationTitle("Seasons")
             .navigationDestination(for: Season.self) { season in

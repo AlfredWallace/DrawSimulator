@@ -13,7 +13,7 @@ struct SectionTitleViewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.title3.bold())
-            .foregroundColor(.pitchGreen)
+            .foregroundColor(.blueTheme)
     }
 }
 

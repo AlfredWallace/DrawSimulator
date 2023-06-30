@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BA9979EC2963B42C00AF04B8"
-               BuildableName = "DrawSimulator.app"
+               BuildableName = "Draw Simulator.app"
                BlueprintName = "DrawSimulator"
                ReferencedContainer = "container:DrawSimulator.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA9979EC2963B42C00AF04B8"
-            BuildableName = "DrawSimulator.app"
+            BuildableName = "Draw Simulator.app"
             BlueprintName = "DrawSimulator"
             ReferencedContainer = "container:DrawSimulator.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BA9979EC2963B42C00AF04B8"
-            BuildableName = "DrawSimulator.app"
+            BuildableName = "Draw Simulator.app"
             BlueprintName = "DrawSimulator"
             ReferencedContainer = "container:DrawSimulator.xcodeproj">
          </BuildableReference>

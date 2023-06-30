@@ -14,7 +14,7 @@ struct NavigationStackActionButtonLabelViewModifier: ViewModifier {
         content
             .font(.title2)
             .labelStyle(.titleAndIcon)
-            .foregroundColor(Color.pitchGreen)
+            .foregroundColor(Color.blueTheme)
     }
 }
 
