@@ -15,6 +15,7 @@
 		BA11C43629E96B1B0040A4BB /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43529E96B1B0040A4BB /* Flags.xcassets */; };
 		BA11C43829E96B620040A4BB /* Team logos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA11C43729E96B620040A4BB /* Team logos.xcassets */; };
 		BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */; };
+		BA1325A82A5C338700CFA545 /* TeamIdentityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1325A72A5C338700CFA545 /* TeamIdentityCardView.swift */; };
 		BA1E066329EB30E80015F4D5 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1E066229EB30E80015F4D5 /* DividerView.swift */; };
 		BA208BF029D8660200D1EB9A /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */; };
 		BA338EBE2A4A46A8009BCAA8 /* IterableEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA338EBD2A4A46A8009BCAA8 /* IterableEnum.swift */; };
@@ -68,6 +69,7 @@
 		BA11C43529E96B1B0040A4BB /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
 		BA11C43729E96B620040A4BB /* Team logos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Team logos.xcassets"; sourceTree = "<group>"; };
 		BA11C43B29E983300040A4BB /* GeoSizeTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoSizeTracker.swift; sourceTree = "<group>"; };
+		BA1325A72A5C338700CFA545 /* TeamIdentityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamIdentityCardView.swift; sourceTree = "<group>"; };
 		BA1E066229EB30E80015F4D5 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
 		BA338EBD2A4A46A8009BCAA8 /* IterableEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IterableEnum.swift; sourceTree = "<group>"; };
@@ -167,9 +169,10 @@
 				BA418A0E2A4B1A1500E46A87 /* OpponentView.swift */,
 				BA73B68829E0C63500807496 /* SeasonDetailView.swift */,
 				BA39FF992A4779BA00A98EFA /* SeasonListView.swift */,
+				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
+				BA1325A72A5C338700CFA545 /* TeamIdentityCardView.swift */,
 				BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */,
 				BAC0E7352A42D75600017CDF /* TeamNameThatFits.swift */,
-				BA208BEF29D8660200D1EB9A /* TeamDetailView.swift */,
 			);
 			path = Seasons;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				BA85377229F4364400D1CF55 /* Season+CoreDataProperties.swift in Sources */,
 				BAD386EB29F3B99800369C7D /* CoreDataController.swift in Sources */,
 				BA39FF9C2A477E6E00A98EFA /* AboutView.swift in Sources */,
+				BA1325A82A5C338700CFA545 /* TeamIdentityCardView.swift in Sources */,
 				BA85376F29F4364400D1CF55 /* Country+CoreDataClass.swift in Sources */,
 				BA76EEBA29F1189400F0D4E9 /* RandomNumberProgressStyle.swift in Sources */,
 				BA85376C29F4364400D1CF55 /* SeasonTeam+CoreDataProperties.swift in Sources */,
