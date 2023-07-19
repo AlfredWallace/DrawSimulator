@@ -17,6 +17,10 @@ import SwiftUI
     private(set) var task: Task<Void, Never>? = nil
     private let coreDataController: CoreDataController
     private var winYear: Int16 = 1970
+    private var times: Int = 1
+    private var innerLoopPairings = [InnerLoopPairing]()
+    private var seededDrawTeams = [DrawTeam]()
+    private var unseededDrawTeams = [DrawTeam]()
     
     init(coreDataController: CoreDataController) {
         self.coreDataController = coreDataController
@@ -37,6 +41,10 @@ import SwiftUI
         case notExactlyOne(winYear: Int)
     }
     
+    private enum InvalidDrawError: Error {
+        case rulesCannotBeApplied
+    }
+    
     private func extractOneTeam(_ teams: inout [DrawTeam]) -> DrawTeam {
         let length = teams.count
         return teams.remove(at: Int.random(in: 0..<length))
@@ -53,101 +61,116 @@ import SwiftUI
         task = Task {
             
             self.winYear = winYear
+            self.times = times
             let season = getSeason()
             
             deleteDraws(for: season)
             
-            // we will always pick a seeded team then pair it with an unseeded team (UEFA rule): this eliminates some complexity of the algorithm
-            // todo : optimiser pour pas faire 2 requêtes à chaque boucle
-            let seededDrawTeams = getDrawTeams(for: season, seeded: true)
-            let unseededDrawTeams = getDrawTeams(for: season, seeded: false)
+            // we will always pick a seeded team then pair it with an unseeded team (UEFA rule):
+            // this eliminates some complexity of the algorithm by removing the need to check if a picked team is seeded or not
+            seededDrawTeams = getDrawTeams(for: season, seeded: true)
+            unseededDrawTeams = getDrawTeams(for: season, seeded: false)
             
-        outerLoop:
-            for _ in 0..<times {
-                
-                if isRunning == false {
-                    if let task {
-                        task.cancel()
-                    }
-                }
-                
-                // optimization: we use copy for every iteration so that getDrawTeams is not called everytime
-                var seededDrawTeamsCopy = seededDrawTeams
-                var unseededDrawTeamsCopy = unseededDrawTeams
-                
-                await MainActor.run {
-                    self.progress += 1.0
-                }
-                
-                var innerLoopPairings = [InnerLoopPairing]()
-                
-            innerLoop:
-                while seededDrawTeamsCopy.isEmpty == false {
-                    
-                    let seededDrawTeam = self.extractOneTeam(&seededDrawTeamsCopy)
-                    
-                    //UEFA rules
-                    var possibleOpponents = unseededDrawTeamsCopy.filter { opponent in
-                        opponent.country != seededDrawTeam.country
-                        && opponent.poolName != seededDrawTeam.poolName
-                    }
-                    
-                    // If opponents is empty, it's an invalid draw, so we discard the entire draw
-                    // (happens (rarely) when, at some point in the draw, the remaining teams are not compatible with the rules)
-                    if possibleOpponents.isEmpty {
-                        continue outerLoop
-                    }
-                    
-                    let pickedOpponent = self.extractOneTeam(&possibleOpponents)
-                    
-                    unseededDrawTeamsCopy.removeAll { drawTeam in
-                        drawTeam == pickedOpponent
-                    }
-                    
-                    // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
-                    // because as soon as a team or its opponent is picked, we discard them from the arrays
-                    // so: we can just add the current without checking if it exists first
-                    innerLoopPairings.append(InnerLoopPairing(seededTeam: seededDrawTeam.team, unseededTeam: pickedOpponent.team))
-                }
-                
-                // if the draw has been completed (thus is valid) we increase the count for all the matching pairings
-                // we look for an existing pairing matching the current iteration
-                // if there is one, we increase the count, otherwise we create the pairing
-                for innerLoopPairing in innerLoopPairings {
-                    
-                    coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
-                        
-                        let seededTeam = innerLoopPairing.seededTeam
-                        let unseededTeam = innerLoopPairing.unseededTeam
-                        
-                        let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: DrawPairing.entityName)
-                        pairingsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seededTeam == %@ AND unseededTeam == %@", season, seededTeam, unseededTeam)
-                        
-                        do {
-                            let pairingsResult = try moc.fetch(pairingsFetchRequest)
-                            
-                            switch pairingsResult.count {
-                                case 0:
-                                    let _ = DrawPairing(context: moc, count: 1, season: season, seededTeam: seededTeam, unseededTeam: unseededTeam)
-                                case 1:
-                                    pairingsResult.first!.count += 1
-                                default:
-                                    fatalError("Database corrupted, there are several pairings with the same 2 teams (\(seededTeam.name), \(unseededTeam.name)) for a given season (\(season.winYear))")
-                            }
-                        } catch {
-                            print("Failed to fetch or update pairings (\(seededTeam.name), \(unseededTeam.name)) for season: \(season.winYear)")
-                        }
-                    }
-                }
-                
-                // reset for next outerLoop iteration
-                innerLoopPairings = []
-            }
+            await runAllDraws(for: season)
             
             coreDataController.save()
             
             await MainActor.run {
                 isRunning = false
+            }
+        }
+    }
+    
+    private func runAllDraws(for season: Season) async {
+        for _ in 0..<times {
+            
+            if isRunning == false {
+                if let task {
+                    task.cancel()
+                }
+            }
+            
+            await MainActor.run {
+                self.progress += 1.0
+            }
+            
+            innerLoopPairings = []
+            
+            do {
+                try runOneDraw()
+            } catch is InvalidDrawError {
+                continue
+            } catch {
+                // If it's another error, let the app crash, because there shouldn't be an error here
+                fatalError(error.localizedDescription)
+            }
+            
+            makeDrawPairingsFromLoopPairings(for: season)
+        }
+    }
+    
+    private func runOneDraw() throws {
+        
+        var seededDrawTeamsCopy = seededDrawTeams
+        var unseededDrawTeamsCopy = unseededDrawTeams
+        
+        while seededDrawTeamsCopy.isEmpty == false {
+            
+            let seededDrawTeam = self.extractOneTeam(&seededDrawTeamsCopy)
+            
+            //UEFA rules
+            var possibleOpponents = unseededDrawTeamsCopy.filter { opponent in
+                opponent.country != seededDrawTeam.country
+                && opponent.poolName != seededDrawTeam.poolName
+            }
+            
+            // If opponents is empty, it's an invalid draw, so we discard the entire draw
+            // (happens (rarely) when, at some point in the draw, the remaining teams are not compatible with the rules)
+            if possibleOpponents.isEmpty {
+                throw InvalidDrawError.rulesCannotBeApplied
+            }
+            
+            let pickedOpponent = self.extractOneTeam(&possibleOpponents)
+            
+            unseededDrawTeamsCopy.removeAll { drawTeam in
+                drawTeam == pickedOpponent
+            }
+            
+            // in each draw, we are absolutely sure that there cannot be 2 pairings of the same teams
+            // because as soon as a team or its opponent is picked, we discard them from the arrays
+            // so: we can just add the current without checking if it exists first
+            innerLoopPairings.append(InnerLoopPairing(seededTeam: seededDrawTeam.team, unseededTeam: pickedOpponent.team))
+        }
+    }
+    
+    private func makeDrawPairingsFromLoopPairings(for season: Season) {
+        // if the draw has been completed (thus, is valid) we increase the count for all the matching pairings
+        // we look for an existing pairing matching the current iteration
+        // if there is one, we increase the count, otherwise we create the pairing
+        for innerLoopPairing in innerLoopPairings {
+            
+            coreDataController.performInBackgroundContextAndWait(commit: false) { moc in
+                
+                let seededTeam = innerLoopPairing.seededTeam
+                let unseededTeam = innerLoopPairing.unseededTeam
+                
+                let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: DrawPairing.entityName)
+                pairingsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seededTeam == %@ AND unseededTeam == %@", season, seededTeam, unseededTeam)
+                
+                do {
+                    let pairingsResult = try moc.fetch(pairingsFetchRequest)
+                    
+                    switch pairingsResult.count {
+                        case 0:
+                            let _ = DrawPairing(context: moc, count: 1, season: season, seededTeam: seededTeam, unseededTeam: unseededTeam)
+                        case 1:
+                            pairingsResult.first!.count += 1
+                        default:
+                            fatalError("Database corrupted, there are several pairings with the same 2 teams (\(seededTeam.name), \(unseededTeam.name)) for a given season (\(season.winYear))")
+                    }
+                } catch {
+                    print("Failed to fetch or update pairings (\(seededTeam.name), \(unseededTeam.name)) for season: \(season.winYear)")
+                }
             }
         }
     }
