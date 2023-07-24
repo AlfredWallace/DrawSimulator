@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092D0491015C8DF46ECA9693 /* Pods_DrawSimulator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD45A98DE68BA45F09220FAA /* Pods_DrawSimulator.framework */; };
 		BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613B929EEE8B8002CDE53 /* Fonts.swift */; };
 		BA0613BD29EF4545002CDE53 /* Chillax Licence.txt in Resources */ = {isa = PBXBuildFile; fileRef = BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */; };
 		BA0613C929EF51C3002CDE53 /* StackThatFits.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0613C829EF51C3002CDE53 /* StackThatFits.swift */; };
@@ -60,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E532C03C031AA04C219CE19 /* Pods-DrawSimulator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawSimulator.release.xcconfig"; path = "Target Support Files/Pods-DrawSimulator/Pods-DrawSimulator.release.xcconfig"; sourceTree = "<group>"; };
+		B875C6791EF97D6305F1E219 /* Pods-DrawSimulator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrawSimulator.debug.xcconfig"; path = "Target Support Files/Pods-DrawSimulator/Pods-DrawSimulator.debug.xcconfig"; sourceTree = "<group>"; };
 		BA016390297ADB830030264F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA0613B929EEE8B8002CDE53 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		BA0613BC29EF4545002CDE53 /* Chillax Licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Chillax Licence.txt"; sourceTree = "<group>"; };
@@ -112,6 +115,7 @@
 		BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLabelView.swift; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BAE5C29829D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		CD45A98DE68BA45F09220FAA /* Pods_DrawSimulator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrawSimulator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +123,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092D0491015C8DF46ECA9693 /* Pods_DrawSimulator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4EFD6C2C96B659BFB1D09037 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD45A98DE68BA45F09220FAA /* Pods_DrawSimulator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BA0613CD29F03543002CDE53 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +248,8 @@
 			children = (
 				BA9979EF2963B42C00AF04B8 /* DrawSimulator */,
 				BA9979EE2963B42C00AF04B8 /* Products */,
+				FF680B2784CDF32C7A8016F9 /* Pods */,
+				4EFD6C2C96B659BFB1D09037 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -303,6 +318,16 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		FF680B2784CDF32C7A8016F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B875C6791EF97D6305F1E219 /* Pods-DrawSimulator.debug.xcconfig */,
+				7E532C03C031AA04C219CE19 /* Pods-DrawSimulator.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -310,6 +335,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA9979FB2963B42D00AF04B8 /* Build configuration list for PBXNativeTarget "DrawSimulator" */;
 			buildPhases = (
+				3CDA8335D887169FF803B8E9 /* [CP] Check Pods Manifest.lock */,
 				BA9979E92963B42C00AF04B8 /* Sources */,
 				BA9979EA2963B42C00AF04B8 /* Frameworks */,
 				BA9979EB2963B42C00AF04B8 /* Resources */,
@@ -372,6 +398,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3CDA8335D887169FF803B8E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DrawSimulator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BA9979E92963B42C00AF04B8 /* Sources */ = {
@@ -543,6 +594,7 @@
 		};
 		BA9979FC2963B42D00AF04B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B875C6791EF97D6305F1E219 /* Pods-DrawSimulator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -579,6 +631,7 @@
 		};
 		BA9979FD2963B42D00AF04B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E532C03C031AA04C219CE19 /* Pods-DrawSimulator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
