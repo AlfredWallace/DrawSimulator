@@ -1,1 +1,4 @@
+disabled_rules:
+ - switch_case_alignment
+ - no_fallthrough_only
 line_length: 140
