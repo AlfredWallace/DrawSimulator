@@ -46,7 +46,7 @@ struct TeamIdentityCardView: View {
     
     var body: some View {
         Section {
-            StackThatFits() {
+            StackThatFits {
                 
                 Image(team.shortName)
                     .resizable()

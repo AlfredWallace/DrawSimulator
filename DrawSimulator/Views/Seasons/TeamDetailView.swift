@@ -80,7 +80,6 @@ struct TeamDetailView: View {
     }
 }
 
-
 struct TeamDetailView_Previews: PreviewProvider {
     
     static var previews: some View {

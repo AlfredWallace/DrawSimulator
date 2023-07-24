@@ -179,10 +179,7 @@ Season \(winYear) currently has \(seasonTeamsCount).
             }
         }
     
-        
         // For readability reasons we will check for the rest in 2 other loops :
-        
-        
         var countriesToCheck = Set<CountryIdentifier>()
         // For each seasonTeam association we will check if the team exists, and save fot later the country identifier
         // This is a small optimization to prevent us from checking multiple times some countries
@@ -200,10 +197,8 @@ Season \(winYear) currently has \(seasonTeamsCount).
             fatalError("\(genericErrorMsg) There are no countries.")
         }
         
-        for countryIdentifier in countriesToCheck {
-            if countryData[countryIdentifier] == nil {
-                fatalError("\(genericErrorMsg) The country \(countryIdentifier) does not exist.")
-            }
+        for countryIdentifier in countriesToCheck where countryData[countryIdentifier] == nil {
+            fatalError("\(genericErrorMsg) The country \(countryIdentifier) does not exist.")
         }
     }
 }

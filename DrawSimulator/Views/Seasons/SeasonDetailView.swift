@@ -52,7 +52,6 @@ struct SeasonDetailView: View {
         )
     }
     
-    
     private var seasonTeams: SectionedFetchResults<String, SeasonTeam> {
         switch userSettings.grouping {
             case .country:
@@ -95,7 +94,7 @@ struct SeasonDetailView: View {
     var body: some View {
         ZStack {
             if showingList {
-                List (seasonTeams) { section in
+                List(seasonTeams) { section in
                     Section {
                         ForEach(section) { seasonTeam in
                             NavigationLink(value: seasonTeam) {
@@ -134,7 +133,6 @@ struct SeasonDetailView: View {
         }
     }
 }
-
 
 struct SeasonDetailView_Previews: PreviewProvider {
     static var geoSizeTracker = GeoSizeTracker()

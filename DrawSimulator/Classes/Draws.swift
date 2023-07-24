@@ -118,7 +118,7 @@ import SwiftUI
             
             let seededDrawTeam = self.extractOneTeam(&seededDrawTeamsCopy)
             
-            //UEFA rules
+            // UEFA rules
             var possibleOpponents = unseededDrawTeamsCopy.filter { opponent in
                 opponent.country != seededDrawTeam.country
                 && opponent.poolName != seededDrawTeam.poolName
@@ -167,7 +167,7 @@ import SwiftUI
                     
                     switch pairingsResult.count {
                         case 0:
-                            let _ = DrawPairing(context: moc, count: 1, season: season, seededTeam: seededTeam, unseededTeam: unseededTeam)
+                            _ = DrawPairing(context: moc, count: 1, season: season, seededTeam: seededTeam, unseededTeam: unseededTeam)
                         case 1:
                             pairingsResult.first!.count += 1
                         default:

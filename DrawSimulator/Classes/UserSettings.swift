@@ -42,7 +42,7 @@ import SwiftUI
         set { self.set("drawAccuracy", newValue: newValue) }
     }
     
-    var drawAccuracyCount: Int  {
+    var drawAccuracyCount: Int {
         switch drawAccuracy {
             case .low:
                 return 1_000

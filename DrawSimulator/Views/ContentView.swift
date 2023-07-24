@@ -64,4 +64,3 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(Draws(coreDataController: CoreDataController.preview))
     }
 }
-

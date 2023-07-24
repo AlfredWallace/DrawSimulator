@@ -80,7 +80,6 @@ struct FlagLabelView: View {
 struct FlagLabelView_Previews: PreviewProvider {
     static var previews: some View {
         
-        
         let seasonTeam = PreviewDataFetcher.fetchData(
             for: SeasonTeam.self,
             withPredicate: NSPredicate(format: "team.shortName == %@", DatabaseInitializer.TeamIdentifier.PSG.rawValue)

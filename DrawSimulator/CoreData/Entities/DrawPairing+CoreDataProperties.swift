@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension DrawPairing {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<DrawPairing> {
@@ -23,6 +22,6 @@ extension DrawPairing {
 
 }
 
-extension DrawPairing : Identifiable {
+extension DrawPairing: Identifiable {
 
 }
