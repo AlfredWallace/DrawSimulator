@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct FlagLabelView: View {
-    
+
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    
+
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
 
     let country: Country
-    
+
     init(team: Team) {
         country = team.country!
     }
 
     private var flagWidth: CGFloat {
         var factor = 1.0
-        
+
         switch dynamicTypeSize {
             case .xSmall:
                 fallthrough
@@ -42,16 +42,16 @@ struct FlagLabelView: View {
             default:
                 factor = 0.1
         }
-        
+
         return geoSizeTracker.getSize().width * factor
     }
-    
+
     private var flagHeight: CGFloat {
         flagWidth * 3/4
     }
-    
+
     private let borderFactor = 1.1
-    
+
     var body: some View {
         Label {
             ViewThatFits {
@@ -60,7 +60,7 @@ struct FlagLabelView: View {
             }
         } icon: {
             ZStack {
-                
+
                 RoundedRectangle(cornerRadius: 5, style: .continuous)
                     .fill(Color.lightGray)
                     .frame(width: flagWidth * borderFactor, height: flagHeight * borderFactor)
@@ -79,12 +79,12 @@ struct FlagLabelView: View {
 
 struct FlagLabelView_Previews: PreviewProvider {
     static var previews: some View {
-        
+
         let seasonTeam = PreviewDataFetcher.fetchData(
             for: SeasonTeam.self,
             withPredicate: NSPredicate(format: "team.shortName == %@", DatabaseInitializer.TeamIdentifier.PSG.rawValue)
         )
-        
+
         FlagLabelView(team: seasonTeam.team!)
             .environmentObject(GeoSizeTracker())
     }

@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct TeamIdentityCardView: View {
-    
+
     @EnvironmentObject private var geoSizeTracker: GeoSizeTracker
-    
+
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    
+
     let seasonTeam: SeasonTeam
     let team: Team
-    
+
     init(seasonTeam: SeasonTeam) {
         self.seasonTeam = seasonTeam
         self.team = seasonTeam.team!
     }
-    
+
     private var logoSize: CGFloat {
         var factor = 1.0
-        
+
         switch dynamicTypeSize {
             case .xSmall:
                 factor = 0.36
@@ -40,20 +40,20 @@ struct TeamIdentityCardView: View {
             default:
                 factor = 0.75
         }
-        
+
         return geoSizeTracker.getSize().width * factor
     }
-    
+
     var body: some View {
         Section {
             StackThatFits {
-                
+
                 Image(team.shortName)
                     .resizable()
                     .scaledToFit()
                     .frame(width: logoSize, height: logoSize)
                     .accessibilityHidden(true)
-                
+
                 VStack {
                     HStack {
                         Text("Pool")
@@ -61,13 +61,13 @@ struct TeamIdentityCardView: View {
                     }
                     .accessibilityElement(children: .ignore)
                     .accessibilityLabel("Pool \(seasonTeam.poolName)")
-                    
+
                     DividerView()
-                    
+
                     FlagLabelView(team: team)
-                    
+
                     DividerView()
-                    
+
                     Text(seasonTeam.seededString)
                 }
             }
@@ -78,25 +78,25 @@ struct TeamIdentityCardView: View {
 }
 
 struct TeamIdentityCardView_Previews: PreviewProvider {
-    
+
     static var geoSizeTracker = GeoSizeTracker()
-    
+
     static var previews: some View {
-        
+
         let seasonTeam = PreviewDataFetcher.fetchData(
             for: SeasonTeam.self,
             withPredicate: NSPredicate(format: "team.shortName == %@", DatabaseInitializer.TeamIdentifier.PSG.rawValue)
         )
-        
+
         return ZStack {
-            
+
             GeometryReader { geoWrapper in
                 Spacer()
                     .onAppear {
                         geoSizeTracker.setSize(geoWrapper.size)
                     }
             }
-            
+
             TeamIdentityCardView(seasonTeam: seasonTeam)
                 .environmentObject(geoSizeTracker)
         }

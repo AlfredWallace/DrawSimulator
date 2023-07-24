@@ -18,7 +18,7 @@ extension Country {
     @NSManaged public var name: String
     @NSManaged public var shortName: String
     @NSManaged public var teams: NSSet?
-    
+
     public var teamsProxy: [Team] {
         let teamsSet = teams as? Set<Team> ?? []
         return teamsSet.sorted { $0.name < $1.name }

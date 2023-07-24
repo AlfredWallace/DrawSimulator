@@ -10,12 +10,12 @@ import SwiftUI
 struct TeamNameThatFits: View {
     let team: Team
     let textStyle: Font.TextStyle
-    
+
     init(team: Team, textStyle: Font.TextStyle = .body) {
         self.team = team
         self.textStyle = textStyle
     }
-    
+
     var body: some View {
         ViewThatFits {
             Text(team.name.uppercased())

@@ -11,22 +11,22 @@ import CoreData
 
 @objc(Team)
 public class Team: NSManagedObject {
-    
+
     @available(*, unavailable)
     public init() {
         fatalError("Use the custom properties initializer")
     }
-    
+
     @available(*, unavailable)
     public init(context: NSManagedObjectContext) {
         fatalError("Use the custom properties initializer")
     }
-    
+
     @objc
     override private init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
     }
-    
+
     public init(
         context: NSManagedObjectContext,
         name: String,

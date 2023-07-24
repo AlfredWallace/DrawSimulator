@@ -9,13 +9,13 @@ import SwiftUI
 import CoreData
 
 struct TeamDetailView: View {
-    
+
     @EnvironmentObject private var draws: Draws
     @EnvironmentObject private var userSettings: UserSettings
-    
+
     let seasonTeam: SeasonTeam
     let team: Team
-    
+
     private var opponentsSeasonTeams: [SeasonTeam] {
         seasonTeam.season!.seasonTeamsArray.filter {
             $0.seeded != seasonTeam.seeded
@@ -23,18 +23,18 @@ struct TeamDetailView: View {
             && $0.team!.country != team.country
         }
     }
-    
+
     init(seasonTeam: SeasonTeam) {
         self.seasonTeam = seasonTeam
         self.team = seasonTeam.team!
     }
-    
+
     var body: some View {
-        
+
         List {
             // first section is the current team card
             TeamIdentityCardView(seasonTeam: seasonTeam)
-            
+
             // second section is the list of opponents
             Section {
                 ForEach(opponentsSeasonTeams) { opponentSeasonTeam in
@@ -53,7 +53,7 @@ struct TeamDetailView: View {
                     HStack {
                         ProgressView(value: draws.progress, total: Double(userSettings.drawAccuracyCount))
                             .tint(Color.blueTheme)
-                        
+
                         Button {
                             if draws.task != nil {
                                 draws.cancelDraw()
@@ -81,16 +81,16 @@ struct TeamDetailView: View {
 }
 
 struct TeamDetailView_Previews: PreviewProvider {
-    
+
     static var previews: some View {
-        
+
         let seasonTeam = PreviewDataFetcher.fetchData(
             for: SeasonTeam.self,
             withPredicate: NSPredicate(format: "team.shortName == %@", DatabaseInitializer.TeamIdentifier.PSG.rawValue)
         )
-        
+
         return TabView {
-            
+
             NavigationStack {
                 TeamDetailView(seasonTeam: seasonTeam)
                     .environment(\.managedObjectContext, CoreDataController.preview.mainContext)
@@ -101,6 +101,6 @@ struct TeamDetailView_Previews: PreviewProvider {
                 Text("dummy preview tab view")
             }
         }
-        
+
     }
 }

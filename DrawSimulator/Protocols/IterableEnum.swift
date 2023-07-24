@@ -8,7 +8,7 @@
 import Foundation
 
 protocol IterableEnum: Identifiable, CaseIterable {
-    
+
 }
 
 extension IterableEnum {

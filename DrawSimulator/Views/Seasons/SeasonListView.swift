@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct SeasonListView: View {
-    
+
     @EnvironmentObject private var draws: Draws
-    
+
     @FetchRequest(sortDescriptors: [SortDescriptor(\.winYear, order: .reverse)]) private var seasons: FetchedResults<Season>
-    
+
     var body: some View {
-        
+
         NavigationStack {
-            
+
             List(seasons) { season in
                 NavigationLink(value: season) {
                     VStack(alignment: .leading, spacing: 0) {
-                        
+
                         Text(String(season.winYear))
                             .sportFont(.largeTitle, multiplier: 2.5)
-                        
+
                         Group {
                             Text(season.stadium)
                             Text(season.city)

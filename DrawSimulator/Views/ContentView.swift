@@ -9,18 +9,18 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    
+
     @EnvironmentObject private var draws: Draws
-    
+
     @StateObject private var geoSizeTracker = GeoSizeTracker()
     @StateObject private var userSettings = UserSettings()
-    
+
     init() {
         CustomTheme.setColors()
     }
-    
+
     var body: some View {
-        
+
         ZStack {
             GeometryReader { geoWrapper in
                 Spacer()
@@ -28,19 +28,19 @@ struct ContentView: View {
                         geoSizeTracker.setSize(geoWrapper.size)
                     }
             }
-            
+
             TabView {
                 SeasonListView()
                     .tabItem {
                         Label("Seasons", systemImage: "soccerball")
                     }
                     .badge(draws.isRunning ? Text("R") : nil)
-                
+
                 SettingsView()
                     .tabItem {
                         Label("Settings", systemImage: "slider.horizontal.3")
                     }
-                
+
                 AboutView()
                     .tabItem {
                         Label("About", systemImage: "info.square")

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct GroupingDialogChoiceView: View {
-    
+
     @EnvironmentObject private var userSettings: UserSettings
 
     let newGroupingValue: UserSettings.Grouping
-    
+
     @Binding var showingList: Bool
 
     private let duration = 0.3
@@ -31,7 +31,7 @@ struct GroupingDialogChoiceView: View {
                 return "Do not group"
         }
     }
-    
+
     var body: some View {
         Button(label) {
             withAnimation(.easeIn.speed(speed)) {

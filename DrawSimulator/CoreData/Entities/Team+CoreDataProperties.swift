@@ -14,7 +14,7 @@ extension Team {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Team> {
         return NSFetchRequest<Team>(entityName: Team.entityName)
     }
-    
+
     @NSManaged public var name: String
     @NSManaged public var shortName: String
     @NSManaged public var sortingName: String
@@ -22,17 +22,17 @@ extension Team {
     @NSManaged public var seasonTeams: NSSet?
     @NSManaged public var seededDrawPairings: NSSet?
     @NSManaged public var unseededDrawPairings: NSSet?
-    
+
     public var seasonTeamsArray: [SeasonTeam] {
         let seasonTeamsSet = seasonTeams as? Set<SeasonTeam> ?? []
         return seasonTeamsSet.sorted { $0.poolName < $1.poolName }
     }
-    
+
     public var seededDrawPairingsArray: [DrawPairing] {
         let drawPairingsSet = seededDrawPairings as? Set<DrawPairing> ?? []
         return drawPairingsSet.sorted { $0.count < $1.count }
     }
-    
+
     public var unseededDrawPairingsArray: [DrawPairing] {
         let drawPairingsSet = unseededDrawPairings as? Set<DrawPairing> ?? []
         return drawPairingsSet.sorted { $0.count < $1.count }

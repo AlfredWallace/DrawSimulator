@@ -10,36 +10,36 @@ import SwiftUI
 
 struct CoreDataController {
     static let shared = CoreDataController()
-    
+
     static let preview: CoreDataController = {
         let controller = CoreDataController(inMemory: true)
         let moc = controller.mainContext
         let databaseInitializer = DatabaseInitializer()
         databaseInitializer.makeSeason(moc, 2023)
         try? moc.save()
-        
+
         return controller
     }()
-    
+
     private let container: NSPersistentContainer
     let mainContext: NSManagedObjectContext
     let backgroundContext: NSManagedObjectContext
-    
+
     private init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "DrawSimulator")
-        
+
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
-        
+
         mainContext = container.viewContext
         backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        
+
         mainContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        
+
         backgroundContext.parent = mainContext
-        
+
         mainContext.automaticallyMergesChangesFromParent = true
         backgroundContext.automaticallyMergesChangesFromParent = true
 
@@ -49,15 +49,15 @@ struct CoreDataController {
             }
         }
     }
-    
+
     func performInBackgroundContextAndWait(commit: Bool, operation: (NSManagedObjectContext) -> Void) {
         backgroundContext.performAndWait {
             operation(backgroundContext)
-            
+
             if commit { save() }
         }
     }
-    
+
     func save() {
         backgroundContext.performAndWait {
             if backgroundContext.hasChanges {
@@ -68,7 +68,7 @@ struct CoreDataController {
                 }
             }
         }
-        
+
         if mainContext.hasChanges {
             do {
                 try mainContext.save()

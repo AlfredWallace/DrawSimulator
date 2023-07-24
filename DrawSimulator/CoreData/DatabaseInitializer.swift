@@ -9,34 +9,34 @@ import Foundation
 import CoreData
 
 struct DatabaseInitializer {
-    
+
     private let genericErrorMsg = "Hard coded data is invalid."
-    
+
     public enum CountryIdentifier: String {
         case ITA, SPA, FRA, ENG, BEL, GER, POR
     }
-    
+
     public enum TeamIdentifier: String {
         case PSG, NAP, LIV, FCP, BRU, BAY, INT, TOT, FRK, CHE, ACM, RMA, RBL, MCI, BVB, BEN
     }
-    
+
     private struct TeamData {
         let name: String
         let sortingName: String
         let countryIdentifier: CountryIdentifier
     }
-    
+
     private struct SeasonTeamData {
         let poolName: String
         let seeded: Bool
         let teamIdentifier: TeamIdentifier
         let seasonWinYear: Int
     }
-    
+
     private let seasonData = [
         2023: (city: "Istanbul", stadium: "Atatürk Olympic Stadium")
     ]
-    
+
     private let countryData = [
         CountryIdentifier.ITA: "Italy",
         CountryIdentifier.SPA: "Spain",
@@ -84,9 +84,9 @@ struct DatabaseInitializer {
         SeasonTeamData(poolName: "H", seeded: true, teamIdentifier: TeamIdentifier.BEN, seasonWinYear: 2023),
         SeasonTeamData(poolName: "H", seeded: false, teamIdentifier: TeamIdentifier.PSG, seasonWinYear: 2023)
     ]
-    
+
     func makeSeason(_ moc: NSManagedObjectContext, _ winYear: Int) {
-        
+
         // If validation checks out, you can force unwrap everything
         validateSeason(winYear)
 
@@ -96,13 +96,13 @@ struct DatabaseInitializer {
             city: seasonData[winYear]!.city,
             stadium: seasonData[winYear]!.stadium
         )
-        
+
         var countries = Set<Country>()
-        
+
         for oneSeasonTeam in seasonTeamData {
             let teamData = teamData[oneSeasonTeam.teamIdentifier]!
             let countryIdentifier = teamData.countryIdentifier
-            
+
             var country = countries.first(where: { $0.shortName == countryIdentifier.rawValue })
             // If we can't find the country, then it's the first time we encounter this one, so, we insert it
             if country == nil {
@@ -113,7 +113,7 @@ struct DatabaseInitializer {
                 )
                 countries.insert(country!)
             }
-            
+
             let team = Team(
                 context: moc,
                 name: teamData.name,
@@ -121,7 +121,7 @@ struct DatabaseInitializer {
                 sortingName: teamData.sortingName,
                 country: country
             )
-            
+
             let seasonTeam = SeasonTeam(
                 context: moc,
                 poolName: oneSeasonTeam.poolName,
@@ -129,24 +129,24 @@ struct DatabaseInitializer {
                 season: season,
                 team: team
             )
-            
+
             team.addToSeasonTeams(seasonTeam)
             season.addToSeasonTeams(seasonTeam)
             country!.addToTeams(team)
         }
     }
-    
+
     private func validateSeason(_ winYear: Int) {
-        
+
         // Checking if season exists
         if seasonData[winYear] == nil {
             fatalError("\(genericErrorMsg) There is no season \(winYear).")
         }
-        
+
         let seasonTeams = seasonTeamData.filter({ $0.seasonWinYear == winYear })
         let seasonTeamsCount = seasonTeams.count
         let teamCount = 16
-        
+
         // Checking if the number if teeamPool associations is 16
         if seasonTeamsCount != teamCount {
             fatalError(
@@ -156,47 +156,47 @@ Season \(winYear) currently has \(seasonTeamsCount).
 """
             )
         }
-        
+
         // Checking if we have 16 different teams
         if Set(seasonTeams.map({ $0.teamIdentifier })).count != teamCount {
             fatalError("\(genericErrorMsg) There cannot be team duplicates in the seasonTeams.")
         }
-        
+
         // Grouping by pool name allows us to check:
         // - if we have 8 associations of 2 teams
         // - if we have, in each association, a seeded team and an unseeded one
         for pool in Dictionary(grouping: seasonTeams, by: { $0.poolName }) {
             let seasonTeamsAssociations = pool.value
-            
+
             // checking associations of 2 teams
             if seasonTeamsAssociations.count != 2 {
                 fatalError("\(genericErrorMsg) There has to be exactly 2 seasonTeam associations of the same pool name.")
             }
-            
+
             // checking seedings
             if seasonTeamsAssociations[0].seeded == seasonTeamsAssociations[1].seeded {
                 fatalError("\(genericErrorMsg) The 2 seasonTeam associations of a same pool name have to have different seedings.")
             }
         }
-    
+
         // For readability reasons we will check for the rest in 2 other loops :
         var countriesToCheck = Set<CountryIdentifier>()
         // For each seasonTeam association we will check if the team exists, and save fot later the country identifier
         // This is a small optimization to prevent us from checking multiple times some countries
         for seasonTeam in seasonTeams {
             let teamIdentifier = seasonTeam.teamIdentifier
-            
+
             guard let team = teamData[teamIdentifier] else {
                 fatalError("\(genericErrorMsg) Team \(teamIdentifier) does not exist.")
             }
-            
+
             countriesToCheck.insert(team.countryIdentifier)
         }
-        
+
         if countriesToCheck.count == 0 {
             fatalError("\(genericErrorMsg) There are no countries.")
         }
-        
+
         for countryIdentifier in countriesToCheck where countryData[countryIdentifier] == nil {
             fatalError("\(genericErrorMsg) The country \(countryIdentifier) does not exist.")
         }

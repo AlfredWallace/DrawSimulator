@@ -19,11 +19,11 @@ extension SeasonTeam {
     @NSManaged public var seeded: Bool
     @NSManaged public var season: Season?
     @NSManaged public var team: Team?
-    
+
     @objc public var seededString: String {
         seeded ? "Seeded" : "Unseeded"
     }
-    
+
     @objc public var fullPoolName: String {
         "Pool \(poolName)"
     }

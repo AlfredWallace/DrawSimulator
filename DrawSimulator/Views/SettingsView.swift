@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
+
     @EnvironmentObject private var draws: Draws
     @EnvironmentObject private var userSettings: UserSettings
-    
+
     var body: some View {
         NavigationStack {
             Form {
@@ -24,7 +24,7 @@ struct SettingsView: View {
                     Text("Display mode")
                         .sectionTitle()
                 }
-                
+
                 Picker(selection: $userSettings.drawAccuracy) {
                     ForEach(UserSettings.DrawAccuracy.allCases) {
                         Text(userSettings.getDrawAccuracyLabel(drawAccuracy: $0))

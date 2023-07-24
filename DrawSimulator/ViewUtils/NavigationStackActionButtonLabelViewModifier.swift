@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct NavigationStackActionButtonLabelViewModifier: ViewModifier {
-    
+
     func body(content: Content) -> some View {
         content
             .font(.title2)

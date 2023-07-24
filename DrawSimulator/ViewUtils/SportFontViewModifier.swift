@@ -11,12 +11,12 @@ import SwiftUI
 struct SportFontViewModifier: ViewModifier {
     let textStyle: Font.TextStyle
     let size: CGFloat
-    
+
     init(textStyle: Font.TextStyle, multiplier: CGFloat) {
         self.textStyle = textStyle
-        
+
         var finalSize = 0.0
-        
+
         switch textStyle {
             case .callout:
                 finalSize = 15
@@ -41,15 +41,15 @@ struct SportFontViewModifier: ViewModifier {
             default:
                 finalSize = 16
         }
-        
+
         if multiplier > 1 {
             size = finalSize * multiplier
         } else {
             size = finalSize
         }
-        
+
     }
-    
+
     func body(content: Content) -> some View {
         content
             .font(.custom(Fonts.Chillax.bold.rawValue, size: size, relativeTo: textStyle))

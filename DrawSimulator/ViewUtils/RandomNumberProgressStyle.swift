@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct RandomNumberProgressStyle: ProgressViewStyle {
-    
+
     func makeBody(configuration: Configuration) -> some View {
         return Text("\(Int.random(in: 0..<100))")
     }
