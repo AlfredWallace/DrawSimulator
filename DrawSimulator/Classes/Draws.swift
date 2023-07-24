@@ -155,7 +155,12 @@ import SwiftUI
                 let unseededTeam = innerLoopPairing.unseededTeam
                 
                 let pairingsFetchRequest = NSFetchRequest<DrawPairing>(entityName: DrawPairing.entityName)
-                pairingsFetchRequest.predicate = NSPredicate(format: "season == %@ AND seededTeam == %@ AND unseededTeam == %@", season, seededTeam, unseededTeam)
+                pairingsFetchRequest.predicate = NSPredicate(
+                    format: "season == %@ AND seededTeam == %@ AND unseededTeam == %@",
+                    season,
+                    seededTeam,
+                    unseededTeam
+                )
                 
                 do {
                     let pairingsResult = try moc.fetch(pairingsFetchRequest)
@@ -166,7 +171,12 @@ import SwiftUI
                         case 1:
                             pairingsResult.first!.count += 1
                         default:
-                            fatalError("Database corrupted, there are several pairings with the same 2 teams (\(seededTeam.name), \(unseededTeam.name)) for a given season (\(season.winYear))")
+                            fatalError(
+"""
+Database corrupted, there are several pairings with the same 2 teams \
+(\(seededTeam.name), \(unseededTeam.name)) for a given season (\(season.winYear))
+"""
+                            )
                     }
                 } catch {
                     print("Failed to fetch or update pairings (\(seededTeam.name), \(unseededTeam.name)) for season: \(season.winYear)")

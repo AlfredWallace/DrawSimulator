@@ -43,9 +43,9 @@ struct CoreDataController {
         mainContext.automaticallyMergesChangesFromParent = true
         backgroundContext.automaticallyMergesChangesFromParent = true
 
-        container.loadPersistentStores { description, error in
+        container.loadPersistentStores { _, error in
             if let error {
-                print("Core Data failed to load. error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+                print("Core Data failed to load: \(error.localizedDescription)")
             }
         }
     }
@@ -64,7 +64,7 @@ struct CoreDataController {
                 do {
                     try backgroundContext.save()
                 } catch {
-                    print("Could not save the background context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+                    print("Could not save the background context: \(error.localizedDescription)")
                 }
             }
         }
@@ -73,7 +73,7 @@ struct CoreDataController {
             do {
                 try mainContext.save()
             } catch {
-                print("Could not save the main context error.localizedDescription:[\(error.localizedDescription)] ; error:[\(error)]")
+                print("Could not save the main context: \(error.localizedDescription)")
             }
         }
     }

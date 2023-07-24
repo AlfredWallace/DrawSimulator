@@ -38,13 +38,13 @@ struct DatabaseInitializer {
     ]
     
     private let countryData = [
-        CountryIdentifier.ITA : "Italy",
-        CountryIdentifier.SPA : "Spain",
-        CountryIdentifier.FRA : "France",
-        CountryIdentifier.ENG : "England",
-        CountryIdentifier.BEL : "Belgium",
-        CountryIdentifier.GER : "Germany",
-        CountryIdentifier.POR : "Portugal",
+        CountryIdentifier.ITA: "Italy",
+        CountryIdentifier.SPA: "Spain",
+        CountryIdentifier.FRA: "France",
+        CountryIdentifier.ENG: "England",
+        CountryIdentifier.BEL: "Belgium",
+        CountryIdentifier.GER: "Germany",
+        CountryIdentifier.POR: "Portugal"
     ]
 
     private let teamData = [
@@ -63,7 +63,7 @@ struct DatabaseInitializer {
         TeamIdentifier.RBL: TeamData(name: "RB Leipzig", sortingName: "Leipzig", countryIdentifier: CountryIdentifier.GER),
         TeamIdentifier.MCI: TeamData(name: "Manchester City", sortingName: "ManCity", countryIdentifier: CountryIdentifier.ENG),
         TeamIdentifier.BVB: TeamData(name: "Borussia Dortmund", sortingName: "Dortmund", countryIdentifier: CountryIdentifier.GER),
-        TeamIdentifier.BEN: TeamData(name: "SL Benfica", sortingName: "Benfica", countryIdentifier: CountryIdentifier.POR),
+        TeamIdentifier.BEN: TeamData(name: "SL Benfica", sortingName: "Benfica", countryIdentifier: CountryIdentifier.POR)
     ]
 
     private let seasonTeamData = [
@@ -82,7 +82,7 @@ struct DatabaseInitializer {
         SeasonTeamData(poolName: "G", seeded: true, teamIdentifier: TeamIdentifier.MCI, seasonWinYear: 2023),
         SeasonTeamData(poolName: "G", seeded: false, teamIdentifier: TeamIdentifier.BVB, seasonWinYear: 2023),
         SeasonTeamData(poolName: "H", seeded: true, teamIdentifier: TeamIdentifier.BEN, seasonWinYear: 2023),
-        SeasonTeamData(poolName: "H", seeded: false, teamIdentifier: TeamIdentifier.PSG, seasonWinYear: 2023),
+        SeasonTeamData(poolName: "H", seeded: false, teamIdentifier: TeamIdentifier.PSG, seasonWinYear: 2023)
     ]
     
     func makeSeason(_ moc: NSManagedObjectContext, _ winYear: Int) {
@@ -90,7 +90,12 @@ struct DatabaseInitializer {
         // If validation checks out, you can force unwrap everything
         validateSeason(winYear)
 
-        let season = Season(context: moc, winYear: winYear, city: seasonData[winYear]!.city, stadium: seasonData[winYear]!.stadium)
+        let season = Season(
+            context: moc,
+            winYear: winYear,
+            city: seasonData[winYear]!.city,
+            stadium: seasonData[winYear]!.stadium
+        )
         
         var countries = Set<Country>()
         
@@ -101,7 +106,11 @@ struct DatabaseInitializer {
             var country = countries.first(where: { $0.shortName == countryIdentifier.rawValue })
             // If we can't find the country, then it's the first time we encounter this one, so, we insert it
             if country == nil {
-                country = Country(context: moc, name: countryData[countryIdentifier]!, shortName: countryIdentifier.rawValue)
+                country = Country(
+                    context: moc,
+                    name: countryData[countryIdentifier]!,
+                    shortName: countryIdentifier.rawValue
+                )
                 countries.insert(country!)
             }
             
@@ -140,7 +149,12 @@ struct DatabaseInitializer {
         
         // Checking if the number if teeamPool associations is 16
         if seasonTeamsCount != teamCount {
-            fatalError("\(genericErrorMsg) There has to be \(teamCount) seasonTeam associations for one season. Season \(winYear) currently has \(seasonTeamsCount).")
+            fatalError(
+"""
+\(genericErrorMsg) There has to be \(teamCount) seasonTeam associations for one season. \
+Season \(winYear) currently has \(seasonTeamsCount).
+"""
+            )
         }
         
         // Checking if we have 16 different teams
