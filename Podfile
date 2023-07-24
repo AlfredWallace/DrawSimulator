@@ -6,5 +6,6 @@ target 'DrawSimulator' do
   use_frameworks!
 
   # Pods for DrawSimulator
+  pod 'SwiftLint'
 
 end
