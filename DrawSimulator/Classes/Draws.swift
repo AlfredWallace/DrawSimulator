@@ -14,7 +14,7 @@ import SwiftUI
     @Published private(set) var isRunning = false
     @Published private(set) var progress = 0.0
 
-    private(set) var task: Task<Void, Never>? = nil
+    private(set) var task: Task<Void, Never>?
     private let coreDataController: CoreDataController
     private var winYear: Int16 = 1970
     private var times: Int = 1
