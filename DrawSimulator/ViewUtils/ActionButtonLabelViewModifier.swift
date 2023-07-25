@@ -1,5 +1,5 @@
 //
-//  NavigationStackActionButtonLabelViewModifier.swift
+//  ActionButtonLabelViewModifier.swift
 //  DrawSimulator
 //
 //  Created by Arthur Falque Pierrotin on 25/06/2023.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct NavigationStackActionButtonLabelViewModifier: ViewModifier {
+struct ActionButtonLabelViewModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
@@ -19,7 +19,7 @@ struct NavigationStackActionButtonLabelViewModifier: ViewModifier {
 }
 
 extension Label {
-    func navigationStackActionButtonLabel() -> some View {
-        modifier(NavigationStackActionButtonLabelViewModifier())
+    func actionButtonLabel() -> some View {
+        modifier(ActionButtonLabelViewModifier())
     }
 }

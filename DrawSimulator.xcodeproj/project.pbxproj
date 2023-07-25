@@ -53,7 +53,7 @@
 		BAD1D9CF29DCCE32005D1887 /* CustomColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */; };
 		BAD386E929F3B91800369C7D /* DrawSimulator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAD386E729F3B91800369C7D /* DrawSimulator.xcdatamodeld */; };
 		BAD386EB29F3B99800369C7D /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD386EA29F3B99800369C7D /* CoreDataController.swift */; };
-		BAE2A6A62A48D67200B44A1E /* NavigationStackActionButtonLabelViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE2A6A52A48D67200B44A1E /* NavigationStackActionButtonLabelViewModifier.swift */; };
+		BAE2A6A62A48D67200B44A1E /* ActionButtonLabelViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE2A6A52A48D67200B44A1E /* ActionButtonLabelViewModifier.swift */; };
 		BAE2A6A82A48D90800B44A1E /* SectionTitleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE2A6A72A48D90700B44A1E /* SectionTitleViewModifier.swift */; };
 		BAE3BCB629EBDB2300C32416 /* TeamLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */; };
 		BAE5C29729D466370094A6D8 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5C29629D466370094A6D8 /* UserSettings.swift */; };
@@ -110,7 +110,7 @@
 		BAD1D9CE29DCCE32005D1887 /* CustomColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorSet.swift; sourceTree = "<group>"; };
 		BAD386E829F3B91800369C7D /* DrawSimulator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrawSimulator.xcdatamodel; sourceTree = "<group>"; };
 		BAD386EA29F3B99800369C7D /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
-		BAE2A6A52A48D67200B44A1E /* NavigationStackActionButtonLabelViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackActionButtonLabelViewModifier.swift; sourceTree = "<group>"; };
+		BAE2A6A52A48D67200B44A1E /* ActionButtonLabelViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonLabelViewModifier.swift; sourceTree = "<group>"; };
 		BAE2A6A72A48D90700B44A1E /* SectionTitleViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleViewModifier.swift; sourceTree = "<group>"; };
 		BAE3BCB529EBDB2300C32416 /* TeamLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLabelView.swift; sourceTree = "<group>"; };
 		BAE5C29629D466370094A6D8 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		BA0613D129F035C4002CDE53 /* ViewUtils */ = {
 			isa = PBXGroup;
 			children = (
-				BAE2A6A52A48D67200B44A1E /* NavigationStackActionButtonLabelViewModifier.swift */,
+				BAE2A6A52A48D67200B44A1E /* ActionButtonLabelViewModifier.swift */,
 				BA76EEB929F1189400F0D4E9 /* RandomNumberProgressStyle.swift */,
 				BAE2A6A72A48D90700B44A1E /* SectionTitleViewModifier.swift */,
 				BAC777DB2A00DF3400535F81 /* SportFontViewModifier.swift */,
@@ -456,7 +456,7 @@
 				BAE5C29929D46C7B0094A6D8 /* FileManager-DocumentsDirectory.swift in Sources */,
 				BAB0AF8D2A34C3780038A6E6 /* DrawPairing+CoreDataClass.swift in Sources */,
 				BA0613BA29EEE8B8002CDE53 /* Fonts.swift in Sources */,
-				BAE2A6A62A48D67200B44A1E /* NavigationStackActionButtonLabelViewModifier.swift in Sources */,
+				BAE2A6A62A48D67200B44A1E /* ActionButtonLabelViewModifier.swift in Sources */,
 				BA418A0F2A4B1A1500E46A87 /* OpponentView.swift in Sources */,
 				BA11C43C29E983300040A4BB /* GeoSizeTracker.swift in Sources */,
 				BACB2CFF2A41F9D900B9F456 /* PreviewDataFetcher.swift in Sources */,

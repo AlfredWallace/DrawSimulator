@@ -71,7 +71,7 @@ struct TeamDetailView: View {
                         draws.draw(for: seasonTeam.season!.winYear, times: userSettings.drawAccuracyCount)
                     } label: {
                         Label("Run draw", systemImage: "play")
-                            .navigationStackActionButtonLabel()
+                            .actionButtonLabel()
                     }
                     .accessibilityHint("Will start a draw for the whole season.")
                 }

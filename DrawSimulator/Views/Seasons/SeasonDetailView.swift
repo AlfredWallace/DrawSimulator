@@ -118,7 +118,7 @@ struct SeasonDetailView: View {
                             showingGroupingDialog = true
                         } label: {
                             Label(groupingButtonLabel, systemImage: groupingButtonIcon)
-                                .navigationStackActionButtonLabel()
+                                .actionButtonLabel()
                         }
                     }
                 }
