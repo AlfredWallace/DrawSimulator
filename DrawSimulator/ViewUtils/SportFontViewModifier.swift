@@ -9,38 +9,39 @@ import Foundation
 import SwiftUI
 
 struct SportFontViewModifier: ViewModifier {
+
+    static private func getFinalSize(for textStyle: Font.TextStyle) -> CGFloat {
+        switch textStyle {
+            case .caption2:
+                fallthrough
+            case .caption:
+                return 12
+            case .footnote:
+                return 13
+            case .callout:
+                fallthrough
+            case .subheadline:
+                return 15
+            case .title3:
+                return 18
+            case .title2:
+                return 21
+            case .title:
+                return 26
+            case .largeTitle:
+                return 30
+            default:
+                return 16
+        }
+    }
+
     let textStyle: Font.TextStyle
     let size: CGFloat
 
     init(textStyle: Font.TextStyle, multiplier: CGFloat) {
         self.textStyle = textStyle
 
-        var finalSize = 0.0
-
-        switch textStyle {
-            case .callout:
-                finalSize = 15
-            case .caption:
-                finalSize = 12
-            case .caption2:
-                finalSize = 11
-            case .footnote:
-                finalSize = 13
-            case .headline:
-                finalSize = 16
-            case .subheadline:
-                finalSize = 15
-            case .largeTitle:
-                finalSize = 30
-            case .title:
-                finalSize = 26
-            case .title2:
-                finalSize = 21
-            case .title3:
-                finalSize = 18
-            default:
-                finalSize = 16
-        }
+        let finalSize = Self.getFinalSize(for: textStyle)
 
         if multiplier > 1 {
             size = finalSize * multiplier
